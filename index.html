@@ -50,9 +50,179 @@
   .hero .glyph{
     position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
     font-family:var(--brush);font-size:min(58vw,640px);line-height:.9;
-    color:rgba(232,223,201,.06);user-select:none;pointer-events:none;z-index:-1;
+    color:rgba(232,223,201,.08);user-select:none;pointer-events:none;z-index:-1;
     display:var(--glyph-display,block);
   }
+  @media (prefers-reduced-motion:reduce){
+    .hero .glyph{ animation:none }
+  }
+
+  /* Red sun disc — upper right, sitting in the open sky beside the headline.
+     Color tuned to the brand cinnabar/warm-amber palette, not pure red.
+     Static — no pulse. */
+  .hero .shanshui .sun{
+    position:absolute;right:14%;top:12%;
+    width:clamp(56px, 6vw, 92px);
+    aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 42% 40%, #c66a4c 0%, #a8492f 55%, #7a2e1c 100%);
+    box-shadow:0 0 50px 6px rgba(168,73,47,.18), 0 0 18px 2px rgba(168,73,47,.30);
+    opacity:.85;
+  }
+  :root:not([data-theme="light"]) .hero .shanshui .sun{
+    /* Overridden by the dark-mode rule further below — kept here as a stub
+       only so this selector isn't orphaned by older browsers. */
+  }
+
+  /* ── Shan shui — ink-wash scroll painting (teal-green ink on parchment) ── */
+  .hero .shanshui{
+    position:absolute;left:0;right:0;bottom:0;height:78%;z-index:-1;
+    pointer-events:none;overflow:hidden;
+    /* Fade the top so mountains dissolve into the hero atmospherics */
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,transparent 10%,#000 32%,#000 100%);
+            mask-image:linear-gradient(180deg,transparent 0%,transparent 10%,#000 32%,#000 100%);
+  }
+  /* Each layer sits at bottom:0 of shanshui, with its own height (as % of
+     shanshui's 78vh) — taller layers stick higher into the scene. */
+  .hero .shanshui .ss-layer{
+    position:absolute;left:0;right:0;bottom:0;width:100%;display:block;
+  }
+  .hero .shanshui .ss-l1{ height:74.4% }   /* farthest haze */
+  .hero .shanshui .ss-l2{ height:80.8% }   /* mid-distant */
+  .hero .shanshui .ss-l3{ height:100%  }   /* main range — hero peaks left, secondary right */
+  .hero .shanshui .ss-l4{ height:61.5% }   /* near foreground */
+  .hero .shanshui .ss-l5{ height:17.9% }   /* darkest base */
+
+  /* Light mode — imperial jade palette. Darker fills, lower opacity so the
+     mountains read as DISTANT atmospherics, not foreground silhouettes. */
+  .hero .shanshui .ss-l1 path{ fill:#8aa89c; opacity:.07 }
+  .hero .shanshui .ss-l2 path{ fill:#52796a; opacity:.12 }
+  .hero .shanshui .ss-l3 path{ fill:#1d4030; opacity:.30 }
+  .hero .shanshui .ss-l4 path{ fill:#0e2a1d; opacity:.42 }
+  .hero .shanshui .ss-l5 path{ fill:#061812; opacity:.55 }
+  /* Slight blur on all layers so the silhouettes feel like ink soaked into paper */
+  .hero .shanshui .ss-l1{ filter:blur(2px) }
+  .hero .shanshui .ss-l2{ filter:blur(1.4px) }
+  .hero .shanshui .ss-l3{ filter:blur(.8px) }
+  .hero .shanshui .ss-l4{ filter:blur(.5px) }
+  .hero .shanshui .ss-l5{ filter:blur(.3px) }
+
+  /* Drifting fog — full-width streaks with imperceptible horizontal density
+     variation. Heavy blur + soft mask hides the variation visually, but the
+     motion is still real (and seamless: first/last gradient stops match). */
+  .hero .shanshui .fog{
+    position:absolute;left:0;right:0;width:100%;pointer-events:none;
+    /* Just an 8% density swell along the streak — invisible by itself,
+       but with the pan animation it reads as actual fog motion. */
+    background-image:linear-gradient(90deg,
+      rgba(238,240,234,.55) 0%,
+      rgba(238,240,234,.62) 25%,
+      rgba(238,240,234,.55) 50%,
+      rgba(238,240,234,.62) 75%,
+      rgba(238,240,234,.55) 100%);
+    background-repeat:repeat-x;
+    /* Soft top + bottom fade — kills the rectangular edges */
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 30%,#000 70%,transparent 100%);
+            mask-image:linear-gradient(180deg,transparent 0%,#000 30%,#000 70%,transparent 100%);
+    filter:blur(28px);
+    will-change:background-position;
+  }
+
+  /* Only two fog streaks — mid-level + ground. */
+  .hero .shanshui .fog-1,
+  .hero .shanshui .fog-3,
+  .hero .shanshui .fog-5 { display:none }
+
+  .hero .shanshui .fog-2{
+    bottom:38%; height:240px;
+    background-size:900px 100%;
+    opacity:.72;
+    animation:fogPanA 96s linear infinite;
+  }
+  .hero .shanshui .fog-4{
+    bottom: 4%; height:280px;
+    background-size:1100px 100%;
+    opacity:.82;
+    animation:fogPanB 124s linear infinite;
+  }
+  /* Pan by exactly one tile width → seamless loop, no snap */
+  @keyframes fogPanA{
+    from{ background-position:0 50% }
+    to  { background-position:900px 50% }
+  }
+  @keyframes fogPanB{
+    from{ background-position:0 50% }
+    to  { background-position:1100px 50% }
+  }
+
+  /* Leaf branches — painted stems with leaf clusters, lower corners */
+  .hero .shanshui .branch{ position:absolute;bottom:0;pointer-events:none }
+  .hero .shanshui .branch-l{ left:0;  width:22%;min-width:180px;height:52% }
+  .hero .shanshui .branch-r{ right:0; width:20%;min-width:160px;height:56%;transform:scaleX(-1) }
+  .hero .shanshui .branch .stem{ stroke:#1d4030; fill:none; stroke-linecap:round }
+  .hero .shanshui .branch ellipse{ fill:#3d6e5c }
+  .hero .shanshui .branch ellipse.leaf-b{ fill:#6e978a }
+
+  /* Seal — small vermillion chop, lower left */
+  .hero .shanshui .seal-mark{
+    position:absolute;left:5%;bottom:14%;
+    width:24px;height:28px;display:grid;place-items:center;
+    background:#b83232;color:#f0e6ce;
+    font-family:var(--brush);font-size:10px;line-height:1;
+    letter-spacing:0;opacity:.72;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);
+    transform:rotate(-1.5deg);
+    animation:sealBreathe 7s ease-in-out infinite;
+  }
+  @keyframes sealBreathe{
+    0%,100% { opacity:.68 } 50% { opacity:.82 }
+  }
+
+  /* ═════════ DARK MODE — NIGHT SCENE ═════════
+     Monochromatic warm-charcoal palette. No green — silhouettes only.
+     Distant peaks catch a touch of moonlight; foreground stays inky. */
+  :root:not([data-theme="light"]) .hero .shanshui .ss-l1 path{ fill:#2a2c2e; opacity:.42 }
+  :root:not([data-theme="light"]) .hero .shanshui .ss-l2 path{ fill:#1c1e20; opacity:.62 }
+  :root:not([data-theme="light"]) .hero .shanshui .ss-l3 path{ fill:#0f1112; opacity:.85 }
+  :root:not([data-theme="light"]) .hero .shanshui .ss-l4 path{ fill:#06080a; opacity:.94 }
+  :root:not([data-theme="light"]) .hero .shanshui .ss-l5 path{ fill:#020404; opacity:.98 }
+
+  /* Dark mode fog — cool grey with same subtle horizontal density wave */
+  :root:not([data-theme="light"]) .hero .shanshui .fog{
+    background-image:linear-gradient(90deg,
+      rgba(118,124,128,.22) 0%,
+      rgba(128,134,138,.30) 25%,
+      rgba(118,124,128,.22) 50%,
+      rgba(128,134,138,.30) 75%,
+      rgba(118,124,128,.22) 100%);
+    filter:blur(32px);
+  }
+
+  /* Flowers — ink sketch in dark charcoal with cream moonlit highlights */
+  :root:not([data-theme="light"]) .hero .shanshui .branch{ opacity:.95 }
+  :root:not([data-theme="light"]) .hero .shanshui .branch .stem{ stroke:#1d1f21 }
+  :root:not([data-theme="light"]) .hero .shanshui .branch ellipse{ fill:#26282b }
+  :root:not([data-theme="light"]) .hero .shanshui .branch ellipse.leaf-b{ fill:#b8af9a }   /* brand --gold */
+
+  /* Crescent moon — cream, soft glow, slight tilt */
+  :root:not([data-theme="light"]) .hero .shanshui .sun{
+    background:transparent;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23e8dfc9' d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/></svg>");
+    background-size:contain;background-repeat:no-repeat;background-position:center;
+    border-radius:0;
+    box-shadow:none;
+    filter:drop-shadow(0 0 18px rgba(232,223,201,.22));
+    opacity:.78;
+    width:clamp(64px, 6.6vw, 100px);
+    transform:rotate(-18deg);
+  }
+
+
+  @media (prefers-reduced-motion:reduce){
+    .hero .shanshui .fog{ animation:none }
+    .hero .shanshui .seal-mark{ animation:none }
+  }
+
+
   .hero .meridian{
     position:absolute;inset:0;z-index:-1;opacity:.4;pointer-events:none;
   }
@@ -447,32 +617,100 @@
   <div class="photo" aria-hidden="true"></div>
   <div class="glyph" aria-hidden="true">醫</div>
 
-  <svg class="meridian" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="mg" x1="0" x2="1" y1="0" y2="0">
-        <stop offset="0" stop-color="#b8af9a" stop-opacity="0"/>
-        <stop offset=".5" stop-color="#b8af9a" stop-opacity=".5"/>
-        <stop offset="1" stop-color="#b8af9a" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <g fill="none" stroke="url(#mg)" stroke-width=".7">
-      <path d="M-50,650 C300,580 600,720 900,610 C1180,510 1340,640 1490,580"/>
-      <path d="M-50,710 C300,640 600,780 900,670 C1180,570 1340,700 1490,640"/>
-    </g>
-    <g fill="#b8af9a">
-      <circle cx="300" cy="618" r="2.5"/>
-      <circle cx="600" cy="710" r="2.5"/>
-      <circle cx="900" cy="640" r="2.5"/>
-      <circle cx="1180" cy="540" r="2.5"/>
-    </g>
-  </svg>
+  <!-- Shan shui — ink-wash scroll painting in teal-green: hero left cluster,
+       fog-pooled valley, secondary right cluster, painted leaf branches.
+       Layer + fog ordering matches DOM ordering (later = higher z). -->
+  <div class="shanshui" aria-hidden="true">
+
+    <!-- Sun — red disc in upper area, behind everything else -->
+    <div class="sun" aria-hidden="true"></div>
+
+    <!-- LAYER 1 — farthest background haze -->
+    <svg class="ss-layer ss-l1" viewBox="0 0 1440 700" preserveAspectRatio="none">
+      <path d="M0,700 L0,360 C80,340 140,328 200,334 C265,318 330,305 395,312 C460,296 530,282 600,289 C670,274 740,260 810,267 C880,252 950,238 1020,245 C1090,230 1158,218 1228,225 C1298,210 1368,200 1440,206 L1440,700 Z"/>
+    </svg>
+
+    <!-- LAYER 2 — mid-distant mountains, jagged ridge across full width -->
+    <svg class="ss-layer ss-l2" viewBox="0 0 1440 700" preserveAspectRatio="none">
+      <path d="M0,700 L0,395 L60,368 L110,340 L142,355 L195,318 L232,332 L282,298 L315,312 L368,278 L402,292 L455,258 L490,272 L545,238 L580,252 L635,218 L668,232 L722,198 L758,214 L812,195 L845,210 L898,188 L932,205 L985,188 L1018,205 L1072,188 L1108,205 L1162,188 L1198,205 L1252,192 L1288,208 L1342,195 L1378,212 L1440,200 L1440,700 Z"/>
+    </svg>
+
+    <!-- THICK FOG — the defining mist between back range and main range -->
+    <div class="fog fog-1"></div>
+    <div class="fog fog-2"></div>
+
+    <!-- LAYER 3 — MAIN foreground: hero LEFT cluster, secondary RIGHT cluster -->
+    <svg class="ss-layer ss-l3" viewBox="0 0 1440 700" preserveAspectRatio="none">
+      <path d="M0,700 L0,520 L55,488 L105,450 L138,465 L188,418 L218,430 L252,385 L278,395 L305,348 L322,360 L342,318 L358,295 L372,268 L385,245 L395,218 L402,200 L410,185 L418,200 L425,218 L435,248 L445,272 L458,248 L468,228 L478,210 L485,225 L492,248 L502,275 L512,295 L525,318 L538,340 L552,360 L568,378 L585,355 L598,335 L612,315 L622,330 L635,350 L650,375 L668,398 L688,420 L708,438 L730,455 L752,462 L785,448 L818,428 L850,405 L875,388 L898,368 L915,352 L932,338 L945,348 L958,362 L975,345 L990,328 L1005,315 L1018,328 L1032,345 L1048,362 L1065,378 L1082,392 L1100,405 L1118,418 L1138,428 L1158,415 L1178,400 L1200,388 L1218,400 L1238,415 L1260,428 L1285,442 L1312,455 L1340,465 L1375,475 L1440,482 L1440,700 Z"/>
+    </svg>
+
+    <!-- Valley floor fog — pools in the dip between the two clusters -->
+    <div class="fog fog-3"></div>
+
+    <!-- LAYER 4 — near foreground silhouettes -->
+    <svg class="ss-layer ss-l4" viewBox="0 0 1440 700" preserveAspectRatio="none">
+      <path d="M0,700 L0,548 L95,512 L202,465 L252,480 L348,432 L395,448 L475,405 L520,420 L595,382 L635,395 L678,375 L700,385 L722,372 L745,382 L768,368 L790,378 L812,365 L835,375 L858,368 L882,378 L908,368 L935,380 L968,368 L1005,378 L1042,368 L1080,378 L1118,368 L1158,378 L1200,368 L1242,380 L1290,368 L1340,380 L1395,370 L1440,382 L1440,700 Z"/>
+    </svg>
+
+    <!-- Ground mist — closer, denser -->
+    <div class="fog fog-4"></div>
+    <div class="fog fog-5"></div>
+
+    <!-- LAYER 5 — darkest base ground -->
+    <svg class="ss-layer ss-l5" viewBox="0 0 1440 140" preserveAspectRatio="none">
+      <path d="M0,140 L0,105 L180,82 L365,65 L448,78 L585,58 L675,74 L798,52 L895,68 L1015,50 L1115,66 L1242,52 L1342,68 L1440,56 L1440,140 Z"/>
+    </svg>
+
+    <!-- LEFT painted leaf branch (hero corner) — stems hardcoded, leaves generated by JS -->
+    <svg class="branch branch-l" viewBox="0 0 200 380" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+      <!-- Main stem -->
+      <path class="stem" d="M-10,380 C10,340 22,295 28,250 C34,205 25,165 35,120 C42,88 52,62 58,35" stroke-width="2.2"/>
+      <!-- Branch right at y=250 -->
+      <path class="stem" d="M28,250 C48,235 72,225 95,218" stroke-width="1.6"/>
+      <!-- Branch right at y=165 -->
+      <path class="stem" d="M30,165 C55,148 78,138 108,132" stroke-width="1.4"/>
+      <!-- Branch left at y=120 -->
+      <path class="stem" d="M35,120 C18,105 5,92 -8,82" stroke-width="1.3"/>
+      <!-- Second stem (slightly behind, lower opacity) -->
+      <path class="stem" d="M-20,380 C5,355 15,320 12,280 C9,245 18,218 22,185 C28,152 40,128 45,98" stroke-width="1.8" opacity=".7"/>
+      <path class="stem" d="M12,280 C-5,265 -18,252 -28,238" stroke-width="1.3" opacity=".7"/>
+      <!-- Leaf clusters — populated by JS at load -->
+      <g class="leaves">
+        <g class="leaf-cluster" data-x="95"  data-y="218" data-size="1.1"  data-rotation="80"></g>
+        <g class="leaf-cluster" data-x="108" data-y="132" data-size="1.0"  data-rotation="75"></g>
+        <g class="leaf-cluster" data-x="58"  data-y="35"  data-size="0.9"  data-rotation="15"></g>
+        <g class="leaf-cluster" data-x="-8"  data-y="82"  data-size="0.85" data-rotation="-30"></g>
+        <g class="leaf-cluster" data-x="45"  data-y="98"  data-size="0.9"  data-rotation="20"></g>
+        <g class="leaf-cluster" data-x="-28" data-y="238" data-size="0.8"  data-rotation="-60"></g>
+      </g>
+    </svg>
+
+    <!-- RIGHT painted leaf branch (mirrored) -->
+    <svg class="branch branch-r" viewBox="0 0 200 380" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+      <path class="stem" d="M-10,380 C10,340 22,295 28,250 C34,205 25,165 35,120 C42,88 52,62 58,35" stroke-width="2.2"/>
+      <path class="stem" d="M28,250 C48,235 72,225 95,218" stroke-width="1.6"/>
+      <path class="stem" d="M30,165 C55,148 78,138 108,132" stroke-width="1.4"/>
+      <path class="stem" d="M35,120 C18,105 5,92 -8,82" stroke-width="1.3"/>
+      <path class="stem" d="M-20,380 C5,355 15,320 12,280 C9,245 18,218 22,185 C28,152 40,128 45,98" stroke-width="1.8" opacity=".7"/>
+      <g class="leaves">
+        <g class="leaf-cluster" data-x="95"  data-y="218" data-size="1.1"  data-rotation="80"></g>
+        <g class="leaf-cluster" data-x="108" data-y="132" data-size="1.0"  data-rotation="75"></g>
+        <g class="leaf-cluster" data-x="58"  data-y="35"  data-size="0.9"  data-rotation="15"></g>
+        <g class="leaf-cluster" data-x="-8"  data-y="82"  data-size="0.85" data-rotation="-30"></g>
+        <g class="leaf-cluster" data-x="45"  data-y="98"  data-size="0.9"  data-rotation="20"></g>
+      </g>
+    </svg>
+
+    <!-- Vermillion seal -->
+    <div class="seal-mark" aria-hidden="true">醫</div>
+  </div>
 
   <div class="wrap" style="padding:0 22px;width:100%;">
     <div>
       <h1 class="reveal in d1 ink-paint ip-d1">
         Three thousand years<br/>
         of <span class="accent">stillness,</span><br/>
-        practised today<span class="seal">·</span>
+        practised today
       </h1>
       <p class="lede reveal in d2 ink-paint ip-d2">
         W&amp;E Health Institute is a small acupuncture and herbal practice in Midtown
@@ -593,6 +831,15 @@
 
       <article class="svc reveal d2">
         <div class="num">02 / 04</div>
+        <div class="icon">灸</div>
+        <h3>Moxibustion</h3>
+        <div class="cn">ài jiǔ — 艾灸</div>
+        <p>The slow burning of mugwort over acupoints to warm the channels and tonify deficient cold. Often paired with needling for chronic fatigue and digestion.</p>
+        <a href="#book" class="learn">Begin a course <span class="arr">→</span></a>
+      </article>
+
+      <article class="svc reveal d3">
+        <div class="num">03 / 04</div>
         <div class="icon">罐</div>
         <h3>Cupping &amp; Gua Sha</h3>
         <div class="cn">bá guàn — 拔罐</div>
@@ -600,21 +847,12 @@
         <a href="#book" class="learn">Begin a course <span class="arr">→</span></a>
       </article>
 
-      <article class="svc reveal d3">
-        <div class="num">03 / 04</div>
+      <article class="svc reveal d4">
+        <div class="num">04 / 04</div>
         <div class="icon">草</div>
         <h3>Herbal Medicine</h3>
         <div class="cn">zhōng yào — 中藥</div>
         <p>Custom formulas drawn from a sourced apothecary of roots, barks, and flowers. Decoctions and granules prepared to the constitution, not the diagnosis.</p>
-        <a href="#book" class="learn">Begin a course <span class="arr">→</span></a>
-      </article>
-
-      <article class="svc reveal d4">
-        <div class="num">04 / 04</div>
-        <div class="icon">灸</div>
-        <h3>Moxibustion</h3>
-        <div class="cn">ài jiǔ — 艾灸</div>
-        <p>The slow burning of mugwort over acupoints to warm the channels and tonify deficient cold. Often paired with needling for chronic fatigue and digestion.</p>
         <a href="#book" class="learn">Begin a course <span class="arr">→</span></a>
       </article>
     </div>
@@ -775,7 +1013,7 @@
       <div class="f-cta">
         <div class="editorial">
           Considering acupuncture?
-          <em>Dr. Selina will see you.<span class="seal">·</span></em>
+          <em>Dr. Selina will see you.</em>
         </div>
         <a href="#book" class="request">
           <span>Request a first visit</span>
@@ -993,6 +1231,38 @@
   }
   window.addEventListener('scroll', onScrollParallax, {passive:true});
   onScrollParallax();
+
+  // ── Leaf clusters — populate each .leaf-cluster <g> with rotated ellipse
+  // leaves around its anchor (matches the React Leaf/LeafCluster algorithm). ──
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  document.querySelectorAll('.shanshui .leaf-cluster').forEach(g => {
+    const x = +g.dataset.x, y = +g.dataset.y;
+    const size = +g.dataset.size, rot = +g.dataset.rotation;
+    const arrangement = [
+      { a: rot - 45, d: 10 },
+      { a: rot - 20, d: 12 },
+      { a: rot,      d: 13 },
+      { a: rot + 20, d: 12 },
+      { a: rot + 45, d: 10 },
+      { a: rot - 70, d:  8 },
+      { a: rot + 70, d:  8 },
+    ];
+    arrangement.forEach((leaf, i) => {
+      const rad = leaf.a * Math.PI / 180;
+      const cx = x + Math.sin(rad) * leaf.d * size;
+      const cy = y - Math.cos(rad) * leaf.d * size;
+      const jitter = 0.85 + Math.random() * 0.3;
+      const el = document.createElementNS(SVG_NS, 'ellipse');
+      el.setAttribute('cx', cx.toFixed(2));
+      el.setAttribute('cy', cy.toFixed(2));
+      el.setAttribute('rx', (3.5 * size * jitter).toFixed(2));
+      el.setAttribute('ry', (9   * size * jitter).toFixed(2));
+      el.setAttribute('transform', `rotate(${leaf.a} ${cx.toFixed(2)} ${cy.toFixed(2)})`);
+      if (i % 2) el.setAttribute('class', 'leaf-b');
+      el.setAttribute('opacity', '0.88');
+      g.appendChild(el);
+    });
+  });
 
 
   // ── Acupoint Explorer ──────────────────────────────────────────
