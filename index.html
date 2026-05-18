@@ -15,6 +15,10 @@
   /* ── Scroll snap ─────────────────────────────────────────────────── */
   html{scroll-snap-type:y proximity}
   .hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
+  @media(max-width:768px){
+    html{scroll-snap-type:none}
+    .hero,section,footer{scroll-snap-align:none}
+  }
   /* Each section fills the viewport and centres its content */
   section{
     min-height:100vh;min-height:100dvh;
