@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Treatments &amp; Services — W&amp;E Health Institute · Memphis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js"></script>
+
+<style>
+  /* ── Scroll snap & full-viewport sections ───────────────────── */
+  html{scroll-snap-type:y proximity}
+  .page-hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
+  
+  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
+  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+/* Services — alternating layout */
+.svc-section{
+  padding:0;
+  border-bottom:1px solid var(--rule);
+}
+.svc-section:last-of-type{border-bottom:0}
+
+.svc-row{
+  display:grid;grid-template-columns:1fr;
+  align-items:center;gap:0;
+}
+@media(min-width:860px){
+  .svc-row{grid-template-columns:1fr 1fr}
+}
+
+/* Alternating: odd rows — image left, text right */
+/* Even rows — text left, image right */
+.svc-row .svc-image{order:0}
+.svc-row .svc-text{order:1}
+@media(min-width:860px){
+  .svc-row.flip .svc-image{order:1}
+  .svc-row.flip .svc-text{order:0}
+}
+
+/* Service image placeholder */
+.svc-image{
+  position:relative;
+  aspect-ratio:4/3;
+  background:linear-gradient(135deg,#161716 0%,#0f0c09 100%);
+  display:grid;place-items:center;overflow:hidden;
+  border-right:1px solid var(--rule);
+}
+.svc-row.flip .svc-image{border-right:0;border-left:1px solid var(--rule)}
+@media(max-width:859px){
+  .svc-image{border-right:0;border-left:0;border-bottom:1px solid var(--rule)}
+  .svc-row.flip .svc-image{border-left:0}
+}
+
+.svc-image::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,rgba(232,223,201,.04) 0 1px,transparent 1px 14px);
+}
+.svc-image::after{
+  content:"";position:absolute;inset:22px;border:.5px solid rgba(201,162,90,.2);pointer-events:none;
+}
+.svc-image .glyph-ph{
+  position:relative;z-index:1;text-align:center;user-select:none;
+}
+.svc-image .glyph-ph .cn{
+  display:block;font-family:var(--brush);font-size:clamp(80px,12vw,140px);color:var(--gold);
+  line-height:1;opacity:.7;
+}
+.svc-image .num-badge{
+  position:absolute;left:22px;bottom:22px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--paper-faint);z-index:2;
+}
+
+/* Service text block */
+.svc-text{
+  padding:64px 52px;
+}
+@media(max-width:860px){.svc-text{padding:48px 22px}}
+
+.svc-text .svc-number{
+  font-family:var(--mono);font-size:10px;letter-spacing:.36em;text-transform:uppercase;
+  color:var(--paper-faint);margin-bottom:18px;
+}
+.svc-text h3{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(26px,3.2vw,40px);color:var(--paper);margin-bottom:6px;line-height:1.1;
+}
+.svc-text .svc-cn{
+  font-family:var(--brush);font-size:17px;color:var(--gold-dim);
+  letter-spacing:.06em;margin-bottom:24px;display:block;
+}
+.svc-text p{
+  color:var(--paper-dim);font-size:16.5px;line-height:1.75;font-weight:300;max-width:46ch;
+}
+.svc-text .svc-link{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:28px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--gold);padding-bottom:6px;border-bottom:.5px solid var(--gold-dim);
+  transition:color .3s,border-color .3s;
+}
+.svc-text .svc-link:hover{color:var(--paper);border-color:var(--paper-faint)}
+.svc-text .svc-link .arr{
+  font-family:var(--serif);font-style:italic;font-size:15px;letter-spacing:0;
+  transition:transform .3s;
+}
+.svc-text .svc-link:hover .arr{transform:translateX(4px)}
+
+/* Intro / count strip */
+.services-intro{
+  padding:0;
+  border-bottom:1px solid var(--rule);
+}
+.services-intro .inner{
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;
+}
+.services-intro .count{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--paper-faint);max-width:28ch;line-height:1.7;
+}
+.services-intro .count b{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(48px,7vw,80px);letter-spacing:-.01em;color:var(--gold);line-height:1;font-weight:300;margin-bottom:6px}
+
+/* CTA box */
+.services-cta{
+  padding:0;
+  text-align:center;
+  background:var(--ink-2);
+  border-top:1px solid var(--rule);
+  position:relative;overflow:hidden;
+}
+.services-cta::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 80% at 50% 100%,rgba(201,162,90,.06),transparent 60%);
+}
+.services-cta .eyebrow{justify-content:center}
+.services-cta h2{
+  margin:0 auto 16px;text-align:center;
+  font-size:clamp(34px,5vw,64px);max-width:22ch;
+}
+.services-cta .sub{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:18px;line-height:1.6;color:var(--paper-dim);max-width:38ch;
+  margin:0 auto 44px;
+}
+.services-cta .ghost-bg{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:var(--brush);font-size:min(32vw,360px);line-height:.9;
+  color:rgba(232,223,201,.03);user-select:none;pointer-events:none;
+}
+[data-theme="light"] .svc-image{background:linear-gradient(135deg,#e3e0d8 0%,#ece9e2 100%)}
+[data-theme="light"] .svc-image::before{background-image:repeating-linear-gradient(45deg,rgba(24,24,26,.04) 0 1px,transparent 1px 14px)}
+[data-theme="light"] .svc-image::after{border-color:rgba(61,139,114,.25)}
+[data-theme="light"] .services-cta::before{background:radial-gradient(60% 80% at 50% 100%,rgba(61,139,114,.08),transparent 60%)}
+[data-theme="light"] .services-cta .ghost-bg{color:rgba(24,24,26,.025)}
+
+/* ── Value / Pricing ──────────────────────────────────────────────── */
+.value{background:var(--ink);border-top:1px solid var(--rule)}
+.value-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:56px}
+@media(min-width:800px){.value-grid{grid-template-columns:1fr 1fr}}
+.value-col{padding:48px 40px;display:flex;flex-direction:column}
+.value-col.v-ours{background:var(--ink-2)}
+.value-col.v-theirs{background:var(--ink);opacity:.55}
+.v-head{font-family:var(--mono);font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;padding-bottom:20px;border-bottom:.5px solid var(--rule-strong);margin-bottom:28px;display:flex;align-items:center;gap:10px}
+.value-col.v-ours .v-head{color:var(--gold)}
+.value-col.v-theirs .v-head{color:var(--paper-faint)}
+.v-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.v-list li{font-family:var(--serif);font-weight:300;font-size:16px;color:var(--paper);line-height:1.45;display:flex;gap:14px;align-items:baseline}
+.value-col.v-theirs .v-list li{color:var(--paper-dim)}
+.v-tick{font-family:var(--mono);font-size:9px;flex-shrink:0;padding-top:2px}
+.value-col.v-ours .v-tick{color:var(--gold)}
+.value-col.v-theirs .v-tick{color:var(--paper-faint)}
+
+/* ── Coming Soon ──────────────────────────────────────────────────── */
+.coming-soon{border-top:1px solid var(--rule);background:var(--ink-2);padding:72px 0}
+.cs-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px}
+.cs-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.cs-label::before{content:"";width:28px;height:.5px;background:var(--gold)}
+.cs-heading{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(24px,3.6vw,42px);color:var(--paper);line-height:1.05}
+.cs-cards{display:flex;gap:16px;flex-wrap:wrap}
+.cs-card{padding:22px 28px;border:.5px solid var(--rule-strong);display:flex;flex-direction:column;gap:7px;min-width:200px;background:var(--ink-3);position:relative;overflow:hidden}
+.cs-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cinnabar),transparent)}
+.cs-badge{font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--cinnabar);display:flex;align-items:center;gap:6px}
+.cs-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--cinnabar);box-shadow:0 0 6px var(--cinnabar);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
+.cs-name{font-family:var(--serif);font-style:italic;font-weight:300;font-size:19px;color:var(--paper);line-height:1.2}
+.cs-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-faint)}
+</style>
+</head>
+<body>
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><span class="mark">醫</span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html" class="is-active">Services</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="saat.html">SAAT</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="mob-close" id="menuClose">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html" class="is-active">Services</a>
+  <a href="conditions.html">Conditions</a>
+  <a href="testimonials.html">Testimonials</a>
+  <a href="contact.html">Contact</a>
+  <a href="saat.html">SAAT Allergy Treatment</a>
+  <a href="contact.html" class="mob-book">Book Appointment</a>
+</div>
+
+<!-- Page Hero -->
+<header class="page-hero">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="ghost-glyph" aria-hidden="true">術</div>
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">治</span>What We Offer</div>
+    <h1 class="reveal d1">Treatments &amp; <span class="accent">Services</span></h1>
+    <p class="lede reveal d2">Eight modalities rooted in classical Chinese medicine, offered alone or in combination.</p>
+  </div>
+</header>
+
+<!-- Services intro count strip -->
+<div class="services-intro">
+  <div class="wrap">
+    <div class="inner">
+      <div class="count reveal">
+        <b>08</b>
+        Modalities spanning over 3,000 years of classical Chinese medicine tradition
+      </div>
+      <div class="eyebrow reveal d2"><span class="cn">術</span>Classical Modalities</div>
+    </div>
+  </div>
+</div>
+
+<!-- Services list — alternating layout -->
+<div class="svc-section">
+  <!-- 01 Acupuncture — image left -->
+  <div class="svc-row reveal">
+    <div class="svc-image">
+      <div class="glyph-ph"><span class="cn">針</span></div>
+      <span class="num-badge">01 / 08</span>
+    </div>
+    <div class="svc-text">
+      <div class="svc-number">01 — Acupuncture</div>
+      <h3>Acupuncture</h3>
+      <span class="svc-cn">針灸</span>
+      <p>Acupuncture is a key component of Traditional Chinese Medicine. Sterile, thin needles are inserted into specific points to enhance the vital energy flow and restore the balance of the body functions. It is widely known to be good for pain management. However, in the history of over 3,000 years in China and across the globe, it has been used for hundreds of conditions and diseases. It has gained recognition and popularity in recent years in the US and has been widely recognised as an alternative medicine.</p>
+    </div>
+  </div>
+
+  <!-- 02 SAAT — image right -->
+  <div class="svc-row flip reveal">
+    <div class="svc-image">
+      <div class="glyph-ph"><span class="cn">耳</span></div>
+      <span class="num-badge">02 / 08</span>
+    </div>
+    <div class="svc-text">
+      <div class="svc-number">02 — SAAT Allergy Treatments</div>
+      <h3>SAAT Allergy Treatments</h3>
+      <span class="svc-cn">耳針脫敏</span>
+      <p>Soliman Auricular Allergy Treatment (SAAT) is a specialised patented acupuncture technique, a gentle, non-invasive therapy designed to help reduce allergic reactions. It is used to desensitise the immune system to various allergens, including Alpha-gal, food, environmental, and chemical sensitivities. It involves inserting a tiny, specialised needle into the ear, often providing long-term remission.</p>
+      <a href="saat.html" class="svc-link">Learn more about SAAT <span class="arr">→</span></a>
+    </div>
+  </div>
+
+  <!-- 03 Five Element Acupuncture — image left -->
+  <div class="svc-row reveal">
+    <div class="svc-image">
+      <div class="glyph-ph"><span class="cn">五</span></div>
+      <span class="num-badge">03 / 08</span>
+    </div>
+    <div class="svc-text">
+      <div class="svc-number">03 — Five Element Acupuncture</div>
+      <h3>Five Element Acupuncture</h3>
+      <span class="svc-cn">五行針灸</span>
+      <p>Five Element Acupuncture is our special type of acupuncture rooted in ancient Chinese wisdom — five element theory. It is an effective and unique system to treat allergies and other root causes of diseases. It treats the body, mind, and spirit together. One of the most distinguishing values of Five Element acupuncture is its priority on treating at the level of spirit.</p>
+    </div>
+  </div>
+
+  <!-- 04 Herbal Medicine — image right -->
+  <div class="svc-row flip reveal">
+    <div class="svc-image">
+      <div class="glyph-ph"><span class="cn">草</span></div>
+      <span class="num-badge">04 / 08</span>
+    </div>
+    <div class="svc-text">
+      <div class="svc-number">04 — Herbal Medicine</div>
+      <h3>Herbal Medicine</h3>
+      <span class="svc-cn">中草藥</span>
+      <p>Studies have shown that Chinese herbal medicine is successful in treating a wide range of conditions. The ingredients include leaves, fruits, flowers, and roots of plants with great health benefits. We use concentrated natural plant granules and herbal pills to treat patients across multiple conditions, following the concept of Traditional Chinese Medicine theory.</p>
+    </div>
+  </div>
+
+  <!-- 05 Cupping — image left -->
+  <div class="svc-row reveal">
+    <div class="svc-image">
+      <div class="glyph-ph"><span class="cn">罐</span></div>
+      <span class="num-badge">05 / 08</span>
+    </div>
+    <div class="svc-text">
+      <div class="svc-number">05 — Cupping</div>
+      <h3>Cupping</h3>
+      <span class="svc-cn">拔罐</span>
+      <p>Cupping therapy is an ancient form of Chinese medicine in which the practitioner puts special cups on your skin to create suction. It can help with pain, inflammation, blood flow, relaxation, and well-being. The famous swimmer Michael Phelps used cupping to release muscle tension.</p>
+    </div>
+  </div>
+
+  <!-- 06 Moxibustion — image right -->
+  <div class="svc-row flip reveal">
+    <div class="svc-image">
+      <div class="glyph-ph"><span class="cn">灸</span></div>
+      <span class="num-badge">06 / 08</span>
+    </div>
+    <div class="svc-text">
+      <div class="svc-number">06 — Moxibustion</div>
+      <h3>Moxibustion</h3>
+      <span class="svc-cn">艾灸</span>
+      <p>Moxibustion is a type of Traditional Chinese medicine technique. Burning moxa, a special plant material, is burned over the surface of meridians and acupoints to improve the flow of Qi and circulation, and expel negative influences.</p>
+    </div>
+  </div>
+
+  <!-- 07 Gua Sha — image left -->
+  <div class="svc-row reveal">
+    <div class="svc-image">
+      <div class="glyph-ph"><span class="cn">刮</span></div>
+      <span class="num-badge">07 / 08</span>
+    </div>
+    <div class="svc-text">
+      <div class="svc-number">07 — Gua Sha</div>
+      <h3>Gua Sha</h3>
+      <span class="svc-cn">刮痧</span>
+      <p>Gua sha is the practice of using a tool to apply pressure and scrape the skin to relieve pain and tension. It can improve circulation and is used to treat various musculoskeletal and immune conditions.</p>
+    </div>
+  </div>
+
+  <!-- 08 Training — image right -->
+  <div class="svc-row flip reveal">
+    <div class="svc-image">
+      <div class="glyph-ph"><span class="cn">學</span></div>
+      <span class="num-badge">08 / 08</span>
+    </div>
+    <div class="svc-text">
+      <div class="svc-number">08 — Training</div>
+      <h3>Training</h3>
+      <span class="svc-cn">培訓</span>
+      <p>We offer cupping therapy, moxibustion, and Gua Sha training to professionals. Please contact us for more details if you are interested.</p>
+      <a href="contact.html" class="svc-link">Contact us for details <span class="arr">→</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Value / Transparent Pricing ──────────────────────────────── -->
+<section class="value" id="value">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span>What's Included</span> <span class="cn">費</span></div>
+    <h2 class="reveal d1">No add-ons. No surprises. <span class="accent">One price.</span></h2>
+
+    <div class="value-grid">
+      <div class="value-col v-ours reveal">
+        <div class="v-head"><span>✦</span> W&amp;E Health Institute</div>
+        <ul class="v-list">
+          <li><span class="v-tick">✦</span> Acupuncture — always included</li>
+          <li><span class="v-tick">✦</span> Cupping — included, no extra charge</li>
+          <li><span class="v-tick">✦</span> Electro-acupuncture — included</li>
+          <li><span class="v-tick">✦</span> 90-minute initial consultation</li>
+          <li><span class="v-tick">✦</span> 60-minute follow-up sessions</li>
+          <li><span class="v-tick">✦</span> VA, UHC, HSA &amp; FSA accepted</li>
+          <li><span class="v-tick">✦</span> Sancai Fire Cupping available</li>
+        </ul>
+      </div>
+      <div class="value-col v-theirs reveal d1">
+        <div class="v-head"><span>—</span> Typical Clinic</div>
+        <ul class="v-list">
+          <li><span class="v-tick">—</span> Acupuncture only in base price</li>
+          <li><span class="v-tick">—</span> Cupping billed separately</li>
+          <li><span class="v-tick">—</span> Add-ons charged at each visit</li>
+          <li><span class="v-tick">—</span> 60-minute initial visit</li>
+          <li><span class="v-tick">—</span> 30–45 minute follow-ups</li>
+          <li><span class="v-tick">—</span> Limited payment options</li>
+          <li><span class="v-tick">—</span> Standard cupping only</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Coming Soon ────────────────────────────────────────────────── -->
+<div class="coming-soon">
+  <div class="wrap">
+    <div class="cs-inner">
+      <div>
+        <div class="cs-label">On the horizon</div>
+        <div class="cs-heading">Expanding our care.</div>
+      </div>
+      <div class="cs-cards">
+        <div class="cs-card">
+          <div class="cs-badge"><span class="cs-badge-dot"></span>Coming soon</div>
+          <div class="cs-name">Professional Massage Therapy</div>
+          <div class="cs-sub">Therapeutic &amp; restorative bodywork</div>
+        </div>
+        <div class="cs-card">
+          <div class="cs-badge"><span class="cs-badge-dot"></span>Coming soon</div>
+          <div class="cs-name">Microneedling · Acupen</div>
+          <div class="cs-sub">Aesthetic skin renewal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Box -->
+<div class="services-cta">
+  <div class="ghost-bg" aria-hidden="true">醫</div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="eyebrow reveal"><span class="cn">始</span>Get Started</div>
+    <h2 class="reveal d1">Ready to begin your <span class="accent">treatment?</span></h2>
+    <p class="sub reveal d2">Our practitioners are ready to help. Schedule your first visit and take the first step toward restored balance and well-being.</p>
+    <a href="contact.html" class="btn-primary reveal d3">
+      Book Appointment <span class="arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="f-cta">
+        <div class="editorial">Considering acupuncture? <em>Dr. Selina will see you.<span class="seal">·</span></em></div>
+        <a href="contact.html" class="request"><span>Request a first visit</span><span class="arr">→</span></a>
+        <div class="wordmark">
+          <div class="name">W&amp;E <span class="lat">Health Institute</span></div>
+          <p class="tag">A small acupuncture &amp; classical Chinese medicine practice in Cordova, Memphis.</p>
+        </div>
+      </div>
+      <nav class="f-nav" aria-label="Footer">
+        <a href="index.html"><span class="bullet"></span>Home</a>
+        <a href="about.html"><span class="bullet"></span>About</a>
+        <a href="services.html"><span class="bullet"></span>Services</a>
+        <a href="conditions.html"><span class="bullet"></span>Conditions</a>
+        <a href="testimonials.html"><span class="bullet"></span>Testimonials</a>
+        <a href="contact.html"><span class="bullet"></span>Contact</a>
+        <a href="saat.html"><span class="bullet"></span>SAAT Treatment</a>
+      </nav>
+      <div class="f-details">
+        <div class="f-block"><h4>Contact Details</h4><a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a><a href="tel:+19013406433">(901) 340-6433</a></div>
+        <div class="f-block"><h4>Address</h4><p>985 Cordova Station Ave, Ste 101<br/>Cordova, TN 38018</p><p class="muted" style="margin-top:8px">Mon–Sat · 8:00 am–6:00 pm</p></div>
+        <div class="f-block"><h4>Follow Us</h4>
+          <div class="f-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:wehiusa@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5,6 L12,13 L20.5,6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a><span>Cordova · Memphis, TN</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const burger = document.getElementById('burgerBtn');
+const overlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+if (burger && overlay) {
+  burger.addEventListener('click', () => overlay.classList.add('open'));
+  menuClose.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+}
+// Sticky nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 24);
+}, {passive:true});
+// Scroll reveals
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+}, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// Paragraph mask-ups
+document.querySelectorAll('p.body, .mask').forEach(p => {
+  p.classList.add('mask-up');
+  const lo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');lo.unobserve(e.target);} });
+  }, {threshold:.1});
+  lo.observe(p);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Testimonials — W&amp;E Health Institute · Memphis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js"></script>
+<style>
+  /* ── Scroll snap & full-viewport sections ───────────────────── */
+  html{scroll-snap-type:y proximity}
+  .page-hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
+  
+  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
+  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+/* ── Testimonials page specific ──────────────────────────────────────── */
+.t-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:760px){.t-grid{grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}}
+.t-card{padding:48px 32px;background:var(--ink);display:flex;flex-direction:column;gap:24px;border:1px solid var(--rule)}
+@media(min-width:760px){.t-card{border:0}}
+.t-card .mark{font-family:var(--brush);font-size:38px;color:var(--cinnabar);line-height:1}
+.t-card .quote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:19px;line-height:1.6;color:var(--paper);flex:1}
+.t-card .who{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:.5px solid var(--rule)}
+.t-card .who .av{width:38px;height:38px;border-radius:50%;border:.5px solid var(--gold-dim);display:grid;place-items:center;font-family:var(--brush);color:var(--gold);font-size:16px}
+.t-card .who .meta-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-faint);line-height:1.6}
+.t-card .who .meta-l b{color:var(--paper);font-weight:400;letter-spacing:.18em}
+
+.t-intro{margin-bottom:72px}
+.t-cta{
+  margin-top:80px;
+  padding:72px 48px;
+  border:.5px solid var(--rule-strong);
+  background:var(--ink-2);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:28px;
+}
+.t-cta .cta-heading{
+  font-family:var(--serif);
+  font-weight:300;
+  font-style:italic;
+  font-size:clamp(28px,4vw,52px);
+  line-height:1.05;
+  color:var(--paper);
+  max-width:20ch;
+  text-wrap:balance;
+}
+.t-cta .cta-sub{
+  font-family:var(--serif);
+  font-weight:300;
+  font-style:italic;
+  color:var(--paper-dim);
+  font-size:17px;
+  max-width:42ch;
+}
+</style>
+</head>
+<body>
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><span class="mark">醫</span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html" class="is-active">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="saat.html">SAAT</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="mob-close" id="menuClose">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="conditions.html">Conditions</a>
+  <a href="testimonials.html" class="is-active">Testimonials</a>
+  <a href="contact.html">Contact</a>
+  <a href="saat.html">SAAT Allergy Treatment</a>
+  <a href="contact.html" class="mob-book">Book Appointment</a>
+</div>
+
+<div class="page-hero">
+  <div class="bg"></div>
+  <div class="ghost-glyph" aria-hidden="true">證</div>
+  <div class="wrap">
+    <p class="eyebrow"><span class="cn">見證</span> Patient Stories</p>
+    <h1>From those we've <span class="accent">cared for</span></h1>
+    <p class="lede">Genuine accounts from patients at W&amp;E Health Institute.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+
+    <div class="t-intro reveal">
+      <p class="eyebrow"><span class="cn">口碑</span> In Their Words</p>
+      <h2>What our patients <span class="accent">say</span></h2>
+    </div>
+
+    <div class="t-grid">
+
+      <div class="t-card reveal d1">
+        <div class="mark">"</div>
+        <p class="quote">I came for migraines and stayed for the quiet. After six sessions the pain had loosened; after twelve it was simply gone. Selina listens with her hands.</p>
+        <div class="who">
+          <div class="av">M</div>
+          <div class="meta-l"><b>Marian H.</b><br/>Patient since 2021</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal d2">
+        <div class="mark">"</div>
+        <p class="quote">My acupuncturist back in Shanghai recommended I find Dr. Selina when I moved. I understand why. She is a real practitioner of the old school — slow, exact, and warm.</p>
+        <div class="who">
+          <div class="av">張</div>
+          <div class="meta-l"><b>Aileen C.</b><br/>Patient since 2019</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal d3">
+        <div class="mark">"</div>
+        <p class="quote">I was skeptical. I left feeling like I'd slept ten hours. The room smells of mugwort and old wood and I have come back every other Thursday for three years.</p>
+        <div class="who">
+          <div class="av">D</div>
+          <div class="meta-l"><b>Daniel R.</b><br/>Patient since 2022</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal d1">
+        <div class="mark">"</div>
+        <p class="quote">After years of allergy shots with little relief, one SAAT treatment changed everything. I can eat foods I hadn't touched in a decade. I only wish I had found this sooner.</p>
+        <div class="who">
+          <div class="av">P</div>
+          <div class="meta-l"><b>Patricia W.</b><br/>Patient since 2020</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal d2">
+        <div class="mark">"</div>
+        <p class="quote">Dr. Zhao's background in both Western and Chinese medicine gives me confidence. He explains everything clearly and treats the whole picture, not just the symptom.</p>
+        <div class="who">
+          <div class="av">J</div>
+          <div class="meta-l"><b>James T.</b><br/>Patient since 2023</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal d3">
+        <div class="mark">"</div>
+        <p class="quote">W&amp;E has become part of my wellness routine. The combination of acupuncture and herbal medicine has helped my chronic fatigue more than anything else I've tried.</p>
+        <div class="who">
+          <div class="av">L</div>
+          <div class="meta-l"><b>Linda M.</b><br/>Patient since 2018</div>
+        </div>
+      </div>
+
+    </div><!-- /.t-grid -->
+
+    <div class="t-cta reveal">
+      <p class="cta-heading">Ready to begin your journey?</p>
+      <p class="cta-sub">Take the first step toward lasting relief. We are here to listen and to help.</p>
+      <a href="contact.html" class="btn-primary">Book Appointment <span class="arrow">→</span></a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="f-cta">
+        <div class="editorial">Considering acupuncture? <em>Dr. Selina will see you.<span class="seal">·</span></em></div>
+        <a href="contact.html" class="request"><span>Request a first visit</span><span class="arr">→</span></a>
+        <div class="wordmark">
+          <div class="name">W&amp;E <span class="lat">Health Institute</span></div>
+          <p class="tag">A small acupuncture &amp; classical Chinese medicine practice in Cordova, Memphis.</p>
+        </div>
+      </div>
+      <nav class="f-nav" aria-label="Footer">
+        <a href="index.html"><span class="bullet"></span>Home</a>
+        <a href="about.html"><span class="bullet"></span>About</a>
+        <a href="services.html"><span class="bullet"></span>Services</a>
+        <a href="conditions.html"><span class="bullet"></span>Conditions</a>
+        <a href="testimonials.html"><span class="bullet"></span>Testimonials</a>
+        <a href="contact.html"><span class="bullet"></span>Contact</a>
+        <a href="saat.html"><span class="bullet"></span>SAAT Treatment</a>
+      </nav>
+      <div class="f-details">
+        <div class="f-block"><h4>Contact Details</h4><a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a><a href="tel:+19013406433">(901) 340-6433</a></div>
+        <div class="f-block"><h4>Address</h4><p>985 Cordova Station Ave, Ste 101<br/>Cordova, TN 38018</p><p class="muted" style="margin-top:8px">Mon–Sat · 8:00 am–6:00 pm</p></div>
+        <div class="f-block"><h4>Follow Us</h4>
+          <div class="f-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:wehiusa@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5,6 L12,13 L20.5,6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a><span>Cordova · Memphis, TN</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burgerBtn');
+const overlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+if (burger && overlay) {
+  burger.addEventListener('click', () => overlay.classList.add('open'));
+  menuClose.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+}
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24), {passive:true});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+}, {threshold:.1, rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+document.querySelectorAll('p.body').forEach(p => {
+  p.classList.add('mask-up');
+  const lo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');lo.unobserve(e.target);} });
+  }, {threshold:.08});
+  lo.observe(p);
+});
+</script>
+</body>
+</html>

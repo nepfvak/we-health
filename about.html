@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>About the Practitioners — W&amp;E Health Institute · Memphis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js"></script>
+
+<style>
+  /* ── Scroll snap & full-viewport sections ───────────────────── */
+  html{scroll-snap-type:y proximity}
+  .page-hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
+  
+  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
+  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+/* Practitioners section */
+.practitioners{padding:0}
+.practitioners-grid{display:grid;grid-template-columns:1fr;gap:80px}
+@media(min-width:960px){.practitioners-grid{grid-template-columns:1fr 1fr;gap:56px}}
+
+.practitioner-card{display:flex;flex-direction:column;gap:0}
+.practitioner-portrait{
+  position:relative;aspect-ratio:3/4;width:100%;
+  background:linear-gradient(135deg,#161716 0%,#0f0c09 100%);
+  border:.5px solid var(--rule-strong);
+  display:grid;place-items:center;overflow:hidden;
+  margin-bottom:40px;
+}
+.practitioner-portrait::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,rgba(232,223,201,.04) 0 1px,transparent 1px 14px);
+}
+.practitioner-portrait::after{
+  content:"";position:absolute;inset:18px;border:.5px solid var(--gold-dim);pointer-events:none;
+}
+.practitioner-portrait .ph{
+  position:relative;z-index:1;text-align:center;
+}
+.practitioner-portrait .ph b{
+  display:block;font-family:var(--brush);font-size:clamp(72px,12vw,110px);color:var(--gold);
+  letter-spacing:0;
+}
+.practitioner-portrait .stamp{
+  position:absolute;right:24px;bottom:24px;z-index:2;
+  width:56px;height:56px;border:.5px solid var(--cinnabar);display:grid;place-items:center;
+  font-family:var(--brush);font-size:26px;color:var(--cinnabar);background:rgba(168,50,50,.08);
+  transform:rotate(4deg);
+}
+
+.practitioner-name{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(28px,3.6vw,44px);line-height:1.05;color:var(--paper);margin-bottom:6px;
+}
+.practitioner-name .surname{color:var(--gold);font-style:normal;font-weight:400}
+.practitioner-credentials{
+  font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--paper-faint);margin-bottom:32px;
+}
+.practitioner-bio{
+  list-style:none;display:flex;flex-direction:column;gap:14px;
+}
+.practitioner-bio li{
+  position:relative;padding-left:22px;
+  font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.7;color:var(--paper-dim);
+}
+.practitioner-bio li::before{
+  content:"";position:absolute;left:0;top:.65em;
+  width:6px;height:.5px;background:var(--gold);
+}
+.practitioner-bio li strong{color:var(--paper);font-weight:400}
+.practitioner-bio li em{font-style:italic;color:var(--gold)}
+.practitioner-divider{
+  width:100%;height:1px;background:linear-gradient(90deg,var(--gold),transparent 70%);
+  margin:32px 0;
+}
+
+/* Shared divider between practitioners on mobile */
+@media(max-width:959px){
+  .practitioners-grid{position:relative}
+  .practitioners-grid .practitioner-card+.practitioner-card{
+    padding-top:80px;border-top:1px solid var(--rule);
+  }
+}
+
+/* Section background treatment */
+.practitioners{background:var(--ink)}
+.practitioners-intro{text-align:center;margin-bottom:80px}
+.practitioners-intro .eyebrow{justify-content:center}
+.practitioners-intro h2{margin:0 auto;text-align:center;max-width:24ch}
+.practitioners-intro .sub{
+  margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--paper-faint);text-align:center;
+}
+
+/* CTA strip */
+.about-cta{
+  padding:80px 0 120px;
+  border-top:1px solid var(--rule);
+  text-align:center;
+  background:var(--ink-2);
+}
+.about-cta .eyebrow{justify-content:center}
+.about-cta .cta-text{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);
+  max-width:36ch;margin:0 auto 36px;
+}
+.about-cta .cta-text em{font-style:normal;color:var(--gold)}
+
+/* Divider */
+.divider{position:relative;padding:60px 0;text-align:center}
+.divider svg{width:100%;max-width:520px;height:auto;opacity:.5}
+
+/* Five Elements */
+.five-wrap{position:relative;padding:80px 0 100px;overflow:hidden}
+.five-wrap::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 70% at 50% 50%,rgba(184,175,154,.05),transparent 60%)}
+.five-head{text-align:center;margin-bottom:72px}
+.five-head .eyebrow{justify-content:center}
+.five-head h2{margin:0 auto;text-align:center;max-width:22ch}
+.five-head .sub{margin-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--paper-faint)}
+.five-stage{position:relative;width:100%;max-width:560px;margin:0 auto;aspect-ratio:1/1}
+.five-ring{position:absolute;inset:0;animation:fiveSpin 80s linear infinite;will-change:transform}
+.five-stage.is-paused .five-ring{animation-play-state:paused}
+.five-ring svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:fiveSpinCC 80s linear infinite}
+.five-stage.is-paused .five-ring svg.ring{animation-play-state:paused}
+.elem{position:absolute;top:50%;left:50%;width:120px;height:120px;margin:-60px 0 0 -60px;--r:220px;transform:rotate(var(--a)) translateY(calc(-1 * var(--r))) rotate(calc(-1 * var(--a)));cursor:pointer}
+.elem-inner{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--ink-3),var(--ink) 70%);border:.5px solid var(--gold-dim);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;animation:fiveCounter 80s linear infinite;transition:border-color .35s ease,background .35s ease,box-shadow .35s ease}
+.five-stage.is-paused .elem-inner{animation-play-state:paused}
+.elem:hover .elem-inner,.elem:focus-visible .elem-inner{border-color:var(--accent,var(--gold));box-shadow:0 0 0 .5px var(--accent,var(--gold)),0 0 48px -4px var(--accent,var(--gold));background:radial-gradient(circle at 30% 30%,color-mix(in oklab,var(--accent,var(--gold)) 14%,var(--ink-3)),var(--ink) 75%)}
+.elem .cn{font-family:var(--brush);font-size:34px;line-height:1;color:var(--accent,var(--gold));transition:color .35s ease}
+.elem .en{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--paper);line-height:1.1;margin-top:4px}
+.elem .season{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper-faint);margin-top:4px}
+.five-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46%;aspect-ratio:1/1;border-radius:50%;display:grid;place-items:center;text-align:center;pointer-events:none}
+.five-center::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(8,9,8,.6),transparent 70%)}
+.five-center .plate{position:relative;z-index:1;display:grid;place-items:center;padding:18px}
+.five-center .default{font-family:var(--brush);font-size:clamp(80px,12vw,140px);line-height:.9;color:var(--gold);opacity:.85;transition:opacity .4s ease,transform .4s ease}
+.five-stage[data-active] .five-center .default{opacity:0;transform:scale(.94)}
+.five-desc{position:absolute;inset:0;display:grid;place-items:center;padding:36px;opacity:0;transform:scale(.96);transition:opacity .35s ease,transform .35s ease}
+.five-desc.on{opacity:1;transform:none}
+.five-desc .blurb{max-width:24ch}
+.five-desc .label{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent,var(--gold));margin-bottom:14px}
+.five-desc h4{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2.6vw,28px);line-height:1.1;color:var(--paper);margin-bottom:10px}
+.five-desc p{font-family:var(--serif);font-size:13.5px;line-height:1.55;color:var(--paper-dim);font-weight:300;font-style:italic}
+@keyframes fiveSpin{to{transform:rotate(360deg)}}
+@keyframes fiveSpinCC{to{transform:rotate(360deg)}}
+@keyframes fiveCounter{to{transform:rotate(-360deg)}}
+@media(max-width:640px){
+  .five-stage{max-width:320px}
+  .elem{width:84px;height:84px;margin:-42px 0 0 -42px;--r:122px}
+  .elem .cn{font-size:22px}
+  .elem .en{font-size:12px}
+  .elem .season{font-size:7.5px;letter-spacing:.04em}
+  .five-center{width:52%}
+  .five-desc{padding:10px;align-items:center}
+  .five-desc .blurb{max-width:100%;text-align:center}
+  .five-desc .label{font-size:7.5px;letter-spacing:.14em;margin-bottom:6px}
+  .five-desc h4{font-size:13px;margin-bottom:5px;line-height:1.1}
+  .five-desc p{font-size:10px;line-height:1.4}
+}
+@media(min-width:641px) and (max-width:880px){.five-stage{max-width:460px}.elem{--r:178px;width:108px;height:108px;margin:-54px 0 0 -54px}}
+@media(prefers-reduced-motion:reduce){.five-ring,.five-ring svg.ring,.elem-inner{animation:none!important}}
+
+/* ── What to Expect ───────────────────────────────────────────────── */
+.expect{background:var(--ink-2);border-top:1px solid var(--rule)}
+.expect-head{display:grid;grid-template-columns:1fr;gap:28px;margin-bottom:64px}
+@media(min-width:860px){.expect-head{grid-template-columns:1fr 1fr;gap:80px;align-items:end}}
+.expect-lede{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(15px,1.6vw,18px);color:var(--paper-dim);line-height:1.65;max-width:44ch}
+.expect-timeline{margin-bottom:64px}
+.expect-phase{display:grid;grid-template-columns:72px 1fr;gap:28px 40px;padding:40px 0;border-top:1px solid var(--rule)}
+@media(min-width:680px){.expect-phase{grid-template-columns:108px 1fr}}
+.ep-time{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(36px,5.5vw,60px);color:var(--gold);line-height:.9;letter-spacing:-.02em;padding-top:4px}
+.ep-content h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(19px,2.4vw,27px);color:var(--paper);margin-bottom:10px;line-height:1.2}
+.ep-tag{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--cinnabar);border:.5px solid rgba(122,34,34,.45);padding:3px 9px;margin-bottom:14px}
+.ep-content p{color:var(--paper-dim);font-size:15.5px;line-height:1.75;font-weight:300;max-width:56ch}
+.ep-note{margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-faint);display:flex;align-items:center;gap:10px}
+.ep-note::before{content:"";width:18px;height:.5px;background:var(--gold);flex-shrink:0}
+.ep-note b{color:var(--paper);font-weight:400}
+.expect-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(min-width:720px){.expect-stats{grid-template-columns:repeat(3,1fr)}}
+.es-stat{background:var(--ink-2);padding:36px 32px;display:flex;flex-direction:column;gap:8px}
+.es-stat.hi{background:var(--ink-3)}
+.es-num{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(40px,6vw,72px);color:var(--gold);line-height:.9;letter-spacing:-.02em}
+.es-stat.hi .es-num{color:var(--paper)}
+.es-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--paper-faint)}
+.es-sub{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--paper-dim);font-weight:300}
+
+/* ── Light mode overrides ─────────────────────────────────── */
+[data-theme="light"] .practitioner-portrait{background:linear-gradient(135deg,#e3e0d8 0%,#ece9e2 100%)}
+[data-theme="light"] .practitioner-portrait::before{background-image:repeating-linear-gradient(45deg,rgba(24,24,26,.04) 0 1px,transparent 1px 14px)}
+[data-theme="light"] .five-wrap::before{background:radial-gradient(60% 70% at 50% 50%,rgba(61,139,114,.07),transparent 60%)}
+</style>
+</head>
+<body>
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><span class="mark">醫</span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="is-active">About</a>
+    <a href="services.html">Services</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="saat.html">SAAT</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="mob-close" id="menuClose">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html" class="is-active">About</a>
+  <a href="services.html">Services</a>
+  <a href="conditions.html">Conditions</a>
+  <a href="testimonials.html">Testimonials</a>
+  <a href="contact.html">Contact</a>
+  <a href="saat.html">SAAT Allergy Treatment</a>
+  <a href="contact.html" class="mob-book">Book Appointment</a>
+</div>
+
+<!-- Page Hero -->
+<header class="page-hero">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="ghost-glyph" aria-hidden="true">人</div>
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">關</span>About Us</div>
+    <h1 class="reveal d1">The <span class="accent">Practitioners</span></h1>
+    <p class="lede reveal d2">Two licensed practitioners bringing eastern tradition and western precision together in Cordova, Memphis.</p>
+  </div>
+</header>
+
+<!-- Practitioners Section -->
+<section class="practitioners">
+  <div class="wrap">
+    <div class="practitioners-intro reveal">
+      <div class="eyebrow"><span class="cn">醫</span>Our Team</div>
+      <h2>Healing hands, <span class="accent">rooted in tradition</span></h2>
+      <p class="sub">Board-certified · NCCAOM Diplomates · Tennessee Licensed</p>
+    </div>
+
+    <div class="practitioners-grid">
+
+      <!-- Yingjuan Liang -->
+      <div class="practitioner-card reveal d1">
+        <div class="practitioner-portrait">
+          <div class="ph">
+            <b>仙</b>
+          </div>
+          <div class="stamp">醫</div>
+        </div>
+        <div class="practitioner-name">
+          Yingjuan <span class="surname">Liang</span>
+        </div>
+        <div class="practitioner-credentials">DACM · L.Ac. · Memphis, Tennessee</div>
+        <div class="practitioner-divider"></div>
+        <ul class="practitioner-bio">
+          <li>Licensed Acupuncturist and Herbalist in Tennessee; doctoral degree in Acupuncture and Chinese Medicine; board-certified Diplomate of Oriental Medicine (NCCAOM)</li>
+          <li>Over the years, she obtained training from several prominent Chinese Medicine doctors in China and the United States</li>
+          <li>Deputy secretary general and executive director of the World Federation of Chinese Medicine Societies – Scalp Needle Committee</li>
+          <li>Member of China Association of Acupuncture-Moxibustion; holds certificate of "All-around of TCM techniques" issued by Chinese Bureau of TCM Administration</li>
+          <li>Yingjuan's parents are both doctors — she was deeply influenced not only by their skills for healing patients, but also their genuine personalities</li>
+          <li>Her practice prioritises treating patient's body, mind, and spirit with a holistic approach, especially at the spiritual level</li>
+          <li><em>Certified SAAT allergy treatment provider</em></li>
+          <li>We welcome you to experience Yingjuan's caring heart and healing hands!</li>
+        </ul>
+      </div>
+
+      <!-- Tieqiang Zhao -->
+      <div class="practitioner-card reveal d2">
+        <div class="practitioner-portrait">
+          <div class="ph">
+            <b>醫</b>
+          </div>
+          <div class="stamp" style="transform:rotate(-3deg)">仁</div>
+        </div>
+        <div class="practitioner-name">
+          Tieqiang <span class="surname">Zhao</span>
+        </div>
+        <div class="practitioner-credentials">MD(CN) · L.Ac. · Ph.D.</div>
+        <div class="practitioner-divider"></div>
+        <ul class="practitioner-bio">
+          <li>Graduated from the prestigious 7-year Clinical Medicine program at Harbin Medical University — one of only 15 medical schools in China authorised to offer this elite track; completed a 3-year doctoral program, earning both M.D. and Ph.D. degrees</li>
+          <li>Served as Attending Physician in Internal Medicine/Cardiology at Harbin Medical University; later Associate Professor at Peking University Health Science Center</li>
+          <li>Completed a comprehensive apprenticeship in Traditional Chinese Medicine under the direct supervision of renowned practitioner Dr. Alex Ly</li>
+          <li>Licensed Acupuncturist in Tennessee</li>
+          <li>Board-Certified Diplomate of Acupuncture (NCCAOM)</li>
+          <li>Executive Director, World Federation of Chinese Medicine Societies – Cardiovascular Disease Committee</li>
+          <li>Professional Member, American Heart Association &amp; American Stroke Association</li>
+          <li>National-level Judge of Tai Chi and Kung Fu (USA Wushu Kungfu Federation)</li>
+          <li>Member, The Tai Chi Qigong Association of America</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- divider -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 520 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,12 C120,2 200,22 260,12 C320,2 400,22 520,12" fill="none" stroke="#b8af9a" stroke-width=".5"/>
+    <circle cx="260" cy="12" r="2.5" fill="#7a2222"/>
+  </svg>
+</div>
+
+<!-- ─── Five Elements ─────────────────────────────────────────────── -->
+<section class="five-wrap" id="five-elements">
+  <div class="wrap">
+    <div class="five-head">
+      <div class="eyebrow reveal"><span class="cn">五行</span>Five Element Theory</div>
+      <h2 class="reveal d1">A medicine of <span class="accent">cycles,</span> not parts.</h2>
+      <div class="sub reveal d2">Hover an element · 懸停元素</div>
+    </div>
+
+    <div class="five-stage reveal d1" id="fiveStage">
+      <div class="five-ring">
+        <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <radialGradient id="ringGlow" cx=".5" cy=".5" r=".5">
+              <stop offset=".65" stop-color="#b8af9a" stop-opacity="0"/>
+              <stop offset=".95" stop-color="#b8af9a" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#b8af9a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="42" fill="url(#ringGlow)"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#b8af9a" stroke-opacity=".45" stroke-width=".25"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#b8af9a" stroke-opacity=".18" stroke-width=".15" stroke-dasharray=".4 1.6"/>
+          <g fill="#7a2222" opacity=".8">
+            <circle cx="50" cy="8"  r=".6"/>
+            <circle cx="89.94" cy="37.02" r=".6"/>
+            <circle cx="74.69" cy="83.94" r=".6"/>
+            <circle cx="25.31" cy="83.94" r=".6"/>
+            <circle cx="10.06" cy="37.02" r=".6"/>
+          </g>
+        </svg>
+        <div class="elem" style="--a:0deg;   --accent:#7a2222" data-id="fire"  tabindex="0" aria-label="Fire — Summer"><div class="elem-inner"><div class="cn">火</div><div class="en">Fire</div><div class="season">Summer · 夏</div></div></div>
+        <div class="elem" style="--a:72deg;  --accent:#b8af9a" data-id="earth" tabindex="0" aria-label="Earth — Late Summer"><div class="elem-inner"><div class="cn">土</div><div class="en">Earth</div><div class="season">Late Summer<br>· 長夏</div></div></div>
+        <div class="elem" style="--a:144deg; --accent:#b8af9a" data-id="metal" tabindex="0" aria-label="Metal — Autumn"><div class="elem-inner"><div class="cn">金</div><div class="en">Metal</div><div class="season">Autumn · 秋</div></div></div>
+        <div class="elem" style="--a:216deg; --accent:#5a7d9b" data-id="water" tabindex="0" aria-label="Water — Winter"><div class="elem-inner"><div class="cn">水</div><div class="en">Water</div><div class="season">Winter · 冬</div></div></div>
+        <div class="elem" style="--a:288deg; --accent:#6e8a5a" data-id="wood"  tabindex="0" aria-label="Wood — Spring"><div class="elem-inner"><div class="cn">木</div><div class="en">Wood</div><div class="season">Spring · 春</div></div></div>
+      </div>
+
+      <div class="five-center" aria-live="polite">
+        <div class="plate"><div class="default">氣</div></div>
+        <div class="five-desc" data-id="fire"  style="--accent:#7a2222"><div class="blurb"><div class="label">火 · Fire · Summer</div><h4>Joy &amp; the spirit</h4><p>The heart and small intestine. Treatments dispel heat, settle anxiety, and bring warmth back to the spirit (<em>shén</em>).</p></div></div>
+        <div class="five-desc" data-id="earth" style="--accent:#b8af9a"><div class="blurb"><div class="label">土 · Earth · Late Summer</div><h4>Nourishment &amp; centre</h4><p>The spleen and stomach. The body's hearth, transforming food and thought into vitality. The element to which all others return.</p></div></div>
+        <div class="five-desc" data-id="metal" style="--accent:#b8af9a"><div class="blurb"><div class="label">金 · Metal · Autumn</div><h4>Breath &amp; clarity</h4><p>The lungs and large intestine. The discernment of what to keep and what to release. Where grief is held — and softened.</p></div></div>
+        <div class="five-desc" data-id="water" style="--accent:#5a7d9b"><div class="blurb"><div class="label">水 · Water · Winter</div><h4>Reserves &amp; will</h4><p>The kidneys and bladder. The deep current — bone, marrow, ancestral qì. Treatments here tonify exhaustion at its source.</p></div></div>
+        <div class="five-desc" data-id="wood"  style="--accent:#6e8a5a"><div class="blurb"><div class="label">木 · Wood · Spring</div><h4>Growth &amp; vision</h4><p>The liver and gallbladder. The upward push of qì — plans, anger, the courage to begin. When stagnant, the body grows tight.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── What to Expect ────────────────────────────────────────────── -->
+<section class="expect" id="expect">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span>Your First Visit</span> <span class="cn">診</span></div>
+
+    <div class="expect-head">
+      <h2 class="reveal d1">Ninety minutes of <span class="accent">undivided attention.</span></h2>
+      <p class="expect-lede reveal d2">While most clinics offer sixty minutes, our first visit is a complete clinical encounter — unhurried, thorough, and unlike anything you have experienced at another practice.</p>
+    </div>
+
+    <div class="expect-timeline">
+      <div class="expect-phase reveal">
+        <div class="ep-time">0′</div>
+        <div class="ep-content">
+          <div class="ep-tag">30 minutes</div>
+          <h3>Deep Listening</h3>
+          <p>We begin not with forms but with conversation. Your primary concerns, your history, the texture of your symptoms — each detail is heard. We do not hurry toward diagnosis.</p>
+        </div>
+      </div>
+
+      <div class="expect-phase reveal">
+        <div class="ep-time">30′</div>
+        <div class="ep-content">
+          <div class="ep-tag">Full evaluation</div>
+          <h3>Complete Physical Assessment</h3>
+          <p>A thorough review of medical history paired with hands-on physical evaluation. Pulse reading, palpation, a full-body survey of where the system holds tension and where it is depleted.</p>
+        </div>
+      </div>
+
+      <div class="expect-phase reveal">
+        <div class="ep-time">50′</div>
+        <div class="ep-content">
+          <div class="ep-tag">Photographic analysis</div>
+          <h3>Advanced Tongue Diagnosis</h3>
+          <p>We photograph the tongue and walk you through what we observe — colour, coating, shape, moisture. Most practitioners assess and move on. We explain, so you leave understanding your own body.</p>
+          <p class="ep-note">A level of detail rarely provided in clinical practice</p>
+        </div>
+      </div>
+
+      <div class="expect-phase reveal">
+        <div class="ep-time">65′</div>
+        <div class="ep-content">
+          <div class="ep-tag">Exclusive technique</div>
+          <h3>Abdominal Diagnosis</h3>
+          <p>A specialised diagnostic method that most acupuncturists do not have access to. Dr. Selina is the third-generation lineage successor of this technique — and its first practitioner overseas.</p>
+          <p class="ep-note"><b>3rd-generation lineage successor</b> · First overseas practitioner</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="expect-stats">
+      <div class="es-stat hi reveal">
+        <div class="es-num">90′</div>
+        <div class="es-label">Our initial visit</div>
+        <div class="es-sub">Consultation, evaluation &amp; treatment</div>
+      </div>
+      <div class="es-stat reveal d1">
+        <div class="es-num">60′</div>
+        <div class="es-label">Industry standard</div>
+        <div class="es-sub">Shorter, less comprehensive</div>
+      </div>
+      <div class="es-stat reveal d2">
+        <div class="es-num">60′</div>
+        <div class="es-label">Our follow-ups</div>
+        <div class="es-sub">vs. 30–45 min at other clinics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Strip -->
+<div class="about-cta">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">始</span>Begin</div>
+    <p class="cta-text reveal d1">Ready to experience <em>healing in Cordova?</em></p>
+    <a href="contact.html" class="btn-primary reveal d2">
+      Book a first visit <span class="arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="f-cta">
+        <div class="editorial">Considering acupuncture? <em>Dr. Selina will see you.<span class="seal">·</span></em></div>
+        <a href="contact.html" class="request"><span>Request a first visit</span><span class="arr">→</span></a>
+        <div class="wordmark">
+          <div class="name">W&amp;E <span class="lat">Health Institute</span></div>
+          <p class="tag">A small acupuncture &amp; classical Chinese medicine practice in Cordova, Memphis.</p>
+        </div>
+      </div>
+      <nav class="f-nav" aria-label="Footer">
+        <a href="index.html"><span class="bullet"></span>Home</a>
+        <a href="about.html"><span class="bullet"></span>About</a>
+        <a href="services.html"><span class="bullet"></span>Services</a>
+        <a href="conditions.html"><span class="bullet"></span>Conditions</a>
+        <a href="testimonials.html"><span class="bullet"></span>Testimonials</a>
+        <a href="contact.html"><span class="bullet"></span>Contact</a>
+        <a href="saat.html"><span class="bullet"></span>SAAT Treatment</a>
+      </nav>
+      <div class="f-details">
+        <div class="f-block"><h4>Contact Details</h4><a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a><a href="tel:+19013406433">(901) 340-6433</a></div>
+        <div class="f-block"><h4>Address</h4><p>985 Cordova Station Ave, Ste 101<br/>Cordova, TN 38018</p><p class="muted" style="margin-top:8px">Mon–Sat · 8:00 am–6:00 pm</p></div>
+        <div class="f-block"><h4>Follow Us</h4>
+          <div class="f-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:wehiusa@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5,6 L12,13 L20.5,6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a><span>Cordova · Memphis, TN</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const burger = document.getElementById('burgerBtn');
+const overlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+if (burger && overlay) {
+  burger.addEventListener('click', () => overlay.classList.add('open'));
+  menuClose.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+}
+// Sticky nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 24);
+}, {passive:true});
+// Scroll reveals
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+}, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// Paragraph mask-ups
+document.querySelectorAll('p.body, .mask').forEach(p => {
+  p.classList.add('mask-up');
+  const lo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');lo.unobserve(e.target);} });
+  }, {threshold:.1});
+  lo.observe(p);
+});
+// Five elements hover
+(function(){
+  const stage = document.getElementById('fiveStage');
+  if (!stage) return;
+  const elems = stage.querySelectorAll('.elem');
+  const descs = stage.querySelectorAll('.five-desc');
+  let resumeTimer = null;
+  function activate(id) {
+    stage.classList.add('is-paused');
+    stage.dataset.active = id;
+    elems.forEach(e => e.classList.toggle('active', e.dataset.id === id));
+    descs.forEach(d => d.classList.toggle('on', d.dataset.id === id));
+  }
+  function deactivate() {
+    resumeTimer = setTimeout(() => {
+      stage.classList.remove('is-paused');
+      delete stage.dataset.active;
+      elems.forEach(e => e.classList.remove('active'));
+      descs.forEach(d => d.classList.remove('on'));
+    }, 120);
+  }
+  elems.forEach(el => {
+    el.addEventListener('mouseenter', () => { clearTimeout(resumeTimer); activate(el.dataset.id); });
+    el.addEventListener('mouseleave', deactivate);
+    el.addEventListener('focus', () => { clearTimeout(resumeTimer); activate(el.dataset.id); });
+    el.addEventListener('blur', deactivate);
+  });
+  stage.addEventListener('mouseleave', deactivate);
+})();
+</script>
+</body>
+</html>

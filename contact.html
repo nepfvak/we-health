@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Contact — W&amp;E Health Institute · Memphis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js"></script>
+<style>
+  /* ── Scroll snap & full-viewport sections ───────────────────── */
+  html{scroll-snap-type:y proximity}
+  .page-hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
+  
+  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
+  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+/* ── Contact page specific ────────────────────────────────────────────── */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:64px;
+  align-items:start;
+}
+@media(min-width:900px){
+  .contact-grid{grid-template-columns:1fr 1fr;gap:80px}
+}
+.contact-info{display:flex;flex-direction:column;gap:36px}
+.contact-info-block{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.contact-info-block .label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:400;
+  margin-bottom:4px;
+}
+.contact-info-block .value{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:17px;
+  line-height:1.7;
+  color:var(--paper-dim);
+}
+.contact-info-block a.value{
+  display:inline-block;
+  transition:color .25s;
+}
+.contact-info-block a.value:hover{color:var(--gold)}
+.contact-desc{
+  font-family:var(--serif);
+  font-weight:300;
+  font-style:italic;
+  font-size:17px;
+  line-height:1.75;
+  color:var(--paper-dim);
+  max-width:44ch;
+}
+.clinic-photo{
+  aspect-ratio:4/3;
+  background:var(--ink-2);
+  border:.5px solid var(--rule-strong);
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+}
+.clinic-photo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity:.6;
+}
+.clinic-photo .photo-label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--paper-faint);
+  position:relative;
+  z-index:1;
+}
+.divider-rule{
+  border:0;
+  border-top:1px solid var(--rule);
+  margin:0;
+}
+.hours-section{padding:0}
+.hours-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  max-width:480px;
+  margin-top:48px;
+}
+.hours-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+  border-bottom:.5px solid var(--rule);
+}
+.hours-row:first-child{border-top:.5px solid var(--rule)}
+.hours-row .day{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--paper-dim);
+}
+.hours-row .time{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:17px;
+  color:var(--paper);
+}
+.hours-row .time.closed{
+  color:var(--paper-faint);
+}
+.map-section{
+  padding:0 0 0;
+  position:relative;
+  z-index:3;
+}
+.map-wrap{
+  position:relative;
+  z-index:3;
+  border-top:1px solid var(--rule);
+}
+.map-wrap iframe{
+  display:block;
+  width:100%;
+  height:480px;
+  border:0;
+  filter:grayscale(1) invert(0.9) sepia(0.3) contrast(0.85) brightness(0.75);
+}
+.map-label{
+  padding:28px 22px;
+  background:var(--ink-2);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+  border-bottom:1px solid var(--rule);
+}
+.map-label .addr{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:17px;
+  color:var(--paper-dim);
+}
+.map-label a{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--gold);
+  transition:color .25s;
+}
+.map-label a:hover{color:var(--paper)}
+</style>
+</head>
+<body>
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><span class="mark">醫</span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html" class="is-active">Contact</a>
+    <a href="saat.html">SAAT</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="mob-close" id="menuClose">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="conditions.html">Conditions</a>
+  <a href="testimonials.html">Testimonials</a>
+  <a href="contact.html" class="is-active">Contact</a>
+  <a href="saat.html">SAAT Allergy Treatment</a>
+  <a href="contact.html" class="mob-book">Book Appointment</a>
+</div>
+
+<div class="page-hero">
+  <div class="bg"></div>
+  <div class="ghost-glyph" aria-hidden="true">地</div>
+  <div class="wrap">
+    <p class="eyebrow"><span class="cn">聯絡</span> Find Us</p>
+    <h1>Come find <span class="accent">us</span></h1>
+    <p class="lede">We serve Memphis, Cordova, Germantown, Bartlett and surrounding areas.</p>
+  </div>
+</div>
+
+<!-- Section 1: Info + Photo -->
+<section>
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <!-- Left: Contact Info -->
+      <div class="contact-info reveal">
+        <div>
+          <p class="eyebrow"><span class="cn">位置</span> Contact Us</p>
+          <p class="contact-desc">We are located in a tranquil place next to the greenline. Please reach out to us with any questions about acupuncture, herb, cupping therapy, moxibustion, or holistic treatment options.</p>
+        </div>
+
+        <div class="contact-info-block">
+          <div class="label">Address</div>
+          <p class="value">985 Cordova Station Ave, Ste 101<br/>Cordova, TN 38018</p>
+        </div>
+
+        <div class="contact-info-block">
+          <div class="label">Phone</div>
+          <a href="tel:+19013406433" class="value">(901) 340-6433</a>
+        </div>
+
+        <div class="contact-info-block">
+          <div class="label">Email</div>
+          <a href="mailto:wehiusa@gmail.com" class="value">wehiusa@gmail.com</a>
+        </div>
+
+        <div class="contact-info-block">
+          <div class="label">Instagram</div>
+          <a href="https://instagram.com/wehealthinstitute" target="_blank" rel="noopener" class="value">@wehealthinstitute</a>
+        </div>
+      </div>
+
+      <!-- Right: Clinic Photo -->
+      <div class="clinic-photo reveal d2" aria-label="Clinic interior">
+        <span class="photo-label">[ clinic interior ]</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Hours -->
+<section class="hours-section" style="padding-top:0">
+  <div class="wrap">
+    <hr class="divider-rule" />
+    <div style="padding-top:80px">
+      <p class="eyebrow reveal"><span class="cn">時間</span> Hours</p>
+      <h2 class="reveal d1">When we're <span class="accent">open</span></h2>
+      <div class="hours-grid reveal d2">
+        <div class="hours-row">
+          <span class="day">Monday</span>
+          <span class="time">8:00 am – 6:00 pm</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Tuesday</span>
+          <span class="time">8:00 am – 6:00 pm</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Wednesday</span>
+          <span class="time">8:00 am – 6:00 pm</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Thursday</span>
+          <span class="time">8:00 am – 6:00 pm</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Friday</span>
+          <span class="time">8:00 am – 6:00 pm</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Saturday</span>
+          <span class="time">8:00 am – 6:00 pm</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Sunday</span>
+          <span class="time closed">Closed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Map -->
+<div class="map-section">
+  <div class="map-label">
+    <p class="addr">985 Cordova Station Ave, Ste 101 · Cordova, TN 38018</p>
+    <a href="https://maps.google.com/?q=985+Cordova+Station+Ave+Ste+101+Cordova+TN+38018" target="_blank" rel="noopener">Open in Maps →</a>
+  </div>
+  <div class="map-wrap">
+    <iframe
+      title="W&amp;E Health Institute location map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.4!2d-89.8!3d35.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f8a4c1a3e5a9b%3A0x1234567890!2s985+Cordova+Station+Ave%2C+Cordova%2C+TN+38018!5e0!3m2!1sen!2sus!4v1700000000000"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="f-cta">
+        <div class="editorial">Considering acupuncture? <em>Dr. Selina will see you.<span class="seal">·</span></em></div>
+        <a href="contact.html" class="request"><span>Request a first visit</span><span class="arr">→</span></a>
+        <div class="wordmark">
+          <div class="name">W&amp;E <span class="lat">Health Institute</span></div>
+          <p class="tag">A small acupuncture &amp; classical Chinese medicine practice in Cordova, Memphis.</p>
+        </div>
+      </div>
+      <nav class="f-nav" aria-label="Footer">
+        <a href="index.html"><span class="bullet"></span>Home</a>
+        <a href="about.html"><span class="bullet"></span>About</a>
+        <a href="services.html"><span class="bullet"></span>Services</a>
+        <a href="conditions.html"><span class="bullet"></span>Conditions</a>
+        <a href="testimonials.html"><span class="bullet"></span>Testimonials</a>
+        <a href="contact.html"><span class="bullet"></span>Contact</a>
+        <a href="saat.html"><span class="bullet"></span>SAAT Treatment</a>
+      </nav>
+      <div class="f-details">
+        <div class="f-block"><h4>Contact Details</h4><a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a><a href="tel:+19013406433">(901) 340-6433</a></div>
+        <div class="f-block"><h4>Address</h4><p>985 Cordova Station Ave, Ste 101<br/>Cordova, TN 38018</p><p class="muted" style="margin-top:8px">Mon–Sat · 8:00 am–6:00 pm</p></div>
+        <div class="f-block"><h4>Follow Us</h4>
+          <div class="f-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:wehiusa@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5,6 L12,13 L20.5,6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a><span>Cordova · Memphis, TN</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burgerBtn');
+const overlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+if (burger && overlay) {
+  burger.addEventListener('click', () => overlay.classList.add('open'));
+  menuClose.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+}
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24), {passive:true});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+}, {threshold:.1, rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+document.querySelectorAll('p.body').forEach(p => {
+  p.classList.add('mask-up');
+  const lo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');lo.unobserve(e.target);} });
+  }, {threshold:.08});
+  lo.observe(p);
+});
+</script>
+</body>
+</html>

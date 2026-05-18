@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>W&amp;E Health Institute — Dr. Selina · Memphis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js"></script>
+
+<style>
+  /* ── Scroll snap ─────────────────────────────────────────────────── */
+  html{scroll-snap-type:y proximity}
+  .hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
+  /* Each section fills the viewport and centres its content */
+  section{
+    min-height:100vh;min-height:100dvh;
+    padding:0;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  /* Give wraps vertical breathing room instead of section padding */
+  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+  /* Acupoints sticky container already handles centering internally */
+  .acupoints{display:block;padding:0}
+
+/* ── Hero ──────────────────────────────────────────────────────────── */
+  .hero{
+    position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding:100px 22px 72px;overflow:hidden;isolation:isolate;
+  }
+  .hero .bg{
+    position:absolute;inset:0;z-index:-1;
+    background:
+      radial-gradient(60% 70% at 22% 18%, rgba(201,162,90,.12), transparent 55%),
+      radial-gradient(80% 90% at 78% 110%, rgba(168,50,50,.10), transparent 60%),
+      linear-gradient(180deg, #0a0806 0%, #110d09 55%, #07050300 100%),
+      #080908;
+  }
+  .hero .photo{
+    position:absolute;inset:0;z-index:-2;opacity:.32;mix-blend-mode:screen;
+    background:
+      linear-gradient(180deg, transparent 0%, transparent 40%, #080908 100%),
+      repeating-linear-gradient(115deg, rgba(232,223,201,.05) 0 2px, transparent 2px 8px),
+      radial-gradient(40% 50% at 65% 40%, rgba(232,223,201,.18), transparent 70%);
+    filter:blur(.5px);
+  }
+  .hero .glyph{
+    position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
+    font-family:var(--brush);font-size:min(58vw,640px);line-height:.9;
+    color:rgba(232,223,201,.06);user-select:none;pointer-events:none;z-index:-1;
+    display:var(--glyph-display,block);
+  }
+  .hero .meridian{
+    position:absolute;inset:0;z-index:-1;opacity:.4;pointer-events:none;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:300;font-style:italic;
+    font-size:clamp(48px, 9vw, 124px);line-height:.96;letter-spacing:-.01em;
+    color:var(--paper);max-width:14ch;margin-bottom:28px;
+    text-wrap:balance;
+  }
+  .hero h1 .accent{font-style:normal;color:var(--gold);font-weight:400}
+  .hero h1 .seal{
+    display:inline-block;font-family:var(--brush);font-size:.42em;color:var(--cinnabar);
+    vertical-align:.45em;margin-left:.18em;letter-spacing:0;
+  }
+  .hero .lede{
+    max-width:46ch;color:var(--paper-dim);font-size:clamp(15px,1.6vw,18px);
+    line-height:1.65;font-weight:300;font-style:italic;
+  }
+  .hero .cta-row{
+    display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;margin-top:42px;
+  }
+  .hero .meta{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--paper-faint);
+  }
+  .hero .meta b{color:var(--paper);font-weight:400}
+
+  /* ── Philosophy ────────────────────────────────────────────────────── */
+  .philosophy{padding:0}
+  .philosophy .inner{display:grid;grid-template-columns:1fr;gap:48px;align-items:start}
+  @media (min-width:980px){.philosophy .inner{grid-template-columns:1fr 1.4fr;gap:80px}}
+  .philosophy .glyph-stack{position:relative;display:flex;align-items:flex-start;gap:24px}
+  .philosophy .glyph-stack .big{
+    font-family:var(--brush);font-size:clamp(120px,16vw,200px);line-height:.85;color:var(--gold);
+    display:var(--glyph-display,block);
+  }
+  .philosophy .glyph-stack .caption{
+    font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--paper-faint);
+    writing-mode:vertical-rl;transform:rotate(180deg);padding:8px 0;
+  }
+  .philosophy .body-col p.body{font-size:clamp(18px,1.9vw,22px);line-height:1.7;color:var(--paper);max-width:38ch}
+  .philosophy .body-col p.body + p.body{color:var(--paper-dim);font-size:17px;line-height:1.75;max-width:54ch;margin-top:32px}
+  .philosophy .signature{
+    margin-top:48px;display:flex;align-items:center;gap:18px;
+  }
+  .philosophy .signature .seal{
+    width:64px;height:64px;border:.5px solid var(--cinnabar);display:grid;place-items:center;
+    font-family:var(--brush);font-size:32px;color:var(--cinnabar);background:rgba(168,50,50,.04);
+    transform:rotate(-2deg);
+  }
+  .philosophy .signature .sig-text{font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--paper-faint);line-height:1.7}
+  .philosophy .signature .sig-text b{color:var(--paper);font-weight:400}
+
+  /* ── Services ──────────────────────────────────────────────────────── */
+  .services{background:var(--ink-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);position:relative}
+  .services::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'><g fill='none' stroke='%23c9a25a' stroke-width='.5' opacity='.08'><path d='M0,500 C200,420 320,560 500,470 C660,390 740,520 800,460'/><path d='M0,560 C200,480 320,620 500,530 C660,450 740,580 800,520'/><path d='M0,620 C200,540 320,680 500,590 C660,510 740,640 800,580'/></g></svg>") no-repeat center bottom/cover;
+  }
+  .services .head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:32px;margin-bottom:72px}
+  .services .head .right{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--paper-faint);max-width:30ch;text-align:left}
+  @media (min-width:880px){.services .head .right{text-align:right}}
+
+  .svc-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  @media (min-width:720px){.svc-grid{grid-template-columns:1fr 1fr}}
+  @media (min-width:1100px){.svc-grid{grid-template-columns:repeat(4,1fr)}}
+  .svc{
+    background:var(--ink-2);padding:44px 32px 36px;position:relative;
+    display:flex;flex-direction:column;gap:18px;min-height:380px;
+    transition:background .4s ease;
+  }
+  .svc:hover{background:var(--ink-3)}
+  .svc .num{font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:var(--paper-faint)}
+  .svc .icon{
+    width:64px;height:64px;display:grid;place-items:center;
+    border:.5px solid var(--gold-dim);color:var(--gold);
+    font-family:var(--brush);font-size:34px;line-height:1;margin-bottom:8px;
+    display:var(--glyph-display,grid);
+  }
+  .svc h3{color:var(--paper);font-style:italic;font-weight:400}
+  .svc .cn{font-family:var(--brush);font-size:15px;color:var(--gold-dim);letter-spacing:.04em;margin-top:-6px;display:var(--glyph-display,block)}
+  .svc p{color:var(--paper-dim);font-size:15.5px;line-height:1.7;font-weight:300;flex:1}
+  .svc .learn{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold);padding-top:18px;border-top:.5px solid var(--rule);margin-top:12px;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .svc .learn .arr{font-family:var(--serif);font-style:italic;font-size:15px;letter-spacing:0;transition:transform .3s}
+  .svc:hover .learn .arr{transform:translateX(4px)}
+  .svc .num{transition:color .5s ease, letter-spacing .5s ease}
+  .svc:hover .num{color:var(--gold);letter-spacing:.34em}
+
+  /* ── About ─────────────────────────────────────────────────────────── */
+  .about{padding:160px 0}
+  .about .inner{display:grid;grid-template-columns:1fr;gap:56px;align-items:center}
+  @media (min-width:980px){.about .inner{grid-template-columns:.9fr 1.1fr;gap:80px}}
+  .about .portrait{
+    position:relative;aspect-ratio:4/5;width:100%;
+    background:linear-gradient(135deg, #161716 0%, #0c0b0c 100%);
+    border:.5px solid var(--rule-strong);
+    display:grid;place-items:center;overflow:hidden;
+  }
+  .about .portrait::before{
+    content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(45deg, rgba(232,223,201,.04) 0 1px, transparent 1px 14px);
+  }
+  .about .portrait::after{
+    content:"";position:absolute;inset:18px;border:.5px solid var(--gold-dim);pointer-events:none;
+  }
+  .about .portrait .ph{
+    position:relative;z-index:1;text-align:center;
+    font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--paper-faint);
+  }
+  .about .portrait .ph b{display:block;font-family:var(--brush);font-size:64px;color:var(--gold);margin-bottom:18px;letter-spacing:0;display:var(--glyph-display,block)}
+  .about .portrait .stamp{
+    position:absolute;right:24px;bottom:24px;z-index:2;
+    width:56px;height:56px;border:.5px solid var(--cinnabar);display:grid;place-items:center;
+    font-family:var(--brush);font-size:26px;color:var(--cinnabar);background:rgba(168,50,50,.08);
+    transform:rotate(4deg);display:var(--glyph-display,grid);
+  }
+  .about .text .name{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:clamp(36px,4.8vw,56px);line-height:1.05;color:var(--paper);margin-bottom:8px;
+  }
+  .about .text .name .surname{color:var(--gold);font-style:normal;font-weight:400}
+  .about .text .credentials{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--paper-faint);margin-bottom:32px}
+  .about .text p.body{font-size:17px;max-width:54ch}
+  .about .text .quote{
+    margin:36px 0 28px;padding-left:24px;border-left:.5px solid var(--gold);
+    font-family:var(--serif);font-style:italic;font-weight:300;font-size:22px;line-height:1.55;color:var(--paper);max-width:36ch;
+  }
+  .about .text .quote::before{content:"\201C";font-size:32px;color:var(--gold);margin-right:4px;line-height:0;vertical-align:-.1em}
+  .about .text .quote::after{content:"\201D";font-size:32px;color:var(--gold);margin-left:2px;line-height:0;vertical-align:-.1em}
+
+/* ── Ink-paint reveal ──────────────────────────────────────────────── */
+  @keyframes ink-reveal {
+    0%   { opacity: 0;   filter: blur(9px) }
+    30%  { opacity: .08; filter: blur(4px) }
+    100% { opacity: 1;   filter: blur(0)   }
+  }
+  .ink-paint {
+    animation: ink-reveal 1.8s cubic-bezier(.22,.61,.25,1) both;
+    animation-play-state: paused;
+  }
+  .ink-paint.ip-d1 { animation-delay: .06s }
+  .ink-paint.ip-d2 { animation-delay: .26s }
+  .ink-paint.ip-d3 { animation-delay: .50s }
+  .ink-paint.ip-on { animation-play-state: running }
+  @media (prefers-reduced-motion: reduce) { .ink-paint { animation: none } }
+
+/* ── Page-specific animations ──────────────────────────────────────── */
+  .philosophy .signature .seal{animation:seal-breathe 6s ease-in-out infinite}
+  .about .portrait .stamp{animation:stamp-breathe 7s ease-in-out infinite}
+  .hero .meridian circle{animation:pulse 3.4s ease-in-out infinite}
+  .hero .meridian circle:nth-child(2){animation-delay:.6s}
+  .hero .meridian circle:nth-child(3){animation-delay:1.2s}
+  .hero .meridian circle:nth-child(4){animation-delay:1.8s}
+
+  /* ── Light mode overrides ───────────────────────────────────────────── */
+  [data-theme="light"] .hero .bg{
+    background:
+      radial-gradient(60% 70% at 22% 18%,rgba(61,139,114,.14),transparent 55%),
+      radial-gradient(80% 90% at 78% 110%,rgba(200,146,26,.08),transparent 60%),
+      linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 55%,var(--ink) 100%),
+      var(--ink)
+  }
+  [data-theme="light"] .hero .photo{
+    background:
+      linear-gradient(180deg,transparent 0%,transparent 40%,var(--ink) 100%),
+      repeating-linear-gradient(115deg,rgba(61,139,114,.07) 0 2px,transparent 2px 8px),
+      radial-gradient(40% 50% at 65% 40%,rgba(61,139,114,.14),transparent 70%)
+  }
+  [data-theme="light"] .hero .glyph{color:rgba(24,24,26,.05)}
+  [data-theme="light"] .about .portrait{background:linear-gradient(135deg,#e3e0d8 0%,#ece9e2 100%)}
+  [data-theme="light"] .about .portrait::before{background-image:repeating-linear-gradient(45deg,rgba(24,24,26,.04) 0 1px,transparent 1px 14px)}
+  [data-theme="light"] .services::before{opacity:.3}
+
+  /* ── Acupoint Explorer ─────────────────────────────────────────── */
+  .acupoints{position:relative} /* height set by JS to create scroll travel */
+  .acu-sticky{
+    position:sticky;top:0;
+    height:100vh;height:100dvh;
+    overflow:hidden;
+    background:var(--ink);
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .acu-sticky::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(70% 60% at 50% 0%,rgba(61,139,114,.07),transparent 65%),
+      radial-gradient(40% 50% at 80% 100%,rgba(61,139,114,.04),transparent 60%);
+  }
+  .acu-sticky .wrap{max-width:1100px;margin:0 auto;padding:40px 22px;position:relative}
+  .acu-eyebrow{font:400 11px/1 var(--ff-serif);letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .acu-heading{font:400 clamp(24px,3vw,38px)/1.12 var(--ff-serif);color:var(--paper);max-width:520px;margin:0 0 8px}
+  .acu-sub{font:400 13px/1.6 var(--ff-sans);color:var(--paper-faint);max-width:400px;margin:0 0 36px}
+  /* progress bar */
+  .acu-progress{height:1px;background:var(--rule-strong);margin-bottom:28px;position:relative;overflow:hidden}
+  .acu-progress-fill{position:absolute;inset:0 100% 0 0;background:var(--gold);transition:right .4s ease}
+  /* grid */
+  .acu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+  @media(max-width:700px){.acu-grid{grid-template-columns:repeat(2,1fr)}}
+  /* cards — opacity driven per-element so borders stay crisp */
+  .acu-card{
+    padding:22px 18px 18px;cursor:pointer;
+    border:1px solid var(--rule);background:transparent;
+    position:relative;overflow:hidden;
+    -webkit-tap-highlight-color:transparent;
+    transition:border-color .35s ease,background .35s ease,box-shadow .35s ease;
+  }
+  .acu-card.active{
+    border-color:var(--gold);background:rgba(61,139,114,.10);
+    box-shadow:0 0 0 .5px var(--gold);
+  }
+  /* inactive text — visible but clearly secondary */
+  .acu-code{
+    font:400 10px/1 var(--ff-serif);letter-spacing:.2em;color:var(--gold);
+    margin-bottom:8px;opacity:.35;transition:opacity .45s ease;
+  }
+  .acu-hanzi{
+    font:400 clamp(24px,2.8vw,36px)/1 var(--ff-serif);color:var(--paper);
+    margin-bottom:6px;opacity:.28;transition:opacity .45s ease;
+  }
+  .acu-name{
+    font:400 11px/1.4 var(--ff-sans);color:var(--paper-faint);
+    opacity:.4;transition:opacity .45s ease;
+  }
+  .acu-name em{display:block;font-style:italic;font-size:10px;margin-top:3px}
+  .acu-meridian{
+    display:inline-block;margin-top:12px;
+    font:400 9px/1 var(--ff-serif);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);opacity:.3;transition:opacity .45s ease;
+  }
+  /* seen — clearly readable */
+  .acu-card.seen .acu-code    {opacity:.7}
+  .acu-card.seen .acu-hanzi   {opacity:.6}
+  .acu-card.seen .acu-name    {opacity:.75}
+  .acu-card.seen .acu-meridian{opacity:.6}
+  /* active — full, bold */
+  .acu-card.active .acu-code    {opacity:1}
+  .acu-card.active .acu-hanzi   {opacity:1}
+  .acu-card.active .acu-name    {opacity:1}
+  .acu-card.active .acu-meridian{opacity:.85}
+  /* detail panel */
+  .acu-detail{margin-top:2px;border:1px solid var(--rule);border-top:none;min-height:136px}
+  .acu-detail-inner{
+    padding:24px 28px;
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;
+    transition:opacity .22s ease;
+  }
+  .acu-detail-inner.fading{opacity:0}
+  @media(max-width:700px){.acu-detail-inner{grid-template-columns:1fr;padding:18px}}
+  .acu-d-label{font:400 10px/1 var(--ff-serif);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+  .acu-d-body{font:400 12px/1.7 var(--ff-sans);color:var(--paper-faint)}
+  .acu-d-quote{font:400 13px/1.75 var(--ff-serif);font-style:italic;color:var(--paper);opacity:.72;border-left:1.5px solid var(--gold);padding-left:14px}
+  [data-theme="light"] .acu-card.active{background:rgba(61,139,114,.12);box-shadow:0 0 0 .5px var(--gold)}
+  [data-theme="light"] .acu-detail{background:rgba(24,24,26,.015)}
+  [data-theme="light"] .divider-dot{fill:#c8921a}
+  [data-theme="light"] .philosophy .signature .seal{background:rgba(200,146,26,.05)}
+  [data-theme="light"] .about .portrait .stamp{background:rgba(200,146,26,.08)}
+
+  /* ── Trust Strip ──────────────────────────────────────────────────── */
+  .trust-strip{border-bottom:1px solid var(--rule);background:var(--ink);position:relative;z-index:3}
+  .trust-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;max-width:1240px;margin:0 auto}
+  .trust-inner::-webkit-scrollbar{display:none}
+  .trust-item{flex:1;min-width:168px;padding:20px 28px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:4px;transition:background .3s}
+  .trust-item:last-child{border-right:none}
+  .trust-item:hover{background:rgba(232,223,201,.025)}
+  .t-mark{font-family:var(--mono);font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+  .t-label{font-family:var(--serif);font-weight:400;font-size:16px;color:var(--paper);line-height:1.1}
+  .t-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-faint)}
+
+  /* ── What to Expect ───────────────────────────────────────────────── */
+  .expect{background:var(--ink-2);border-top:1px solid var(--rule)}
+  .expect-head{display:grid;grid-template-columns:1fr;gap:28px;margin-bottom:64px}
+  @media(min-width:860px){.expect-head{grid-template-columns:1fr 1fr;gap:80px;align-items:end}}
+  .expect-lede{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(15px,1.6vw,18px);color:var(--paper-dim);line-height:1.65;max-width:44ch}
+  .expect-timeline{margin-bottom:64px}
+  .expect-phase{display:grid;grid-template-columns:72px 1fr;gap:28px 40px;padding:40px 0;border-top:1px solid var(--rule)}
+  @media(min-width:680px){.expect-phase{grid-template-columns:108px 1fr}}
+  .ep-time{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(36px,5.5vw,60px);color:var(--gold);line-height:.9;letter-spacing:-.02em;padding-top:4px}
+  .ep-content h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(19px,2.4vw,27px);color:var(--paper);margin-bottom:10px;line-height:1.2}
+  .ep-tag{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--cinnabar);border:.5px solid rgba(122,34,34,.45);padding:3px 9px;margin-bottom:14px}
+  .ep-content p{color:var(--paper-dim);font-size:15.5px;line-height:1.75;font-weight:300;max-width:56ch}
+  .ep-note{margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-faint);display:flex;align-items:center;gap:10px}
+  .ep-note::before{content:"";width:18px;height:.5px;background:var(--gold);flex-shrink:0}
+  .ep-note b{color:var(--paper);font-weight:400}
+  .expect-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  @media(min-width:720px){.expect-stats{grid-template-columns:repeat(3,1fr)}}
+  .es-stat{background:var(--ink-2);padding:36px 32px;display:flex;flex-direction:column;gap:8px}
+  .es-stat.hi{background:var(--ink-3)}
+  .es-num{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(40px,6vw,72px);color:var(--gold);line-height:.9;letter-spacing:-.02em}
+  .es-stat.hi .es-num{color:var(--paper)}
+  .es-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--paper-faint)}
+  .es-sub{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--paper-dim);font-weight:300}
+
+  /* ── Value / Pricing ──────────────────────────────────────────────── */
+  .value{background:var(--ink);border-top:1px solid var(--rule)}
+  .value-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:56px}
+  @media(min-width:800px){.value-grid{grid-template-columns:1fr 1fr}}
+  .value-col{padding:48px 40px;display:flex;flex-direction:column}
+  .value-col.v-ours{background:var(--ink-2)}
+  .value-col.v-theirs{background:var(--ink);opacity:.55}
+  .v-head{font-family:var(--mono);font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;padding-bottom:20px;border-bottom:.5px solid var(--rule-strong);margin-bottom:28px;display:flex;align-items:center;gap:10px}
+  .value-col.v-ours .v-head{color:var(--gold)}
+  .value-col.v-theirs .v-head{color:var(--paper-faint)}
+  .v-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .v-list li{font-family:var(--serif);font-weight:300;font-size:16px;color:var(--paper);line-height:1.45;display:flex;gap:14px;align-items:baseline}
+  .value-col.v-theirs .v-list li{color:var(--paper-dim)}
+  .v-tick{font-family:var(--mono);font-size:9px;flex-shrink:0;padding-top:2px}
+  .value-col.v-ours .v-tick{color:var(--gold)}
+  .value-col.v-theirs .v-tick{color:var(--paper-faint)}
+
+  /* ── Clinical Specialties ─────────────────────────────────────────── */
+  .specialties{background:var(--ink);border-top:1px solid var(--rule)}
+  .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:56px}
+  @media(min-width:640px){.spec-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:1100px){.spec-grid{grid-template-columns:repeat(4,1fr)}}
+  .spec-card{background:var(--ink);padding:32px 24px 28px;display:flex;flex-direction:column;gap:10px;transition:background .4s}
+  .spec-card:hover{background:var(--ink-2)}
+  .spec-glyph{font-family:var(--brush);font-size:36px;color:var(--gold);line-height:1;margin-bottom:4px;display:var(--glyph-display,block)}
+  .spec-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;color:var(--paper);line-height:1.2}
+  .spec-items{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:4px}
+  .spec-items li{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-faint);display:flex;align-items:center;gap:8px;line-height:1.4}
+  .spec-items li::before{content:"";width:10px;height:.5px;background:var(--gold);flex-shrink:0}
+
+  /* ── Coming Soon ──────────────────────────────────────────────────── */
+  .coming-soon{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--ink-2);padding:72px 0}
+  .cs-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px}
+  .cs-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+  .cs-label::before{content:"";width:28px;height:.5px;background:var(--gold)}
+  .cs-heading{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(24px,3.6vw,42px);color:var(--paper);line-height:1.05}
+  .cs-cards{display:flex;gap:16px;flex-wrap:wrap}
+  .cs-card{padding:22px 28px;border:.5px solid var(--rule-strong);display:flex;flex-direction:column;gap:7px;min-width:200px;background:var(--ink-3);position:relative;overflow:hidden}
+  .cs-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cinnabar),transparent)}
+  .cs-badge{font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--cinnabar);display:flex;align-items:center;gap:6px}
+  .cs-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--cinnabar);box-shadow:0 0 6px var(--cinnabar);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
+  .cs-name{font-family:var(--serif);font-style:italic;font-weight:300;font-size:19px;color:var(--paper);line-height:1.2}
+  .cs-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-faint)}
+
+  /* ── Credentials bar (about section) ─────────────────────────────── */
+  .cred-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+  .cred-pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);border:.5px solid rgba(184,175,154,.35);padding:5px 12px}
+  .lineage-note{margin-top:28px;padding:20px 24px;border-left:.5px solid var(--cinnabar);background:rgba(122,34,34,.04)}
+  .lineage-note p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:15px;color:var(--paper-dim);line-height:1.7;max-width:50ch}
+  .lineage-note .ln-label{font-family:var(--mono);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--cinnabar);margin-bottom:8px}
+</style>
+</head>
+<body data-glyphs="1">
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<!-- ─── Sticky Nav ─────────────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand">
+    <span class="mark">醫</span>
+    <span class="name">W<em>&amp;</em>E Health Institute</span>
+  </a>
+  <div class="links">
+    <a href="index.html" class="is-active">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="saat.html">SAAT</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="mob-close" id="menuClose">✕</button>
+  <a href="index.html" class="is-active">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="conditions.html">Conditions</a>
+  <a href="testimonials.html">Testimonials</a>
+  <a href="contact.html">Contact</a>
+  <a href="saat.html">SAAT Allergy Treatment</a>
+  <a href="contact.html" class="mob-book">Book Appointment</a>
+</div>
+
+<!-- ─── Hero ──────────────────────────────────────────────────────── -->
+<header class="hero" id="top">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="photo" aria-hidden="true"></div>
+  <div class="glyph" aria-hidden="true">醫</div>
+
+  <svg class="meridian" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="mg" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-color="#b8af9a" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#b8af9a" stop-opacity=".5"/>
+        <stop offset="1" stop-color="#b8af9a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#mg)" stroke-width=".7">
+      <path d="M-50,650 C300,580 600,720 900,610 C1180,510 1340,640 1490,580"/>
+      <path d="M-50,710 C300,640 600,780 900,670 C1180,570 1340,700 1490,640"/>
+    </g>
+    <g fill="#b8af9a">
+      <circle cx="300" cy="618" r="2.5"/>
+      <circle cx="600" cy="710" r="2.5"/>
+      <circle cx="900" cy="640" r="2.5"/>
+      <circle cx="1180" cy="540" r="2.5"/>
+    </g>
+  </svg>
+
+  <div class="wrap" style="padding:0 22px;width:100%;">
+    <div>
+      <h1 class="reveal in d1 ink-paint ip-d1">
+        Three thousand years<br/>
+        of <span class="accent">stillness,</span><br/>
+        practised today<span class="seal">·</span>
+      </h1>
+      <p class="lede reveal in d2 ink-paint ip-d2">
+        W&amp;E Health Institute is a small acupuncture and herbal practice in Midtown
+        Memphis. Led by Dr. Selina, our work is unhurried, grounded in classical
+        Chinese medicine, and shaped to the body in front of us.
+      </p>
+      <div class="cta-row reveal in d3 ink-paint ip-d3">
+        <a href="#book" class="btn-primary">
+          <span>Book an Appointment</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#philosophy" class="btn-ghost">Begin Reading <span style="font-family:var(--serif);font-style:italic">↓</span></a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ─── Trust Strip ───────────────────────────────────────────────── -->
+<div class="trust-strip" role="complementary" aria-label="Credentials and coverage">
+  <div class="trust-inner">
+    <div class="trust-item reveal">
+      <div class="t-mark">Credentials</div>
+      <div class="t-label">DACM · PhD · MD</div>
+      <div class="t-sub">Doctoral practitioner team</div>
+    </div>
+    <div class="trust-item reveal d1">
+      <div class="t-mark">Veterans</div>
+      <div class="t-label">VA Authorized</div>
+      <div class="t-sub">Certified VA provider</div>
+    </div>
+    <div class="trust-item reveal d2">
+      <div class="t-mark">Insurance</div>
+      <div class="t-label">UnitedHealthcare</div>
+      <div class="t-sub">UHC plans accepted</div>
+    </div>
+    <div class="trust-item reveal d3">
+      <div class="t-mark">Flex Spending</div>
+      <div class="t-label">HSA · FSA</div>
+      <div class="t-sub">Health savings accepted</div>
+    </div>
+    <div class="trust-item reveal d4">
+      <div class="t-mark">First Visit</div>
+      <div class="t-label">90 Minutes</div>
+      <div class="t-sub">vs. 60 min elsewhere</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Philosophy ────────────────────────────────────────────────── -->
+<section class="philosophy" id="philosophy">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span>I.</span> <span>Philosophy</span> <span class="cn">道</span></div>
+
+    <div class="inner">
+      <div class="glyph-stack reveal d1">
+        <div class="big">氣</div>
+        <div class="caption">qì · vital breath</div>
+      </div>
+
+      <div class="body-col reveal d2">
+        <p class="body">
+          Acupuncture is not a treatment performed on you. It is a slow conversation with
+          the body — listening for where breath has stopped, where warmth has thinned,
+          where the current of <em>qì</em> has lost its road.
+        </p>
+        <p class="body">
+          What we practise is older than memory: a medicine of pulse and palpation,
+          of herbs gathered by season, of fine needles placed at the points classical
+          texts have mapped for three millennia. It is patient work. It is meant to be.
+          We do not chase symptoms — we tend to the soil they grew from.
+        </p>
+
+        <div class="signature">
+          <div class="seal">印</div>
+          <div class="sig-text">
+            <b>Dr. Selina W&amp;E</b><br/>
+            L.Ac., M.S.O.M. · Memphis
+          </div>
+        </div>
+
+        <div style="margin-top:48px;">
+          <a href="#services" class="btn-ghost">Read the Treatments <span style="font-family:var(--serif);font-style:italic">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- divider -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 520 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,12 C120,2 200,22 260,12 C320,2 400,22 520,12" fill="none" stroke="#b8af9a" stroke-width=".5"/>
+    <circle cx="260" cy="12" r="2.5" class="divider-dot" fill="#7a2222"/>
+  </svg>
+</div>
+
+<!-- ─── Services ──────────────────────────────────────────────────── -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow reveal"><span>II.</span> <span>Treatments</span> <span class="cn">術</span></div>
+        <h2 class="reveal d1">A small <span class="accent">repertoire,</span> practised deeply.</h2>
+      </div>
+      <p class="right reveal d2">Four traditional modalities, offered alone or in combination. Each session begins with a pulse reading and conversation.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal d1">
+        <div class="num">01 / 04</div>
+        <div class="icon">針</div>
+        <h3>Acupuncture</h3>
+        <div class="cn">zhēn jiǔ — 針灸</div>
+        <p>Sterile, single-use, hair-thin needles placed along the body's meridians to release stagnation, calm the nervous system, and restore the natural flow of qì.</p>
+        <a href="#book" class="learn">Begin a course <span class="arr">→</span></a>
+      </article>
+
+      <article class="svc reveal d2">
+        <div class="num">02 / 04</div>
+        <div class="icon">罐</div>
+        <h3>Cupping &amp; Gua Sha</h3>
+        <div class="cn">bá guàn — 拔罐</div>
+        <p>Glass cups draw stagnant blood to the surface; jade tools clear the channels. Long used by physicians, dancers, and field workers alike for muscular ease.</p>
+        <a href="#book" class="learn">Begin a course <span class="arr">→</span></a>
+      </article>
+
+      <article class="svc reveal d3">
+        <div class="num">03 / 04</div>
+        <div class="icon">草</div>
+        <h3>Herbal Medicine</h3>
+        <div class="cn">zhōng yào — 中藥</div>
+        <p>Custom formulas drawn from a sourced apothecary of roots, barks, and flowers. Decoctions and granules prepared to the constitution, not the diagnosis.</p>
+        <a href="#book" class="learn">Begin a course <span class="arr">→</span></a>
+      </article>
+
+      <article class="svc reveal d4">
+        <div class="num">04 / 04</div>
+        <div class="icon">灸</div>
+        <h3>Moxibustion</h3>
+        <div class="cn">ài jiǔ — 艾灸</div>
+        <p>The slow burning of mugwort over acupoints to warm the channels and tonify deficient cold. Often paired with needling for chronic fatigue and digestion.</p>
+        <a href="#book" class="learn">Begin a course <span class="arr">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Acupoint Explorer ──────────────────────────────────────── -->
+<section class="acupoints" id="acupoints">
+  <div class="acu-sticky">
+  <div class="wrap">
+    <p class="acu-eyebrow">穴 &middot; Eight Points</p>
+    <h2 class="acu-heading">Where the needle meets the meridian.</h2>
+    <p class="acu-sub">Scroll through each point to hear its story.</p>
+    <div class="acu-progress"><div class="acu-progress-fill" id="acuProgressFill"></div></div>
+
+    <div class="acu-grid" id="acuGrid">
+
+      <div class="acu-card" data-point="st36">
+        <div class="acu-code">ST 36</div>
+        <div class="acu-hanzi">足三里</div>
+        <div class="acu-name">Zusanli<em>"Leg Three Miles"</em></div>
+        <span class="acu-meridian">Stomach · Earth</span>
+      </div>
+
+      <div class="acu-card" data-point="li4">
+        <div class="acu-code">LI 4</div>
+        <div class="acu-hanzi">合谷</div>
+        <div class="acu-name">Hegu<em>"Joining Valley"</em></div>
+        <span class="acu-meridian">Large Intestine · Metal</span>
+      </div>
+
+      <div class="acu-card" data-point="gv20">
+        <div class="acu-code">GV 20</div>
+        <div class="acu-hanzi">百会</div>
+        <div class="acu-name">Baihui<em>"Hundred Meetings"</em></div>
+        <span class="acu-meridian">Governing Vessel</span>
+      </div>
+
+      <div class="acu-card" data-point="sp6">
+        <div class="acu-code">SP 6</div>
+        <div class="acu-hanzi">三阴交</div>
+        <div class="acu-name">Sanyinjiao<em>"Three Yin Crossing"</em></div>
+        <span class="acu-meridian">Spleen · Earth</span>
+      </div>
+
+      <div class="acu-card" data-point="pc6">
+        <div class="acu-code">PC 6</div>
+        <div class="acu-hanzi">内关</div>
+        <div class="acu-name">Neiguan<em>"Inner Gate"</em></div>
+        <span class="acu-meridian">Pericardium · Fire</span>
+      </div>
+
+      <div class="acu-card" data-point="ht7">
+        <div class="acu-code">HT 7</div>
+        <div class="acu-hanzi">神门</div>
+        <div class="acu-name">Shenmen<em>"Spirit Gate"</em></div>
+        <span class="acu-meridian">Heart · Fire</span>
+      </div>
+
+      <div class="acu-card" data-point="lv3">
+        <div class="acu-code">LV 3</div>
+        <div class="acu-hanzi">太冲</div>
+        <div class="acu-name">Taichong<em>"Great Surge"</em></div>
+        <span class="acu-meridian">Liver · Wood</span>
+      </div>
+
+      <div class="acu-card" data-point="kd1">
+        <div class="acu-code">KD 1</div>
+        <div class="acu-hanzi">涌泉</div>
+        <div class="acu-name">Yongquan<em>"Gushing Spring"</em></div>
+        <span class="acu-meridian">Kidney · Water</span>
+      </div>
+
+    </div><!-- /acu-grid -->
+
+    <div class="acu-detail" id="acuDetail">
+      <div class="acu-detail-inner" id="acuDetailInner">
+        <div>
+          <p class="acu-d-label">Location</p>
+          <p class="acu-d-body" id="acuLoc"></p>
+        </div>
+        <div>
+          <p class="acu-d-label">Treats</p>
+          <p class="acu-d-body" id="acuTreats"></p>
+        </div>
+        <div>
+          <p class="acu-d-label">Classical Wisdom</p>
+          <p class="acu-d-quote" id="acuQuote"></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- /acu-sticky -->
+</section>
+
+<!-- ─── About ─────────────────────────────────────────────────────── -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span>III.</span> <span>The Practitioner</span> <span class="cn">人</span></div>
+
+    <div class="inner">
+      <div class="portrait reveal d1" role="img" aria-label="Portrait of Dr. Selina">
+        <div class="ph">
+          <b>人</b>
+          [ portrait of Dr. Selina ]<br/>
+          <span style="opacity:.7">silver-gelatin tone · 4:5</span>
+        </div>
+        <div class="stamp">選</div>
+      </div>
+
+      <div class="text reveal d2">
+        <div class="name">Dr. Selina <span class="surname">Wén-Èr</span></div>
+        <div class="cred-bar">
+          <span class="cred-pill">DACM</span>
+          <span class="cred-pill">PhD</span>
+          <span class="cred-pill">L.Ac.</span>
+          <span class="cred-pill">VA Authorized</span>
+        </div>
+        <div class="credentials">Memphis, Tennessee · W&amp;E Health Institute</div>
+
+        <p class="body">
+          Dr. Selina trained for nine years between Chengdu and the American
+          South — first under her grandfather, a fifth-generation country doctor,
+          and later in clinical residency at the Chengdu University of TCM. Her
+          doctoral work spans Traditional Chinese Medicine and Western clinical
+          research; her team holds both DACM and MD degrees.
+        </p>
+        <p class="body">
+          She opened W&amp;E in 2017 in a quiet brick storefront on Cooper Street
+          because Memphis, she felt, needed a clinic that moved at the pace
+          of a tea ceremony — patient, attentive, and entirely unhurried.
+        </p>
+
+        <div class="lineage-note">
+          <div class="ln-label">Lineage</div>
+          <p>Dr. Selina is the third-generation lineage successor of a specialised
+          abdominal diagnostic tradition — and the first practitioner to carry it
+          overseas. It is offered exclusively at W&amp;E.</p>
+        </div>
+
+        <div class="quote" style="margin-top:36px">
+          A good treatment ends when the room is quieter than it was before.
+        </div>
+
+        <a href="#book" class="btn-ghost">Schedule a consultation <span style="font-family:var(--serif);font-style:italic">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+    <div class="grid">
+
+      <div class="f-cta">
+        <div class="editorial">
+          Considering acupuncture?
+          <em>Dr. Selina will see you.<span class="seal">·</span></em>
+        </div>
+        <a href="#book" class="request">
+          <span>Request a first visit</span>
+          <span class="arr">→</span>
+        </a>
+
+        <div class="wordmark">
+          <div class="name">W&amp;E <span class="lat">Health Institute</span></div>
+          <p class="tag">A small acupuncture &amp; classical Chinese medicine practice on Cooper Street, Memphis.</p>
+        </div>
+      </div>
+
+      <nav class="f-nav" aria-label="Footer">
+        <a href="index.html" class="active"><span class="bullet"></span>Home</a>
+        <a href="about.html"><span class="bullet"></span>About</a>
+        <a href="services.html"><span class="bullet"></span>Services</a>
+        <a href="conditions.html"><span class="bullet"></span>Conditions</a>
+        <a href="testimonials.html"><span class="bullet"></span>Testimonials</a>
+        <a href="contact.html"><span class="bullet"></span>Contact</a>
+        <a href="saat.html"><span class="bullet"></span>SAAT Treatment</a>
+      </nav>
+
+      <div class="f-details">
+        <div class="f-block">
+          <h4>Contact Details</h4>
+          <a href="mailto:hello@wehealth.com">hello@wehealth.com</a>
+          <a href="tel:+19015550184">(901) 555&middot;0184</a>
+        </div>
+
+        <div class="f-block">
+          <h4>Address</h4>
+          <p>1845 Cooper Street<br/>Memphis, TN 38104</p>
+          <p class="muted" style="margin-top:8px;">Mon &ndash; Sat · by appointment</p>
+        </div>
+
+        <div class="f-block">
+          <h4>Follow Us</h4>
+          <div class="f-social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="3" y="3" width="18" height="18" rx="4"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WeChat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                <ellipse cx="9.2" cy="9.5" rx="6.2" ry="4.8"/>
+                <circle cx="7" cy="8.5" r=".5" fill="currentColor"/>
+                <circle cx="11.2" cy="8.5" r=".5" fill="currentColor"/>
+                <path d="M5,13.6 L4,15.6 L6,14.6"/>
+                <ellipse cx="15.4" cy="15" rx="5.2" ry="4"/>
+                <circle cx="13.8" cy="14" r=".4" fill="currentColor"/>
+                <circle cx="17" cy="14" r=".4" fill="currentColor"/>
+                <path d="M18.4,18 L19.2,19.6 L17.6,18.8"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+                <path d="M3.5,6 L12,13 L20.5,6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <span>Memphis · 田納西州曼菲斯</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── React mount for Tweaks ────────────────────────────────────── -->
+<div id="tweaks-root"></div>
+
+<!-- ─── Nav + reveal + animation logic ───────────────────────────── -->
+<script>
+  // Mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const overlay = document.getElementById('menuOverlay');
+  const menuClose = document.getElementById('menuClose');
+  if (burger && overlay) {
+    burger.addEventListener('click', () => overlay.classList.add('open'));
+    menuClose.addEventListener('click', () => overlay.classList.remove('open'));
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+  }
+
+  // Sticky-nav background after a bit of scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Ink-paint reveal — hero elements
+  const inkIo = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('ip-on'); inkIo.unobserve(e.target); }
+    }
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.ink-paint').forEach(el => inkIo.observe(el));
+
+  // Scroll reveal — IntersectionObserver
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+
+  // ── Split headlines into word-masks (PK-style) ─────────────────────
+  function splitWords(el, baseDelay) {
+    baseDelay = baseDelay || 0;
+    const walk = (node, out) => {
+      node.childNodes.forEach(child => {
+        if (child.nodeType === 3) {
+          const words = child.textContent.split(/(\s+)/);
+          words.forEach(w => {
+            if (/^\s+$/.test(w)) out.push(document.createTextNode(w));
+            else if (w.length) {
+              const s = document.createElement('span');
+              s.className = 'word'; s.textContent = w;
+              out.push(s);
+            }
+          });
+        } else if (child.nodeType === 1) {
+          const inner = [];
+          walk(child, inner);
+          const wrap = child.cloneNode(false);
+          inner.forEach(n => wrap.appendChild(n));
+          out.push(wrap);
+        }
+      });
+    };
+    const collected = [];
+    walk(el, collected);
+    el.innerHTML = '';
+    const line = document.createElement('span');
+    line.className = 'splitline';
+    collected.forEach(n => line.appendChild(n));
+    el.appendChild(line);
+    const words = line.querySelectorAll('.word');
+    words.forEach((w,i) => {
+      w.style.setProperty('--i', i);
+      w.style.setProperty('--d', baseDelay + 'ms');
+    });
+    return line;
+  }
+
+  // Apply to hero h1 + section h2s
+  document.querySelectorAll('.hero h1, section h2').forEach((h) => {
+    const line = splitWords(h, 0);
+    if (h.closest('.hero')) {
+      requestAnimationFrame(() => line.classList.add('in'));
+    } else {
+      const lo = new IntersectionObserver((entries) => {
+        for (const e of entries) if (e.isIntersecting) { line.classList.add('in'); lo.disconnect(); }
+      }, {threshold:.2, rootMargin:'0px 0px -10% 0px'});
+      lo.observe(line);
+    }
+  });
+
+  // Body paragraphs with .body — fade-mask up
+  document.querySelectorAll('p.body, .step p, .t-card .quote, .hero .lede').forEach(p => {
+    p.classList.add('mask-up');
+    const lo = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); lo.unobserve(e.target); }
+    }, {threshold:.15, rootMargin:'0px 0px -6% 0px'});
+    lo.observe(p);
+    if (p.closest('.hero')) requestAnimationFrame(() => p.classList.add('in'));
+  });
+
+  // Portrait + service icons — zoom-in
+  document.querySelectorAll('.about .portrait, .svc .icon, .philosophy .glyph-stack .big').forEach(el => {
+    el.classList.add('zoom-in');
+    const lo = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); lo.unobserve(e.target); }
+    }, {threshold:.2, rootMargin:'0px 0px -8% 0px'});
+    lo.observe(el);
+  });
+
+  // ── Parallax scroll ────────────────────────────────────────────────
+  const parallaxTargets = [
+    {sel:'.hero .glyph', speed: 0.35},
+    {sel:'.hero .photo', speed: 0.15},
+    {sel:'footer .glyph', speed: 0.25},
+  ].map(t => ({el: document.querySelector(t.sel), speed: t.speed})).filter(t => t.el);
+
+  let ticking = false;
+  function onScrollParallax() {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      parallaxTargets.forEach(t => {
+        const rect = t.el.getBoundingClientRect();
+        const center = rect.top + rect.height/2;
+        const dist = center - window.innerHeight/2;
+        t.el.style.setProperty('--py', (-dist * t.speed).toFixed(1) + 'px');
+        if (!t.el.classList.contains('parallax')) t.el.classList.add('parallax');
+      });
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScrollParallax, {passive:true});
+  onScrollParallax();
+
+
+  // ── Acupoint Explorer ──────────────────────────────────────────
+  const ACU_DATA = {
+    st36: {
+      loc: 'Four finger-widths below the kneecap, one finger-width lateral to the shin bone.',
+      treats: 'Fatigue, digestive weakness, immune deficiency, chronic illness, leg pain.',
+      quote: '"To tonify Stomach 36 is to fill the granary of the body — from here, all transformation begins."'
+    },
+    li4: {
+      loc: 'In the webbing between thumb and index finger, at the midpoint of the second metacarpal.',
+      treats: 'Headache, toothache, facial pain, common cold, constipation, labour induction.',
+      quote: '"Where the valleys meet, the qi gathers. Press here and the face clears like morning after rain."'
+    },
+    gv20: {
+      loc: 'On the crown of the head, midway between the ears along the midline.',
+      treats: 'Headache, dizziness, mental fog, prolapse, anxiety, depression.',
+      quote: '"At the hundred meetings, heaven and earth speak through the crown. Here the shen is lifted."'
+    },
+    sp6: {
+      loc: 'Three finger-widths above the inner ankle bone, behind the tibia.',
+      treats: 'Menstrual disorders, insomnia, digestive complaints, oedema, urinary issues.',
+      quote: '"Three yin rivers converge here. Needle gently — you hold the tides of three organs in one breath."'
+    },
+    pc6: {
+      loc: 'Two finger-widths above the inner wrist crease, between the tendons.',
+      treats: 'Nausea, palpitations, anxiety, chest tightness, wrist pain, motion sickness.',
+      quote: '"The inner gate opens the chest. When the heart is locked, this is the key."'
+    },
+    ht7: {
+      loc: 'On the wrist crease, in the hollow on the ulnar (little finger) side.',
+      treats: 'Insomnia, anxiety, palpitations, poor memory, emotional instability.',
+      quote: '"The spirit dwells in the heart. When it wanders at night, bring it home through this gate."'
+    },
+    lv3: {
+      loc: 'On the top of the foot, in the hollow between the first and second toes.',
+      treats: 'Stress, irritability, eye problems, headache, menstrual irregularity, hypertension.',
+      quote: '"The great surge — where wood meets its own force. Smooth the liver, and the whole river flows."'
+    },
+    kd1: {
+      loc: 'On the sole of the foot, in the depression formed when the toes are curled.',
+      treats: 'Hypertension, hot flashes, insomnia, loss of consciousness, exhaustion, anxiety.',
+      quote: '"From the gushing spring all life ascends. To root the body, begin here — at the earth beneath your feet."'
+    }
+  };
+
+  const acuSection    = document.getElementById('acupoints');
+  const acuGridEl     = document.getElementById('acuGrid');
+  const acuLoc        = document.getElementById('acuLoc');
+  const acuTreats     = document.getElementById('acuTreats');
+  const acuQuote      = document.getElementById('acuQuote');
+  const acuInner      = document.getElementById('acuDetailInner');
+  const acuFill       = document.getElementById('acuProgressFill');
+  let acuCardIndex    = -1;
+
+  function setDetail(data) {
+    if (!acuInner) return;
+    acuInner.classList.add('fading');
+    setTimeout(() => {
+      acuLoc.textContent    = data.loc;
+      acuTreats.textContent = data.treats;
+      acuQuote.textContent  = data.quote;
+      acuInner.classList.remove('fading');
+    }, 220);
+  }
+
+  if (acuSection && acuGridEl) {
+    const acuCards = Array.from(acuGridEl.querySelectorAll('.acu-card'));
+    const N = acuCards.length;
+    // Section height = viewport + travel. Each card gets (travel / N) of scroll.
+    const TRAVEL = Math.round(window.innerHeight * 1.1);
+    acuSection.style.minHeight = (window.innerHeight + TRAVEL) + 'px';
+
+    function activateCard(idx) {
+      if (idx === acuCardIndex) return;
+      const prev = acuCardIndex;
+      acuCardIndex = idx;
+
+      acuCards.forEach((card, i) => {
+        card.classList.toggle('active', i === idx);
+        card.classList.toggle('seen',   i < idx);
+      });
+
+      if (idx >= 0) {
+        const data = ACU_DATA[acuCards[idx].dataset.point];
+        if (data) setDetail(data);
+        // progress bar
+        if (acuFill) acuFill.style.right = (100 - ((idx + 1) / N * 100)) + '%';
+      } else {
+        if (acuFill) acuFill.style.right = '100%';
+      }
+    }
+
+    function onAcuScroll() {
+      const scrolled = window.scrollY - acuSection.offsetTop;
+      if (scrolled <= 0) { activateCard(-1); return; }
+      const progress = Math.min(scrolled / TRAVEL, 1);
+      const idx = Math.min(Math.floor(progress * N), N - 1);
+      activateCard(idx);
+    }
+
+    window.addEventListener('scroll', onAcuScroll, { passive: true });
+    onAcuScroll();
+
+    // Still allow clicking a seen/active card to re-read its detail
+    acuGridEl.addEventListener('click', (e) => {
+      const card = e.target.closest('.acu-card');
+      if (!card) return;
+      const idx = acuCards.indexOf(card);
+      if (idx < 0 || idx > acuCardIndex) return; // not yet revealed
+      const data = ACU_DATA[card.dataset.point];
+      if (data) setDetail(data);
+    });
+  }
+
+  // Smooth in-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+</script>
+
+</body>
+</html>

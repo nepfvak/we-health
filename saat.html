@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SAAT Allergy Treatment — W&amp;E Health Institute · Memphis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js"></script>
+<style>
+  /* ── Scroll snap & full-viewport sections ───────────────────── */
+  html{scroll-snap-type:y proximity}
+  .page-hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
+  
+  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
+  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+/* ── SAAT page specific ───────────────────────────────────────────────── */
+.saat-intro-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:64px;
+  align-items:center;
+}
+@media(min-width:900px){
+  .saat-intro-grid{grid-template-columns:1fr 1.25fr;gap:80px}
+}
+.ear-photo{
+  aspect-ratio:3/4;
+  background:var(--ink-2);
+  border:.5px solid var(--rule-strong);
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  max-width:400px;
+}
+.ear-photo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity:.6;
+}
+.ear-photo .ear-glyph{
+  font-family:var(--brush);
+  font-size:120px;
+  color:rgba(232,223,201,.08);
+  position:relative;
+  z-index:1;
+  user-select:none;
+}
+.saat-intro-text{display:flex;flex-direction:column;gap:24px}
+.saat-intro-text p{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:18px;
+  line-height:1.8;
+  color:var(--paper-dim);
+  max-width:52ch;
+}
+.allergens-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  margin-top:52px;
+}
+@media(min-width:640px){
+  .allergens-grid{grid-template-columns:repeat(2,1fr)}
+}
+.allergen-card{
+  padding:36px 30px;
+  border:.5px solid var(--rule);
+  background:var(--ink-2);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:border-color .35s;
+}
+.allergen-card:hover{border-color:var(--rule-strong)}
+.allergen-card .a-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.allergen-card .a-title .dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--cinnabar);
+  flex-shrink:0;
+}
+.allergen-card .a-title h3{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:400;
+}
+.allergen-card p{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.7;
+  color:var(--paper-dim);
+}
+.features-list{
+  margin-top:52px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.feature-item{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:24px;
+  align-items:start;
+  padding:28px 0;
+  border-bottom:.5px solid var(--rule);
+}
+.feature-item:first-child{border-top:.5px solid var(--rule)}
+.feature-item .num{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.22em;
+  color:var(--paper-faint);
+  padding-top:4px;
+  font-weight:300;
+}
+.feature-item .feat-text{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:17px;
+  line-height:1.75;
+  color:var(--paper-dim);
+}
+.feature-item .feat-text b{
+  font-weight:400;
+  color:var(--paper);
+  font-style:italic;
+}
+.saat-cta-box{
+  margin-top:80px;
+  padding:72px 48px;
+  border:.5px solid var(--gold-dim);
+  background:linear-gradient(135deg,rgba(201,162,90,.06),rgba(168,50,50,.04));
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:24px;
+  position:relative;
+  overflow:hidden;
+}
+.saat-cta-box::before{
+  content:"耳";
+  position:absolute;
+  right:-20px;
+  bottom:-40px;
+  font-family:var(--brush);
+  font-size:220px;
+  color:rgba(201,162,90,.04);
+  user-select:none;
+  pointer-events:none;
+  line-height:1;
+}
+.saat-cta-box .cta-eyebrow{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.saat-cta-box .cta-eyebrow::before{content:"";width:24px;height:.5px;background:var(--gold)}
+.saat-cta-box .cta-heading{
+  font-family:var(--serif);
+  font-weight:300;
+  font-style:italic;
+  font-size:clamp(28px,4vw,52px);
+  line-height:1.05;
+  color:var(--paper);
+  max-width:22ch;
+  text-wrap:balance;
+}
+.saat-cta-box .cta-sub{
+  font-family:var(--serif);
+  font-weight:300;
+  font-style:italic;
+  color:var(--paper-dim);
+  font-size:16px;
+  max-width:44ch;
+  line-height:1.75;
+}
+@media(min-width:640px){
+  .saat-cta-box{padding:72px 64px}
+}
+[data-theme="light"] .ear-photo .ear-glyph{color:rgba(24,24,26,.08)}
+[data-theme="light"] .saat-cta-box{background:linear-gradient(135deg,rgba(61,139,114,.07),rgba(200,146,26,.06))}
+[data-theme="light"] .saat-cta-box::before{color:rgba(61,139,114,.05)}
+</style>
+</head>
+<body>
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><span class="mark">醫</span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="saat.html" class="is-active">SAAT</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="mob-close" id="menuClose">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="conditions.html">Conditions</a>
+  <a href="testimonials.html">Testimonials</a>
+  <a href="contact.html">Contact</a>
+  <a href="saat.html" class="is-active">SAAT Allergy Treatment</a>
+  <a href="contact.html" class="mob-book">Book Appointment</a>
+</div>
+
+<div class="page-hero">
+  <div class="bg"></div>
+  <div class="ghost-glyph" aria-hidden="true">耳</div>
+  <div class="wrap">
+    <p class="eyebrow"><span class="cn">耳針</span> Auricular Acupuncture</p>
+    <h1>SAAT Allergy <span class="accent">Treatment</span></h1>
+    <p class="lede">A gentle, non-invasive technique providing long-term relief from allergic reactions.</p>
+  </div>
+</div>
+
+<!-- Section 1: Intro two-column -->
+<section>
+  <div class="wrap">
+    <div class="saat-intro-grid">
+
+      <!-- Left: Ear photo placeholder -->
+      <div class="ear-photo reveal" aria-label="Ear acupuncture illustration">
+        <span class="ear-glyph" aria-hidden="true">耳</span>
+      </div>
+
+      <!-- Right: Description -->
+      <div class="saat-intro-text reveal d2">
+        <p class="eyebrow"><span class="cn">技術</span> The Technique</p>
+        <h2>Soliman Auricular Allergy <span class="accent">Treatment</span></h2>
+        <p>SAAT is a specialized patented acupuncture technique, a gentle, non-invasive therapy designed to help reduce or eliminate allergic reactions. It is used to desensitize the immune system to various allergies, including Alpha-gal, food, environmental, and chemical sensitivities.</p>
+        <p>It involves inserting a tiny, specialized needle into the ear, often providing long-term remission. Most patients experience significant relief after a single session per allergen, with minimal discomfort and no need for ongoing drug therapy.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Common Allergens -->
+<section style="padding-top:0;border-top:1px solid var(--rule)">
+  <div class="wrap" style="padding-top:100px">
+    <div class="reveal">
+      <p class="eyebrow"><span class="cn">過敏原</span> Common Allergens</p>
+      <h2>What can SAAT <span class="accent">treat?</span></h2>
+    </div>
+
+    <div class="allergens-grid">
+
+      <div class="allergen-card reveal d1">
+        <div class="a-title"><span class="dot"></span><h3>Alpha-gal</h3></div>
+        <p>Red meat (beef, pork, lamb, venison and rabbit), dairy products, and related mammalian-derived products.</p>
+      </div>
+
+      <div class="allergen-card reveal d2">
+        <div class="a-title"><span class="dot"></span><h3>Food</h3></div>
+        <p>Gluten/wheat, soy, dairy, corn, eggs, sugar, nuts, fruits, vegetables, shellfish, preservatives, and more.</p>
+      </div>
+
+      <div class="allergen-card reveal d1">
+        <div class="a-title"><span class="dot"></span><h3>Environmental</h3></div>
+        <p>Animal dander, dust, molds, chemicals, pollens, trees, grasses, weeds, and more.</p>
+      </div>
+
+      <div class="allergen-card reveal d2">
+        <div class="a-title"><span class="dot"></span><h3>Medications</h3></div>
+        <p>Penicillin and other drug sensitivities.</p>
+      </div>
+
+      <div class="allergen-card reveal d1">
+        <div class="a-title"><span class="dot"></span><h3>Other</h3></div>
+        <p>Toxins and insect venom.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Technical Features -->
+<section style="border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow"><span class="cn">原理</span> How it works</p>
+      <h2>Why SAAT is <span class="accent">effective</span></h2>
+    </div>
+
+    <div class="features-list">
+
+      <div class="feature-item reveal">
+        <span class="num">01</span>
+        <p class="feat-text">If you have a known allergen, we will do a test and treat it.</p>
+      </div>
+
+      <div class="feature-item reveal">
+        <span class="num">02</span>
+        <p class="feat-text">If you don't know your allergen yet, we will help you screen first and then treat it.</p>
+      </div>
+
+      <div class="feature-item reveal">
+        <span class="num">03</span>
+        <p class="feat-text"><b>Effectiveness:</b> Developed by Dr. Nader Soliman, reported to have a high success rate of 80–95% for treating various allergies, with minimal side effects.</p>
+      </div>
+
+      <div class="feature-item reveal">
+        <span class="num">04</span>
+        <p class="feat-text">Patented equipment and reagents for diagnostic test analysis.</p>
+      </div>
+
+      <div class="feature-item reveal">
+        <span class="num">05</span>
+        <p class="feat-text">The treatment process does not require drugs; only gentle acupuncture techniques are used, and most people will not feel any pain.</p>
+      </div>
+
+      <div class="feature-item reveal">
+        <span class="num">06</span>
+        <p class="feat-text">No need to see a doctor frequently. Most people only need one treatment and one follow-up visit.</p>
+      </div>
+
+      <div class="feature-item reveal">
+        <span class="num">07</span>
+        <p class="feat-text"><b>Duration:</b> Results are generally long-lasting, often achieved in a single visit per allergen.</p>
+      </div>
+
+      <div class="feature-item reveal">
+        <span class="num">08</span>
+        <p class="feat-text">The recurrence rate is extremely low.</p>
+      </div>
+
+    </div>
+
+    <!-- CTA Box -->
+    <div class="saat-cta-box reveal">
+      <p class="cta-eyebrow">Begin your treatment</p>
+      <p class="cta-heading">Ready to live without allergies?</p>
+      <p class="cta-sub">SAAT treatment is available at W&amp;E Health Institute. Book an appointment and we'll assess your allergens and develop a treatment plan tailored to you.</p>
+      <a href="contact.html" class="btn-primary">Book an Appointment <span class="arrow">→</span></a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="f-cta">
+        <div class="editorial">Considering acupuncture? <em>Dr. Selina will see you.<span class="seal">·</span></em></div>
+        <a href="contact.html" class="request"><span>Request a first visit</span><span class="arr">→</span></a>
+        <div class="wordmark">
+          <div class="name">W&amp;E <span class="lat">Health Institute</span></div>
+          <p class="tag">A small acupuncture &amp; classical Chinese medicine practice in Cordova, Memphis.</p>
+        </div>
+      </div>
+      <nav class="f-nav" aria-label="Footer">
+        <a href="index.html"><span class="bullet"></span>Home</a>
+        <a href="about.html"><span class="bullet"></span>About</a>
+        <a href="services.html"><span class="bullet"></span>Services</a>
+        <a href="conditions.html"><span class="bullet"></span>Conditions</a>
+        <a href="testimonials.html"><span class="bullet"></span>Testimonials</a>
+        <a href="contact.html"><span class="bullet"></span>Contact</a>
+        <a href="saat.html"><span class="bullet"></span>SAAT Treatment</a>
+      </nav>
+      <div class="f-details">
+        <div class="f-block"><h4>Contact Details</h4><a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a><a href="tel:+19013406433">(901) 340-6433</a></div>
+        <div class="f-block"><h4>Address</h4><p>985 Cordova Station Ave, Ste 101<br/>Cordova, TN 38018</p><p class="muted" style="margin-top:8px">Mon–Sat · 8:00 am–6:00 pm</p></div>
+        <div class="f-block"><h4>Follow Us</h4>
+          <div class="f-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:wehiusa@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5,6 L12,13 L20.5,6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a><span>Cordova · Memphis, TN</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burgerBtn');
+const overlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+if (burger && overlay) {
+  burger.addEventListener('click', () => overlay.classList.add('open'));
+  menuClose.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+}
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24), {passive:true});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+}, {threshold:.1, rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+document.querySelectorAll('p.body').forEach(p => {
+  p.classList.add('mask-up');
+  const lo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');lo.unobserve(e.target);} });
+  }, {threshold:.08});
+  lo.observe(p);
+});
+</script>
+</body>
+</html>
