@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<script>try{if(localStorage.getItem("wehi-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<script>try{if(localStorage.getItem("wehi-theme")!=="dark")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
 <link rel="stylesheet" href="styles.css" />
 <script src="theme.js"></script>
 
@@ -88,8 +88,8 @@
   @media (min-width:980px){.philosophy .inner{grid-template-columns:1fr 1.4fr;gap:80px}}
   .philosophy .glyph-stack{position:relative;display:flex;align-items:flex-start;gap:24px}
   .philosophy .glyph-stack .big{
-    font-family:var(--brush);font-size:clamp(120px,16vw,200px);line-height:.85;color:var(--gold);
-    display:var(--glyph-display,block);
+    font-family:var(--brush);font-size:clamp(120px,16vw,200px);line-height:1.05;color:var(--gold);
+    display:var(--glyph-display,block);padding-bottom:.08em;
   }
   .philosophy .glyph-stack .caption{
     font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--paper-faint);
