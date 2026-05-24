@@ -32,6 +32,39 @@
   .tx-cta .eyebrow{justify-content:center}
   .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
   .tx-cta .cta-text em{font-style:normal;color:var(--gold)}
+
+  /* Treatment nav strip */
+  .tx-nav-strip{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px clamp(20px,5vw,80px);background:var(--ink-2);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .tx-nav-strip a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
+  .tx-nav-strip a:hover{color:var(--gold)}
+  .tx-page-nav{display:flex;gap:32px}
+
+  /* Interactive section */
+  .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
+  .tx-interactive>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+  /* Moxa type selector */
+  .moxa-selector{margin-top:40px}
+  .moxa-tabs{display:flex;gap:0;border:1px solid var(--rule);width:fit-content;margin-bottom:0}
+  .moxa-tab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 24px;cursor:pointer;background:transparent;border:none;color:var(--paper-dim);border-right:1px solid var(--rule);transition:color .2s,background .2s;position:relative}
+  .moxa-tab:last-child{border-right:none}
+  .moxa-tab.active{color:var(--paper);background:var(--ink-2)}
+  .moxa-tab:hover:not(.active){color:var(--paper)}
+  .moxa-panels{border:1px solid var(--rule);border-top:none}
+  .moxa-panel{display:none;padding:40px;position:relative;overflow:hidden}
+  .moxa-panel.active{display:block}
+  .moxa-panel-glow{position:absolute;top:0;right:0;width:220px;height:220px;border-radius:50%;pointer-events:none;opacity:.07;filter:blur(60px)}
+  .moxa-panel-icon{font-family:var(--brush);font-size:52px;line-height:1;margin-bottom:20px;display:block}
+  .moxa-panel h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.4vw,28px);color:var(--paper);margin-bottom:8px;line-height:1.2}
+  .moxa-panel .moxa-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cinnabar);margin-bottom:20px}
+  .moxa-panel p{font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:60ch;margin-bottom:14px}
+  .moxa-panel p:last-child{margin-bottom:0}
+  .moxa-panel-meta{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;padding-top:24px;border-top:1px solid var(--rule)}
+  .moxa-meta-item{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  .moxa-meta-item span{display:block;color:var(--gold);margin-bottom:4px}
+  .moxa-meta-item strong{color:var(--paper-dim);font-weight:400}
+  @keyframes warm-pulse{0%,100%{box-shadow:0 0 0 0 rgba(200,80,40,.0)}50%{box-shadow:0 0 32px 8px rgba(200,80,40,.18)}}
+  .moxa-panel.active{animation:warm-pulse 3s ease-in-out infinite}
 </style>
 </head>
 <body>
@@ -79,15 +112,24 @@
   </div>
 </header>
 
+<!-- Treatment Nav Strip -->
+<div class="tx-nav-strip">
+  <a href="index.html#services" class="tx-back">← All Treatments</a>
+  <div class="tx-page-nav">
+    <a href="treatment-acupuncture.html" class="tx-prev">← Acupuncture</a>
+    <a href="treatment-herbal-medicine.html" class="tx-next">Herbal Medicine →</a>
+  </div>
+</div>
+
 <!-- Overview -->
 <section class="tx-overview">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">概</span>Overview</div>
     <h2 class="reveal d1">Warmth as <span class="accent">medicine.</span></h2>
     <div style="margin-top:40px">
-      <p class="reveal d2">Moxibustion is one of the oldest therapies in the Chinese medicine tradition, older even than acupuncture in some lineages. It involves the burning of dried mugwort — Artemisia argyi, known in Chinese as <em>àicǎo</em> — near or on specific acupoints. The resulting heat penetrates deeply into the channel system, tonifying yang energy, dispersing cold, and moving stagnation that cold has fixed in place.</p>
-      <p class="reveal d3">In classical theory, many chronic conditions arise not from excess but from deficiency — too little warmth, too little movement, a system that has grown quiet and cold over years. Moxibustion addresses exactly this. Where acupuncture needles prompt reorganisation, moxa fills gaps. The two therapies are considered complementary, and Dr. Selina frequently combines them within a single treatment session when the pattern calls for it.</p>
-      <p class="reveal d3">Modern clinical research has investigated moxibustion's effects on circulation, immune function, and hormonal balance, with particular interest in its role in breech presentation, digestive disorders, and fatigue states. The smell of burning mugwort is distinctive and, to many patients, becomes associated over time with the relief that follows — a form of sensory anchoring that itself has therapeutic value.</p>
+      <p class="reveal d2">Moxibustion is a traditional therapy that involves warming specific areas of the body with the heat from burning mugwort, an herb called moxa. It is often used alone or alongside acupuncture and is intended to warm the body, improve circulation, and support balance in traditional Chinese medicine.</p>
+      <p class="reveal d3">Patients may seek moxibustion for cold sensations, joint stiffness, fatigue, or certain pain conditions. Some people find the warmth comforting and report temporary relief of discomfort or muscle tightness. It is generally presented as a supportive therapy rather than a stand-alone cure.</p>
+      <p class="reveal d3">Because moxibustion uses heat and smoke, it can cause burns, skin irritation, or breathing discomfort in sensitive patients. It should be performed carefully by a trained practitioner, and extra caution is needed for people with asthma, sensitive skin, poor circulation, or reduced sensation.</p>
     </div>
   </div>
 </section>
@@ -100,25 +142,86 @@
       <div class="tx-list-block reveal d1">
         <h3>What to expect <em>during a session</em></h3>
         <ul class="tx-list">
-          <li>The practitioner holds a lit moxa stick close to the surface of the skin above specific acupoints, moving it in slow circles or hovering at a fixed distance — close enough for deep warmth, never close enough to burn.</li>
-          <li>Some patients receive moxa on the handle of an inserted acupuncture needle, which conducts gentle warmth directly into the point — a technique called <em>warming needle moxibustion</em>.</li>
-          <li>The treatment is deeply relaxing. Most patients describe a spreading warmth that moves along the limbs — the movement of qì through the channel.</li>
-          <li>A mild herbal smoke is present during treatment. The clinic ventilates well. Please let the practitioner know in advance if you have respiratory sensitivity.</li>
+          <li>Moxa (dried mugwort) is burned near or on specific acupuncture points to deliver gentle, penetrating warmth.</li>
+          <li>The sensation is typically warm and comforting — not painful; the practitioner monitors carefully to prevent overheating.</li>
+          <li>Sessions may be combined with acupuncture or used on their own depending on your condition.</li>
+          <li>The treatment room will have a distinct herbal smoke smell; smokeless moxa options are available.</li>
         </ul>
       </div>
 
       <div class="tx-list-block reveal d2">
         <h3>Commonly reported <em>benefits</em></h3>
         <ul class="tx-list">
-          <li>Relief of chronic fatigue and persistent feelings of cold in the body</li>
-          <li>Improved digestive function, especially in patterns of loose stool and sluggish digestion</li>
-          <li>Support for menstrual irregularity and menstrual pain rooted in cold obstruction</li>
-          <li>Reduced joint stiffness that worsens in cold or damp weather</li>
-          <li>Immune tonification in patients prone to repeated illness</li>
-          <li>Deepened rest and improved sleep in exhaustion states</li>
+          <li>Warmth and comfort for cold sensations or stiff joints</li>
+          <li>Support for fatigue or feelings of depletion</li>
+          <li>Temporary relief of muscle tightness or pain</li>
+          <li>Often used alongside acupuncture for a combined therapeutic effect</li>
+          <li>Grounding and calming for many patients</li>
         </ul>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- Interactive: Moxa Type Selector -->
+<section class="tx-interactive">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">互</span>Interactive</div>
+    <h2 class="reveal d1">Explore moxa <span class="accent">techniques.</span></h2>
+    <p class="reveal d2" style="font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:56ch;margin-top:12px">Select a moxa type to learn how it is applied, when it is used, and what the sensation is like.</p>
+
+    <div class="moxa-selector reveal d2">
+      <div class="moxa-tabs">
+        <button class="moxa-tab active" data-moxa="stick">Moxa Stick</button>
+        <button class="moxa-tab" data-moxa="cone">Cone Moxa</button>
+        <button class="moxa-tab" data-moxa="smokeless">Smokeless Moxa</button>
+      </div>
+      <div class="moxa-panels">
+
+        <div class="moxa-panel active" id="moxa-stick">
+          <div class="moxa-panel-glow" style="background:var(--cinnabar)"></div>
+          <span class="moxa-panel-icon">艾</span>
+          <h3>Moxa Stick</h3>
+          <p class="moxa-tag">Most common · Indirect heat · Traditional</p>
+          <p>A cigar-shaped roll of compressed mugwort is lit and held 2–3 cm above acupoints, moved in gentle circles or bird-pecking motions. This is the most common form used in modern clinical settings.</p>
+          <p>The heat penetrates gradually and can be precisely directed. Practitioners rotate or move the stick to prevent scorching while allowing deep warmth to accumulate at the point.</p>
+          <div class="moxa-panel-meta">
+            <div class="moxa-meta-item"><span>Sensation</span><strong>Spreading warmth, often described as deeply soothing</strong></div>
+            <div class="moxa-meta-item"><span>Best for</span><strong>Cold limbs, joint stiffness, general tonification</strong></div>
+            <div class="moxa-meta-item"><span>Smoke</span><strong>Moderate — herbal, distinctive smell</strong></div>
+          </div>
+        </div>
+
+        <div class="moxa-panel" id="moxa-cone">
+          <div class="moxa-panel-glow" style="background:var(--cinnabar)"></div>
+          <span class="moxa-panel-icon">錐</span>
+          <h3>Cone Moxa</h3>
+          <p class="moxa-tag">Direct or indirect · Intense and focused · Classical</p>
+          <p>Small cones of mugwort are placed directly on the skin or on a medium such as ginger, salt, or garlic slices. The cone is burned down — often removed before it reaches the skin — delivering an intense, focused pulse of heat to a single point.</p>
+          <p>Cone moxa is considered the most classically potent form of moxibustion. Ginger-base cone moxa is especially popular for digestive and abdominal conditions; salt-base moxa on the navel is used for acute cold patterns.</p>
+          <div class="moxa-panel-meta">
+            <div class="moxa-meta-item"><span>Sensation</span><strong>Intense, concentrated warmth at the point</strong></div>
+            <div class="moxa-meta-item"><span>Best for</span><strong>Digestive weakness, acute cold, specific point tonification</strong></div>
+            <div class="moxa-meta-item"><span>Smoke</span><strong>More smoke than stick — good ventilation required</strong></div>
+          </div>
+        </div>
+
+        <div class="moxa-panel" id="moxa-smokeless">
+          <div class="moxa-panel-glow" style="background:var(--gold)"></div>
+          <span class="moxa-panel-icon">無</span>
+          <h3>Smokeless Moxa</h3>
+          <p class="moxa-tag">Modern adaptation · Low smoke · Sensitive patients</p>
+          <p>Smokeless moxa sticks are made from charcoal-processed mugwort or other compressed herbs and produce very little smoke while still generating therapeutic heat. Some practitioners also use moxa boxes with a fine-mesh filter.</p>
+          <p>This form is ideal for patients with respiratory sensitivity, asthma, or strong aversion to smoke. While some practitioners consider it slightly less potent than traditional moxa, it remains an effective option for warmth-based treatment.</p>
+          <div class="moxa-panel-meta">
+            <div class="moxa-meta-item"><span>Sensation</span><strong>Warm and steady — slightly less penetrating than traditional</strong></div>
+            <div class="moxa-meta-item"><span>Best for</span><strong>Respiratory-sensitive patients, office or home use</strong></div>
+            <div class="moxa-meta-item"><span>Smoke</span><strong>Minimal — suitable for most environments</strong></div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -141,7 +244,7 @@
 
       <div class="f-cta">
         <div class="f-logo" style="width:100%;max-width:280px;aspect-ratio:1/1;">
-          <image-slot id="footer-logo" placeholder="W&amp;E Health Institute logo"></image-slot>
+          <image-slot id="footer-logo" src="assets/logo-with-text.png" placeholder="W&amp;E Health Institute logo"></image-slot>
         </div>
         <div class="f-cta-buttons">
           <a href="mailto:wehiusa@gmail.com" class="request">
@@ -255,6 +358,22 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
 }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Moxa type selector
+(function(){
+  const tabs = document.querySelectorAll('.moxa-tab');
+  const panels = document.querySelectorAll('.moxa-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function(){
+      const key = this.dataset.moxa;
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      const target = document.getElementById('moxa-' + key);
+      if(target) target.classList.add('active');
+    });
+  });
+})();
 </script>
 </body>
 </html>
