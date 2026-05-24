@@ -2,18 +2,18 @@
 
 /* ── Variables ─────────────────────────────────────────────────────── */
 :root {
-  --ink: #080908;
-  --ink-2: #101110;
-  --ink-3: #161716;
-  --paper: #e8dfc9;
-  --paper-dim: #a89c83;
-  --paper-faint: #5a5347;
-  --gold: #b8af9a;
-  --gold-dim: #9c937e;
-  --cinnabar: #7a2222;
-  --cinnabar-dim: #5e0606;
-  --rule: rgba(232,223,201,.12);
-  --rule-strong: rgba(232,223,201,.22);
+  --ink: #1e1e1e;
+  --ink-2: #252525;
+  --ink-3: #2e2e2e;
+  --paper: #e8e8e8;
+  --paper-dim: #a8a8a8;
+  --paper-faint: #6e6e6e;
+  --gold: #4cb35a;
+  --gold-dim: #3a9447;
+  --cinnabar: #c8921a;
+  --cinnabar-dim: #a07314;
+  --rule: rgba(232,232,232,.10);
+  --rule-strong: rgba(232,232,232,.18);
   --serif: "Cormorant Garamond", "Noto Serif SC", "Times New Roman", serif;
   --brush: "Noto Serif SC", serif;
   --mono: ui-monospace, "Courier New", monospace;
@@ -21,9 +21,9 @@
 
 /* ── Reset ─────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; margin: 0; padding: 0 }
-html { background: #080908; scroll-behavior: smooth }
+html { background: #1e1e1e; scroll-behavior: smooth }
 html, body {
-  background: var(--ink, #080908);
+  background: var(--ink, #1e1e1e);
   color: var(--paper, #e8dfc9);
   font-family: var(--serif);
   font-weight: 400;
@@ -83,7 +83,7 @@ body::after {
 @media (min-width: 768px) { .nav { top: 18px; left: 18px; right: 18px } }
 @media (max-width: 480px)  { .nav { top: 8px; left: 8px; right: 8px } }
 .nav.scrolled {
-  background: rgba(11,9,7,.78);
+  background: rgba(30,30,30,.88);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   border-bottom-color: var(--rule);
@@ -127,7 +127,7 @@ body::after {
 }
 .nav .burger span { display: block; width: 16px; height: .5px; background: var(--paper) }
 .menu-overlay {
-  position: fixed; inset: 0; z-index: 60; background: rgba(11,9,7,.97);
+  position: fixed; inset: 0; z-index: 60; background: rgba(30,30,30,.97);
   -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
   display: none; flex-direction: column; justify-content: center; align-items: center; gap: 2px; padding: 80px 30px;
 }
@@ -488,12 +488,12 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
   --rule-strong:  rgba(21,20,15,.24);
 }
 
-/* Dark mode — no red (gold for what was cinnabar) */
+/* Dark mode overrides */
 :root:not([data-theme="light"]){
-  --paper:        #f4ecd6;
-  --paper-dim:    #c8bda1;
+  --paper:        #e8e8e8;
+  --paper-dim:    #a8a8a8;
   --gold:         #4cb35a;
-  --cinnabar:     #d6a73a;
+  --cinnabar:     #c8921a;
 }
 
 /* Drop the red top-of-page wash that lived in the default dark theme */
