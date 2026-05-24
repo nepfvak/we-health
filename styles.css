@@ -465,3 +465,75 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
   background: rgba(184,175,154,.08);
 }
 [data-theme="light"] .theme-btn:hover { background: rgba(61,139,114,.10) }
+
+/* ════════════════════════════════════════════════════════════════════
+   v2 SITE-WIDE OVERRIDES — applied to all pages so the nav, palette,
+   and core type read the same on home, about, services, conditions,
+   testimonials, contact, and saat.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* PALETTE — light mode (deep ink text, imperial-jade primary, gold accent) */
+[data-theme="light"]{
+  --ink:          #fbfaf7;
+  --ink-2:        #f1ede4;
+  --ink-3:        #e6ddc7;
+  --paper:        #0d0c08;
+  --paper-dim:    #1a1814;
+  --paper-faint:  #3a352d;
+  --gold:         #18762e;
+  --gold-dim:     #115a22;
+  --cinnabar:     #c8921a;
+  --cinnabar-dim: #a07314;
+  --rule:         rgba(21,20,15,.14);
+  --rule-strong:  rgba(21,20,15,.24);
+}
+
+/* Dark mode — no red (gold for what was cinnabar) */
+:root:not([data-theme="light"]){
+  --paper:        #f4ecd6;
+  --paper-dim:    #c8bda1;
+  --gold:         #4cb35a;
+  --cinnabar:     #d6a73a;
+}
+
+/* Drop the red top-of-page wash that lived in the default dark theme */
+body::after{
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(24,118,46,.06), transparent 55%),
+    radial-gradient(80% 60% at 100% 100%, rgba(201,162,90,.05), transparent 60%);
+}
+
+/* Type — site-wide readability bumps */
+html, body{ font-size:18px; line-height:1.6 }
+.eyebrow{ color:var(--paper-faint); font-size:12px; letter-spacing:.3em }
+.eyebrow::before{ background: var(--gold) }
+.eyebrow .cn{ color: var(--gold) }
+p.body{ font-weight: 400 }
+
+/* Nav — same on every page: dark readable links, jade brand mark + hover */
+.nav .links{ color: var(--paper); font-size: 12px !important; font-family: "Times New Roman", serif !important; gap: 20px !important }
+.nav .links a{
+  color: var(--paper);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .14em;
+}
+.nav .links a.is-active{ font-size: 12px !important }
+.nav .links a:hover, .nav .links a.is-active{ color: var(--gold) }
+.nav .links a::after{ background: var(--gold) }
+[data-theme="light"] .nav .brand .mark{ border-color: var(--gold); color: var(--gold) }
+
+/* Footer — darker, heavier text so it reads cleanly */
+.f-block p, .f-block a{ font-weight: 400; color: var(--paper) }
+.f-block .muted{ color: var(--paper-dim); font-style: normal }
+.f-cta .wordmark .name .lat{ font-weight: 400; color: var(--paper-dim) }
+.f-cta .wordmark .tag{ font-weight: 400; font-style: normal; color: var(--paper-dim) }
+footer .bar{ color: var(--paper-dim) }
+footer .bar .crest, footer .bar .legal a{ color: var(--paper-dim) }
+
+/* Page-frame corner ticks — jade */
+[data-theme="light"] .page-frame::before,
+[data-theme="light"] .page-frame::after,
+[data-theme="light"] .page-frame .corner-tr,
+[data-theme="light"] .page-frame .corner-bl{ border-color: var(--gold) }
+

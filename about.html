@@ -193,7 +193,72 @@
 /* ── Light mode overrides ─────────────────────────────────── */
 [data-theme="light"] .practitioner-portrait{background:linear-gradient(135deg,#e3e0d8 0%,#ece9e2 100%)}
 [data-theme="light"] .practitioner-portrait::before{background-image:repeating-linear-gradient(45deg,rgba(24,24,26,.04) 0 1px,transparent 1px 14px)}
-[data-theme="light"] .five-wrap::before{background:radial-gradient(60% 70% at 50% 50%,rgba(61,139,114,.07),transparent 60%)}
+[data-theme="light"] .five-wrap::before{background:radial-gradient(60% 70% at 50% 50%,rgba(24,118,46,.06),transparent 60%)}
+
+/* Five Element wheel — contrast tuning for LIGHT MODE.
+   The default vignette + radial-gradient elements were designed for dark theme;
+   in light mode they wash out. Re-key for a warm cream surface. */
+[data-theme="light"] .five-center::before{
+  background: radial-gradient(circle, rgba(24,118,46,.10), rgba(232,223,201,.5) 45%, transparent 75%);
+}
+[data-theme="light"] .five-center .default{
+  color: var(--gold); opacity: 1;
+  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+}
+[data-theme="light"] .elem-inner{
+  background: radial-gradient(circle at 30% 30%, #fff, #f1ede4 70%);
+  border: 1px solid var(--gold-dim);
+  box-shadow: 0 4px 12px rgba(21,20,15,.06);
+}
+[data-theme="light"] .elem:hover .elem-inner,
+[data-theme="light"] .elem:focus-visible .elem-inner{
+  border-color: var(--accent, var(--gold));
+  border-width: 1.5px;
+  background: radial-gradient(circle at 30% 30%, #fff, color-mix(in oklab, var(--accent, var(--gold)) 10%, #f1ede4) 75%);
+  box-shadow:
+    0 0 0 1.5px color-mix(in oklab, var(--accent, var(--gold)) 60%, transparent),
+    0 8px 22px rgba(21,20,15,.10);
+}
+
+/* Glow blooms from the CENTER (not from the disc itself), tinted by the
+   active element. The .five-stage[data-active="<id>"] attribute is set by
+   the hover handler. Layered shadows give a soft halo, mid-glow, and ambient
+   bloom that all read in the matching color. */
+[data-theme="light"] .five-stage[data-active] .five-center::before{
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--center-accent, var(--gold)) 28%, rgba(255,255,255,.85)) 0%,
+    color-mix(in oklab, var(--center-accent, var(--gold)) 18%, rgba(232,223,201,.55)) 35%,
+    transparent 75%
+  );
+  box-shadow:
+    0 0 40px 6px color-mix(in oklab, var(--center-accent, var(--gold)) 18%, transparent),
+    0 0 120px 24px color-mix(in oklab, var(--center-accent, var(--gold)) 10%, transparent);
+  transition: background .35s ease, box-shadow .35s ease;
+}
+[data-theme="light"] .five-stage[data-active="fire"]  { --center-accent: #cf2230 }
+[data-theme="light"] .five-stage[data-active="earth"] { --center-accent: #ebc02a }
+[data-theme="light"] .five-stage[data-active="metal"] { --center-accent: #9c9c9c }
+[data-theme="light"] .five-stage[data-active="water"] { --center-accent: #2079b8 }
+[data-theme="light"] .five-stage[data-active="wood"]  { --center-accent: #5db730 }
+[data-theme="light"] .elem .cn{
+  color: color-mix(in oklab, var(--accent, var(--gold)) 80%, #1a1814);
+  font-weight: 600;
+}
+[data-theme="light"] .elem .en{ color: var(--paper); font-weight: 500 }
+[data-theme="light"] .elem .season{ color: var(--paper-dim); font-weight: 500 }
+
+/* On hover: surface the element's description against the light center */
+[data-theme="light"] .five-desc .label{
+  color: var(--accent, var(--gold)); font-weight: 600;
+}
+[data-theme="light"] .five-desc h4{
+  color: var(--paper); font-weight: 500; font-style: normal;
+}
+[data-theme="light"] .five-desc p{
+  color: var(--paper); font-weight: 400; font-style: normal;
+}
+
 </style>
 </head>
 <body>
@@ -255,9 +320,7 @@
       <!-- Yingjuan Liang -->
       <div class="practitioner-card reveal d1">
         <div class="practitioner-portrait">
-          <div class="ph">
-            <b>仙</b>
-          </div>
+          <img src="assets/dr-selina-portrait.png" alt="Portrait of Dr. Yingjuan Liang (Selina)" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" />
           <div class="stamp">醫</div>
         </div>
         <div class="practitioner-name">
@@ -270,6 +333,10 @@
           <li>Over the years, she obtained training from several prominent Chinese Medicine doctors in China and the United States</li>
           <li>Deputy secretary general and executive director of the World Federation of Chinese Medicine Societies – Scalp Needle Committee</li>
           <li>Member of China Association of Acupuncture-Moxibustion; holds certificate of "All-around of TCM techniques" issued by Chinese Bureau of TCM Administration</li>
+          <li>Direct disciple of <strong>Prof. Ying Wang</strong> in Modern Abdominal Diagnosis &amp; Acupuncture — the <em>only overseas practitioner</em> to receive formal lineage recognition</li>
+          <li>Selected as one of twelve practitioners nationwide for the inaugural Overseas Chinese Medicine Mentorship, studying under <strong>Prof. Ming Jin</strong> in reproductive health &amp; infertility; clinically certified in <strong>Soliman Auricular Allergy Treatment</strong> (SAAT) by Dr. Nader Soliman directly</li>
+          <li>Member of the American Traditional Chinese Medicine Society (ATCMS) and the American Traditional Chinese Medicine Association (ATCMA)</li>
+          <li>Secretary-General, Mid-South Chinese Chamber of Commerce · Board Member, Greater Memphis United Federation · Co-Chair, inaugural 2025 Memphis Lunar New Year Fair (Miao Hui)</li>
           <li>Yingjuan's parents are both doctors — she was deeply influenced not only by their skills for healing patients, but also their genuine personalities</li>
           <li>Her practice prioritises treating patient's body, mind, and spirit with a holistic approach, especially at the spiritual level</li>
           <li><em>Certified SAAT allergy treatment provider</em></li>
@@ -326,7 +393,7 @@
 
     <div class="five-stage reveal d1" id="fiveStage">
       <div class="five-ring">
-        <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 100 100" aria-hidden="true" data-comment-anchor="9c091847c7-svg">
           <defs>
             <radialGradient id="ringGlow" cx=".5" cy=".5" r=".5">
               <stop offset=".65" stop-color="#b8af9a" stop-opacity="0"/>
@@ -345,20 +412,20 @@
             <circle cx="10.06" cy="37.02" r=".6"/>
           </g>
         </svg>
-        <div class="elem" style="--a:0deg;   --accent:#7a2222" data-id="fire"  tabindex="0" aria-label="Fire — Summer"><div class="elem-inner"><div class="cn">火</div><div class="en">Fire</div><div class="season">Summer · 夏</div></div></div>
-        <div class="elem" style="--a:72deg;  --accent:#b8af9a" data-id="earth" tabindex="0" aria-label="Earth — Late Summer"><div class="elem-inner"><div class="cn">土</div><div class="en">Earth</div><div class="season">Late Summer<br>· 長夏</div></div></div>
-        <div class="elem" style="--a:144deg; --accent:#b8af9a" data-id="metal" tabindex="0" aria-label="Metal — Autumn"><div class="elem-inner"><div class="cn">金</div><div class="en">Metal</div><div class="season">Autumn · 秋</div></div></div>
-        <div class="elem" style="--a:216deg; --accent:#5a7d9b" data-id="water" tabindex="0" aria-label="Water — Winter"><div class="elem-inner"><div class="cn">水</div><div class="en">Water</div><div class="season">Winter · 冬</div></div></div>
-        <div class="elem" style="--a:288deg; --accent:#6e8a5a" data-id="wood"  tabindex="0" aria-label="Wood — Spring"><div class="elem-inner"><div class="cn">木</div><div class="en">Wood</div><div class="season">Spring · 春</div></div></div>
+        <div class="elem" style="--a:0deg;   --accent:#cf2230" data-id="fire"  tabindex="0" aria-label="Fire — Summer"><div class="elem-inner"><div class="cn">火</div><div class="en">Fire</div><div class="season">Summer · 夏</div></div></div>
+        <div class="elem" style="--a:72deg;  --accent:#ebc02a" data-id="earth" tabindex="0" aria-label="Earth — Late Summer"><div class="elem-inner"><div class="cn">土</div><div class="en">Earth</div><div class="season">Late Summer<br>· 長夏</div></div></div>
+        <div class="elem" style="--a:144deg; --accent:#9c9c9c" data-id="metal" tabindex="0" aria-label="Metal — Autumn"><div class="elem-inner"><div class="cn">金</div><div class="en">Metal</div><div class="season">Autumn · 秋</div></div></div>
+        <div class="elem" style="--a:216deg; --accent:#2079b8" data-id="water" tabindex="0" aria-label="Water — Winter"><div class="elem-inner"><div class="cn">水</div><div class="en">Water</div><div class="season">Winter · 冬</div></div></div>
+        <div class="elem" style="--a:288deg; --accent:#5db730" data-id="wood"  tabindex="0" aria-label="Wood — Spring"><div class="elem-inner"><div class="cn">木</div><div class="en">Wood</div><div class="season">Spring · 春</div></div></div>
       </div>
 
       <div class="five-center" aria-live="polite">
         <div class="plate"><div class="default">氣</div></div>
-        <div class="five-desc" data-id="fire"  style="--accent:#7a2222"><div class="blurb"><div class="label">火 · Fire · Summer</div><h4>Joy &amp; the spirit</h4><p>The heart and small intestine. Treatments dispel heat, settle anxiety, and bring warmth back to the spirit (<em>shén</em>).</p></div></div>
-        <div class="five-desc" data-id="earth" style="--accent:#b8af9a"><div class="blurb"><div class="label">土 · Earth · Late Summer</div><h4>Nourishment &amp; centre</h4><p>The spleen and stomach. The body's hearth, transforming food and thought into vitality. The element to which all others return.</p></div></div>
-        <div class="five-desc" data-id="metal" style="--accent:#b8af9a"><div class="blurb"><div class="label">金 · Metal · Autumn</div><h4>Breath &amp; clarity</h4><p>The lungs and large intestine. The discernment of what to keep and what to release. Where grief is held — and softened.</p></div></div>
-        <div class="five-desc" data-id="water" style="--accent:#5a7d9b"><div class="blurb"><div class="label">水 · Water · Winter</div><h4>Reserves &amp; will</h4><p>The kidneys and bladder. The deep current — bone, marrow, ancestral qì. Treatments here tonify exhaustion at its source.</p></div></div>
-        <div class="five-desc" data-id="wood"  style="--accent:#6e8a5a"><div class="blurb"><div class="label">木 · Wood · Spring</div><h4>Growth &amp; vision</h4><p>The liver and gallbladder. The upward push of qì — plans, anger, the courage to begin. When stagnant, the body grows tight.</p></div></div>
+        <div class="five-desc" data-id="fire"  style="--accent:#cf2230"><div class="blurb"><div class="label">火 · Fire · Summer</div><h4>Joy &amp; the spirit</h4><p>The heart and small intestine. Treatments dispel heat, settle anxiety, and bring warmth back to the spirit (<em>shén</em>).</p></div></div>
+        <div class="five-desc" data-id="earth" style="--accent:#ebc02a"><div class="blurb"><div class="label">土 · Earth · Late Summer</div><h4>Nourishment &amp; centre</h4><p>The spleen and stomach. The body's hearth, transforming food and thought into vitality. The element to which all others return.</p></div></div>
+        <div class="five-desc" data-id="metal" style="--accent:#9c9c9c"><div class="blurb"><div class="label">金 · Metal · Autumn</div><h4>Breath &amp; clarity</h4><p>The lungs and large intestine. The discernment of what to keep and what to release. Where grief is held — and softened.</p></div></div>
+        <div class="five-desc" data-id="water" style="--accent:#2079b8"><div class="blurb"><div class="label">水 · Water · Winter</div><h4>Reserves &amp; will</h4><p>The kidneys and bladder. The deep current — bone, marrow, ancestral qì. Treatments here tonify exhaustion at its source.</p></div></div>
+        <div class="five-desc" data-id="wood"  style="--accent:#5db730"><div class="blurb"><div class="label">木 · Wood · Spring</div><h4>Growth &amp; vision</h4><p>The liver and gallbladder. The upward push of qì — plans, anger, the courage to begin. When stagnant, the body grows tight.</p></div></div>
       </div>
     </div>
   </div>

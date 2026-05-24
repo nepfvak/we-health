@@ -589,11 +589,11 @@
     --ink:          #fbfaf7;
     --ink-2:        #f1ede4;
     --ink-3:        #e6ddc7;
-    --paper:        #15140f;    /* near-black headlines */
-    --paper-dim:    #2c2a25;    /* darker body text (was #47464a) */
-    --paper-faint:  #5a554c;    /* meta / eyebrow */
-    --gold:         #3d8b72;    /* IMPERIAL JADE GREEN — primary brand accent */
-    --gold-dim:     #2f7360;
+    --paper:        #0d0c08;    /* near-black headlines */
+    --paper-dim:    #1a1814;    /* body text \u2014 nearly black */
+    --paper-faint:  #3a352d;    /* meta / eyebrow \u2014 dark warm gray */
+    --gold:         #18762e;    /* IMPERIAL JADE GREEN — primary brand accent */
+    --gold-dim:     #115a22;
     --cinnabar:     #c8921a;    /* imperial gold — small accent marks (seal/chop/dot) */
     --cinnabar-dim: #a07314;
     --rule:         rgba(21,20,15,.14);
@@ -602,7 +602,7 @@
   :root:not([data-theme="light"]){
     --paper:        #f4ecd6;
     --paper-dim:    #c8bda1;
-    --gold:         #e2c266;
+    --gold:         #4cb35a;
     --cinnabar:     #d6a73a;    /* warm gold (was red) */
   }
 
@@ -628,7 +628,7 @@
   .hero::after{
     content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
     background:
-      radial-gradient(80% 50% at 85% 15%, rgba(61,139,114,.07), transparent 60%);
+      radial-gradient(80% 50% at 85% 15%, rgba(24,118,46,.07), transparent 60%);
   }
   .hero .wrap{ max-width:1240px; margin:0 auto; padding:0 22px; width:100%; position:relative; z-index:2 }
   .hero-grid{ display:grid; grid-template-columns:1fr; gap:48px; align-items:center }
@@ -838,6 +838,84 @@
   [data-theme="light"] .page-frame .corner-tr,
   [data-theme="light"] .page-frame .corner-bl{ border-color: var(--gold) }
 
+  /* Nav links \u2014 darken to near-black + slight weight bump for clarity */
+  .nav .links{ color: var(--paper) !important }
+  .nav .links a{ color: var(--paper) !important }
+  .nav .links a:hover,
+  .nav .links a.is-active{ color: var(--gold) !important }
+
+  /* Bump up too-thin text rules from styles.css so darker color reads crisp */
+  .f-block p, .f-block a{ font-weight: 400 !important; color: var(--paper) !important }
+  .f-block .muted{ color: var(--paper-dim) !important; font-style: normal !important }
+  .f-cta .wordmark .name .lat{ font-weight: 400 !important; color: var(--paper-dim) !important }
+  .f-cta .wordmark .tag{ font-weight: 400 !important; font-style: normal !important; color: var(--paper-dim) !important }
+  footer .bar{ color: var(--paper-dim) !important }
+  footer .bar .crest, footer .bar .legal a{ color: var(--paper-dim) !important }
+  p.body{ font-weight: 400 !important }
+  .hero .lede{ color: var(--paper) !important }
+
+  /* About \u2014 multi-paragraph lineage note + specialties grid + appointments list */
+  .lineage-note{ padding: 22px 26px !important }
+  .lineage-note p{
+    font-style: normal !important; font-weight: 400 !important;
+    font-size: 15.5px !important; color: var(--paper) !important;
+    line-height: 1.7 !important; max-width: 56ch !important;
+  }
+  .lineage-note p + p{ margin-top: 14px }
+  .lineage-note p b{ color: var(--gold); font-weight: 600 }
+
+  .specialties{ margin-top: 36px }
+  .svc-specialties{
+    margin-top: 64px !important;
+    padding-top: 48px;
+    border-top: 1px solid var(--rule);
+  }
+  .specialties .sp-label{
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .28em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+  }
+  .specialties .sp-grid{
+    display: grid; grid-template-columns: 1fr; gap: 14px 28px;
+  }
+  @media(min-width: 680px){
+    .specialties .sp-grid{ grid-template-columns: 1fr 1fr }
+  }
+  .specialties .sp-item{
+    padding: 14px 0 14px 18px;
+    border-left: 2px solid var(--gold);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .specialties .sp-item b{
+    font-family: var(--serif); font-weight: 600; font-style: normal;
+    font-size: 16.5px; color: var(--paper); line-height: 1.25;
+  }
+  .specialties .sp-item span{
+    font-family: var(--serif); font-weight: 400; font-style: normal;
+    font-size: 14.5px; color: var(--paper-dim); line-height: 1.5;
+  }
+
+  .about .portrait image-slot{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1 }
+
+  .appointments{ margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--rule) }
+  .appointments .ap-label{
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .28em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+  }
+  .appointments ul{
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .appointments li{
+    font-family: var(--serif); font-weight: 400; font-style: normal;
+    font-size: 15px; line-height: 1.6; color: var(--paper);
+    padding-left: 22px; position: relative;
+    max-width: 64ch;
+  }
+  .appointments li::before{
+    content: "\2014"; position: absolute; left: 0; top: 0;
+    color: var(--gold); font-weight: 600;
+  }
+
 </style>
 </head>
 <body data-glyphs="1">
@@ -879,7 +957,7 @@
 </div>
 
 <!-- ─── Hero ──────────────────────────────────────────────────────── -->
-<header class="hero" id="top" data-screen-label="Home Hero">
+<header class="hero" id="top" data-screen-label="Home Hero" data-comment-anchor="fd1589b3d6-header">
   <!-- Legacy shan-shui background hidden by v2 CSS, kept here so other
        pages that share the script can still query .hero .shanshui safely. -->
   <div class="shanshui-legacy" style="display:none" aria-hidden="true">
@@ -976,31 +1054,34 @@
         <h1 class="reveal in d1">
           Acupuncture &amp; <span class="accent">classical Chinese medicine.</span>
         </h1>
-        <p class="lede reveal in d2">
-          An unhurried acupuncture &amp; classical Chinese medicine practice in Cordova, TN, just off the greenline. Led by Dr. Yingjuan Liang (Selina) — DACM, L.Ac. — offering acupuncture, herbal medicine, and seven traditional therapies. Serving Memphis, Cordova, Germantown, Bartlett, and surrounding areas.
+        <p class="mission reveal in d2" style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.3; color: var(--paper); max-width: 26ch; margin: 8px 0 22px; letter-spacing: -.005em;">
+          At W&amp;E Health Institute we provide the holistic approach to help your body, mind, and spirit.
+        </p>
+        <p class="lede reveal in d2" style="font-size: 16px !important; color: var(--paper-dim) !important; font-weight: 400; line-height: 1.65; max-width: 56ch; margin-bottom: 4px;">
+          Conditions we treat: pain management, mental health, insomnia, weight management, women&rsquo;s health &amp; infertility, SAAT allergy treatment, heart problems, digestive issues, neurological conditions, Tai Chi, Medical Qigong, and more. Please reach out with any questions, and browse this website for more information.
         </p>
 
         <div class="quickfacts reveal in d2">
           <div class="qf">
             <div class="k">Address</div>
-            <div class="v">985 Cordova Station Ave<br/>Ste 101, Cordova, TN 38018</div>
+            <div class="v" style="font-family: 'Noto Serif SC'; font-size: 14px !important;">985 Cordova Station Ave<br/>Ste 101, Cordova, TN 38018</div>
           </div>
           <div class="qf">
             <div class="k">Phone</div>
-            <div class="v"><a href="tel:+19013406433">901&middot;340&middot;6433</a></div>
+            <div class="v"><a href="tel:+19013406433" style="font-family: 'Noto Serif SC'; font-size: 15px !important;">901&middot;340&middot;6433</a></div>
           </div>
           <div class="qf">
             <div class="k">Hours</div>
-            <div class="v">Mon &ndash; Sat<br/>8:00 am &ndash; 6:00 pm</div>
+            <div class="v" style="font-family: 'Noto Serif SC'; font-size: 15px !important;">Mon &ndash; Sat<br/>8:00 am &ndash; 6:00 pm</div>
           </div>
         </div>
 
         <div class="cta-row reveal in d3">
           <a href="mailto:wehiusa@gmail.com" class="btn-primary">
-            <span>Book an Appointment</span>
+            <span style="font-family: ui-monospace;">Book an Appointment</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="tel:+19013406433" class="btn-ghost">Call 901&middot;340&middot;6433</a>
+          <a href="tel:+19013406433" class="btn-ghost" style="font-family: 'Noto Serif SC'; font-size: 16px !important;">Call 901&middot;340&middot;6433</a>
         </div>
       </div>
 
@@ -1043,41 +1124,50 @@
   </div>
 </div>
 
-<!-- ─── Philosophy ────────────────────────────────────────────────── -->
-<section class="philosophy" id="philosophy">
+<!-- ─── The Practitioner ─────────────────────────────────────────── -->
+<section class="about" id="about">
   <div class="wrap">
-    <div class="eyebrow reveal"><span>I.</span> <span>Philosophy</span> <span class="cn">道</span></div>
+    <div class="eyebrow reveal"><span>I.</span> <span>The Practitioner</span> <span class="cn">人</span></div>
 
     <div class="inner">
-      <div class="glyph-stack reveal d1">
-        <div class="big">氣</div>
-        <div class="caption">qì · vital breath</div>
+      <div class="portrait reveal d1" role="img" aria-label="Portrait of Dr. Yingjuan Liang">
+        <img src="assets/dr-selina-portrait.png" alt="Portrait of Dr. Yingjuan Liang (Selina)" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" />
+        <div class="stamp">選</div>
       </div>
 
-      <div class="body-col reveal d2">
+      <div class="text reveal d2">
+        <div class="name">Dr. Yingjuan Liang <span class="surname">(Selina)</span></div>
+        <div class="cred-bar">
+          <span class="cred-pill">DACM</span>
+          <span class="cred-pill">L.Ac.</span>
+          <span class="cred-pill">NCCAOM Diplomate</span>
+          <span class="cred-pill">VA Authorized</span>
+        </div>
+        <div class="credentials">Cordova, Tennessee &middot; W&amp;E Health Institute</div>
+
         <p class="body">
-          Acupuncture is not a treatment performed on you. It is a slow conversation with
-          the body — listening for where breath has stopped, where warmth has thinned,
-          where the current of <em>qì</em> has lost its road.
-        </p>
-        <p class="body">
-          What we practise is older than memory: a medicine of pulse and palpation,
-          of herbs gathered by season, of fine needles placed at the points classical
-          texts have mapped for three millennia. It is patient work. It is meant to be.
-          We do not chase symptoms — we tend to the soil they grew from.
+          Dr. Yingjuan Liang is a Doctor of Acupuncture and Chinese Medicine
+          (DACM), a Licensed Acupuncturist in Tennessee, and a certified Chinese
+          herbalist board-certified as a Diplomate of Oriental Medicine by the
+          NCCAOM. Raised by parents who were both integrative physicians
+          practicing Western and Chinese medicine, she carries forward a
+          holistic approach: <em>harmonising body and mind, nurturing both
+          form and spirit.</em>
         </p>
 
-        <div class="signature">
-          <div class="seal">印</div>
-          <div class="sig-text">
-            <b>Dr. Yingjuan Liang (Selina)</b><br/>
-            DACM, L.Ac. · Cordova, TN
-          </div>
+        <p class="body">
+          In clinic she integrates modern abdominal diagnosis and tongue
+          diagnosis with Jiao&rsquo;s Scalp Acupuncture, Abdominal Acupuncture,
+          Master Tung&rsquo;s Acupuncture, Motion Needle, Five Element, and
+          traditional acupuncture &mdash; complemented by herbal prescriptions
+          tailored to the patient in front of her.
+        </p>
+
+        <div class="quote" style="margin-top:36px">
+          We welcome you to experience Dr. Liang&rsquo;s caring heart and healing hands.
         </div>
 
-        <div style="margin-top:48px;">
-          <a href="#services" class="btn-ghost">Read the Treatments <span style="font-family:var(--serif);font-style:italic">→</span></a>
-        </div>
+        <a href="about.html" class="btn-ghost">Read full bio &amp; lineage <span style="font-family:var(--serif);font-style:italic">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -1207,6 +1297,18 @@
       </article>
 
     </div>
+
+    <div class="specialties svc-specialties">
+      <div class="sp-label">Clinical Specialties — Conditions We Treat</div>
+      <div class="sp-grid">
+        <div class="sp-item"><b>Pain Management</b><span>Acute &amp; chronic pain, sports injuries, neuropathic pain.</span></div>
+        <div class="sp-item"><b>Gynecology &amp; Infertility</b><span>Menstrual disorders, preconception care, holistic support for IVF / IUI.</span></div>
+        <div class="sp-item"><b>Mental &amp; Emotional Well-being</b><span>Anxiety, depression, ASD, ADHD, stress, sleep disorders.</span></div>
+        <div class="sp-item"><b>Neurological Disorders</b><span>Stroke rehabilitation, Bell&rsquo;s palsy, stubborn neurological conditions.</span></div>
+        <div class="sp-item"><b>Allergy Treatment &middot; SAAT</b><span>Alpha-gal syndrome, environmental and food allergies.</span></div>
+        <div class="sp-item"><b>Cosmetic Acupuncture</b><span>Facial Gua Sha, microneedling, holistic body sculpting.</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1301,55 +1403,40 @@
 </section>
 
 <!-- ─── About ─────────────────────────────────────────────────────── -->
-<section class="about" id="about">
+<section class="philosophy" id="philosophy">
   <div class="wrap">
-    <div class="eyebrow reveal"><span>III.</span> <span>The Practitioner</span> <span class="cn">人</span></div>
+    <div class="eyebrow reveal"><span>III.</span> <span>Philosophy</span> <span class="cn">道</span></div>
 
     <div class="inner">
-      <div class="portrait reveal d1" role="img" aria-label="Portrait of Dr. Selina">
-        <div class="ph">
-          <b>人</b>
-          [ portrait of Dr. Selina ]<br/>
-          <span style="opacity:.7">silver-gelatin tone · 4:5</span>
-        </div>
-        <div class="stamp">選</div>
+      <div class="glyph-stack reveal d1">
+        <div class="big">氣</div>
+        <div class="caption">qì · vital breath</div>
       </div>
 
-      <div class="text reveal d2">
-        <div class="name">Dr. Yingjuan Liang <span class="surname">(Selina)</span></div>
-        <div class="cred-bar">
-          <span class="cred-pill">DACM</span>
-          <span class="cred-pill">L.Ac.</span>
-          <span class="cred-pill">VA Authorized</span>
-        </div>
-        <div class="credentials">Cordova, Tennessee · W&amp;E Health Institute</div>
-
+      <div class="body-col reveal d2">
         <p class="body">
-          Dr. Selina trained for nine years between Chengdu and the American
-          South — first under her grandfather, a fifth-generation country doctor,
-          and later in clinical residency at the Chengdu University of TCM. Her
-          doctoral work spans Traditional Chinese Medicine and Western clinical
-          research; her team holds both DACM and MD degrees.
+          Acupuncture is not a treatment performed on you. It is a slow conversation with
+          the body — listening for where breath has stopped, where warmth has thinned,
+          where the current of <em>qì</em> has lost its road.
         </p>
         <p class="body">
-          She opened W&amp;E in a quiet clinic suite on Cordova Station Avenue,
-          just off the Wolf River Greenline, because the practice needed a place
-          that moved at the pace of a tea ceremony — patient, attentive, and
-          entirely unhurried.
+          What we practise is older than memory: a medicine of pulse and palpation,
+          of herbs gathered by season, of fine needles placed at the points classical
+          texts have mapped for three millennia. It is patient work. It is meant to be.
+          We do not chase symptoms — we tend to the soil they grew from.
         </p>
 
-        <div class="lineage-note">
-          <div class="ln-label">Lineage</div>
-          <p>Dr. Selina is the third-generation lineage successor of a specialised
-          abdominal diagnostic tradition — and the first practitioner to carry it
-          overseas. It is offered exclusively at W&amp;E.</p>
+        <div class="signature">
+          <div class="seal">印</div>
+          <div class="sig-text">
+            <b>Dr. Yingjuan Liang (Selina)</b><br/>
+            DACM, L.Ac. · Cordova, TN
+          </div>
         </div>
 
-        <div class="quote" style="margin-top:36px">
-          A good treatment ends when the room is quieter than it was before.
+        <div style="margin-top:48px;">
+          <a href="#services" class="btn-ghost">Read the Treatments <span style="font-family:var(--serif);font-style:italic">→</span></a>
         </div>
-
-        <a href="#book" class="btn-ghost">Schedule a consultation <span style="font-family:var(--serif);font-style:italic">→</span></a>
       </div>
     </div>
   </div>
@@ -1373,7 +1460,7 @@
 
         <div class="wordmark">
           <div class="name">W&amp;E <span class="lat">Health Institute</span></div>
-          <p class="tag">An acupuncture &amp; classical Chinese medicine practice on Cordova Station Avenue. Serving Memphis, Cordova, Germantown, Bartlett, and surrounding areas.</p>
+          <p class="tag">Acupuncture and Integrative Care</p>
         </div>
       </div>
 
