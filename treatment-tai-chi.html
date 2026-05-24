@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Tai Chi (太极) — W&amp;E Health Institute · Cordova, TN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")!=="dark")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js"></script>
+<style>
+  html{scroll-snap-type:y proximity}
+  .page-hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
+  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
+  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+  .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
+  .tx-overview p{font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper-dim);max-width:66ch;margin-bottom:28px}
+  .tx-overview p:last-child{margin-bottom:0}
+
+  .tx-lists{background:var(--ink-2);border-top:1px solid var(--rule)}
+  .tx-lists-grid{display:grid;grid-template-columns:1fr;gap:64px}
+  @media(min-width:860px){.tx-lists-grid{grid-template-columns:1fr 1fr;gap:80px}}
+  .tx-list-block h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.6vw,30px);color:var(--paper);margin-bottom:28px;line-height:1.2}
+  .tx-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .tx-list li{position:relative;padding-left:26px;font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.7;color:var(--paper-dim)}
+  .tx-list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:.5px;background:var(--gold)}
+
+  .tx-cta{padding:80px 0 120px;border-top:1px solid var(--rule);text-align:center;background:var(--ink)}
+  .tx-cta .eyebrow{justify-content:center}
+  .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
+  .tx-cta .cta-text em{font-style:normal;color:var(--gold)}
+</style>
+</head>
+<body>
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><span class="mark">醫</span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html" class="is-active">Services</a>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="saat.html">SAAT</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="mob-close" id="menuClose">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html" class="is-active">Services</a>
+  <a href="conditions.html">Conditions</a>
+  <a href="testimonials.html">Testimonials</a>
+  <a href="contact.html">Contact</a>
+  <a href="saat.html">SAAT Allergy Treatment</a>
+  <a href="contact.html" class="mob-book">Book Appointment</a>
+</div>
+
+<!-- Page Hero -->
+<header class="page-hero">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="ghost-glyph" aria-hidden="true">极</div>
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">太极</span>Tai Chi</div>
+    <h1 class="reveal d1"><span class="accent">太极</span> Tai Chi</h1>
+    <p class="lede reveal d2"><em>tàijí</em> — Slow standing forms that train balance, breath, and the quiet movement of qi through the whole body.</p>
+  </div>
+</header>
+
+<!-- Overview -->
+<section class="tx-overview">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">概</span>Overview</div>
+    <h2 class="reveal d1">Movement as a <span class="accent">daily practice of health.</span></h2>
+    <div style="margin-top:40px">
+      <p class="reveal d2">Tai Chi — formally Tàijíquán, "supreme ultimate fist" — is a Chinese movement art rooted in the same philosophy as acupuncture and herbal medicine: the cultivation and regulation of qì. Its characteristic slow, continuous forms are not gentle exercise in the Western sense. They are a structured practice of breath, posture, weight transfer, and mental attention, each movement flowing into the next without pause, the body learning over time to move with an ease that most people have never experienced in their waking lives.</p>
+      <p class="reveal d3">Dr. Tieqiang Zhao, co-founder of W&amp;E Health Institute, holds the rank of National-Level Judge of Tai Chi and Kung Fu through the USA Wushu Kungfu Federation and is a member of the Tai Chi Qigong Association of America. Instruction at the clinic draws on this deep technical background. Beginners learn the foundational principles — rooting through the feet, opening the joints, relaxing the shoulders, letting the breath lead the movement — before building toward the longer classical sequences.</p>
+      <p class="reveal d3">Contemporary research on Tai Chi is substantial. The evidence base for fall prevention, balance, cardiovascular health, and anxiety reduction is strong enough that several major hospital systems now offer it as part of integrative care programmes. At W&amp;E Health Institute, Tai Chi is taught both as an adjunct to acupuncture treatment and as an independent practice for patients who wish to take an active role in their own health maintenance between clinic visits.</p>
+    </div>
+  </div>
+</section>
+
+<!-- What to Expect + Benefits -->
+<section class="tx-lists">
+  <div class="wrap">
+    <div class="tx-lists-grid">
+
+      <div class="tx-list-block reveal d1">
+        <h3>What to expect <em>in instruction</em></h3>
+        <ul class="tx-list">
+          <li>Sessions begin with foundational standing posture work — learning to root through the feet and soften the joints before any movement is introduced.</li>
+          <li>Instruction is adapted to the individual: patients recovering from injury or surgery begin with seated or supported forms; mobile patients work through standing sequences at their own pace.</li>
+          <li>You will be given a short practice — sometimes just two or three movements — to repeat at home daily. Regularity matters far more than duration; even ten minutes each morning produces measurable change over months.</li>
+          <li>Group and individual instruction formats are both available; contact the clinic to enquire about current scheduling.</li>
+        </ul>
+      </div>
+
+      <div class="tx-list-block reveal d2">
+        <h3>Commonly reported <em>benefits</em></h3>
+        <ul class="tx-list">
+          <li>Significant improvement in balance and a reduction in fall risk — particularly well-documented in older adults</li>
+          <li>Reduced joint pain and improved mobility in arthritis and related conditions</li>
+          <li>Lower resting blood pressure and improved cardiovascular markers with regular practice</li>
+          <li>Decreased anxiety and a measurable calming of the nervous system response to stress</li>
+          <li>Improved coordination and body awareness that carries over into daily movement</li>
+          <li>A sense of mental quietness and presence that many practitioners describe as unlike anything else in their lives</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="tx-cta">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">始</span>Begin</div>
+    <p class="cta-text reveal d1">Ready to begin? Book an appointment with <em>Dr. Selina.</em></p>
+    <a href="mailto:wehiusa@gmail.com" class="btn-primary reveal d2">
+      Book an appointment <span class="arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+    <div class="grid">
+      <div class="f-cta">
+        <div class="editorial">Considering acupuncture? <em>Dr. Selina will see you.<span class="seal">·</span></em></div>
+        <a href="contact.html" class="request"><span>Request a first visit</span><span class="arr">→</span></a>
+        <div class="wordmark">
+          <div class="name">W&amp;E <span class="lat">Health Institute</span></div>
+          <p class="tag">A small acupuncture &amp; classical Chinese medicine practice in Cordova, Memphis.</p>
+        </div>
+      </div>
+      <nav class="f-nav" aria-label="Footer">
+        <a href="index.html"><span class="bullet"></span>Home</a>
+        <a href="about.html"><span class="bullet"></span>About</a>
+        <a href="services.html"><span class="bullet"></span>Services</a>
+        <a href="conditions.html"><span class="bullet"></span>Conditions</a>
+        <a href="testimonials.html"><span class="bullet"></span>Testimonials</a>
+        <a href="contact.html"><span class="bullet"></span>Contact</a>
+        <a href="saat.html"><span class="bullet"></span>SAAT Treatment</a>
+      </nav>
+      <div class="f-details">
+        <div class="f-block"><h4>Contact Details</h4><a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a><a href="tel:+19013406433">(901) 340-6433</a></div>
+        <div class="f-block"><h4>Address</h4><p>985 Cordova Station Ave, Ste 101<br/>Cordova, TN 38018</p><p class="muted" style="margin-top:8px">Mon–Sat · 8:00 am–6:00 pm</p></div>
+        <div class="f-block"><h4>Follow Us</h4>
+          <div class="f-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:wehiusa@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5,6 L12,13 L20.5,6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a><span>Cordova · Memphis, TN</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burgerBtn');
+const overlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+if (burger && overlay) {
+  burger.addEventListener('click', () => overlay.classList.add('open'));
+  menuClose.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+}
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 24); }, {passive:true});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+}, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

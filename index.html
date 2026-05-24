@@ -778,7 +778,14 @@
     font-family: var(--serif); font-weight:400; font-size:15.5px;
     line-height: 1.55; color: var(--paper-dim); margin-top:6px;
   }
-  .svc .icon, .svc .cn, .svc .num + .icon, .svc .learn{ display:none !important }
+  .svc .icon, .svc .cn, .svc .num + .icon{ display:none !important }
+  .svc .learn{
+    display:inline-flex !important;
+    font-family: var(--mono); font-size:10.5px; letter-spacing:.22em; text-transform:uppercase;
+    color: var(--gold); margin-top:14px; padding-top:14px; border-top:.5px solid var(--rule);
+    align-items:center; gap:8px; transition: gap .3s ease;
+  }
+  .svc:hover .learn{ gap:14px }
 
   /* ── FOOTER additions — Hours + Map ────────────────────────────── */
   footer{ background: var(--ink-2) !important; padding-top: 80px !important }
@@ -1222,6 +1229,7 @@
           <h3>Acupuncture</h3>
           <div class="pinyin">zh&#275;n &middot; 针</div>
           <p>Hair-thin sterile needles placed along the body&rsquo;s meridians to release stagnation and restore the flow of q&igrave;.</p>
+          <a href="treatment-acupuncture.html" class="learn">Learn more <span class="arr">→</span></a>
         </div>
       </article>
 
@@ -1235,6 +1243,7 @@
           <h3>Moxibustion</h3>
           <div class="pinyin">ji&#468; &middot; 灸</div>
           <p>The slow warming of acupoints with smouldering mugwort to tonify deficient cold and ease chronic fatigue.</p>
+          <a href="treatment-moxibustion.html" class="learn">Learn more <span class="arr">→</span></a>
         </div>
       </article>
 
@@ -1248,6 +1257,7 @@
           <h3>Herbal Medicine</h3>
           <div class="pinyin">c&#462;o &middot; 草</div>
           <p>Custom formulas of roots, barks, and flowers, decocted or granulated to the constitution &mdash; not the diagnosis.</p>
+          <a href="treatment-herbal-medicine.html" class="learn">Learn more <span class="arr">→</span></a>
         </div>
       </article>
 
@@ -1261,6 +1271,7 @@
           <h3>Cupping</h3>
           <div class="pinyin">gu&agrave;n &middot; 罐</div>
           <p>Glass cups draw stagnant blood and qi to the surface, freeing tight muscle and clearing channel obstruction.</p>
+          <a href="treatment-cupping.html" class="learn">Learn more <span class="arr">→</span></a>
         </div>
       </article>
 
@@ -1274,6 +1285,7 @@
           <h3>Gua Sha</h3>
           <div class="pinyin">gu&#257;sh&#257; &middot; 刮痧</div>
           <p>A smooth jade tool drawn along the skin to release heat, dispel wind, and relieve muscular ache.</p>
+          <a href="treatment-gua-sha.html" class="learn">Learn more <span class="arr">→</span></a>
         </div>
       </article>
 
@@ -1287,6 +1299,7 @@
           <h3>Tui Na</h3>
           <div class="pinyin">tu&#299;n&aacute; &middot; 推拿</div>
           <p>Therapeutic manual work along the meridians &mdash; pressing, kneading, rolling &mdash; older than written medicine.</p>
+          <a href="treatment-tui-na.html" class="learn">Learn more <span class="arr">→</span></a>
         </div>
       </article>
 
@@ -1300,6 +1313,7 @@
           <h3>Tai Chi</h3>
           <div class="pinyin">t&agrave;ij&iacute; &middot; 太极</div>
           <p>Slow standing forms that train balance, breath, and the quiet movement of qi through the whole body.</p>
+          <a href="treatment-tai-chi.html" class="learn">Learn more <span class="arr">→</span></a>
         </div>
       </article>
 
@@ -1313,6 +1327,7 @@
           <h3>Qi Gong</h3>
           <div class="pinyin">q&igrave;g&#333;ng &middot; 气功</div>
           <p>Seated and standing breath-and-movement practice taught for daily self-cultivation between visits.</p>
+          <a href="treatment-qi-gong.html" class="learn">Learn more <span class="arr">→</span></a>
         </div>
       </article>
 
