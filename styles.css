@@ -2,9 +2,9 @@
 
 /* ── Variables ─────────────────────────────────────────────────────── */
 :root {
-  --ink: #3a3a3a;
-  --ink-2: #424242;
-  --ink-3: #4a4a4a;
+  --ink: #121212;
+  --ink-2: #1a1a1a;
+  --ink-3: #242424;
   --paper: #e8e8e8;
   --paper-dim: #a8a8a8;
   --paper-faint: #6e6e6e;
@@ -21,9 +21,9 @@
 
 /* ── Reset ─────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; margin: 0; padding: 0 }
-html { background: #3a3a3a; scroll-behavior: smooth }
+html { background: #121212; scroll-behavior: smooth }
 html, body {
-  background: var(--ink, #3a3a3a);
+  background: var(--ink, #121212);
   color: var(--paper, #e8dfc9);
   font-family: var(--serif);
   font-weight: 400;
@@ -83,7 +83,7 @@ body::after {
 @media (min-width: 768px) { .nav { top: 18px; left: 18px; right: 18px } }
 @media (max-width: 480px)  { .nav { top: 8px; left: 8px; right: 8px } }
 .nav.scrolled {
-  background: rgba(58,58,58,.92);
+  background: rgba(18,18,18,.92);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   border-bottom-color: var(--rule);
@@ -127,7 +127,7 @@ body::after {
 }
 .nav .burger span { display: block; width: 16px; height: .5px; background: var(--paper) }
 .menu-overlay {
-  position: fixed; inset: 0; z-index: 60; background: rgba(58,58,58,.97);
+  position: fixed; inset: 0; z-index: 60; background: rgba(18,18,18,.97);
   -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
   display: none; flex-direction: column; justify-content: center; align-items: center; gap: 2px; padding: 80px 30px;
 }
