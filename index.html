@@ -838,6 +838,26 @@
   [data-theme="light"] .page-frame .corner-tr,
   [data-theme="light"] .page-frame .corner-bl{ border-color: var(--gold) }
 
+  /* Footer — 2-column layout now that the nav column is gone */
+  @media (min-width:980px){
+    footer .grid{ grid-template-columns: 1.1fr 1fr !important; gap: 72px !important }
+  }
+  .f-cta-buttons{
+    display:flex; flex-wrap:wrap; gap:12px; align-items:stretch;
+  }
+  .f-cta-buttons .request{
+    flex: 1 1 0; min-width: 0;
+    justify-content: center; text-align: center;
+    padding: 16px 18px !important;
+  }
+  .f-cta .request-ghost{
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+  .f-cta .request-ghost::before{ display:none !important }
+  .f-cta .request-ghost:hover{ background: var(--gold); color: #fff }
+  .f-cta .request-ghost .arr{ font-family: var(--serif); font-size: 13px }
+
   /* Nav links \u2014 darken to near-black + slight weight bump for clarity */
   .nav .links{ color: var(--paper) !important }
   .nav .links a{ color: var(--paper) !important }
@@ -957,7 +977,7 @@
 </div>
 
 <!-- ─── Hero ──────────────────────────────────────────────────────── -->
-<header class="hero" id="top" data-screen-label="Home Hero" data-comment-anchor="fd1589b3d6-header">
+<header class="hero" id="top" data-screen-label="Home Hero">
   <!-- Legacy shan-shui background hidden by v2 CSS, kept here so other
        pages that share the script can still query .hero .shanshui safely. -->
   <div class="shanshui-legacy" style="display:none" aria-hidden="true">
@@ -1297,18 +1317,6 @@
       </article>
 
     </div>
-
-    <div class="specialties svc-specialties">
-      <div class="sp-label">Clinical Specialties — Conditions We Treat</div>
-      <div class="sp-grid">
-        <div class="sp-item"><b>Pain Management</b><span>Acute &amp; chronic pain, sports injuries, neuropathic pain.</span></div>
-        <div class="sp-item"><b>Gynecology &amp; Infertility</b><span>Menstrual disorders, preconception care, holistic support for IVF / IUI.</span></div>
-        <div class="sp-item"><b>Mental &amp; Emotional Well-being</b><span>Anxiety, depression, ASD, ADHD, stress, sleep disorders.</span></div>
-        <div class="sp-item"><b>Neurological Disorders</b><span>Stroke rehabilitation, Bell&rsquo;s palsy, stubborn neurological conditions.</span></div>
-        <div class="sp-item"><b>Allergy Treatment &middot; SAAT</b><span>Alpha-gal syndrome, environmental and food allergies.</span></div>
-        <div class="sp-item"><b>Cosmetic Acupuncture</b><span>Facial Gua Sha, microneedling, holistic body sculpting.</span></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1449,14 +1457,18 @@
     <div class="grid">
 
       <div class="f-cta">
-        <image-slot placeholder="W&amp;E Health Institute logo"></image-slot>
-
-        <div class="f-cta-btns">
-          <a href="mailto:wehiusa@gmail.com" class="btn-primary">
+        <div class="f-logo" style="width:100%;max-width:280px;aspect-ratio:1/1;">
+          <image-slot id="footer-logo" placeholder="W&amp;E Health Institute logo"></image-slot>
+        </div>
+        <div class="f-cta-buttons">
+          <a href="mailto:wehiusa@gmail.com" class="request">
             <span>Book an Appointment</span>
-            <span class="arrow">&rarr;</span>
+            <span class="arr">→</span>
           </a>
-          <a href="tel:+19013406433" class="btn-primary">Call 901&middot;340&middot;6433</a>
+          <a href="tel:+19013406433" class="request request-ghost" style="height: 60px">
+            <span>Call 901&middot;340&middot;6433</span>
+            <span class="arr">☎</span>
+          </a>
         </div>
 
         <div class="wordmark">
@@ -1464,16 +1476,6 @@
           <p class="tag">Acupuncture and Integrative Care</p>
         </div>
       </div>
-
-      <nav class="f-nav" aria-label="Footer">
-        <a href="index.html" class="active"><span class="bullet"></span>Home</a>
-        <a href="about.html"><span class="bullet"></span>About</a>
-        <a href="services.html"><span class="bullet"></span>Services</a>
-        <a href="conditions.html"><span class="bullet"></span>Conditions</a>
-        <a href="testimonials.html"><span class="bullet"></span>Testimonials</a>
-        <a href="contact.html"><span class="bullet"></span>Contact</a>
-        <a href="saat.html"><span class="bullet"></span>SAAT Treatment</a>
-      </nav>
 
       <div class="f-details">
         <div class="f-block">

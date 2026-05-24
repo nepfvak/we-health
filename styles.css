@@ -243,9 +243,7 @@ footer .grid {
   display: grid; grid-template-columns: 1fr; gap: 64px; position: relative; z-index: 2;
 }
 @media (min-width: 980px) { footer .grid { grid-template-columns: 1.25fr .9fr .9fr; gap: 80px } }
-.f-cta { display: flex; flex-direction: column; gap: 24px }
-.f-cta image-slot { width: 100%; aspect-ratio: 4/3; max-width: 320px }
-.f-cta-btns { display: flex; flex-wrap: wrap; gap: 12px; align-items: center }
+.f-cta { display: flex; flex-direction: column; gap: 32px }
 .f-cta .editorial {
   font-family: var(--serif); font-weight: 300; line-height: .95; color: var(--paper);
   font-size: clamp(40px,5.6vw,72px); text-wrap: balance; max-width: 14ch; letter-spacing: -.01em;
