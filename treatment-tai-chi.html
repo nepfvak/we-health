@@ -16,6 +16,11 @@
   section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
+  .tx-nav-strip{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px clamp(20px,5vw,80px);background:var(--ink-2);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .tx-nav-strip a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
+  .tx-nav-strip a:hover{color:var(--gold)}
+  .tx-page-nav{display:flex;gap:32px}
+
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-overview p{font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper-dim);max-width:66ch;margin-bottom:28px}
   .tx-overview p:last-child{margin-bottom:0}
@@ -27,6 +32,28 @@
   .tx-list{list-style:none;display:flex;flex-direction:column;gap:16px}
   .tx-list li{position:relative;padding-left:26px;font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.7;color:var(--paper-dim)}
   .tx-list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:.5px;background:var(--gold)}
+
+  /* Interactive: 5 Principles Stepper */
+  .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
+  .tx-interactive>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+  .principles-stepper{margin-top:40px;position:relative}
+  .principles-track{overflow:hidden;border-radius:4px}
+  .principles-card{display:none;opacity:0;transform:translateX(24px);transition:opacity .4s ease,transform .4s ease;background:var(--ink-2);border:1px solid var(--rule);border-radius:4px;padding:clamp(32px,5vw,64px)}
+  .principles-card.active{display:block;opacity:1;transform:translateX(0)}
+  .principles-card.exit-left{display:block;opacity:0;transform:translateX(-24px)}
+  .principle-glyph{font-family:var(--brush);font-size:clamp(80px,14vw,140px);color:var(--gold);line-height:1;display:block;margin-bottom:8px;opacity:.9}
+  .principle-label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-faint);margin-bottom:12px;display:block}
+  .principle-name{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.5vw,40px);color:var(--paper);line-height:1.15;margin-bottom:20px}
+  .principle-name em{font-style:normal;color:var(--gold)}
+  .principle-desc{font-family:var(--serif);font-weight:300;font-size:clamp(15px,1.6vw,18px);line-height:1.8;color:var(--paper-dim);max-width:58ch}
+  .stepper-controls{display:flex;align-items:center;gap:20px;margin-top:24px}
+  .stepper-btn{background:none;border:1px solid var(--rule);color:var(--paper-dim);font-family:var(--mono);font-size:13px;letter-spacing:.08em;padding:10px 20px;border-radius:3px;cursor:pointer;transition:border-color .2s,color .2s}
+  .stepper-btn:hover:not(:disabled){border-color:var(--gold);color:var(--gold)}
+  .stepper-btn:disabled{opacity:.3;cursor:default}
+  .stepper-dots{display:flex;gap:8px;margin-left:auto}
+  .stepper-dot{width:6px;height:6px;border-radius:50%;background:var(--rule);border:none;padding:0;cursor:pointer;transition:background .2s,transform .2s}
+  .stepper-dot.active{background:var(--gold);transform:scale(1.3)}
+  .stepper-counter{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--paper-faint)}
 
   .tx-cta{padding:80px 0 120px;border-top:1px solid var(--rule);text-align:center;background:var(--ink)}
   .tx-cta .eyebrow{justify-content:center}
@@ -79,15 +106,24 @@
   </div>
 </header>
 
+<!-- Treatment Nav Strip -->
+<div class="tx-nav-strip">
+  <a href="index.html#services" class="tx-back">← All Treatments</a>
+  <div class="tx-page-nav">
+    <a href="treatment-tui-na.html" class="tx-prev">← Tui Na</a>
+    <a href="treatment-qi-gong.html" class="tx-next">Qi Gong →</a>
+  </div>
+</div>
+
 <!-- Overview -->
 <section class="tx-overview">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">概</span>Overview</div>
     <h2 class="reveal d1">Movement as a <span class="accent">daily practice of health.</span></h2>
     <div style="margin-top:40px">
-      <p class="reveal d2">Tai Chi — formally Tàijíquán, "supreme ultimate fist" — is a Chinese movement art rooted in the same philosophy as acupuncture and herbal medicine: the cultivation and regulation of qì. Its characteristic slow, continuous forms are not gentle exercise in the Western sense. They are a structured practice of breath, posture, weight transfer, and mental attention, each movement flowing into the next without pause, the body learning over time to move with an ease that most people have never experienced in their waking lives.</p>
-      <p class="reveal d3">Dr. Tieqiang Zhao, co-founder of W&amp;E Health Institute, holds the rank of National-Level Judge of Tai Chi and Kung Fu through the USA Wushu Kungfu Federation and is a member of the Tai Chi Qigong Association of America. Instruction at the clinic draws on this deep technical background. Beginners learn the foundational principles — rooting through the feet, opening the joints, relaxing the shoulders, letting the breath lead the movement — before building toward the longer classical sequences.</p>
-      <p class="reveal d3">Contemporary research on Tai Chi is substantial. The evidence base for fall prevention, balance, cardiovascular health, and anxiety reduction is strong enough that several major hospital systems now offer it as part of integrative care programmes. At W&amp;E Health Institute, Tai Chi is taught both as an adjunct to acupuncture treatment and as an independent practice for patients who wish to take an active role in their own health maintenance between clinic visits.</p>
+      <p class="reveal d2">Tai chi is a gentle movement practice that combines slow, flowing motions with breathing and balance. It is often described as a moving meditation and is used to support physical and mental well-being. Many people practice tai chi for stress reduction, balance, flexibility, and overall health.</p>
+      <p class="reveal d3">Research suggests tai chi may help improve balance, reduce fall risk in older adults, and support symptoms related to pain, arthritis, and anxiety in some people. Because movements are slow and low impact, it is usually accessible to beginners and people with limited fitness. It can be adapted for different ages and abilities.</p>
+      <p class="reveal d3">Tai chi is generally safe, but patients with severe balance issues, joint pain, or medical conditions should start slowly and modify movements as needed. It should not cause sharp pain, and any movements that increase symptoms should be avoided. Regular practice tends to provide more benefit than occasional sessions.</p>
     </div>
   </div>
 </section>
@@ -98,27 +134,88 @@
     <div class="tx-lists-grid">
 
       <div class="tx-list-block reveal d1">
-        <h3>What to expect <em>in instruction</em></h3>
+        <h3>What to expect <em>in a session</em></h3>
         <ul class="tx-list">
-          <li>Sessions begin with foundational standing posture work — learning to root through the feet and soften the joints before any movement is introduced.</li>
-          <li>Instruction is adapted to the individual: patients recovering from injury or surgery begin with seated or supported forms; mobile patients work through standing sequences at their own pace.</li>
-          <li>You will be given a short practice — sometimes just two or three movements — to repeat at home daily. Regularity matters far more than duration; even ten minutes each morning produces measurable change over months.</li>
-          <li>Group and individual instruction formats are both available; contact the clinic to enquire about current scheduling.</li>
+          <li>Classes or sessions involve slow, deliberate sequences of movements paired with breathing.</li>
+          <li>No prior experience or fitness level is required — movements can be modified for anyone.</li>
+          <li>Progress is gradual; consistency matters more than intensity.</li>
+          <li>Comfortable, loose-fitting clothes are all you need — no special equipment.</li>
         </ul>
       </div>
 
       <div class="tx-list-block reveal d2">
         <h3>Commonly reported <em>benefits</em></h3>
         <ul class="tx-list">
-          <li>Significant improvement in balance and a reduction in fall risk — particularly well-documented in older adults</li>
-          <li>Reduced joint pain and improved mobility in arthritis and related conditions</li>
-          <li>Lower resting blood pressure and improved cardiovascular markers with regular practice</li>
-          <li>Decreased anxiety and a measurable calming of the nervous system response to stress</li>
-          <li>Improved coordination and body awareness that carries over into daily movement</li>
-          <li>A sense of mental quietness and presence that many practitioners describe as unlike anything else in their lives</li>
+          <li>Improved balance and coordination, especially for older adults</li>
+          <li>Reduced fall risk and greater confidence in movement</li>
+          <li>Support for stress, anxiety, and mental calmness</li>
+          <li>Gentle on the joints — suitable for people with arthritis or limited mobility</li>
+          <li>Can be practiced daily as an accessible wellness routine</li>
         </ul>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- Interactive: The 5 Principles Stepper -->
+<section class="tx-interactive reveal">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">互</span>Interactive</div>
+    <h2 class="reveal d1">The five principles of <span class="accent">tai chi practice.</span></h2>
+
+    <div class="principles-stepper">
+      <div class="principles-track">
+
+        <div class="principles-card active" data-index="0">
+          <span class="principle-glyph">松</span>
+          <span class="principle-label">Principle 1 of 5</span>
+          <div class="principle-name"><em>Sōng</em> — Relaxation</div>
+          <p class="principle-desc">The body remains soft and released at all times. Tension in any part disrupts the flow of movement and energy. In tai chi, relaxation is not passivity — it is an active, conscious releasing of unnecessary holding throughout the joints, muscles, and mind.</p>
+        </div>
+
+        <div class="principles-card" data-index="1">
+          <span class="principle-glyph">慢</span>
+          <span class="principle-label">Principle 2 of 5</span>
+          <div class="principle-name"><em>Màn</em> — Slowness</div>
+          <p class="principle-desc">Slow movement builds awareness, balance, and internal sensitivity. Speed comes only after slowness is mastered. Moving slowly forces the practitioner to feel each transition — weight shifts, breath, and the quality of attention — rather than executing movements automatically.</p>
+        </div>
+
+        <div class="principles-card" data-index="2">
+          <span class="principle-glyph">圓</span>
+          <span class="principle-label">Principle 3 of 5</span>
+          <div class="principle-name"><em>Yuán</em> — Circularity</div>
+          <p class="principle-desc">Every motion follows a curved, circular path. There are no sharp angles — movement flows like water. Circularity prevents force from blocking or stagnating at the joints, allowing energy to travel through the body in continuous, uninterrupted waves.</p>
+        </div>
+
+        <div class="principles-card" data-index="3">
+          <span class="principle-glyph">均</span>
+          <span class="principle-label">Principle 4 of 5</span>
+          <div class="principle-name"><em>Jūn</em> — Evenness</div>
+          <p class="principle-desc">Pace, force, and attention remain steady throughout. No part of the form rushes or drags. Evenness trains the nervous system toward regulation — the body learns to resist the impulse to speed up when anxious or slow down when fatigued, finding a middle path instead.</p>
+        </div>
+
+        <div class="principles-card" data-index="4">
+          <span class="principle-glyph">靜</span>
+          <span class="principle-label">Principle 5 of 5</span>
+          <div class="principle-name"><em>Jìng</em> — Stillness</div>
+          <p class="principle-desc">The mind remains calm and present. Tai chi is meditation in motion — stillness found within movement. As the body moves through the form, the practitioner cultivates a quality of inner quiet that, with practice, begins to carry into the rest of daily life.</p>
+        </div>
+
+      </div>
+
+      <div class="stepper-controls">
+        <button class="stepper-btn" id="stepPrev" disabled>← Prev</button>
+        <button class="stepper-btn" id="stepNext">Next →</button>
+        <span class="stepper-counter" id="stepCounter">1 / 5</span>
+        <div class="stepper-dots" id="stepDots">
+          <button class="stepper-dot active" data-target="0" aria-label="Principle 1"></button>
+          <button class="stepper-dot" data-target="1" aria-label="Principle 2"></button>
+          <button class="stepper-dot" data-target="2" aria-label="Principle 3"></button>
+          <button class="stepper-dot" data-target="3" aria-label="Principle 4"></button>
+          <button class="stepper-dot" data-target="4" aria-label="Principle 5"></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -141,7 +238,7 @@
 
       <div class="f-cta">
         <div class="f-logo" style="width:100%;max-width:280px;aspect-ratio:1/1;">
-          <image-slot id="footer-logo" src="assets/logo-with-text.png" placeholder="W&amp;E Health Institute logo"></image-slot>
+          <image-slot id="footer-logo" placeholder="W&amp;E Health Institute logo"></image-slot>
         </div>
         <div class="f-cta-buttons">
           <a href="mailto:wehiusa@gmail.com" class="request">
@@ -255,6 +352,40 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
 }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Principles Stepper
+(function(){
+  const cards = Array.from(document.querySelectorAll('.principles-card'));
+  const dots = Array.from(document.querySelectorAll('.stepper-dot'));
+  const prevBtn = document.getElementById('stepPrev');
+  const nextBtn = document.getElementById('stepNext');
+  const counter = document.getElementById('stepCounter');
+  let current = 0;
+
+  function goTo(idx, dir) {
+    if (idx < 0 || idx >= cards.length) return;
+    const outDir = dir === 'next' ? 'exit-left' : '';
+    cards[current].classList.remove('active');
+    if (outDir) cards[current].classList.add(outDir);
+    setTimeout(() => { if(outDir) cards[current].classList.remove(outDir); }, 400);
+    dots[current].classList.remove('active');
+    current = idx;
+    // small delay to trigger transition
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        cards[current].classList.add('active');
+      });
+    });
+    dots[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + cards.length;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === cards.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1, 'prev'));
+  nextBtn.addEventListener('click', () => goTo(current + 1, 'next'));
+  dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.target), parseInt(d.dataset.target) > current ? 'next' : 'prev')));
+})();
 </script>
 </body>
 </html>
