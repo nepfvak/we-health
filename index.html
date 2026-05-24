@@ -256,32 +256,6 @@
   }
   .hero .meta b{color:var(--paper);font-weight:400}
 
-  /* ── Philosophy ────────────────────────────────────────────────────── */
-  .philosophy{padding:0}
-  .philosophy .inner{display:grid;grid-template-columns:1fr;gap:48px;align-items:start}
-  @media (min-width:980px){.philosophy .inner{grid-template-columns:1fr 1.4fr;gap:80px}}
-  .philosophy .glyph-stack{position:relative;display:flex;align-items:flex-start;gap:24px}
-  .philosophy .glyph-stack .big{
-    font-family:var(--brush);font-size:clamp(120px,16vw,200px);line-height:1.05;color:var(--gold);
-    display:var(--glyph-display,block);padding-bottom:.08em;
-  }
-  .philosophy .glyph-stack .caption{
-    font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--paper-faint);
-    writing-mode:vertical-rl;transform:rotate(180deg);padding:8px 0;
-  }
-  .philosophy .body-col p.body{font-size:clamp(18px,1.9vw,22px);line-height:1.7;color:var(--paper);max-width:38ch}
-  .philosophy .body-col p.body + p.body{color:var(--paper-dim);font-size:17px;line-height:1.75;max-width:54ch;margin-top:32px}
-  .philosophy .signature{
-    margin-top:48px;display:flex;align-items:center;gap:18px;
-  }
-  .philosophy .signature .seal{
-    width:64px;height:64px;border:.5px solid var(--cinnabar);display:grid;place-items:center;
-    font-family:var(--brush);font-size:32px;color:var(--cinnabar);background:rgba(200,146,26,.06);
-    transform:rotate(-2deg);
-  }
-  .philosophy .signature .sig-text{font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--paper-faint);line-height:1.7}
-  .philosophy .signature .sig-text b{color:var(--paper);font-weight:400}
-
   /* ── Services ──────────────────────────────────────────────────────── */
   .services{background:var(--ink-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);position:relative}
   .services::before{
@@ -380,7 +354,6 @@
   @media (prefers-reduced-motion: reduce) { .ink-paint { animation: none } }
 
 /* ── Page-specific animations ──────────────────────────────────────── */
-  .philosophy .signature .seal{animation:seal-breathe 6s ease-in-out infinite}
   .about .portrait .stamp{animation:stamp-breathe 7s ease-in-out infinite}
   .hero .meridian circle{animation:pulse 3.4s ease-in-out infinite}
   .hero .meridian circle:nth-child(2){animation-delay:.6s}
@@ -487,7 +460,6 @@
   [data-theme="light"] .acu-card.active{background:rgba(61,139,114,.12);box-shadow:0 0 0 .5px var(--gold)}
   [data-theme="light"] .acu-detail{background:rgba(24,24,26,.015)}
   [data-theme="light"] .divider-dot{fill:#c8921a}
-  [data-theme="light"] .philosophy .signature .seal{background:rgba(200,146,26,.05)}
   [data-theme="light"] .about .portrait .stamp{background:rgba(200,146,26,.08)}
 
   /* ── Trust Strip ──────────────────────────────────────────────────── */
@@ -838,7 +810,7 @@
   [data-theme="light"] .nav .links a.is-active{ color: var(--gold) }
   [data-theme="light"] .nav .links a::after{ background: var(--gold) }
 
-  /* Philosophy & About — keep the small chop/seal in true cinnabar red.
+  /* About — keep the small chop/seal in true cinnabar red.
      Page-frame corner ticks use jade. */
   [data-theme="light"] .page-frame::before,
   [data-theme="light"] .page-frame::after,
@@ -1426,45 +1398,6 @@
 </section>
 
 <!-- ─── About ─────────────────────────────────────────────────────── -->
-<section class="philosophy" id="philosophy">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span>III.</span> <span>Philosophy</span> <span class="cn">道</span></div>
-
-    <div class="inner">
-      <div class="glyph-stack reveal d1">
-        <div class="big">氣</div>
-        <div class="caption">qì · vital breath</div>
-      </div>
-
-      <div class="body-col reveal d2">
-        <p class="body">
-          Acupuncture is not a treatment performed on you. It is a slow conversation with
-          the body — listening for where breath has stopped, where warmth has thinned,
-          where the current of <em>qì</em> has lost its road.
-        </p>
-        <p class="body">
-          What we practise is older than memory: a medicine of pulse and palpation,
-          of herbs gathered by season, of fine needles placed at the points classical
-          texts have mapped for three millennia. It is patient work. It is meant to be.
-          We do not chase symptoms — we tend to the soil they grew from.
-        </p>
-
-        <div class="signature">
-          <div class="seal">印</div>
-          <div class="sig-text">
-            <b>Dr. Yingjuan Liang (Selina)</b><br/>
-            DACM, L.Ac. · Cordova, TN
-          </div>
-        </div>
-
-        <div style="margin-top:48px;">
-          <a href="#services" class="btn-ghost">Read the Treatments <span style="font-family:var(--serif);font-style:italic">→</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─── Footer ────────────────────────────────────────────────────── -->
 <footer>
   <div class="glyph" aria-hidden="true">安</div>
@@ -1678,7 +1611,7 @@
   });
 
   // Portrait + service icons — zoom-in
-  document.querySelectorAll('.about .portrait, .svc .icon, .philosophy .glyph-stack .big').forEach(el => {
+  document.querySelectorAll('.about .portrait, .svc .icon').forEach(el => {
     el.classList.add('zoom-in');
     const lo = new IntersectionObserver((entries) => {
       for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); lo.unobserve(e.target); }
