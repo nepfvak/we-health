@@ -32,6 +32,34 @@
   .tx-cta .eyebrow{justify-content:center}
   .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
   .tx-cta .cta-text em{font-style:normal;color:var(--gold)}
+
+  /* Treatment nav strip */
+  .tx-nav-strip{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px clamp(20px,5vw,80px);background:var(--ink-2);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .tx-nav-strip a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
+  .tx-nav-strip a:hover{color:var(--gold)}
+  .tx-page-nav{display:flex;gap:32px}
+
+  /* Interactive section */
+  .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
+  .tx-interactive>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+  /* Herb flip cards */
+  .herb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px}
+  @media(min-width:600px){.herb-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:900px){.herb-grid{grid-template-columns:repeat(6,1fr);gap:16px}}
+  .herb-card{perspective:800px;cursor:pointer;height:200px}
+  @media(min-width:900px){.herb-card{height:220px}}
+  .herb-card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+  .herb-card.flipped .herb-card-inner{transform:rotateY(180deg)}
+  .herb-face,.herb-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}
+  .herb-face{background:var(--ink-2)}
+  .herb-back{background:var(--ink-3,#1a1a1a);transform:rotateY(180deg);justify-content:flex-start;padding:18px 14px;text-align:left;align-items:flex-start}
+  .herb-face-glyph{font-family:var(--brush);font-size:42px;line-height:1;color:var(--gold);margin-bottom:10px}
+  .herb-face-name{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  .herb-back-category{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .herb-back-examples{font-family:var(--serif);font-style:italic;font-weight:300;font-size:13px;line-height:1.5;color:var(--paper);margin-bottom:8px}
+  .herb-back-uses{font-family:var(--serif);font-weight:300;font-size:12px;line-height:1.6;color:var(--paper-dim)}
+  .herb-hint{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-faint);margin-top:16px}
 </style>
 </head>
 <body>
@@ -79,15 +107,24 @@
   </div>
 </header>
 
+<!-- Treatment Nav Strip -->
+<div class="tx-nav-strip">
+  <a href="index.html#services" class="tx-back">← All Treatments</a>
+  <div class="tx-page-nav">
+    <a href="treatment-moxibustion.html" class="tx-prev">← Moxibustion</a>
+    <a href="treatment-cupping.html" class="tx-next">Cupping →</a>
+  </div>
+</div>
+
 <!-- Overview -->
 <section class="tx-overview">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">概</span>Overview</div>
     <h2 class="reveal d1">A pharmacy shaped to <span class="accent">one person.</span></h2>
     <div style="margin-top:40px">
-      <p class="reveal d2">Chinese herbal medicine is an encyclopaedic tradition with a written record spanning more than two thousand years. Its foundational text, the <em>Shennong Bencao Jing</em>, catalogued over 365 substances — roots, bark, seeds, minerals, and leaves — each characterised by its temperature, flavour, and affinity for specific organ systems and channels. Modern practice draws on this lineage while adding centuries of refinement and, increasingly, pharmacological research.</p>
-      <p class="reveal d3">The key distinction from most Western supplement use is that Chinese herbal prescriptions are formulas — combinations of anywhere from four to twenty or more individual substances, each selected not just for its primary effect but for its role in modifying the actions of others in the group. A skilled herbalist constructs a formula the way a composer writes for an ensemble: the whole does something none of its parts could do alone.</p>
-      <p class="reveal d3">At W&amp;E Health Institute, herbal prescriptions are individualised at each visit. Dr. Selina does not use fixed-formula products off a shelf. She reads your current presentation — pulse, tongue, symptoms, season, emotional state — and prepares or adjusts a formula accordingly. Granule concentrates are available for convenience; raw decoctions remain an option for patients whose patterns warrant the deeper action of a full traditional preparation.</p>
+      <p class="reveal d2">Herbal medicine uses plant-based formulas such as roots, bark, leaves, flowers, and seeds to support health and treat symptoms. In traditional Chinese medicine, herbs are often combined into individualized formulas based on the patient's overall pattern, rather than on a single diagnosis alone.</p>
+      <p class="reveal d3">Patients may use herbal medicine for digestion, energy, sleep, stress, immune support, or chronic symptoms. Some formulas may help with specific complaints, but the effects depend on the formula, the condition being treated, and the quality of the herbs. Herbal medicine is often best used as part of a broader treatment plan.</p>
+      <p class="reveal d3">Herbs can interact with prescription medications and may not be safe during pregnancy, breastfeeding, or for people with liver, kidney, or bleeding problems. Patients should always tell their clinician about every supplement or herb they are taking. Quality matters, so herbal products should come from trusted sources.</p>
     </div>
   </div>
 </section>
@@ -100,26 +137,123 @@
       <div class="tx-list-block reveal d1">
         <h3>What to expect <em>when prescribed herbs</em></h3>
         <ul class="tx-list">
-          <li>Following your initial assessment, Dr. Selina will discuss whether herbal medicine is appropriate alongside or between acupuncture treatments, and answer any questions about ingredients, sourcing, or safety.</li>
-          <li>Granule formulas are the most common delivery: powders dissolved in warm water and taken one to three times daily. They are convenient and have a shelf life of several months.</li>
-          <li>Your formula will be reviewed and adjusted at each follow-up visit as your pattern changes — herbal prescriptions are never static over a course of treatment.</li>
-          <li>Please bring a current list of any Western medications you take so potential interactions can be assessed before a formula is prescribed.</li>
+          <li>Your practitioner will ask about your symptoms, constitution, and any medications before recommending a formula.</li>
+          <li>Formulas are typically taken as teas, granules, or capsules — your provider will advise on the best form for you.</li>
+          <li>Effects may build gradually over days or weeks; some acute formulas work more quickly.</li>
+          <li>Follow-up visits allow the formula to be adjusted as your condition changes.</li>
         </ul>
       </div>
 
       <div class="tx-list-block reveal d2">
         <h3>Commonly reported <em>benefits</em></h3>
         <ul class="tx-list">
-          <li>Sustained improvement in conditions that acupuncture alone addresses only partially — providing daily therapeutic action between clinic visits</li>
-          <li>Support for hormonal irregularity, fertility, and the menstrual cycle</li>
-          <li>Improvement in digestive and metabolic function, including bloating, reflux, and sluggish bowel</li>
-          <li>Reduction of systemic inflammation and support during recovery from illness</li>
-          <li>Calming of anxiety and support for more restful, unbroken sleep</li>
-          <li>Gradual strengthening of constitutional deficiencies — the kind of deep fatigue that short-term treatment rarely reaches</li>
+          <li>Support for digestion, energy, sleep, and stress</li>
+          <li>Immune and seasonal health support</li>
+          <li>Complementary to acupuncture and other therapies</li>
+          <li>Individualized to your specific pattern, not a one-size-fits-all remedy</li>
+          <li>Can address chronic symptoms over time with consistent use</li>
         </ul>
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- Interactive: Herb Category Flip Cards -->
+<section class="tx-interactive">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">互</span>Interactive</div>
+    <h2 class="reveal d1">Explore herb <span class="accent">categories.</span></h2>
+    <p class="reveal d2" style="font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:56ch;margin-top:12px">Click any card to flip it and discover the herbs in each category and what they are typically used for.</p>
+
+    <div class="herb-grid reveal d2">
+
+      <div class="herb-card" data-herb="roots" aria-label="Root Herbs — click to flip">
+        <div class="herb-card-inner">
+          <div class="herb-face">
+            <div class="herb-face-glyph">根</div>
+            <div class="herb-face-name">Root Herbs</div>
+          </div>
+          <div class="herb-back">
+            <div class="herb-back-category">Root Herbs · 根</div>
+            <div class="herb-back-examples">Ginseng, Astragalus, Licorice root</div>
+            <div class="herb-back-uses">Used for energy, immunity, and harmonizing formulas. Many root herbs are classified as tonics and form the foundation of restorative prescriptions.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="herb-card" data-herb="bark" aria-label="Bark and Wood — click to flip">
+        <div class="herb-card-inner">
+          <div class="herb-face">
+            <div class="herb-face-glyph">皮</div>
+            <div class="herb-face-name">Bark &amp; Wood</div>
+          </div>
+          <div class="herb-back">
+            <div class="herb-back-category">Bark &amp; Wood · 皮</div>
+            <div class="herb-back-examples">Cinnamon bark, Magnolia bark</div>
+            <div class="herb-back-uses">Used for warming, calming, and circulation. Bark herbs are often pungent and aromatic, helping to dispel cold and move stagnation in the channels.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="herb-card" data-herb="flowers" aria-label="Flowers and Buds — click to flip">
+        <div class="herb-card-inner">
+          <div class="herb-face">
+            <div class="herb-face-glyph">花</div>
+            <div class="herb-face-name">Flowers &amp; Buds</div>
+          </div>
+          <div class="herb-back">
+            <div class="herb-back-category">Flowers &amp; Buds · 花</div>
+            <div class="herb-back-examples">Chrysanthemum, Honeysuckle</div>
+            <div class="herb-back-uses">Used for heat, inflammation, and the eyes. Flower herbs tend to be cooling and light, rising to address the upper body, head, and external conditions.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="herb-card" data-herb="seeds" aria-label="Seeds and Fruits — click to flip">
+        <div class="herb-card-inner">
+          <div class="herb-face">
+            <div class="herb-face-glyph">子</div>
+            <div class="herb-face-name">Seeds &amp; Fruits</div>
+          </div>
+          <div class="herb-back">
+            <div class="herb-back-category">Seeds &amp; Fruits · 子</div>
+            <div class="herb-back-examples">Schisandra, Jujube date, Wolfberry</div>
+            <div class="herb-back-uses">Used for liver, kidney, and sleep support. Seeds and fruits are often nourishing and consolidating, supporting the body's deeper reservoirs of essence and blood.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="herb-card" data-herb="leaves" aria-label="Leaves — click to flip">
+        <div class="herb-card-inner">
+          <div class="herb-face">
+            <div class="herb-face-glyph">葉</div>
+            <div class="herb-face-name">Leaves</div>
+          </div>
+          <div class="herb-back">
+            <div class="herb-back-category">Leaves · 葉</div>
+            <div class="herb-back-examples">Mulberry leaf, Loquat leaf</div>
+            <div class="herb-back-uses">Used for lung support and clearing heat. Leaf herbs are light and dispersing, often addressing respiratory conditions, surface pathogens, and internal heat.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="herb-card" data-herb="mineral" aria-label="Mineral — click to flip">
+        <div class="herb-card-inner">
+          <div class="herb-face">
+            <div class="herb-face-glyph">礦</div>
+            <div class="herb-face-name">Mineral</div>
+          </div>
+          <div class="herb-back">
+            <div class="herb-back-category">Mineral · 礦</div>
+            <div class="herb-back-examples">Oyster shell, Dragon bone</div>
+            <div class="herb-back-uses">Used for calming the spirit and anchoring energy. Heavy mineral substances settle an agitated shen (mind-spirit) and secure floating yang in patterns of restlessness or insomnia.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="herb-hint reveal d3">Click any card to reveal its contents</p>
   </div>
 </section>
 
@@ -141,7 +275,7 @@
 
       <div class="f-cta">
         <div class="f-logo" style="width:100%;max-width:280px;aspect-ratio:1/1;">
-          <image-slot id="footer-logo" src="assets/logo-with-text.png" placeholder="W&amp;E Health Institute logo"></image-slot>
+          <image-slot id="footer-logo" placeholder="W&amp;E Health Institute logo"></image-slot>
         </div>
         <div class="f-cta-buttons">
           <a href="mailto:wehiusa@gmail.com" class="request">
@@ -255,6 +389,15 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
 }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Herb flip cards
+(function(){
+  document.querySelectorAll('.herb-card').forEach(card => {
+    card.addEventListener('click', function(){
+      this.classList.toggle('flipped');
+    });
+  });
+})();
 </script>
 </body>
 </html>
