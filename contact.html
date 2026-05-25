@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Contact — W&amp;E Health Institute · Memphis</title>
+<title>Book an Appointment — W&amp;E Health Institute · Cordova, TN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -11,181 +11,105 @@
 <link rel="stylesheet" href="styles.css" />
 <script src="theme.js"></script>
 <style>
-  /* ── Scroll snap & full-viewport sections ───────────────────── */
   html{scroll-snap-type:y proximity}
   .page-hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
-  
   section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-/* ── Contact page specific ────────────────────────────────────────────── */
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:64px;
-  align-items:start;
-}
-@media(min-width:900px){
-  .contact-grid{grid-template-columns:1fr 1fr;gap:80px}
-}
-.contact-info{display:flex;flex-direction:column;gap:36px}
-.contact-info-block{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-.contact-info-block .label{
-  font-family:var(--mono);
-  font-size:12px;
-  letter-spacing:.20em;
-  text-transform:uppercase;
-  color:var(--gold);
-  font-weight:400;
-  margin-bottom:4px;
-}
-.contact-info-block .value{
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:17px;
-  line-height:1.7;
-  color:var(--paper-dim);
-}
-.contact-info-block a.value{
-  display:inline-block;
-  transition:color .25s;
-}
-.contact-info-block a.value:hover{color:var(--gold)}
-.contact-desc{
-  font-family:var(--serif);
-  font-weight:400;
-  font-style:italic;
-  font-size:17px;
-  line-height:1.75;
-  color:var(--paper-dim);
-  max-width:44ch;
-}
-.clinic-photo{
-  aspect-ratio:4/3;
-  background:var(--ink-2);
-  border:.5px solid var(--rule-strong);
-  display:grid;
-  place-items:center;
-  position:relative;
-  overflow:hidden;
-}
-.clinic-photo::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  opacity:.6;
-}
-.clinic-photo .photo-label{
-  font-family:var(--mono);
-  font-size:11px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--paper-faint);
-  position:relative;
-  z-index:1;
-}
-.divider-rule{
-  border:0;
-  border-top:1px solid var(--rule);
-  margin:0;
-}
-.hours-section{padding:0}
-.hours-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:16px;
-  max-width:480px;
-  margin-top:48px;
-}
-.hours-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
-  border-bottom:.5px solid var(--rule);
-}
-.hours-row:first-child{border-top:.5px solid var(--rule)}
-.hours-row .day{
-  font-family:var(--mono);
-  font-size:12px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--paper-dim);
-}
-.hours-row .time{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:17px;
-  color:var(--paper);
-}
-.hours-row .time.closed{
-  color:var(--paper-faint);
-}
-.map-section{
-  padding:0 0 0;
-  position:relative;
-  z-index:3;
-}
-.map-wrap{
-  position:relative;
-  z-index:3;
-  border-top:1px solid var(--rule);
-}
-.map-wrap iframe{
-  display:block;
-  width:100%;
-  height:480px;
-  border:0;
-  filter:grayscale(1) invert(0.9) sepia(0.3) contrast(0.85) brightness(0.75);
-}
-.map-label{
-  padding:28px 22px;
-  background:var(--ink-2);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:16px;
-  border-bottom:1px solid var(--rule);
-}
-.map-label .addr{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:17px;
-  color:var(--paper-dim);
-}
-.map-label a{
-  font-family:var(--mono);
-  font-size:12px;
-  letter-spacing:.20em;
-  text-transform:uppercase;
-  color:var(--gold);
-  transition:color .25s;
-}
-.map-label a:hover{color:var(--paper)}
+  /* ── Booking section ─────────────────────────────────────────────────── */
+  .book-section{background:var(--ink);border-top:1px solid var(--rule)}
+  .book-lead{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:clamp(18px,2vw,22px);line-height:1.75;
+    color:var(--paper-dim);max-width:52ch;margin-bottom:52px;
+  }
+  .book-actions{display:flex;flex-direction:column;gap:2px;max-width:480px}
+  .book-primary{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 28px;background:var(--gold);color:var(--ink);
+    font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    transition:opacity .2s;
+  }
+  .book-primary:hover{opacity:.88}
+  .book-primary .arr{font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:0}
+  .book-secondary{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 28px;border:.5px solid var(--rule-strong);
+    font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--paper-dim);transition:color .2s,border-color .2s;
+  }
+  .book-secondary:hover{color:var(--gold);border-color:var(--gold)}
+  .book-secondary .arr{font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:0}
+  .book-meta{
+    display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:40px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--paper-faint);
+  }
+  .book-meta a{color:var(--paper-faint);transition:color .2s}
+  .book-meta a:hover{color:var(--gold)}
 
-/* ── Mobile overrides ─────────────────────────────────────── */
-@media(max-width:768px){
-  html{scroll-snap-type:none}
-  section{min-height:0;padding:56px 0}
-  .map-wrap iframe{height:320px}
-}
-@media(max-width:640px){
-  .contact-grid{gap:36px}
-  .clinic-photo{aspect-ratio:16/9}
-  .hours-grid{margin-top:32px}
-  .hours-row{padding:14px 0}
-  .map-label{padding:20px 16px}
-  .map-label .addr{font-size:15px}
-  .map-label a{font-size:11px;min-height:44px;display:flex;align-items:center}
-}
+  /* ── Info strip ──────────────────────────────────────────────────────── */
+  .info-section{background:var(--ink-2);border-top:1px solid var(--rule)}
+  .info-grid{
+    display:grid;grid-template-columns:1fr;gap:52px;margin-top:48px;
+  }
+  @media(min-width:860px){.info-grid{grid-template-columns:5fr 4fr;gap:72px;align-items:start}}
+
+  .clinic-photo{
+    aspect-ratio:4/3;background:var(--ink-3);border:.5px solid var(--rule-strong);
+    position:relative;overflow:hidden;display:grid;place-items:center;
+  }
+  .clinic-photo::before{
+    content:"";position:absolute;inset:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:.5;
+  }
+  .clinic-photo .photo-label{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--paper-faint);position:relative;z-index:1;
+  }
+
+  .info-right{display:flex;flex-direction:column;gap:44px}
+
+  /* Hours */
+  .hours-list{display:flex;flex-direction:column;margin-top:20px}
+  .hours-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 0;border-bottom:.5px solid var(--rule);
+  }
+  .hours-row:first-child{border-top:.5px solid var(--rule)}
+  .hours-row .day{
+    font-family:var(--mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-dim);
+  }
+  .hours-row .time{
+    font-family:var(--serif);font-style:italic;font-weight:400;font-size:16px;color:var(--paper);
+  }
+  .hours-row .time.closed{color:var(--paper-faint)}
+
+  /* Social */
+  .social-row{display:flex;gap:12px;margin-top:16px}
+  .social-row a{
+    width:44px;height:44px;display:grid;place-items:center;
+    border:.5px solid var(--rule-strong);color:var(--paper-faint);
+    transition:color .2s,border-color .2s;
+  }
+  .social-row a:hover{color:var(--gold);border-color:var(--gold)}
+  .social-row svg{width:18px;height:18px}
+
+  .info-label{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  }
+
+  /* ── Mobile ──────────────────────────────────────────────────────────── */
+  @media(max-width:768px){
+    html{scroll-snap-type:none}
+    section{min-height:0;padding:56px 0}
+  }
+  @media(max-width:640px){
+    .book-actions{max-width:100%}
+    .book-primary,.book-secondary{padding:18px 20px}
+    .info-grid{gap:36px}
+  }
 </style>
 </head>
 <body>
@@ -224,113 +148,122 @@
 
 <div class="page-hero">
   <div class="bg"></div>
-  <div class="ghost-glyph" aria-hidden="true">地</div>
+  <div class="ghost-glyph" aria-hidden="true">始</div>
   <div class="wrap">
-    <p class="eyebrow"><span class="cn">聯絡</span> Find Us</p>
-    <h1>Come find <span class="accent">us</span></h1>
-    <p class="lede">We serve Memphis, Cordova, Germantown, Bartlett and surrounding areas.</p>
+    <p class="eyebrow"><span class="cn">預約</span> Book</p>
+    <h1>Begin your <span class="accent">care</span></h1>
+    <p class="lede">Reach out to schedule a visit — we'll find a time that works for you.</p>
   </div>
 </div>
 
-<!-- Section 1: Info + Photo -->
-<section>
+<!-- Booking CTA -->
+<section class="book-section">
   <div class="wrap">
-    <div class="contact-grid">
+    <p class="eyebrow reveal"><span class="cn">聯絡</span> Contact Us</p>
+    <h2 class="reveal d1">How would you like to <span class="accent">connect?</span></h2>
+    <p class="book-lead reveal d2">We're available Monday through Saturday. Email or call to check availability and book your first appointment with Dr. Selina.</p>
 
-      <!-- Left: Contact Info -->
-      <div class="contact-info reveal">
-        <div>
-          <p class="eyebrow"><span class="cn">位置</span> Contact Us</p>
-          <p class="contact-desc">We are located in a tranquil place next to the greenline. Please reach out to us with any questions about acupuncture, herb, cupping therapy, moxibustion, or holistic treatment options.</p>
-        </div>
+    <div class="book-actions reveal d3">
+      <a href="mailto:wehiusa@gmail.com" class="book-primary">
+        Book via email — wehiusa@gmail.com
+        <span class="arr">→</span>
+      </a>
+      <a href="tel:+19013406433" class="book-secondary">
+        Call (901) 340-6433
+        <span class="arr">☎</span>
+      </a>
+    </div>
 
-        <div class="contact-info-block">
-          <div class="label">Address</div>
-          <p class="value">985 Cordova Station Ave, Ste 101<br/>Cordova, TN 38018</p>
-        </div>
+    <div class="book-meta reveal d3">
+      <span>985 Cordova Station Ave, Ste 101 · Cordova, TN 38018</span>
+      <a href="https://maps.google.com/?q=985+Cordova+Station+Ave+Ste+101+Cordova+TN+38018" target="_blank" rel="noopener">Directions →</a>
+    </div>
+  </div>
+</section>
 
-        <div class="contact-info-block">
-          <div class="label">Phone</div>
-          <a href="tel:+19013406433" class="value">(901) 340-6433</a>
-        </div>
+<!-- Info strip -->
+<section class="info-section">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="cn">地</span> Visit</p>
+    <h2 class="reveal d1">Find <span class="accent">us</span></h2>
 
-        <div class="contact-info-block">
-          <div class="label">Email</div>
-          <a href="mailto:wehiusa@gmail.com" class="value">wehiusa@gmail.com</a>
-        </div>
+    <div class="info-grid">
 
-        <div class="contact-info-block">
-          <div class="label">Instagram</div>
-          <a href="https://instagram.com/wehealthinstitute" target="_blank" rel="noopener" class="value">@wehealthinstitute</a>
-        </div>
-      </div>
-
-      <!-- Right: Clinic Photo -->
       <div class="clinic-photo reveal d2" aria-label="Clinic interior">
         <span class="photo-label">[ clinic interior ]</span>
       </div>
 
-    </div>
-  </div>
-</section>
+      <div class="info-right">
 
-<!-- Section 2: Hours -->
-<section class="hours-section" style="padding-top:0">
-  <div class="wrap">
-    <hr class="divider-rule" />
-    <div style="padding-top:80px">
-      <p class="eyebrow reveal"><span class="cn">時間</span> Hours</p>
-      <h2 class="reveal d1">When we're <span class="accent">open</span></h2>
-      <div class="hours-grid reveal d2">
-        <div class="hours-row">
-          <span class="day">Monday</span>
-          <span class="time">8:00 am – 6:00 pm</span>
+        <div class="reveal d2">
+          <p class="info-label">Hours</p>
+          <div class="hours-list">
+            <div class="hours-row">
+              <span class="day">Monday</span>
+              <span class="time">8:00 am – 6:00 pm</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Tuesday</span>
+              <span class="time">8:00 am – 6:00 pm</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Wednesday</span>
+              <span class="time">8:00 am – 6:00 pm</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Thursday</span>
+              <span class="time">8:00 am – 6:00 pm</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Friday</span>
+              <span class="time">8:00 am – 6:00 pm</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Saturday</span>
+              <span class="time">8:00 am – 6:00 pm</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Sunday</span>
+              <span class="time closed">Closed</span>
+            </div>
+          </div>
         </div>
-        <div class="hours-row">
-          <span class="day">Tuesday</span>
-          <span class="time">8:00 am – 6:00 pm</span>
+
+        <div class="reveal d3">
+          <p class="info-label">Follow Us</p>
+          <div class="social-row">
+            <a href="https://instagram.com/wehealthinstitute" target="_blank" rel="noopener" aria-label="Instagram — @wehealthinstitute">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="3" y="3" width="18" height="18" rx="4"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WeChat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                <ellipse cx="9.2" cy="9.5" rx="6.2" ry="4.8"/>
+                <circle cx="7" cy="8.5" r=".5" fill="currentColor"/>
+                <circle cx="11.2" cy="8.5" r=".5" fill="currentColor"/>
+                <path d="M5,13.6 L4,15.6 L6,14.6"/>
+                <ellipse cx="15.4" cy="15" rx="5.2" ry="4"/>
+                <circle cx="13.8" cy="14" r=".4" fill="currentColor"/>
+                <circle cx="17" cy="14" r=".4" fill="currentColor"/>
+                <path d="M18.4,18 L19.2,19.6 L17.6,18.8"/>
+              </svg>
+            </a>
+            <a href="mailto:wehiusa@gmail.com" aria-label="Email — wehiusa@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+                <path d="M3.5,6 L12,13 L20.5,6"/>
+              </svg>
+            </a>
+          </div>
         </div>
-        <div class="hours-row">
-          <span class="day">Wednesday</span>
-          <span class="time">8:00 am – 6:00 pm</span>
-        </div>
-        <div class="hours-row">
-          <span class="day">Thursday</span>
-          <span class="time">8:00 am – 6:00 pm</span>
-        </div>
-        <div class="hours-row">
-          <span class="day">Friday</span>
-          <span class="time">8:00 am – 6:00 pm</span>
-        </div>
-        <div class="hours-row">
-          <span class="day">Saturday</span>
-          <span class="time">8:00 am – 6:00 pm</span>
-        </div>
-        <div class="hours-row">
-          <span class="day">Sunday</span>
-          <span class="time closed">Closed</span>
-        </div>
+
       </div>
     </div>
   </div>
 </section>
-
-<!-- Section 3: Map -->
-<div class="map-section">
-  <div class="map-label">
-    <p class="addr">985 Cordova Station Ave, Ste 101 · Cordova, TN 38018</p>
-    <a href="https://maps.google.com/?q=985+Cordova+Station+Ave+Ste+101+Cordova+TN+38018" target="_blank" rel="noopener">Open in Maps →</a>
-  </div>
-  <div class="map-wrap">
-    <iframe
-      title="W&amp;E Health Institute location map"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.4!2d-89.8!3d35.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f8a4c1a3e5a9b%3A0x1234567890!2s985+Cordova+Station+Ave%2C+Cordova%2C+TN+38018!5e0!3m2!1sen!2sus!4v1700000000000"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</div>
 
 <!-- ─── Footer ────────────────────────────────────────────────────── -->
 <footer>
@@ -405,7 +338,6 @@
         </div>
       </div>
 
-      <!-- ── Google Map row ────────────────────────────────────────── -->
       <div class="f-map">
         <div class="pin">
           <div class="h">Find us</div>
@@ -428,7 +360,7 @@
       <div class="legal">
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
-        <span>Memphis · 田納西州曼菲斯</span>
+        <span>Cordova · 田納西州科多瓦</span>
       </div>
     </div>
   </div>
@@ -449,13 +381,6 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
 }, {threshold:.1, rootMargin:'0px 0px -5% 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-document.querySelectorAll('p.body').forEach(p => {
-  p.classList.add('mask-up');
-  const lo = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');lo.unobserve(e.target);} });
-  }, {threshold:.08});
-  lo.observe(p);
-});
 </script>
 </body>
 </html>
