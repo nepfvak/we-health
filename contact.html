@@ -36,8 +36,8 @@
 }
 .contact-info-block .label{
   font-family:var(--mono);
-  font-size:10px;
-  letter-spacing:.32em;
+  font-size:12px;
+  letter-spacing:.20em;
   text-transform:uppercase;
   color:var(--gold);
   font-weight:400;
@@ -45,7 +45,7 @@
 }
 .contact-info-block .value{
   font-family:var(--serif);
-  font-weight:300;
+  font-weight:400;
   font-size:17px;
   line-height:1.7;
   color:var(--paper-dim);
@@ -57,7 +57,7 @@
 .contact-info-block a.value:hover{color:var(--gold)}
 .contact-desc{
   font-family:var(--serif);
-  font-weight:300;
+  font-weight:400;
   font-style:italic;
   font-size:17px;
   line-height:1.75;
@@ -120,7 +120,7 @@
 .hours-row .time{
   font-family:var(--serif);
   font-style:italic;
-  font-weight:300;
+  font-weight:400;
   font-size:17px;
   color:var(--paper);
 }
@@ -157,19 +157,35 @@
 .map-label .addr{
   font-family:var(--serif);
   font-style:italic;
-  font-weight:300;
+  font-weight:400;
   font-size:17px;
   color:var(--paper-dim);
 }
 .map-label a{
   font-family:var(--mono);
-  font-size:10.5px;
-  letter-spacing:.26em;
+  font-size:12px;
+  letter-spacing:.20em;
   text-transform:uppercase;
   color:var(--gold);
   transition:color .25s;
 }
 .map-label a:hover{color:var(--paper)}
+
+/* ── Mobile overrides ─────────────────────────────────────── */
+@media(max-width:768px){
+  html{scroll-snap-type:none}
+  section{min-height:0;padding:56px 0}
+  .map-wrap iframe{height:320px}
+}
+@media(max-width:640px){
+  .contact-grid{gap:36px}
+  .clinic-photo{aspect-ratio:16/9}
+  .hours-grid{margin-top:32px}
+  .hours-row{padding:14px 0}
+  .map-label{padding:20px 16px}
+  .map-label .addr{font-size:15px}
+  .map-label a{font-size:11px;min-height:44px;display:flex;align-items:center}
+}
 </style>
 </head>
 <body>

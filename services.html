@@ -20,7 +20,8 @@
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
 /* ── Accordion stack scroll ─────────────────────────────────────── */
-.svc-accordion { position: relative; border-top: 1px solid var(--rule); }
+.svc-accordion { position: relative; border-top: 1px solid var(--rule); background: var(--ink-2); }
+[data-theme="light"] .svc-accordion { background: var(--paper); }
 
 .svc-item { height: 100vh; }
 
@@ -49,7 +50,7 @@
   background: var(--ink-2);
 }
 .svc-i-num {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .32em;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .20em;
   text-transform: uppercase; color: var(--paper-faint); flex-shrink: 0; width: 28px;
 }
 .svc-i-name {
@@ -95,19 +96,38 @@
 }
 .svc-img-num {
   position:absolute; left:20px; bottom:20px; z-index:3;
-  font-family:var(--mono); font-size:10px; letter-spacing:.3em;
+  font-family:var(--mono); font-size:12px; letter-spacing:.20em;
   text-transform:uppercase; color:var(--paper-faint);
 }
 [data-theme="light"] .svc-item-img { background: linear-gradient(135deg,#e3e0d8,#ece9e2) }
 
 /* Text half */
 .svc-item-text {
-  padding: clamp(32px,4.5vw,60px) clamp(24px,4vw,56px);
-  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(32px,4.5vw,56px) clamp(24px,4vw,56px);
+  display: flex; flex-direction: column; justify-content: flex-start;
+  padding-top: clamp(36px,5vw,64px);
   overflow-y: auto;
+  position: relative;
+}
+
+/* Body — fade out bottom so collapse feels seamless */
+.svc-item-body {
+  position: relative;
+}
+.svc-item-body::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(transparent, var(--ink-2));
+  pointer-events: none;
+  z-index: 4;
+}
+[data-theme="light"] .svc-item-body::after {
+  background: linear-gradient(transparent, var(--paper));
 }
 .svc-item-text .svc-num {
-  font-family:var(--mono); font-size:10px; letter-spacing:.36em;
+  font-family:var(--mono); font-size:12px; letter-spacing:.20em;
   text-transform:uppercase; color:var(--paper-faint); margin-bottom:16px;
 }
 .svc-item-text h3 {
@@ -119,7 +139,7 @@
   letter-spacing:.06em; margin-bottom:20px; display:block;
 }
 .svc-item-text p {
-  color:var(--paper-dim); font-size:16px; line-height:1.75; font-weight:300; max-width:44ch;
+  color:var(--paper-dim); font-size:16px; line-height:1.75; font-weight:400; max-width:44ch;
 }
 .svc-item-text .svc-link {
   display:inline-flex; align-items:center; gap:10px; margin-top:28px;
@@ -147,7 +167,7 @@
   display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;
 }
 .services-intro .count{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;
+  font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;
   color:var(--paper-faint);max-width:28ch;line-height:1.7;
 }
 .services-intro .count b{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(48px,7vw,80px);letter-spacing:-.01em;color:var(--gold);line-height:1;font-weight:300;margin-bottom:6px}
@@ -170,8 +190,8 @@
   font-size:clamp(34px,5vw,64px);max-width:22ch;
 }
 .services-cta .sub{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:18px;line-height:1.6;color:var(--paper-dim);max-width:38ch;
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:18px;line-height:1.65;color:var(--paper-dim);max-width:38ch;
   margin:0 auto 44px;
 }
 .services-cta .ghost-bg{
@@ -189,11 +209,11 @@
 .value-col{padding:48px 40px;display:flex;flex-direction:column}
 .value-col.v-ours{background:var(--ink-2)}
 .value-col.v-theirs{background:var(--ink);opacity:.55}
-.v-head{font-family:var(--mono);font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;padding-bottom:20px;border-bottom:.5px solid var(--rule-strong);margin-bottom:28px;display:flex;align-items:center;gap:10px}
+.v-head{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;padding-bottom:20px;border-bottom:.5px solid var(--rule-strong);margin-bottom:28px;display:flex;align-items:center;gap:10px}
 .value-col.v-ours .v-head{color:var(--gold)}
 .value-col.v-theirs .v-head{color:var(--paper-faint)}
 .v-list{list-style:none;display:flex;flex-direction:column;gap:16px}
-.v-list li{font-family:var(--serif);font-weight:300;font-size:16px;color:var(--paper);line-height:1.45;display:flex;gap:14px;align-items:baseline}
+.v-list li{font-family:var(--serif);font-weight:400;font-size:16px;color:var(--paper);line-height:1.65;display:flex;gap:14px;align-items:baseline}
 .value-col.v-theirs .v-list li{color:var(--paper-dim)}
 .v-tick{font-family:var(--mono);font-size:9px;flex-shrink:0;padding-top:2px}
 .value-col.v-ours .v-tick{color:var(--gold)}
@@ -202,16 +222,55 @@
 /* ── Coming Soon ──────────────────────────────────────────────────── */
 .coming-soon{border-top:1px solid var(--rule);background:var(--ink-2);padding:72px 0}
 .cs-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px}
-.cs-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.cs-label{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
 .cs-label::before{content:"";width:28px;height:.5px;background:var(--gold)}
-.cs-heading{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(24px,3.6vw,42px);color:var(--paper);line-height:1.05}
+.cs-heading{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(24px,3.6vw,42px);color:var(--paper);line-height:1.05}
 .cs-cards{display:flex;gap:16px;flex-wrap:wrap}
 .cs-card{padding:22px 28px;border:.5px solid var(--rule-strong);display:flex;flex-direction:column;gap:7px;min-width:200px;background:var(--ink-3);position:relative;overflow:hidden}
 .cs-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cinnabar),transparent)}
-.cs-badge{font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--cinnabar);display:flex;align-items:center;gap:6px}
+.cs-badge{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--cinnabar);display:flex;align-items:center;gap:6px}
 .cs-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--cinnabar);box-shadow:0 0 6px var(--cinnabar);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
-.cs-name{font-family:var(--serif);font-style:italic;font-weight:300;font-size:19px;color:var(--paper);line-height:1.2}
-.cs-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-faint)}
+.cs-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;color:var(--paper);line-height:1.2}
+.cs-sub{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-faint)}
+
+  /* =================================================================
+     MOBILE OVERRIDES  (max-width: 768px)
+     ================================================================= */
+  @media(max-width:768px){
+    /* Disable scroll snap */
+    html{ scroll-snap-type:none }
+
+    /* Sections: no forced full-viewport height */
+    section{
+      min-height:0 !important;
+      padding:56px 0;
+    }
+    section>.wrap{
+      padding-top:40px;
+      padding-bottom:40px;
+    }
+
+    /* Services intro inner: stack on mobile */
+    .services-intro .inner{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    /* svc-item-text: reduce padding on mobile */
+    .svc-item-text{
+      padding: 32px 20px !important;
+    }
+
+    /* Value grid: already 1-column below 800px — reduce padding */
+    .value-col{ padding: 32px 24px }
+
+    /* Coming soon: stack */
+    .cs-inner{ flex-direction: column; align-items: flex-start }
+    .cs-cards{ flex-direction: column; width: 100% }
+    .cs-card{ min-width: 0; width: 100% }
+  }
+
 </style>
 </head>
 <body>

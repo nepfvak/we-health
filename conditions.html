@@ -28,7 +28,7 @@
 .spec-glyph{font-family:var(--brush);font-size:36px;color:var(--gold);line-height:1;margin-bottom:4px}
 .spec-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;color:var(--paper);line-height:1.2}
 .spec-items{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:4px}
-.spec-items li{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-faint);display:flex;align-items:center;gap:8px;line-height:1.4}
+.spec-items li{font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-dim);display:flex;align-items:center;gap:8px;line-height:1.4}
 .spec-items li::before{content:"";width:10px;height:.5px;background:var(--gold);flex-shrink:0}
 
 /* ── Conditions page specific ─────────────────────────────────────────── */
@@ -49,8 +49,8 @@
 .cond-card:hover{border-color:var(--rule-strong)}
 .cond-card .cat-label{
   font-family:var(--mono);
-  font-size:10px;
-  letter-spacing:.32em;
+  font-size:12px;
+  letter-spacing:.20em;
   text-transform:uppercase;
   color:var(--gold);
   font-weight:400;
@@ -74,9 +74,9 @@
 }
 .cond-card ul li{
   font-family:var(--serif);
-  font-weight:300;
+  font-weight:400;
   font-size:15.5px;
-  line-height:1.5;
+  line-height:1.65;
   color:var(--paper-dim);
   padding-left:14px;
   position:relative;
@@ -103,7 +103,7 @@
 }
 .cta-band .cta-heading{
   font-family:var(--serif);
-  font-weight:300;
+  font-weight:400;
   font-style:italic;
   font-size:clamp(26px,3.6vw,44px);
   line-height:1.1;
@@ -113,12 +113,51 @@
 }
 .cta-band .cta-sub{
   font-family:var(--serif);
-  font-weight:300;
+  font-weight:400;
   font-style:italic;
   color:var(--paper-dim);
   font-size:16px;
+  line-height:1.65;
   max-width:42ch;
 }
+
+  /* =================================================================
+     MOBILE OVERRIDES  (max-width: 768px)
+     ================================================================= */
+  @media(max-width:768px){
+    /* Disable scroll snap */
+    html{ scroll-snap-type:none }
+
+    /* Sections: no forced full-viewport height */
+    section{
+      min-height:0 !important;
+      padding:56px 0;
+    }
+    section>.wrap{
+      padding-top:40px;
+      padding-bottom:40px;
+    }
+
+    /* Spec grid: already 2-col — keep, just tighten padding */
+    .spec-card{ padding: 24px 18px 20px }
+
+    /* Conditions grid: already 1-column below 760px — reduce card padding */
+    .cond-card{ padding: 24px 20px }
+
+    /* CTA band: reduce heavy padding */
+    .cta-band{
+      margin-top: 48px;
+      padding: 40px 24px;
+    }
+  }
+
+  /* Extra-small phones (< 480px): spec grid 1 column */
+  @media(max-width:480px){
+    .spec-grid{
+      grid-template-columns: 1fr !important;
+    }
+  }
+
 </style>
 </head>
 <body>

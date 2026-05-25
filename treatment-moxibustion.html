@@ -65,6 +65,24 @@
   .moxa-meta-item strong{color:var(--paper-dim);font-weight:400}
   @keyframes warm-pulse{0%,100%{box-shadow:0 0 0 0 rgba(200,80,40,.0)}50%{box-shadow:0 0 32px 8px rgba(200,80,40,.18)}}
   .moxa-panel.active{animation:warm-pulse 3s ease-in-out infinite}
+
+  /* ── Mobile overrides ─────────────────────────────────────── */
+  @media(max-width:768px){
+    html{scroll-snap-type:none}
+    section{min-height:0;padding:56px 0}
+  }
+  @media(max-width:600px){
+    .tx-nav-strip{flex-wrap:wrap;gap:8px;padding:12px 16px}
+    .tx-page-nav{gap:12px;flex-wrap:wrap}
+    .tx-nav-strip a{font-size:10px;padding:8px 10px;min-height:44px;display:flex;align-items:center}
+    .tx-cta{padding:48px 0 72px}
+    .moxa-tabs{flex-wrap:wrap;width:100%}
+    .moxa-tab{flex:1 1 auto;font-size:11px;padding:12px 10px;min-height:44px;border-right:none;border-bottom:.5px solid var(--rule)}
+    .moxa-tab:last-child{border-bottom:none}
+    .moxa-panel{padding:24px 20px}
+    .moxa-panel-icon{font-size:40px}
+    .moxa-panel-meta{gap:14px}
+  }
 </style>
 </head>
 <body>
