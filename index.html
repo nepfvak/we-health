@@ -395,9 +395,9 @@
       radial-gradient(40% 50% at 80% 100%,rgba(61,139,114,.04),transparent 60%);
   }
   .acu-sticky .wrap{max-width:1100px;margin:0 auto;padding:40px 22px;position:relative}
-  .acu-eyebrow{font:400 13px/1 var(--ff-serif);letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-  .acu-heading{font:400 clamp(26px,3vw,42px)/1.12 var(--ff-serif);color:var(--paper);max-width:520px;margin:0 0 8px}
-  .acu-sub{font:400 16px/1.6 var(--ff-sans);color:var(--paper-dim);max-width:400px;margin:0 0 36px}
+  .acu-eyebrow{font:400 13px/1 var(--mono);letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .acu-heading{font:400 clamp(26px,3vw,42px)/1.12 var(--serif);color:var(--paper);max-width:520px;margin:0 0 8px}
+  .acu-sub{font:400 16px/1.6 var(--serif);color:var(--paper-dim);max-width:400px;margin:0 0 36px}
   /* progress bar */
   .acu-progress{height:1px;background:var(--rule-strong);margin-bottom:28px;position:relative;overflow:hidden}
   .acu-progress-fill{position:absolute;inset:0 100% 0 0;background:var(--gold);transition:right .4s ease}
@@ -418,21 +418,21 @@
   }
   /* inactive text — visible but clearly secondary */
   .acu-code{
-    font:400 13px/1 var(--ff-serif);letter-spacing:.2em;color:var(--gold);
+    font:400 13px/1 var(--mono);letter-spacing:.2em;color:var(--gold);
     margin-bottom:8px;opacity:.6;transition:opacity .45s ease;
   }
   .acu-hanzi{
-    font:400 clamp(26px,3vw,40px)/1 var(--ff-serif);color:var(--paper);
+    font:400 clamp(26px,3vw,40px)/1 var(--brush);color:var(--paper);
     margin-bottom:6px;opacity:.55;transition:opacity .45s ease;
   }
   .acu-name{
-    font:400 14px/1.4 var(--ff-sans);color:var(--paper);
+    font:400 14px/1.4 var(--serif);color:var(--paper);
     opacity:.65;transition:opacity .45s ease;
   }
   .acu-name em{display:block;font-style:italic;font-size:13px;margin-top:3px;color:var(--paper-dim)}
   .acu-meridian{
     display:inline-block;margin-top:12px;
-    font:400 11px/1 var(--ff-serif);letter-spacing:.18em;text-transform:uppercase;
+    font:400 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
     color:var(--gold);opacity:.55;transition:opacity .45s ease;
   }
   /* seen — clearly readable */
@@ -454,9 +454,9 @@
   }
   .acu-detail-inner.fading{opacity:0}
   @media(max-width:700px){.acu-detail-inner{grid-template-columns:1fr;padding:20px}}
-  .acu-d-label{font:400 12px/1 var(--ff-serif);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-  .acu-d-body{font:400 15px/1.7 var(--ff-sans);color:var(--paper)}
-  .acu-d-quote{font:400 15px/1.75 var(--ff-serif);font-style:italic;color:var(--paper);border-left:1.5px solid var(--gold);padding-left:14px}
+  .acu-d-label{font:400 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .acu-d-body{font:400 15px/1.7 var(--serif);color:var(--paper)}
+  .acu-d-quote{font:400 15px/1.75 var(--serif);font-style:italic;color:var(--paper);border-left:1.5px solid var(--gold);padding-left:14px}
   [data-theme="light"] .acu-card.active{background:rgba(61,139,114,.12);box-shadow:0 0 0 .5px var(--gold)}
   [data-theme="light"] .acu-detail{background:rgba(24,24,26,.015)}
   [data-theme="light"] .divider-dot{fill:#c8921a}
