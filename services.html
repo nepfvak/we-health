@@ -71,7 +71,9 @@
   overflow: hidden;
 }
 @media(max-width:860px){
-  .svc-item-body { grid-template-columns: 1fr; grid-template-rows: 38% 62%; }
+  /* Switch to single column; give the image a fixed height so it doesn't
+     collapse (percentage rows resolve to 0 when the parent is height:auto) */
+  .svc-item-body { grid-template-columns: 1fr; grid-template-rows: auto auto; }
 }
 
 /* Image half */
@@ -147,6 +149,11 @@
   .svc-item { height: auto; }
   .svc-item-inner { position: relative; top: 0 !important; height: auto !important; border-radius: 8px; margin-bottom: 2px; }
   .svc-item-img { aspect-ratio: 16/9; position: relative; }
+  /* Remove the bottom fade on mobile — it clips the learn-more link
+     when the card is not scroll-sticky and text is fully visible */
+  .svc-item-body::after { display: none; }
+  /* Give the text panel enough bottom padding so the link clears the container */
+  .svc-item-text { overflow-y: visible; padding-bottom: 36px !important; }
 }
 
 /* Intro / count strip */

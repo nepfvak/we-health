@@ -513,9 +513,25 @@ footer .bar .crest{ color: var(--paper-dim) }
   html{ scroll-snap-type: none }
 }
 
-/* Nav bar on very small phones */
+/* Hide the Book button in the nav on mobile — the burger menu already has
+   a "Book Appointment" link, so this button is redundant and causes cramping */
+@media(max-width:1100px){
+  .nav .book{ display: none }
+}
+
+/* Nav bar on mobile — reduce padding and brand tracking so brand + theme + burger
+   all fit on 375px without overlap (Book is already hidden above 1100px) */
+@media(max-width:768px){
+  .nav{ padding: 12px 18px }
+  .nav.scrolled{ padding: 10px 18px }
+  .nav .brand .name{ font-size: 14px; letter-spacing: .12em }
+  .nav-actions{ gap: 8px }
+}
+
+/* Extra-small phones */
 @media(max-width:380px){
-  .nav{ top: 8px; left: 8px; right: 8px; padding: 10px 14px }
+  .nav{ top: 8px; left: 8px; right: 8px; padding: 10px 12px }
+  .nav .brand .name{ font-size: 13px; letter-spacing: .10em }
 }
 
 /* Page hero mobile */

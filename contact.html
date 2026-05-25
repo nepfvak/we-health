@@ -107,7 +107,13 @@
   }
   @media(max-width:640px){
     .book-actions{max-width:100%}
-    .book-primary,.book-secondary{padding:18px 20px}
+    /* Allow long text (e.g. email address) to wrap rather than overflow at 375px */
+    .book-primary,.book-secondary{
+      padding:18px 20px;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .book-primary .arr,.book-secondary .arr{margin-left:auto}
     .info-grid{gap:36px}
   }
 </style>
