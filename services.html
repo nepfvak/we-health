@@ -21,9 +21,9 @@
 
 /* ── Accordion stack scroll ─────────────────────────────────────── */
 .svc-accordion { position: relative; border-top: 1px solid var(--rule); background: var(--ink-2); }
-[data-theme="light"] .svc-accordion { background: var(--paper); }
+[data-theme="light"] .svc-accordion { background: var(--ink-2); }
 
-.svc-item { height: 100vh; }
+.svc-item { height: 100vh; background: var(--ink-2); }
 
 .svc-item-inner {
   position: sticky;
@@ -124,7 +124,7 @@
   z-index: 4;
 }
 [data-theme="light"] .svc-item-body::after {
-  background: linear-gradient(transparent, var(--paper));
+  background: linear-gradient(transparent, var(--ink-2));
 }
 .svc-item-text .svc-num {
   font-family:var(--mono); font-size:12px; letter-spacing:.20em;

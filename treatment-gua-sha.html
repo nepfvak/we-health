@@ -16,22 +16,29 @@
   section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-  .tx-nav-strip{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px clamp(20px,5vw,80px);background:var(--ink-2);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-  .tx-nav-strip a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
-  .tx-nav-strip a:hover{color:var(--gold)}
-  .tx-page-nav{display:flex;gap:32px}
+  .tx-pagination{display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,60px);padding:40px clamp(20px,5vw,80px);border-top:1px solid var(--rule);background:var(--ink-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .tx-pagination a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
+  .tx-pagination a:hover{color:var(--gold)}
+  .tx-pg-all{color:var(--paper-faint) !important}
 
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-overview p{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
   .tx-overview p:last-child{margin-bottom:0}
 
-  .tx-lists{background:var(--ink-2);border-top:1px solid var(--rule)}
-  .tx-lists-grid{display:grid;grid-template-columns:1fr;gap:64px}
-  @media(min-width:860px){.tx-lists-grid{grid-template-columns:1fr 1fr;gap:80px}}
-  .tx-list-block h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.6vw,30px);color:var(--paper);margin-bottom:28px;line-height:1.2}
-  .tx-list{list-style:none;display:flex;flex-direction:column;gap:16px}
-  .tx-list li{position:relative;padding-left:26px;font-family:var(--serif);font-weight:400;font-size:16px;line-height:1.7;color:var(--paper)}
-  .tx-list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:.5px;background:var(--gold)}
+  .tx-history{background:var(--ink-2);border-top:1px solid var(--rule)}
+  .tx-history-grid{display:grid;grid-template-columns:1fr;gap:48px;margin-top:40px}
+  @media(min-width:860px){.tx-history-grid{grid-template-columns:3fr 2fr;gap:64px;align-items:start}}
+  .tx-history-text p{font-family:var(--serif);font-weight:400;font-size:clamp(15px,1.5vw,17px);line-height:1.85;color:var(--paper);margin-bottom:24px}
+  .tx-history-text p:last-child{margin-bottom:0}
+  .tx-history-quote{border-left:2px solid var(--gold);padding:20px 24px;margin-bottom:24px}
+  .tx-hq-cn{font-family:var(--brush);font-size:24px;color:var(--gold);display:block;margin-bottom:10px}
+  .tx-hq-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;line-height:1.7;color:var(--paper);margin-bottom:8px}
+  .tx-hq-source{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-faint)}
+  .tx-history-facts{display:flex;flex-direction:column;gap:14px}
+  .tx-hf-item{display:flex;flex-direction:column;gap:4px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+  .tx-hf-item:last-child{border-bottom:none}
+  .tx-hf-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .tx-hf-val{font-family:var(--serif);font-size:15px;color:var(--paper-dim)}
 
   /* Interactive: Body Region Selector */
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
@@ -64,9 +71,7 @@
     section{min-height:0;padding:56px 0}
   }
   @media(max-width:600px){
-    .tx-nav-strip{flex-wrap:wrap;gap:8px;padding:12px 16px}
-    .tx-page-nav{gap:12px;flex-wrap:wrap}
-    .tx-nav-strip a{font-size:10px;padding:8px 10px;min-height:44px;display:flex;align-items:center}
+    .tx-pagination{flex-wrap:wrap;gap:16px;padding:28px 16px}
     .tx-cta{padding:48px 0 72px}
     .body-selector{flex-direction:column;gap:28px}
     .body-svg-wrap{flex:0 0 auto;max-width:220px;width:100%}
@@ -119,14 +124,6 @@
   </div>
 </header>
 
-<!-- Treatment Nav Strip -->
-<div class="tx-nav-strip">
-  <a href="index.html#services" class="tx-back">← All Treatments</a>
-  <div class="tx-page-nav">
-    <a href="treatment-cupping.html" class="tx-prev">← Cupping</a>
-    <a href="treatment-tui-na.html" class="tx-next">Tui Na →</a>
-  </div>
-</div>
 
 <!-- Overview -->
 <section class="tx-overview">
@@ -141,32 +138,27 @@
   </div>
 </section>
 
-<!-- What to Expect + Benefits -->
-<section class="tx-lists">
+<section class="tx-history">
   <div class="wrap">
-    <div class="tx-lists-grid">
-
-      <div class="tx-list-block reveal d1">
-        <h3>What to expect <em>during a session</em></h3>
-        <ul class="tx-list">
-          <li>Oil is applied to the skin and a smooth-edged tool is stroked firmly in one direction over tense or stiff areas.</li>
-          <li>Redness or light bruising (petechiae) commonly appears — this is expected and typically fades within a few days.</li>
-          <li>The sensation ranges from mild warmth to a firm scraping feeling; communicate with your practitioner about pressure.</li>
-          <li>Sessions are often short (10–20 minutes) and are frequently combined with acupuncture.</li>
-        </ul>
+    <div class="eyebrow reveal"><span class="cn">史</span>History</div>
+    <h2 class="reveal d1">Scraping away <span class="accent">what no longer serves.</span></h2>
+    <div class="tx-history-grid reveal d2">
+      <div class="tx-history-text">
+        <p>Gua sha (刮痧, guāshā) translates roughly as 'scraping the sha' — sha (痧) referring to the reddish or purplish petechiae that appear on the skin during treatment. These marks, called sha, represent what classical medicine terms 'blood heat' or 'turbid Qi' rising to the surface. The technique appears in Chinese folk medicine records stretching back to the Ming dynasty (1368–1644 CE) and was commonly administered by family members as a household remedy for heat exhaustion, fever, and body aches — long before it entered formal clinical practice.</p>
+        <p>Gua sha shares theoretical ground with cupping: both work by stimulating the skin's surface to move stagnation in the deeper tissues. But where cupping draws upward through suction, gua sha works through directional pressure — the practitioner's stroke following the paths of specific meridians to guide the release. In Chinese cosmological thought, the skin is understood as the outermost boundary of the body's defensive layer (衛氣, wèiqì). Stimulating it invites the body to reassert its boundary, expel pathogens lodged between interior and exterior, and restore the free movement of Qi and Blood.</p>
       </div>
-
-      <div class="tx-list-block reveal d2">
-        <h3>Commonly reported <em>benefits</em></h3>
-        <ul class="tx-list">
-          <li>Relief from neck, shoulder, and upper back stiffness</li>
-          <li>Temporary reduction in muscle soreness or tightness</li>
-          <li>Improved sense of local circulation and ease of movement</li>
-          <li>Helpful after strain, overuse, or prolonged desk work</li>
-          <li>Can be part of a regular self-care routine</li>
-        </ul>
+      <div class="tx-history-aside">
+        <div class="tx-history-quote">
+          <span class="tx-hq-cn">痧</span>
+          <p class="tx-hq-text">The sha represents what was hidden; bringing it to the surface is the beginning of release.</p>
+          <p class="tx-hq-source">— Traditional clinical principle</p>
+        </div>
+        <div class="tx-history-facts">
+          <div class="tx-hf-item"><span class="tx-hf-label">Origin</span><span class="tx-hf-val">Ming dynasty, ~14th–17th century CE</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Classic text</span><span class="tx-hf-val">Yixue Zhenzhuan 醫學正傳</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Core concept</span><span class="tx-hf-val">Releasing sha, moving defensive Qi (衛氣)</span></div>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -272,6 +264,12 @@
     </div>
   </div>
 </section>
+
+<nav class="tx-pagination" aria-label="Treatment navigation">
+  <a href="treatment-cupping.html" class="tx-pg-prev">← Cupping</a>
+  <a href="services.html" class="tx-pg-all">All Treatments</a>
+  <a href="treatment-herbal-medicine.html" class="tx-pg-next">Herbal Medicine →</a>
+</nav>
 
 <!-- CTA -->
 <div class="tx-cta">

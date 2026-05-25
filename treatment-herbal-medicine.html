@@ -17,27 +17,33 @@
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
-  .tx-overview p{font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
+  .tx-overview p{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
   .tx-overview p:last-child{margin-bottom:0}
 
-  .tx-lists{background:var(--ink-2);border-top:1px solid var(--rule)}
-  .tx-lists-grid{display:grid;grid-template-columns:1fr;gap:64px}
-  @media(min-width:860px){.tx-lists-grid{grid-template-columns:1fr 1fr;gap:80px}}
-  .tx-list-block h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.6vw,30px);color:var(--paper);margin-bottom:28px;line-height:1.2}
-  .tx-list{list-style:none;display:flex;flex-direction:column;gap:16px}
-  .tx-list li{position:relative;padding-left:26px;font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.7;color:var(--paper)}
-  .tx-list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:.5px;background:var(--gold)}
+  .tx-history{background:var(--ink-2);border-top:1px solid var(--rule)}
+  .tx-history-grid{display:grid;grid-template-columns:1fr;gap:48px;margin-top:40px}
+  @media(min-width:860px){.tx-history-grid{grid-template-columns:3fr 2fr;gap:64px;align-items:start}}
+  .tx-history-text p{font-family:var(--serif);font-weight:400;font-size:clamp(15px,1.5vw,17px);line-height:1.85;color:var(--paper);margin-bottom:24px}
+  .tx-history-text p:last-child{margin-bottom:0}
+  .tx-history-quote{border-left:2px solid var(--gold);padding:20px 24px;margin-bottom:24px}
+  .tx-hq-cn{font-family:var(--brush);font-size:24px;color:var(--gold);display:block;margin-bottom:10px}
+  .tx-hq-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;line-height:1.7;color:var(--paper);margin-bottom:8px}
+  .tx-hq-source{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-faint)}
+  .tx-history-facts{display:flex;flex-direction:column;gap:14px}
+  .tx-hf-item{display:flex;flex-direction:column;gap:4px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+  .tx-hf-item:last-child{border-bottom:none}
+  .tx-hf-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .tx-hf-val{font-family:var(--serif);font-size:15px;color:var(--paper-dim)}
 
   .tx-cta{padding:80px 0 120px;border-top:1px solid var(--rule);text-align:center;background:var(--ink)}
   .tx-cta .eyebrow{justify-content:center}
-  .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
+  .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
   .tx-cta .cta-text em{font-style:normal;color:var(--gold)}
 
-  /* Treatment nav strip */
-  .tx-nav-strip{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px clamp(20px,5vw,80px);background:var(--ink-2);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-  .tx-nav-strip a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
-  .tx-nav-strip a:hover{color:var(--gold)}
-  .tx-page-nav{display:flex;gap:32px}
+  .tx-pagination{display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,60px);padding:40px clamp(20px,5vw,80px);border-top:1px solid var(--rule);background:var(--ink-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .tx-pagination a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
+  .tx-pagination a:hover{color:var(--gold)}
+  .tx-pg-all{color:var(--paper-faint) !important}
 
   /* Interactive section */
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
@@ -53,12 +59,12 @@
   .herb-card.flipped .herb-card-inner{transform:rotateY(180deg)}
   .herb-face,.herb-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}
   .herb-face{background:var(--ink-2)}
-  .herb-back{background:var(--ink-3,#1a1a1a);transform:rotateY(180deg);justify-content:flex-start;padding:18px 14px;text-align:left;align-items:flex-start}
+  .herb-back{background:var(--ink-3,#1a1a1a);transform:rotateY(180deg);justify-content:flex-start;padding:18px 14px;text-align:left;align-items:flex-start;overflow:hidden}
   .herb-face-glyph{font-family:var(--brush);font-size:42px;line-height:1;color:var(--gold);margin-bottom:10px}
   .herb-face-name{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
   .herb-back-category{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-  .herb-back-examples{font-family:var(--serif);font-style:italic;font-weight:300;font-size:15px;line-height:1.5;color:var(--paper);margin-bottom:8px}
-  .herb-back-uses{font-family:var(--serif);font-weight:300;font-size:15px;line-height:1.6;color:var(--paper-dim)}
+  .herb-back-examples{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;line-height:1.5;color:var(--paper);margin-bottom:8px}
+  .herb-back-uses{font-family:var(--serif);font-weight:400;font-size:15px;line-height:1.6;color:var(--paper-dim)}
   .herb-hint{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-dim);margin-top:16px}
 
   /* ── Mobile overrides ─────────────────────────────────────── */
@@ -67,9 +73,6 @@
     section{min-height:0;padding:56px 0}
   }
   @media(max-width:600px){
-    .tx-nav-strip{flex-wrap:wrap;gap:8px;padding:12px 16px}
-    .tx-page-nav{gap:12px;flex-wrap:wrap}
-    .tx-nav-strip a{font-size:10px;padding:8px 10px;min-height:44px;display:flex;align-items:center}
     .tx-cta{padding:48px 0 72px}
     .herb-grid{grid-template-columns:repeat(2,1fr);gap:12px}
     .herb-card{height:160px}
@@ -124,15 +127,6 @@
   </div>
 </header>
 
-<!-- Treatment Nav Strip -->
-<div class="tx-nav-strip">
-  <a href="index.html#services" class="tx-back">← All Treatments</a>
-  <div class="tx-page-nav">
-    <a href="treatment-moxibustion.html" class="tx-prev">← Moxibustion</a>
-    <a href="treatment-cupping.html" class="tx-next">Cupping →</a>
-  </div>
-</div>
-
 <!-- Overview -->
 <section class="tx-overview">
   <div class="wrap">
@@ -146,32 +140,27 @@
   </div>
 </section>
 
-<!-- What to Expect + Benefits -->
-<section class="tx-lists">
+<section class="tx-history">
   <div class="wrap">
-    <div class="tx-lists-grid">
-
-      <div class="tx-list-block reveal d1">
-        <h3>What to expect <em>when prescribed herbs</em></h3>
-        <ul class="tx-list">
-          <li>Your practitioner will ask about your symptoms, constitution, and any medications before recommending a formula.</li>
-          <li>Formulas are typically taken as teas, granules, or capsules — your provider will advise on the best form for you.</li>
-          <li>Effects may build gradually over days or weeks; some acute formulas work more quickly.</li>
-          <li>Follow-up visits allow the formula to be adjusted as your condition changes.</li>
-        </ul>
+    <div class="eyebrow reveal"><span class="cn">史</span>History</div>
+    <h2 class="reveal d1">Shennong's legacy and the <span class="accent">living pharmacopoeia.</span></h2>
+    <div class="tx-history-grid reveal d2">
+      <div class="tx-history-text">
+        <p>Chinese herbal medicine traces its mythological origin to Shennong (神農), the Divine Farmer — one of the Three Sovereigns of Chinese antiquity. Legend holds that Shennong systematically tasted hundreds of plants, minerals, and animals to discover their medicinal properties, suffering poisoning multiple times in the process. The text bearing his name, the Shennong Bencao Jing (神農本草經, Divine Farmer's Classic of Materia Medica), compiled during the Han dynasty, catalogued 365 medicinal substances divided into three grades: superior medicines that nourish life, middle medicines that replenish vital energy, and inferior medicines that treat disease and must not be taken long-term.</p>
+        <p>Herbal formulas in Chinese medicine are rarely single-herb prescriptions. Classical texts describe complex multi-herb formulas structured like a court: a sovereign herb (君, jūn) addresses the primary pattern; minister herbs (臣, chén) support and enhance the sovereign; assistant herbs (佐, zuǒ) moderate the formula's strength or address secondary symptoms; and envoy herbs (使, shǐ) guide the formula to the correct organ system or harmonize the other ingredients. This conception of medicine as governance — the body as a kingdom requiring wise administration — is distinctly Chinese.</p>
       </div>
-
-      <div class="tx-list-block reveal d2">
-        <h3>Commonly reported <em>benefits</em></h3>
-        <ul class="tx-list">
-          <li>Support for digestion, energy, sleep, and stress</li>
-          <li>Immune and seasonal health support</li>
-          <li>Complementary to acupuncture and other therapies</li>
-          <li>Individualized to your specific pattern, not a one-size-fits-all remedy</li>
-          <li>Can address chronic symptoms over time with consistent use</li>
-        </ul>
+      <div class="tx-history-aside">
+        <div class="tx-history-quote">
+          <span class="tx-hq-cn">草</span>
+          <p class="tx-hq-text">Shennong tasted a hundred herbs in a single day, encountering seventy poisons.</p>
+          <p class="tx-hq-source">— Huainanzi 淮南子, ~139 BCE</p>
+        </div>
+        <div class="tx-history-facts">
+          <div class="tx-hf-item"><span class="tx-hf-label">Origin</span><span class="tx-hf-val">Mythological origin: Shennong era; classical form: Han dynasty</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Classic text</span><span class="tx-hf-val">Shennong Bencao Jing 神農本草經</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Core concept</span><span class="tx-hf-val">Sovereign, minister, assistant, envoy formula structure</span></div>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -273,6 +262,12 @@
     <p class="herb-hint reveal d3">Click any card to reveal its contents</p>
   </div>
 </section>
+
+<nav class="tx-pagination" aria-label="Treatment navigation">
+  <a href="treatment-moxibustion.html" class="tx-pg-prev">← Moxibustion</a>
+  <a href="services.html" class="tx-pg-all">All Treatments</a>
+  <a href="treatment-cupping.html" class="tx-pg-next">Cupping →</a>
+</nav>
 
 <!-- CTA -->
 <div class="tx-cta">

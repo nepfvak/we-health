@@ -17,27 +17,33 @@
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
-  .tx-overview p{font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
+  .tx-overview p{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
   .tx-overview p:last-child{margin-bottom:0}
 
-  .tx-lists{background:var(--ink-2);border-top:1px solid var(--rule)}
-  .tx-lists-grid{display:grid;grid-template-columns:1fr;gap:64px}
-  @media(min-width:860px){.tx-lists-grid{grid-template-columns:1fr 1fr;gap:80px}}
-  .tx-list-block h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.6vw,30px);color:var(--paper);margin-bottom:28px;line-height:1.2}
-  .tx-list{list-style:none;display:flex;flex-direction:column;gap:16px}
-  .tx-list li{position:relative;padding-left:26px;font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.7;color:var(--paper)}
-  .tx-list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:.5px;background:var(--gold)}
+  .tx-history{background:var(--ink-2);border-top:1px solid var(--rule)}
+  .tx-history-grid{display:grid;grid-template-columns:1fr;gap:48px;margin-top:40px}
+  @media(min-width:860px){.tx-history-grid{grid-template-columns:3fr 2fr;gap:64px;align-items:start}}
+  .tx-history-text p{font-family:var(--serif);font-weight:400;font-size:clamp(15px,1.5vw,17px);line-height:1.85;color:var(--paper);margin-bottom:24px}
+  .tx-history-text p:last-child{margin-bottom:0}
+  .tx-history-quote{border-left:2px solid var(--gold);padding:20px 24px;margin-bottom:24px}
+  .tx-hq-cn{font-family:var(--brush);font-size:24px;color:var(--gold);display:block;margin-bottom:10px}
+  .tx-hq-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;line-height:1.7;color:var(--paper);margin-bottom:8px}
+  .tx-hq-source{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-faint)}
+  .tx-history-facts{display:flex;flex-direction:column;gap:14px}
+  .tx-hf-item{display:flex;flex-direction:column;gap:4px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+  .tx-hf-item:last-child{border-bottom:none}
+  .tx-hf-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .tx-hf-val{font-family:var(--serif);font-size:15px;color:var(--paper-dim)}
 
   .tx-cta{padding:80px 0 120px;border-top:1px solid var(--rule);text-align:center;background:var(--ink)}
   .tx-cta .eyebrow{justify-content:center}
-  .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
+  .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
   .tx-cta .cta-text em{font-style:normal;color:var(--gold)}
 
-  /* Treatment nav strip */
-  .tx-nav-strip{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px clamp(20px,5vw,80px);background:var(--ink-2);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-  .tx-nav-strip a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
-  .tx-nav-strip a:hover{color:var(--gold)}
-  .tx-page-nav{display:flex;gap:32px}
+  .tx-pagination{display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,60px);padding:40px clamp(20px,5vw,80px);border-top:1px solid var(--rule);background:var(--ink-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .tx-pagination a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
+  .tx-pagination a:hover{color:var(--gold)}
+  .tx-pg-all{color:var(--paper-faint) !important}
 
   /* Interactive section */
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
@@ -57,7 +63,7 @@
   .moxa-panel-icon{font-family:var(--brush);font-size:52px;line-height:1;margin-bottom:20px;display:block}
   .moxa-panel h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.4vw,28px);color:var(--paper);margin-bottom:8px;line-height:1.2}
   .moxa-panel .moxa-tag{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cinnabar);margin-bottom:20px}
-  .moxa-panel p{font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:60ch;margin-bottom:14px}
+  .moxa-panel p{font-family:var(--serif);font-weight:400;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:60ch;margin-bottom:14px}
   .moxa-panel p:last-child{margin-bottom:0}
   .moxa-panel-meta{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;padding-top:24px;border-top:1px solid var(--rule)}
   .moxa-meta-item{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
@@ -72,9 +78,7 @@
     section{min-height:0;padding:56px 0}
   }
   @media(max-width:600px){
-    .tx-nav-strip{flex-wrap:wrap;gap:8px;padding:12px 16px}
-    .tx-page-nav{gap:12px;flex-wrap:wrap}
-    .tx-nav-strip a{font-size:10px;padding:8px 10px;min-height:44px;display:flex;align-items:center}
+    .tx-pagination{flex-wrap:wrap;gap:16px;padding:28px 16px}
     .tx-cta{padding:48px 0 72px}
     .moxa-tabs{flex-wrap:wrap;width:100%}
     .moxa-tab{flex:1 1 auto;font-size:11px;padding:12px 10px;min-height:44px;border-right:none;border-bottom:.5px solid var(--rule)}
@@ -130,14 +134,6 @@
   </div>
 </header>
 
-<!-- Treatment Nav Strip -->
-<div class="tx-nav-strip">
-  <a href="index.html#services" class="tx-back">← All Treatments</a>
-  <div class="tx-page-nav">
-    <a href="treatment-acupuncture.html" class="tx-prev">← Acupuncture</a>
-    <a href="treatment-herbal-medicine.html" class="tx-next">Herbal Medicine →</a>
-  </div>
-</div>
 
 <!-- Overview -->
 <section class="tx-overview">
@@ -152,32 +148,27 @@
   </div>
 </section>
 
-<!-- What to Expect + Benefits -->
-<section class="tx-lists">
+<section class="tx-history">
   <div class="wrap">
-    <div class="tx-lists-grid">
-
-      <div class="tx-list-block reveal d1">
-        <h3>What to expect <em>during a session</em></h3>
-        <ul class="tx-list">
-          <li>Moxa (dried mugwort) is burned near or on specific acupuncture points to deliver gentle, penetrating warmth.</li>
-          <li>The sensation is typically warm and comforting — not painful; the practitioner monitors carefully to prevent overheating.</li>
-          <li>Sessions may be combined with acupuncture or used on their own depending on your condition.</li>
-          <li>The treatment room will have a distinct herbal smoke smell; smokeless moxa options are available.</li>
-        </ul>
+    <div class="eyebrow reveal"><span class="cn">史</span>History</div>
+    <h2 class="reveal d1">Fire, warmth, and the <span class="accent">art of the moxa.</span></h2>
+    <div class="tx-history-grid reveal d2">
+      <div class="tx-history-text">
+        <p>Moxibustion — the burning of dried mugwort (Artemisia argyi, 艾草) at or near acupuncture points — is among the oldest thermal therapies in Chinese medicine, possibly predating needle acupuncture itself. The Huangdi Neijing distinguishes regions of China by their preferred treatments: the cold northern territories favored moxibustion to warm the body and expel cold pathogens, while southern regions relied more on needles. Mugwort was chosen for its unique penetrating heat and its affinity for the body's yang energy.</p>
+        <p>In Daoist cosmology, fire is the supreme yang force — the principle of movement, warmth, and life itself. Moxa embodies this principle in miniature: a small ember applied with precision to a specific point, coaxing stagnant Qi back into motion. Classical texts describe the practitioner's hand as an intermediary between the flame and the patient, a role that demanded years of sensitivity training. The character for moxibustion, 灸, combines the character for 'long' (久) with fire (火), suggesting slow, sustained heat — warmth that endures.</p>
       </div>
-
-      <div class="tx-list-block reveal d2">
-        <h3>Commonly reported <em>benefits</em></h3>
-        <ul class="tx-list">
-          <li>Warmth and comfort for cold sensations or stiff joints</li>
-          <li>Support for fatigue or feelings of depletion</li>
-          <li>Temporary relief of muscle tightness or pain</li>
-          <li>Often used alongside acupuncture for a combined therapeutic effect</li>
-          <li>Grounding and calming for many patients</li>
-        </ul>
+      <div class="tx-history-aside">
+        <div class="tx-history-quote">
+          <span class="tx-hq-cn">灸</span>
+          <p class="tx-hq-text">For diseases that acupuncture cannot reach, moxibustion is indicated.</p>
+          <p class="tx-hq-source">— Huangdi Neijing, Lingshu 黃帝內經·靈樞</p>
+        </div>
+        <div class="tx-history-facts">
+          <div class="tx-hf-item"><span class="tx-hf-label">Origin</span><span class="tx-hf-val">Northern China, pre-Han dynasty</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Classic text</span><span class="tx-hf-val">Huangdi Neijing 黃帝內經</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Core concept</span><span class="tx-hf-val">Warming Yang, expelling cold and dampness</span></div>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -243,6 +234,12 @@
     </div>
   </div>
 </section>
+
+<nav class="tx-pagination" aria-label="Treatment navigation">
+  <a href="treatment-acupuncture.html" class="tx-pg-prev">← Acupuncture</a>
+  <a href="services.html" class="tx-pg-all">All Treatments</a>
+  <a href="treatment-cupping.html" class="tx-pg-next">Cupping →</a>
+</nav>
 
 <!-- CTA -->
 <div class="tx-cta">

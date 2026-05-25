@@ -16,22 +16,29 @@
   section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-  .tx-nav-strip{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px clamp(20px,5vw,80px);background:var(--ink-2);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-  .tx-nav-strip a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
-  .tx-nav-strip a:hover{color:var(--gold)}
-  .tx-page-nav{display:flex;gap:32px}
+  .tx-pagination{display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,60px);padding:40px clamp(20px,5vw,80px);border-top:1px solid var(--rule);background:var(--ink-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .tx-pagination a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
+  .tx-pagination a:hover{color:var(--gold)}
+  .tx-pg-all{color:var(--paper-faint) !important}
 
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
-  .tx-overview p{font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
+  .tx-overview p{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
   .tx-overview p:last-child{margin-bottom:0}
 
-  .tx-lists{background:var(--ink-2);border-top:1px solid var(--rule)}
-  .tx-lists-grid{display:grid;grid-template-columns:1fr;gap:64px}
-  @media(min-width:860px){.tx-lists-grid{grid-template-columns:1fr 1fr;gap:80px}}
-  .tx-list-block h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.6vw,30px);color:var(--paper);margin-bottom:28px;line-height:1.2}
-  .tx-list{list-style:none;display:flex;flex-direction:column;gap:16px}
-  .tx-list li{position:relative;padding-left:26px;font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.7;color:var(--paper)}
-  .tx-list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:.5px;background:var(--gold)}
+  .tx-history{background:var(--ink-2);border-top:1px solid var(--rule)}
+  .tx-history-grid{display:grid;grid-template-columns:1fr;gap:48px;margin-top:40px}
+  @media(min-width:860px){.tx-history-grid{grid-template-columns:3fr 2fr;gap:64px;align-items:start}}
+  .tx-history-text p{font-family:var(--serif);font-weight:400;font-size:clamp(15px,1.5vw,17px);line-height:1.85;color:var(--paper);margin-bottom:24px}
+  .tx-history-text p:last-child{margin-bottom:0}
+  .tx-history-quote{border-left:2px solid var(--gold);padding:20px 24px;margin-bottom:24px}
+  .tx-hq-cn{font-family:var(--brush);font-size:24px;color:var(--gold);display:block;margin-bottom:10px}
+  .tx-hq-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;line-height:1.7;color:var(--paper);margin-bottom:8px}
+  .tx-hq-source{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-faint)}
+  .tx-history-facts{display:flex;flex-direction:column;gap:14px}
+  .tx-hf-item{display:flex;flex-direction:column;gap:4px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+  .tx-hf-item:last-child{border-bottom:none}
+  .tx-hf-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .tx-hf-val{font-family:var(--serif);font-size:15px;color:var(--paper-dim)}
 
   /* Interactive: Technique Library */
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
@@ -48,11 +55,11 @@
   .technique-card.open .technique-hint{display:none}
   .technique-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
   .technique-card.open .technique-body{max-height:200px}
-  .technique-body-inner{padding:0 24px 24px;font-family:var(--serif);font-weight:300;font-size:15px;line-height:1.7;color:var(--paper);border-top:1px solid var(--rule);padding-top:16px}
+  .technique-body-inner{padding:0 24px 24px;font-family:var(--serif);font-weight:400;font-size:15px;line-height:1.7;color:var(--paper);border-top:1px solid var(--rule);padding-top:16px}
 
   .tx-cta{padding:80px 0 120px;border-top:1px solid var(--rule);text-align:center;background:var(--ink)}
   .tx-cta .eyebrow{justify-content:center}
-  .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
+  .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
   .tx-cta .cta-text em{font-style:normal;color:var(--gold)}
 
   /* ── Mobile overrides ─────────────────────────────────────── */
@@ -61,9 +68,6 @@
     section{min-height:0;padding:56px 0}
   }
   @media(max-width:600px){
-    .tx-nav-strip{flex-wrap:wrap;gap:8px;padding:12px 16px}
-    .tx-page-nav{gap:12px;flex-wrap:wrap}
-    .tx-nav-strip a{font-size:10px;padding:8px 10px;min-height:44px;display:flex;align-items:center}
     .tx-cta{padding:48px 0 72px}
     .technique-grid{grid-template-columns:1fr;gap:12px}
     .technique-card-front{padding:20px 18px}
@@ -118,15 +122,6 @@
   </div>
 </header>
 
-<!-- Treatment Nav Strip -->
-<div class="tx-nav-strip">
-  <a href="index.html#services" class="tx-back">← All Treatments</a>
-  <div class="tx-page-nav">
-    <a href="treatment-gua-sha.html" class="tx-prev">← Gua Sha</a>
-    <a href="treatment-tai-chi.html" class="tx-next">Tai Chi →</a>
-  </div>
-</div>
-
 <!-- Overview -->
 <section class="tx-overview">
   <div class="wrap">
@@ -140,32 +135,27 @@
   </div>
 </section>
 
-<!-- What to Expect + Benefits -->
-<section class="tx-lists">
+<section class="tx-history">
   <div class="wrap">
-    <div class="tx-lists-grid">
-
-      <div class="tx-list-block reveal d1">
-        <h3>What to expect <em>during a session</em></h3>
-        <ul class="tx-list">
-          <li>The practitioner uses their hands, thumbs, elbows, and forearms to press, knead, and stretch specific areas.</li>
-          <li>You may remain clothed or use draping depending on the treatment area.</li>
-          <li>Pressure can range from gentle to firm — let your practitioner know your preference.</li>
-          <li>Some soreness the day after a deep session is normal, similar to after a workout.</li>
-        </ul>
+    <div class="eyebrow reveal"><span class="cn">史</span>History</div>
+    <h2 class="reveal d1">Hands as instruments of <span class="accent">Qi and structure.</span></h2>
+    <div class="tx-history-grid reveal d2">
+      <div class="tx-history-text">
+        <p>Tui na (推拿) — literally 'push and grasp' — is among the oldest manual therapies in Chinese medicine, with references to massage and physical manipulation in the Huangdi Neijing and in oracle bone inscriptions from the Shang dynasty (1600–1046 BCE). Early practitioners were called 'anmo' (按摩) physicians, a term that appears in court medical records of the Zhou dynasty, where massage specialists held official positions alongside acupuncturists and herbalists. The formal systematization of tui na as a distinct clinical discipline occurred during the Ming dynasty, when it was named and codified in its current form.</p>
+        <p>Tui na works along the same meridian pathways as acupuncture but uses the practitioner's hands — thumbs, palms, forearms, elbows — rather than needles. The goal is not simply to relax muscles but to regulate the flow of Qi and Blood through targeted pressure, rolling, and rotation techniques. Different hand methods correspond to different therapeutic aims: pushing (推) moves Qi along a meridian; grasping (拿) releases muscle tension and expels wind; kneading (揉) softens accumulations; and vibrating (振) disperses stagnation. The practitioner's own cultivation of internal Qi — developed through years of practice — is considered inseparable from clinical effectiveness.</p>
       </div>
-
-      <div class="tx-list-block reveal d2">
-        <h3>Commonly reported <em>benefits</em></h3>
-        <ul class="tx-list">
-          <li>Improved mobility and range of motion in stiff joints</li>
-          <li>Relief from chronic muscle tension and pain</li>
-          <li>Recovery support from overuse or repetitive strain</li>
-          <li>Often combined with acupuncture for a more complete treatment</li>
-          <li>Can address the underlying patterns, not just surface symptoms</li>
-        </ul>
+      <div class="tx-history-aside">
+        <div class="tx-history-quote">
+          <span class="tx-hq-cn">推</span>
+          <p class="tx-hq-text">The physician's hands, trained in patience, can move what medicine cannot reach.</p>
+          <p class="tx-hq-source">— Traditional clinical lineage saying</p>
+        </div>
+        <div class="tx-history-facts">
+          <div class="tx-hf-item"><span class="tx-hf-label">Origin</span><span class="tx-hf-val">Shang dynasty oracle records; codified in Ming dynasty</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Classic text</span><span class="tx-hf-val">Huangdi Neijing 黃帝內經; Yi Zong Jin Jian 醫宗金鑑</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Core concept</span><span class="tx-hf-val">Manual regulation of Qi, Blood, and meridian pathways</span></div>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -253,6 +243,12 @@
     </div>
   </div>
 </section>
+
+<nav class="tx-pagination" aria-label="Treatment navigation">
+  <a href="treatment-gua-sha.html" class="tx-pg-prev">← Gua Sha</a>
+  <a href="services.html" class="tx-pg-all">All Treatments</a>
+  <a href="treatment-tai-chi.html" class="tx-pg-next">Tai Chi →</a>
+</nav>
 
 <!-- CTA -->
 <div class="tx-cta">
