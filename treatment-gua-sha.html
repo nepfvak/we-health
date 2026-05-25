@@ -22,7 +22,7 @@
   .tx-page-nav{display:flex;gap:32px}
 
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
-  .tx-overview p{font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper-dim);max-width:66ch;margin-bottom:28px}
+  .tx-overview p{font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
   .tx-overview p:last-child{margin-bottom:0}
 
   .tx-lists{background:var(--ink-2);border-top:1px solid var(--rule)}
@@ -30,7 +30,7 @@
   @media(min-width:860px){.tx-lists-grid{grid-template-columns:1fr 1fr;gap:80px}}
   .tx-list-block h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.6vw,30px);color:var(--paper);margin-bottom:28px;line-height:1.2}
   .tx-list{list-style:none;display:flex;flex-direction:column;gap:16px}
-  .tx-list li{position:relative;padding-left:26px;font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.7;color:var(--paper-dim)}
+  .tx-list li{position:relative;padding-left:26px;font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.7;color:var(--paper)}
   .tx-list li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:.5px;background:var(--gold)}
 
   /* Interactive: Body Region Selector */
@@ -44,14 +44,14 @@
   .body-hotspot.active rect,.body-hotspot.active ellipse{opacity:.55}
   .body-hotspot:hover rect,.body-hotspot:hover ellipse{opacity:.38}
   .body-region-info{flex:1 1 300px;min-width:260px;max-width:500px}
-  .body-region-info .region-placeholder{font-family:var(--serif);font-style:italic;color:var(--paper-faint);font-size:18px;padding-top:24px}
+  .body-region-info .region-placeholder{font-family:var(--serif);font-style:italic;color:var(--paper-dim);font-size:18px;padding-top:24px}
   .region-card{display:none}
   .region-card.active{display:block}
   .region-card .region-name{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
   .region-card h4{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.2vw,26px);color:var(--paper);margin-bottom:16px;line-height:1.3}
-  .region-card .region-complaints{font-family:var(--serif);font-weight:300;font-size:15px;line-height:1.7;color:var(--paper-dim);margin-bottom:16px}
-  .region-card .region-technique{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--paper-faint);border-left:2px solid var(--gold);padding-left:14px;line-height:1.6}
-  .body-hotspot-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;fill:var(--paper-dim);pointer-events:none}
+  .region-card .region-complaints{font-family:var(--serif);font-weight:300;font-size:15px;line-height:1.7;color:var(--paper);margin-bottom:16px}
+  .region-card .region-technique{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--paper-dim);border-left:2px solid var(--gold);padding-left:14px;line-height:1.6}
+  .body-hotspot-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;fill:var(--paper-dim);pointer-events:none}
 
   .tx-cta{padding:80px 0 120px;border-top:1px solid var(--rule);text-align:center;background:var(--ink)}
   .tx-cta .eyebrow{justify-content:center}
