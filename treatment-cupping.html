@@ -40,10 +40,11 @@
   .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
   .tx-cta .cta-text em{font-style:normal;color:var(--gold)}
 
-  .tx-pagination{display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,60px);padding:40px clamp(20px,5vw,80px);border-top:1px solid var(--rule);background:var(--ink-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-  .tx-pagination a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
-  .tx-pagination a:hover{color:var(--gold)}
-  .tx-pg-all{color:var(--paper-faint) !important}
+.tx-float-nav{position:fixed;top:76px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 clamp(16px,4vw,48px);pointer-events:none;z-index:90}
+.tx-float-back,.tx-float-prev,.tx-float-next{pointer-events:all;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--paper-dim);background:var(--ink-2);border:.5px solid var(--rule-strong);padding:7px 14px;transition:color .2s,border-color .2s;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.tx-float-back:hover,.tx-float-prev:hover,.tx-float-next:hover{color:var(--gold);border-color:var(--gold)}
+.tx-float-pager{display:flex;gap:1px}
+[data-theme="light"] .tx-float-back,[data-theme="light"] .tx-float-prev,[data-theme="light"] .tx-float-next{background:rgba(244,242,238,.88)}
 
   /* Interactive section */
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
@@ -77,7 +78,6 @@
     section{min-height:0;padding:56px 0}
   }
   @media(max-width:600px){
-    .tx-pagination{flex-wrap:wrap;gap:16px;padding:28px 16px}
     .tx-cta{padding:48px 0 72px}
     .cup-panel{padding:20px}
     .cup-btn{font-size:13px;padding:10px 14px;min-height:44px}
@@ -87,6 +87,13 @@
 </style>
 </head>
 <body>
+<div class="tx-float-nav" aria-label="Treatment navigation">
+  <a href="services.html" class="tx-float-back">← All Treatments</a>
+  <div class="tx-float-pager">
+    <a href="treatment-moxibustion.html" class="tx-float-prev">← Moxibustion</a>
+    <a href="treatment-gua-sha.html" class="tx-float-next">Gua Sha →</a>
+  </div>
+</div>
 
 <div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
 
@@ -294,11 +301,6 @@
   </div>
 </section>
 
-<nav class="tx-pagination" aria-label="Treatment navigation">
-  <a href="treatment-moxibustion.html" class="tx-pg-prev">← Moxibustion</a>
-  <a href="services.html" class="tx-pg-all">All Treatments</a>
-  <a href="treatment-gua-sha.html" class="tx-pg-next">Gua Sha →</a>
-</nav>
 
 <!-- CTA -->
 <div class="tx-cta">

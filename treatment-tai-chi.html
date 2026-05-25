@@ -16,10 +16,11 @@
   section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-  .tx-pagination{display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,60px);padding:40px clamp(20px,5vw,80px);border-top:1px solid var(--rule);background:var(--ink-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-  .tx-pagination a{color:var(--paper-dim);text-decoration:none;transition:color .2s}
-  .tx-pagination a:hover{color:var(--gold)}
-  .tx-pg-all{color:var(--paper-faint) !important}
+.tx-float-nav{position:fixed;top:76px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 clamp(16px,4vw,48px);pointer-events:none;z-index:90}
+.tx-float-back,.tx-float-prev,.tx-float-next{pointer-events:all;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--paper-dim);background:var(--ink-2);border:.5px solid var(--rule-strong);padding:7px 14px;transition:color .2s,border-color .2s;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.tx-float-back:hover,.tx-float-prev:hover,.tx-float-next:hover{color:var(--gold);border-color:var(--gold)}
+.tx-float-pager{display:flex;gap:1px}
+[data-theme="light"] .tx-float-back,[data-theme="light"] .tx-float-prev,[data-theme="light"] .tx-float-next{background:rgba(244,242,238,.88)}
 
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-overview p{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
@@ -83,6 +84,13 @@
 </style>
 </head>
 <body>
+<div class="tx-float-nav" aria-label="Treatment navigation">
+  <a href="services.html" class="tx-float-back">← All Treatments</a>
+  <div class="tx-float-pager">
+    <a href="treatment-tui-na.html" class="tx-float-prev">← Tui Na</a>
+    <a href="treatment-qi-gong.html" class="tx-float-next">Qi Gong →</a>
+  </div>
+</div>
 
 <div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
 
@@ -227,11 +235,6 @@
   </div>
 </section>
 
-<nav class="tx-pagination" aria-label="Treatment navigation">
-  <a href="treatment-tui-na.html" class="tx-pg-prev">← Tui Na</a>
-  <a href="services.html" class="tx-pg-all">All Treatments</a>
-  <a href="treatment-qi-gong.html" class="tx-pg-next">Qi Gong →</a>
-</nav>
 
 <!-- CTA -->
 <div class="tx-cta">
