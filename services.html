@@ -19,98 +19,119 @@
   section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-/* Services — alternating layout */
-.svc-section{
-  padding:0;
-  border-bottom:1px solid var(--rule);
-}
-.svc-section:last-of-type{border-bottom:0}
+/* Stack scroll */
+.svc-stack { position: relative; }
 
-.svc-row{
-  display:grid;grid-template-columns:1fr;
-  align-items:center;gap:0;
-}
-@media(min-width:860px){
-  .svc-row{grid-template-columns:1fr 1fr}
+.svc-panel {
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
 }
 
-/* Alternating: odd rows — image left, text right */
-/* Even rows — text left, image right */
-.svc-row .svc-image{order:0}
-.svc-row .svc-text{order:1}
-@media(min-width:860px){
-  .svc-row.flip .svc-image{order:1}
-  .svc-row.flip .svc-text{order:0}
+.svc-card {
+  position: sticky;
+  top: 68px;
+  width: 100%;
+  height: calc(100vh - 84px);
+  display: grid;
+  grid-template-columns: 55% 45%;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--ink-2);
+  transform-origin: top center;
+  will-change: transform;
+  /* z-index set inline per card: data-index=0 → z-index:1, data-index=7 → z-index:8 */
 }
 
-/* Service image placeholder */
-.svc-image{
-  position:relative;
-  aspect-ratio:4/3;
-  background:linear-gradient(135deg,#161716 0%,#0f0c09 100%);
-  display:grid;place-items:center;overflow:hidden;
-  border-right:1px solid var(--rule);
-}
-.svc-row.flip .svc-image{border-right:0;border-left:1px solid var(--rule)}
-@media(max-width:859px){
-  .svc-image{border-right:0;border-left:0;border-bottom:1px solid var(--rule)}
-  .svc-row.flip .svc-image{border-left:0}
+@media(max-width:860px) {
+  .svc-panel { height: auto; margin-bottom: 32px; }
+  .svc-card { position: relative; top: 0; height: auto; grid-template-columns: 1fr; border-radius: 8px; }
+  .svc-card-image { aspect-ratio: 16/9; }
 }
 
-.svc-image::before{
-  content:"";position:absolute;inset:0;
-  background-image:repeating-linear-gradient(45deg,rgba(232,223,201,.04) 0 1px,transparent 1px 14px);
+/* Image side */
+.svc-card-image {
+  position: relative;
+  background: linear-gradient(135deg, #161716 0%, #0f0c09 100%);
+  display: grid; place-items: center; overflow: hidden;
 }
-.svc-image::after{
-  content:"";position:absolute;inset:22px;border:.5px solid rgba(201,162,90,.2);pointer-events:none;
+.svc-card-image::before {
+  content:""; position:absolute; inset:0;
+  background-image: repeating-linear-gradient(45deg, rgba(232,223,201,.04) 0 1px, transparent 1px 14px);
 }
-.svc-image .glyph-ph{
-  position:relative;z-index:1;text-align:center;user-select:none;
+.svc-card-image .cn-glyph {
+  font-family: var(--brush); font-size: clamp(100px,14vw,180px);
+  color: var(--gold); opacity: .6; position: relative; z-index: 1; line-height: 1;
+  user-select: none;
 }
-.svc-image .glyph-ph .cn{
-  display:block;font-family:var(--brush);font-size:clamp(80px,12vw,140px);color:var(--gold);
-  line-height:1;opacity:.7;
-}
-.svc-image .num-badge{
-  position:absolute;left:22px;bottom:22px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;
-  color:var(--paper-faint);z-index:2;
+.svc-card-image .num-tag {
+  position: absolute; left: 20px; bottom: 20px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--paper-faint); z-index: 2;
 }
 
-/* Service text block */
-.svc-text{
-  padding:64px 52px;
+/* Text side */
+.svc-card-text {
+  padding: 56px 48px;
+  display: flex; flex-direction: column; justify-content: center;
+  overflow-y: auto;
 }
-@media(max-width:860px){.svc-text{padding:48px 22px}}
+@media(max-width:860px){ .svc-card-text { padding: 36px 24px; } }
 
-.svc-text .svc-number{
-  font-family:var(--mono);font-size:10px;letter-spacing:.36em;text-transform:uppercase;
-  color:var(--paper-faint);margin-bottom:18px;
+.svc-card-text .svc-num {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .36em;
+  text-transform: uppercase; color: var(--paper-faint); margin-bottom: 18px;
 }
-.svc-text h3{
-  font-family:var(--serif);font-style:italic;font-weight:400;
-  font-size:clamp(26px,3.2vw,40px);color:var(--paper);margin-bottom:6px;line-height:1.1;
+.svc-card-text h3 {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: clamp(26px, 2.8vw, 38px); color: var(--paper); margin-bottom: 6px; line-height: 1.1;
 }
-.svc-text .svc-cn{
-  font-family:var(--brush);font-size:17px;color:var(--gold-dim);
-  letter-spacing:.06em;margin-bottom:24px;display:block;
+.svc-card-text .svc-cn {
+  font-family: var(--brush); font-size: 17px; color: var(--gold-dim);
+  letter-spacing: .06em; margin-bottom: 22px; display: block;
 }
-.svc-text p{
-  color:var(--paper-dim);font-size:16.5px;line-height:1.75;font-weight:300;max-width:46ch;
+.svc-card-text p {
+  color: var(--paper-dim); font-size: 16px; line-height: 1.75;
+  font-weight: 300; max-width: 44ch;
 }
-.svc-text .svc-link{
-  display:inline-flex;align-items:center;gap:10px;
-  margin-top:28px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
-  color:var(--gold);padding-bottom:6px;border-bottom:.5px solid var(--gold-dim);
-  transition:color .3s,border-color .3s;
+.svc-card-text .svc-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 28px; font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: .26em; text-transform: uppercase; color: var(--gold);
+  padding-bottom: 6px; border-bottom: .5px solid var(--gold-dim);
+  transition: color .3s, border-color .3s;
 }
-.svc-text .svc-link:hover{color:var(--paper);border-color:var(--paper-faint)}
-.svc-text .svc-link .arr{
-  font-family:var(--serif);font-style:italic;font-size:15px;letter-spacing:0;
-  transition:transform .3s;
+.svc-card-text .svc-link:hover { color: var(--paper); border-color: var(--paper-faint) }
+.svc-card-text .svc-link .arr { font-family: var(--serif); font-style: italic; font-size: 15px; letter-spacing:0; transition: transform .3s }
+.svc-card-text .svc-link:hover .arr { transform: translateX(4px) }
+
+[data-theme="light"] .svc-card-image { background: linear-gradient(135deg, #e3e0d8 0%, #ece9e2 100%) }
+[data-theme="light"] .svc-card-image::before { background-image: repeating-linear-gradient(45deg, rgba(24,24,26,.04) 0 1px, transparent 1px 14px) }
+
+/* Stock images */
+.svc-card-image img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  opacity: 0.45; z-index: 0;
 }
-.svc-text .svc-link:hover .arr{transform:translateX(4px)}
+.svc-card-image .cn-glyph { position: relative; z-index: 2; }
+.svc-card-image .num-tag { z-index: 3; }
+
+/* Stack counter HUD */
+.svc-hud {
+  position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 8px; z-index: 100;
+  pointer-events: none; opacity: 0; transition: opacity .4s;
+}
+.svc-hud.visible { opacity: 1; }
+.svc-hud-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--paper-faint); transition: background .3s, transform .3s;
+}
+.svc-hud-dot.active {
+  background: var(--gold); transform: scale(1.6);
+}
 
 /* Intro / count strip */
 .services-intro{
@@ -153,9 +174,6 @@
   font-family:var(--brush);font-size:min(32vw,360px);line-height:.9;
   color:rgba(232,223,201,.03);user-select:none;pointer-events:none;
 }
-[data-theme="light"] .svc-image{background:linear-gradient(135deg,#e3e0d8 0%,#ece9e2 100%)}
-[data-theme="light"] .svc-image::before{background-image:repeating-linear-gradient(45deg,rgba(24,24,26,.04) 0 1px,transparent 1px 14px)}
-[data-theme="light"] .svc-image::after{border-color:rgba(61,139,114,.25)}
 [data-theme="light"] .services-cta::before{background:radial-gradient(60% 80% at 50% 100%,rgba(61,139,114,.08),transparent 60%)}
 [data-theme="light"] .services-cta .ghost-bg{color:rgba(24,24,26,.025)}
 
@@ -249,121 +267,156 @@
   </div>
 </div>
 
-<!-- Services list — alternating layout -->
-<div class="svc-section">
-  <!-- 01 Acupuncture — image left -->
-  <div class="svc-row reveal">
-    <div class="svc-image">
-      <div class="glyph-ph"><span class="cn">針</span></div>
-      <span class="num-badge">01 / 08</span>
-    </div>
-    <div class="svc-text">
-      <div class="svc-number">01 — Acupuncture</div>
-      <h3>Acupuncture</h3>
-      <span class="svc-cn">針灸</span>
-      <p>Acupuncture is a key component of Traditional Chinese Medicine. Sterile, thin needles are inserted into specific points to enhance the vital energy flow and restore the balance of the body functions. It is widely known to be good for pain management. However, in the history of over 3,000 years in China and across the globe, it has been used for hundreds of conditions and diseases. It has gained recognition and popularity in recent years in the US and has been widely recognised as an alternative medicine.</p>
+<!-- Services — stack scroll -->
+<div class="svc-stack" id="svcStack">
+
+  <div class="svc-panel" style="z-index:1">
+    <div class="svc-card" data-index="0">
+      <div class="svc-card-image">
+        <img src="assets/svc-acupuncture.jpg" alt="Acupuncture needles" loading="lazy">
+        <span class="cn-glyph">針</span>
+        <span class="num-tag">01 / 08</span>
+      </div>
+      <div class="svc-card-text">
+        <div class="svc-num">01 — Acupuncture</div>
+        <h3>Acupuncture</h3>
+        <span class="svc-cn">針灸</span>
+        <p>Sterile, thin needles are inserted into specific acupoints to enhance vital energy flow and restore balance. Used for pain management and hundreds of conditions over 3,000 years of history — now widely recognised as alternative medicine across the US.</p>
+        <a href="treatment-acupuncture.html" class="svc-link">Explore Acupuncture <span class="arr">→</span></a>
+      </div>
     </div>
   </div>
 
-  <!-- 02 SAAT — image right -->
-  <div class="svc-row flip reveal">
-    <div class="svc-image">
-      <div class="glyph-ph"><span class="cn">耳</span></div>
-      <span class="num-badge">02 / 08</span>
-    </div>
-    <div class="svc-text">
-      <div class="svc-number">02 — SAAT Allergy Treatments</div>
-      <h3>SAAT Allergy Treatments</h3>
-      <span class="svc-cn">耳針脫敏</span>
-      <p>Soliman Auricular Allergy Treatment (SAAT) is a specialised patented acupuncture technique, a gentle, non-invasive therapy designed to help reduce allergic reactions. It is used to desensitise the immune system to various allergens, including Alpha-gal, food, environmental, and chemical sensitivities. It involves inserting a tiny, specialised needle into the ear, often providing long-term remission.</p>
-      <a href="saat.html" class="svc-link">Learn more about SAAT <span class="arr">→</span></a>
-    </div>
-  </div>
-
-  <!-- 03 Five Element Acupuncture — image left -->
-  <div class="svc-row reveal">
-    <div class="svc-image">
-      <div class="glyph-ph"><span class="cn">五</span></div>
-      <span class="num-badge">03 / 08</span>
-    </div>
-    <div class="svc-text">
-      <div class="svc-number">03 — Five Element Acupuncture</div>
-      <h3>Five Element Acupuncture</h3>
-      <span class="svc-cn">五行針灸</span>
-      <p>Five Element Acupuncture is our special type of acupuncture rooted in ancient Chinese wisdom — five element theory. It is an effective and unique system to treat allergies and other root causes of diseases. It treats the body, mind, and spirit together. One of the most distinguishing values of Five Element acupuncture is its priority on treating at the level of spirit.</p>
+  <div class="svc-panel" style="z-index:2">
+    <div class="svc-card" data-index="1">
+      <div class="svc-card-image">
+        <img src="assets/svc-saat.jpg" alt="Auricular therapy" loading="lazy">
+        <span class="cn-glyph">耳</span>
+        <span class="num-tag">02 / 08</span>
+      </div>
+      <div class="svc-card-text">
+        <div class="svc-num">02 — SAAT Allergy Treatments</div>
+        <h3>SAAT Allergy Treatments</h3>
+        <span class="svc-cn">耳針脫敏</span>
+        <p>Soliman Auricular Allergy Treatment (SAAT) is a patented auricular acupuncture technique that desensitises the immune system to allergens — including Alpha-gal, food, environmental, and chemical sensitivities — often providing long-term remission from a single tiny ear needle.</p>
+        <a href="saat.html" class="svc-link">Learn more about SAAT <span class="arr">→</span></a>
+      </div>
     </div>
   </div>
 
-  <!-- 04 Herbal Medicine — image right -->
-  <div class="svc-row flip reveal">
-    <div class="svc-image">
-      <div class="glyph-ph"><span class="cn">草</span></div>
-      <span class="num-badge">04 / 08</span>
-    </div>
-    <div class="svc-text">
-      <div class="svc-number">04 — Herbal Medicine</div>
-      <h3>Herbal Medicine</h3>
-      <span class="svc-cn">中草藥</span>
-      <p>Studies have shown that Chinese herbal medicine is successful in treating a wide range of conditions. The ingredients include leaves, fruits, flowers, and roots of plants with great health benefits. We use concentrated natural plant granules and herbal pills to treat patients across multiple conditions, following the concept of Traditional Chinese Medicine theory.</p>
-    </div>
-  </div>
-
-  <!-- 05 Cupping — image left -->
-  <div class="svc-row reveal">
-    <div class="svc-image">
-      <div class="glyph-ph"><span class="cn">罐</span></div>
-      <span class="num-badge">05 / 08</span>
-    </div>
-    <div class="svc-text">
-      <div class="svc-number">05 — Cupping</div>
-      <h3>Cupping</h3>
-      <span class="svc-cn">拔罐</span>
-      <p>Cupping therapy is an ancient form of Chinese medicine in which the practitioner puts special cups on your skin to create suction. It can help with pain, inflammation, blood flow, relaxation, and well-being. The famous swimmer Michael Phelps used cupping to release muscle tension.</p>
+  <div class="svc-panel" style="z-index:3">
+    <div class="svc-card" data-index="2">
+      <div class="svc-card-image">
+        <img src="assets/svc-five-element.jpg" alt="Five elements nature" loading="lazy">
+        <span class="cn-glyph">五</span>
+        <span class="num-tag">03 / 08</span>
+      </div>
+      <div class="svc-card-text">
+        <div class="svc-num">03 — Five Element Acupuncture</div>
+        <h3>Five Element Acupuncture</h3>
+        <span class="svc-cn">五行針灸</span>
+        <p>Rooted in ancient Chinese five-element theory, this unique system treats allergies and root-cause conditions by addressing body, mind, and spirit together. One of its most distinguishing qualities is its priority on treating at the level of spirit.</p>
+      </div>
     </div>
   </div>
 
-  <!-- 06 Moxibustion — image right -->
-  <div class="svc-row flip reveal">
-    <div class="svc-image">
-      <div class="glyph-ph"><span class="cn">灸</span></div>
-      <span class="num-badge">06 / 08</span>
-    </div>
-    <div class="svc-text">
-      <div class="svc-number">06 — Moxibustion</div>
-      <h3>Moxibustion</h3>
-      <span class="svc-cn">艾灸</span>
-      <p>Moxibustion is a type of Traditional Chinese medicine technique. Burning moxa, a special plant material, is burned over the surface of meridians and acupoints to improve the flow of Qi and circulation, and expel negative influences.</p>
-    </div>
-  </div>
-
-  <!-- 07 Gua Sha — image left -->
-  <div class="svc-row reveal">
-    <div class="svc-image">
-      <div class="glyph-ph"><span class="cn">刮</span></div>
-      <span class="num-badge">07 / 08</span>
-    </div>
-    <div class="svc-text">
-      <div class="svc-number">07 — Gua Sha</div>
-      <h3>Gua Sha</h3>
-      <span class="svc-cn">刮痧</span>
-      <p>Gua sha is the practice of using a tool to apply pressure and scrape the skin to relieve pain and tension. It can improve circulation and is used to treat various musculoskeletal and immune conditions.</p>
+  <div class="svc-panel" style="z-index:4">
+    <div class="svc-card" data-index="3">
+      <div class="svc-card-image">
+        <img src="assets/svc-herbal.jpg" alt="Herbal medicine" loading="lazy">
+        <span class="cn-glyph">草</span>
+        <span class="num-tag">04 / 08</span>
+      </div>
+      <div class="svc-card-text">
+        <div class="svc-num">04 — Herbal Medicine</div>
+        <h3>Herbal Medicine</h3>
+        <span class="svc-cn">中草藥</span>
+        <p>Leaves, fruits, flowers, and roots with proven health benefits, prescribed as concentrated natural plant granules and herbal pills. Chinese herbal medicine has demonstrated success across a wide range of conditions, guided by Traditional Chinese Medicine theory.</p>
+        <a href="treatment-herbal-medicine.html" class="svc-link">Explore Herbal Medicine <span class="arr">→</span></a>
+      </div>
     </div>
   </div>
 
-  <!-- 08 Training — image right -->
-  <div class="svc-row flip reveal">
-    <div class="svc-image">
-      <div class="glyph-ph"><span class="cn">學</span></div>
-      <span class="num-badge">08 / 08</span>
-    </div>
-    <div class="svc-text">
-      <div class="svc-number">08 — Training</div>
-      <h3>Training</h3>
-      <span class="svc-cn">培訓</span>
-      <p>We offer cupping therapy, moxibustion, and Gua Sha training to professionals. Please contact us for more details if you are interested.</p>
-      <a href="contact.html" class="svc-link">Contact us for details <span class="arr">→</span></a>
+  <div class="svc-panel" style="z-index:5">
+    <div class="svc-card" data-index="4">
+      <div class="svc-card-image">
+        <img src="assets/svc-cupping.jpg" alt="Cupping therapy" loading="lazy">
+        <span class="cn-glyph">罐</span>
+        <span class="num-tag">05 / 08</span>
+      </div>
+      <div class="svc-card-text">
+        <div class="svc-num">05 — Cupping</div>
+        <h3>Cupping</h3>
+        <span class="svc-cn">拔罐</span>
+        <p>An ancient technique where special cups create suction on the skin to relieve pain, reduce inflammation, improve blood flow, and promote relaxation. We offer Sancai Fire Cupping — always included at no extra charge.</p>
+        <a href="treatment-cupping.html" class="svc-link">Explore Cupping <span class="arr">→</span></a>
+      </div>
     </div>
   </div>
+
+  <div class="svc-panel" style="z-index:6">
+    <div class="svc-card" data-index="5">
+      <div class="svc-card-image">
+        <img src="assets/svc-moxibustion.jpg" alt="Moxibustion" loading="lazy">
+        <span class="cn-glyph">灸</span>
+        <span class="num-tag">06 / 08</span>
+      </div>
+      <div class="svc-card-text">
+        <div class="svc-num">06 — Moxibustion</div>
+        <h3>Moxibustion</h3>
+        <span class="svc-cn">艾灸</span>
+        <p>Burning moxa — a specially prepared plant material — is applied over meridians and acupoints to improve Qi flow and circulation, and to expel negative influences. A deeply warming, restorative therapy.</p>
+        <a href="treatment-moxibustion.html" class="svc-link">Explore Moxibustion <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-panel" style="z-index:7">
+    <div class="svc-card" data-index="6">
+      <div class="svc-card-image">
+        <img src="assets/svc-gua-sha.jpg" alt="Gua sha" loading="lazy">
+        <span class="cn-glyph">刮</span>
+        <span class="num-tag">07 / 08</span>
+      </div>
+      <div class="svc-card-text">
+        <div class="svc-num">07 — Gua Sha</div>
+        <h3>Gua Sha</h3>
+        <span class="svc-cn">刮痧</span>
+        <p>A tool is used to apply pressure and scrape the skin, relieving pain and tension while improving circulation. Used for musculoskeletal conditions, immune support, and deep fascial release.</p>
+        <a href="treatment-gua-sha.html" class="svc-link">Explore Gua Sha <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-panel" style="z-index:8">
+    <div class="svc-card" data-index="7">
+      <div class="svc-card-image">
+        <img src="assets/svc-training.jpg" alt="Professional training" loading="lazy">
+        <span class="cn-glyph">學</span>
+        <span class="num-tag">08 / 08</span>
+      </div>
+      <div class="svc-card-text">
+        <div class="svc-num">08 — Training</div>
+        <h3>Training</h3>
+        <span class="svc-cn">培訓</span>
+        <p>We offer professional training in cupping therapy, moxibustion, and Gua Sha to practitioners and healthcare professionals. Contact us for programme details and scheduling.</p>
+        <a href="contact.html" class="svc-link">Contact us for details <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Stack HUD -->
+<div class="svc-hud" id="svcHud">
+  <div class="svc-hud-dot" data-panel="0"></div>
+  <div class="svc-hud-dot" data-panel="1"></div>
+  <div class="svc-hud-dot" data-panel="2"></div>
+  <div class="svc-hud-dot" data-panel="3"></div>
+  <div class="svc-hud-dot" data-panel="4"></div>
+  <div class="svc-hud-dot" data-panel="5"></div>
+  <div class="svc-hud-dot" data-panel="6"></div>
+  <div class="svc-hud-dot" data-panel="7"></div>
 </div>
 
 <!-- ─── Value / Transparent Pricing ──────────────────────────────── -->
@@ -568,6 +621,50 @@ document.querySelectorAll('p.body, .mask').forEach(p => {
   }, {threshold:.1});
   lo.observe(p);
 });
+
+// ── Stack scroll ──────────────────────────────────────────────────
+(function(){
+  const stack = document.getElementById('svcStack');
+  if(!stack) return;
+  const panels = Array.from(stack.querySelectorAll('.svc-panel'));
+  const cards  = Array.from(stack.querySelectorAll('.svc-card'));
+  const hud    = document.getElementById('svcHud');
+  const dots   = hud ? Array.from(hud.querySelectorAll('.svc-hud-dot')) : [];
+  const NAV    = 68;
+
+  function tick(){
+    const stackTop  = stack.getBoundingClientRect().top;
+    const stackBot  = stack.getBoundingClientRect().bottom;
+    const inView    = stackTop < window.innerHeight && stackBot > 0;
+
+    // Show/hide HUD
+    if(hud) hud.classList.toggle('visible', inView);
+
+    let activeIdx = 0;
+    panels.forEach((panel, i) => {
+      const card = cards[i];
+      const rect = panel.getBoundingClientRect();
+
+      if(rect.top <= NAV){
+        // How many cards are on top of this one?
+        let above = 0;
+        for(let j = i+1; j < panels.length; j++){
+          if(panels[j].getBoundingClientRect().top <= NAV) above++;
+        }
+        const scale = Math.max(0.82, 1 - above * 0.035);
+        card.style.transform = `scale(${scale})`;
+        activeIdx = i;
+      } else {
+        card.style.transform = 'scale(1)';
+      }
+    });
+
+    dots.forEach((d,i) => d.classList.toggle('active', i === activeIdx));
+  }
+
+  window.addEventListener('scroll', tick, {passive:true});
+  tick();
+})();
 </script>
 </body>
 </html>
