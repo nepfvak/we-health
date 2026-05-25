@@ -573,9 +573,10 @@
   }
   :root:not([data-theme="light"]){
     --paper:        #f4ecd6;
-    --paper-dim:    #c8bda1;
+    --paper-dim:    #d4c9b0;
+    --paper-faint:  #a89f90;
     --gold:         #4cb35a;
-    --cinnabar:     #d6a73a;    /* warm gold (was red) */
+    --cinnabar:     #d6a73a;
   }
 
   /* TYPE — bump size & weight so it reads from across the room */
@@ -732,7 +733,7 @@
   }
   .svc .svc-body .num{
     font-family: var(--mono); font-size:10.5px; letter-spacing:.26em;
-    text-transform:uppercase; color: var(--paper-faint);
+    text-transform:uppercase; color: var(--paper-dim);
   }
   .svc .svc-body h3{
     font-family: var(--serif); font-weight:500; font-style:normal;
@@ -745,7 +746,7 @@
   }
   .svc .svc-body p{
     font-family: var(--serif); font-weight:400; font-size:15.5px;
-    line-height: 1.55; color: var(--paper-dim); margin-top:6px;
+    line-height: 1.55; color: var(--paper); margin-top:6px;
   }
   .svc .icon, .svc .cn, .svc .num + .icon{ display:none !important }
   .svc .learn{
