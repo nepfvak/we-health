@@ -242,7 +242,7 @@ footer .glyph {
 footer .grid {
   display: grid; grid-template-columns: 1fr; gap: 64px; position: relative; z-index: 2;
 }
-@media (min-width: 980px) { footer .grid { grid-template-columns: 1.25fr .9fr .9fr; gap: 80px } }
+@media (min-width: 980px) { footer .grid { grid-template-columns: 1.1fr 1fr; gap: 72px } }
 .f-cta { display: flex; flex-direction: column; gap: 24px }
 .f-cta .f-logo img { display: block; max-width: 300px; width: 100% }
 .f-cta .editorial {
@@ -542,7 +542,6 @@ footer .bar .crest, footer .bar .legal a{ color: var(--paper-dim); font-size:12p
 /* ── Footer — universal layout, map, buttons ───────────────────────── */
 footer{ background: var(--ink-2); padding-top: 80px }
 .f-block h4{ color: var(--gold) }
-@media(min-width:980px){ footer .grid{ grid-template-columns: 1.1fr 1fr; gap: 72px } }
 
 /* Hours rows */
 .f-hours .row{
