@@ -437,7 +437,7 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* ── Theme toggle button ─────────────────────────────────────────────── */
 .theme-btn {
-  width: 32px; height: 32px; flex-shrink: 0;
+  width: 44px; height: 44px; flex-shrink: 0;
   display: grid; place-items: center;
   border: .5px solid var(--rule-strong);
   color: var(--gold);
