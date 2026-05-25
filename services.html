@@ -721,7 +721,7 @@ document.querySelectorAll('p.body, .mask').forEach(p => {
 
   function maxH(i){ return window.innerHeight - NAV - i * STRIP; }
 
-  function ease(t){ return t<.5 ? 2*t*t : -1+(4-2*t)*t; }
+  function ease(t){ return -(Math.cos(Math.PI*t)-1)/2; }
 
   function tick(){
     const accordionTop = accordion.getBoundingClientRect().top + window.scrollY;

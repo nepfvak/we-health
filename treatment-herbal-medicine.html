@@ -40,7 +40,7 @@
   .tx-cta .cta-text{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);max-width:36ch;margin:0 auto 36px}
   .tx-cta .cta-text em{font-style:normal;color:var(--gold)}
 
-.tx-float-nav{position:fixed;top:96px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 clamp(16px,4vw,48px);pointer-events:none;z-index:90}
+.tx-float-nav{position:fixed;top:96px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 clamp(16px,4vw,48px);pointer-events:none;z-index:200}
 .tx-float-back,.tx-float-prev,.tx-float-next{pointer-events:all;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--paper-dim);background:var(--ink-2);border:.5px solid var(--rule-strong);padding:7px 14px;transition:color .2s,border-color .2s;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .tx-float-back:hover,.tx-float-prev:hover,.tx-float-next:hover{color:var(--gold);border-color:var(--gold)}
 .tx-float-pager{display:flex;gap:1px}
@@ -50,23 +50,25 @@
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-interactive>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-  /* Herb flip cards */
-  .herb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px}
-  @media(min-width:600px){.herb-grid{grid-template-columns:repeat(3,1fr)}}
-  @media(min-width:900px){.herb-grid{grid-template-columns:repeat(6,1fr);gap:16px}}
-  .herb-card{perspective:800px;cursor:pointer;height:200px}
-  @media(min-width:900px){.herb-card{height:220px}}
-  .herb-card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
-  .herb-card.flipped .herb-card-inner{transform:rotateY(180deg)}
-  .herb-face,.herb-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}
-  .herb-face{background:var(--ink-2)}
-  .herb-back{background:var(--ink-3,#1a1a1a);transform:rotateY(180deg);justify-content:flex-start;padding:18px 14px;text-align:left;align-items:flex-start;overflow:hidden}
-  .herb-face-glyph{font-family:var(--brush);font-size:42px;line-height:1;color:var(--gold);margin-bottom:10px}
-  .herb-face-name{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
-  .herb-back-category{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-  .herb-back-examples{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;line-height:1.5;color:var(--paper);margin-bottom:8px}
-  .herb-back-uses{font-family:var(--serif);font-weight:400;font-size:15px;line-height:1.6;color:var(--paper-dim)}
-  .herb-hint{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-dim);margin-top:16px}
+  /* Herb explorer */
+  .herb-selector{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px;margin-bottom:0}
+  .herb-btn{font-family:var(--brush);font-size:28px;color:var(--paper-dim);background:none;border:.5px solid var(--rule-strong);padding:12px 22px 10px;cursor:pointer;transition:color .25s,border-color .25s,background .25s;display:flex;flex-direction:column;align-items:center;gap:4px;line-height:1}
+  .herb-btn .hb-en{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-faint);transition:color .25s}
+  .herb-btn:hover,.herb-btn.active{color:var(--gold);border-color:var(--gold)}
+  .herb-btn:hover .hb-en,.herb-btn.active .hb-en{color:var(--gold)}
+  .herb-btn.active{background:rgba(184,175,154,.06)}
+  [data-theme="light"] .herb-btn.active{background:rgba(24,118,46,.06)}
+  .herb-panel{position:relative;border:1px solid var(--rule);margin-top:2px;min-height:280px;overflow:hidden}
+  .herb-detail{position:absolute;inset:0;padding:clamp(28px,4vw,52px);opacity:0;transition:opacity .35s ease;pointer-events:none;display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,52px);align-items:center}
+  .herb-detail.active{opacity:1;pointer-events:all}
+  @media(max-width:600px){.herb-detail{grid-template-columns:1fr;gap:20px}}
+  .hd-glyph{font-family:var(--brush);font-size:clamp(80px,14vw,160px);color:var(--gold);line-height:1;flex-shrink:0;opacity:.9}
+  .hd-cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .hd-title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.4vw,32px);color:var(--paper);margin-bottom:10px;line-height:1.1}
+  .hd-examples{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--paper-dim);margin-bottom:18px;letter-spacing:.01em}
+  .hd-uses{font-family:var(--serif);font-weight:400;font-size:15px;line-height:1.75;color:var(--paper-dim);max-width:48ch}
+  .hd-organ{margin-top:20px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-faint);display:flex;align-items:center;gap:10px}
+  .hd-organ::before{content:"";width:18px;height:.5px;background:var(--gold);flex-shrink:0}
 
   /* ── Mobile overrides ─────────────────────────────────────── */
   @media(max-width:768px){
@@ -75,11 +77,9 @@
   }
   @media(max-width:600px){
     .tx-cta{padding:48px 0 72px}
-    .herb-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-    .herb-card{height:160px}
-    .herb-face-glyph{font-size:32px}
-    .herb-face-name{font-size:11px}
-    .herb-back-uses,.herb-back-examples{font-size:13px}
+    .herb-btn{font-size:22px;padding:10px 16px 8px}
+    .hd-glyph{display:none}
+    .herb-panel{min-height:260px}
   }
 </style>
 </head>
@@ -173,80 +173,93 @@
   </div>
 </section>
 
-<!-- Interactive: Herb Category Flip Cards -->
+<!-- Interactive: Herb Category Explorer -->
 <section class="tx-interactive">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">互</span>Interactive</div>
     <h2 class="reveal d1">Explore herb <span class="accent">categories.</span></h2>
-    <p class="reveal d2" style="font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:56ch;margin-top:12px">Click any card to flip it and discover the herbs in each category and what they are typically used for.</p>
+    <p class="reveal d2" style="font-family:var(--serif);font-weight:400;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:56ch;margin-top:12px">Select a category to learn which herbs belong to it and how they are used in classical formulas.</p>
 
-    <div class="herb-grid reveal d2">
+    <div class="herb-selector reveal d2" role="tablist">
+      <button class="herb-btn active" data-herb="roots" role="tab" aria-selected="true">根<span class="hb-en">Roots</span></button>
+      <button class="herb-btn" data-herb="bark" role="tab" aria-selected="false">皮<span class="hb-en">Bark &amp; Wood</span></button>
+      <button class="herb-btn" data-herb="flowers" role="tab" aria-selected="false">花<span class="hb-en">Flowers</span></button>
+      <button class="herb-btn" data-herb="seeds" role="tab" aria-selected="false">子<span class="hb-en">Seeds</span></button>
+      <button class="herb-btn" data-herb="leaves" role="tab" aria-selected="false">葉<span class="hb-en">Leaves</span></button>
+      <button class="herb-btn" data-herb="mineral" role="tab" aria-selected="false">礦<span class="hb-en">Mineral</span></button>
+    </div>
 
-      <div class="herb-card" data-herb="roots" aria-label="Root Herbs — click to flip">
-        <div class="herb-card-inner">
-          <div class="herb-face">
-            <div class="herb-face-glyph">根</div>
-            <div class="herb-face-name">Root Herbs</div>
-          </div>
-          <div class="herb-back">
-            <div class="herb-back-category">Root Herbs · 根</div>
-            <div class="herb-back-examples">Ginseng, Astragalus, Licorice root</div>
-            <div class="herb-back-uses">Used for energy, immunity, and harmonizing formulas. Many root herbs are classified as tonics and form the foundation of restorative prescriptions.</div>
-          </div>
+    <div class="herb-panel reveal d2">
+
+      <div class="herb-detail active" data-herb="roots">
+        <div class="hd-glyph">根</div>
+        <div class="hd-body">
+          <div class="hd-cat">Root Herbs · 根</div>
+          <div class="hd-title">Foundation of vitality</div>
+          <div class="hd-examples">Ginseng · Astragalus · Licorice root · Rehmannia</div>
+          <p class="hd-uses">Root herbs form the backbone of restorative formulas. Dense with stored nutrients, they are classified primarily as tonics — substances that nourish the body's fundamental reserves of Qi, Blood, Yin, and Yang. Their depth makes them slow-acting but lasting in effect.</p>
+          <div class="hd-organ">Spleen · Kidney · Lung</div>
         </div>
       </div>
 
-      <div class="herb-card" data-herb="bark" aria-label="Bark and Wood — click to flip">
-        <div class="herb-card-inner">
-          <div class="herb-face">
-            <div class="herb-face-glyph">皮</div>
-            <div class="herb-face-name">Bark &amp; Wood</div>
-          </div>
-          <div class="herb-back">
-            <div class="herb-back-category">Bark &amp; Wood · 皮</div>
-            <div class="herb-back-examples">Cinnamon bark, Magnolia bark</div>
-            <div class="herb-back-uses">Used for warming, calming, and circulation. Bark herbs are often pungent and aromatic, helping to dispel cold and move stagnation in the channels.</div>
-          </div>
+      <div class="herb-detail" data-herb="bark">
+        <div class="hd-glyph">皮</div>
+        <div class="hd-body">
+          <div class="hd-cat">Bark &amp; Wood · 皮</div>
+          <div class="hd-title">Warmth and movement</div>
+          <div class="hd-examples">Cinnamon bark · Magnolia bark · Phellodendron · Eucommia</div>
+          <p class="hd-uses">Bark and wood herbs tend to be pungent and aromatic, with a strong ability to penetrate the channels and dispel cold or dampness. Cinnamon bark (Ròu Guì) is among the most warming substances in the classical pharmacopoeia, used to reignite the body's yang fire.</p>
+          <div class="hd-organ">Kidney · Heart · Spleen</div>
         </div>
       </div>
 
-      <div class="herb-card" data-herb="flowers" aria-label="Flowers and Buds — click to flip">
-        <div class="herb-card-inner">
-          <div class="herb-face">
-            <div class="herb-face-glyph">花</div>
-            <div class="herb-face-name">Flowers &amp; Buds</div>
-          </div>
-          <div class="herb-back">
-            <div class="herb-back-category">Flowers &amp; Buds · 花</div>
-            <div class="herb-back-examples">Chrysanthemum, Honeysuckle</div>
-            <div class="herb-back-uses">Used for heat, inflammation, and the eyes. Flower herbs tend to be cooling and light, rising to address the upper body, head, and external conditions.</div>
-          </div>
+      <div class="herb-detail" data-herb="flowers">
+        <div class="hd-glyph">花</div>
+        <div class="hd-body">
+          <div class="hd-cat">Flowers &amp; Buds · 花</div>
+          <div class="hd-title">Light, rising, clearing</div>
+          <div class="hd-examples">Chrysanthemum · Honeysuckle · Magnolia flower · Safflower</div>
+          <p class="hd-uses">Flower herbs are characteristically light and upward-moving — their nature reflects their form. They tend toward cooling, clearing heat from the upper body, head, and eyes, and dispersing wind or pathogens lodged in the exterior. Chrysanthemum is prized for brightening vision and calming the liver.</p>
+          <div class="hd-organ">Lung · Liver · Heart</div>
         </div>
       </div>
 
-      <div class="herb-card" data-herb="seeds" aria-label="Seeds and Fruits — click to flip">
-        <div class="herb-card-inner">
-          <div class="herb-face">
-            <div class="herb-face-glyph">子</div>
-            <div class="herb-face-name">Seeds &amp; Fruits</div>
-          </div>
-          <div class="herb-back">
-            <div class="herb-back-category">Seeds &amp; Fruits · 子</div>
-            <div class="herb-back-examples">Schisandra, Jujube date, Wolfberry</div>
-            <div class="herb-back-uses">Used for liver, kidney, and sleep support. Seeds and fruits are often nourishing and consolidating, supporting the body's deeper reservoirs of essence and blood.</div>
-          </div>
+      <div class="herb-detail" data-herb="seeds">
+        <div class="hd-glyph">子</div>
+        <div class="hd-body">
+          <div class="hd-cat">Seeds &amp; Fruits · 子</div>
+          <div class="hd-title">Nourishing the deep</div>
+          <div class="hd-examples">Schisandra · Jujube date · Wolfberry · Ziziphus seed</div>
+          <p class="hd-uses">Seeds and fruits consolidate and nourish — they hold potential, like life stored in a kernel. They support the liver, kidneys, and heart, replenishing Jing (essence) and Blood. Schisandra (Wǔ Wèi Zǐ), which carries all five flavours, is particularly valued for stabilising scattered energy and supporting sleep.</p>
+          <div class="hd-organ">Liver · Kidney · Heart</div>
         </div>
       </div>
 
-      <div class="herb-card" data-herb="leaves" aria-label="Leaves — click to flip">
-        <div class="herb-card-inner">
-          <div class="herb-face">
-            <div class="herb-face-glyph">葉</div>
-            <div class="herb-face-name">Leaves</div>
-          </div>
-          <div class="herb-back">
-            <div class="herb-back-category">Leaves · 葉</div>
-            <div class="herb-back-examples">Mulberry leaf, Loquat leaf</div>
+      <div class="herb-detail" data-herb="leaves">
+        <div class="hd-glyph">葉</div>
+        <div class="hd-body">
+          <div class="hd-cat">Leaves · 葉</div>
+          <div class="hd-title">Lung and surface clearing</div>
+          <div class="hd-examples">Mulberry leaf · Loquat leaf · Perilla leaf · Artemisia</div>
+          <p class="hd-uses">Leaf herbs are light and dispersing, suited to conditions of the surface, upper body, and respiratory system. Mulberry leaf (Sāng Yè) clears wind-heat and benefits the eyes; Loquat leaf (Pí Pá Yè) descends lung Qi and relieves cough. Their thin, expansive form reflects their clinical tendency to spread and open.</p>
+          <div class="hd-organ">Lung · Liver</div>
+        </div>
+      </div>
+
+      <div class="herb-detail" data-herb="mineral">
+        <div class="hd-glyph">礦</div>
+        <div class="hd-body">
+          <div class="hd-cat">Mineral · 礦</div>
+          <div class="hd-title">Anchoring the spirit</div>
+          <div class="hd-examples">Oyster shell · Dragon bone · Magnetite · Cinnabar (historical)</div>
+          <p class="hd-uses">Mineral substances carry exceptional weight — in both the literal and classical senses. Their heaviness anchors yang that has floated upward, settles an agitated shen (spirit), and calms the heart in patterns of palpitations, insomnia, or anxiety. Oyster shell (Mǔ Lì) and Dragon bone (Lóng Gǔ) are among the most commonly used in modern formulas.</p>
+          <div class="hd-organ">Heart · Liver · Kidney</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
             <div class="herb-back-uses">Used for lung support and clearing heat. Leaf herbs are light and dispersing, often addressing respiratory conditions, surface pathogens, and internal heat.</div>
           </div>
         </div>
@@ -402,11 +415,18 @@ const io = new IntersectionObserver((entries) => {
 }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Herb flip cards
+// Herb selector
 (function(){
-  document.querySelectorAll('.herb-card').forEach(card => {
-    card.addEventListener('click', function(){
-      this.classList.toggle('flipped');
+  const btns = document.querySelectorAll('.herb-btn');
+  const details = document.querySelectorAll('.herb-detail');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.herb;
+      btns.forEach(b => {
+        b.classList.toggle('active', b.dataset.herb === id);
+        b.setAttribute('aria-selected', b.dataset.herb === id);
+      });
+      details.forEach(d => d.classList.toggle('active', d.dataset.herb === id));
     });
   });
 })();
