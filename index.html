@@ -1805,26 +1805,22 @@
 // Scales the entire .five-stage (ring + elements + center) down so the
 // outermost element circles fit within the stage's clipped width.
 // Uses the CSS `scale` individual property (not `transform`) so it
-// composes additively with the reveal animation's transform: translateY.
 (function(){
   var stage = document.getElementById('fiveStage');
   if (!stage) return;
   function applyFiveScale(){
     if (window.innerWidth > 768){
-      stage.style.scale = '';
+      stage.style.transform = '';
+      stage.style.transformOrigin = '';
       stage.style.marginBottom = '';
       return;
     }
-    // Stage is width:100% inside .wrap which has 22px padding on each side
     var wrapPad = 44;
     var stageW = Math.min(window.innerWidth - wrapPad, 560);
-    // Elements at --r:220px + 60px half-width = 280px from center.
-    // Full span = 560px = natural stage width.
-    // Subtract 8px total so elements clear overflow:hidden by 4px per side.
     var scale = Math.min(1, (stageW - 8) / 560);
-    stage.style.scale = scale.toFixed(4);
-    // Collapse the whitespace that the CSS scale leaves in the layout box
-    stage.style.marginBottom = ((scale - 1) * stageW).toFixed(0) + 'px';
+    stage.style.transformOrigin = 'top center';
+    stage.style.transform = 'scale(' + scale.toFixed(4) + ')';
+    stage.style.marginBottom = Math.round((scale - 1) * 560) + 'px';
   }
   applyFiveScale();
   window.addEventListener('resize', applyFiveScale, {passive:true});
