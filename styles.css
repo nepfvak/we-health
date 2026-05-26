@@ -113,11 +113,13 @@ body::after {
 }
 .nav .brand { display: flex; align-items: center; gap: 12px }
 .nav .brand .mark {
-  width: 42px; height: 42px; display: grid; place-items: center; flex-shrink: 0;
+  width: 40px; height: 40px; flex-shrink: 0;
   border-radius: 50%; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
 }
 .nav .brand .mark img {
-  width: 120%; height: 120%; margin: -10%; object-fit: contain; display: block;
+  width: 100%; height: 100%; object-fit: contain; display: block;
+  transform: scale(1.18);
 }
 .nav .brand .name {
   font-family: var(--serif); font-weight: 500; font-size: 15px;
