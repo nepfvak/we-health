@@ -646,6 +646,11 @@ footer{ padding-top: 80px }
   .eyebrow { letter-spacing: .14em; gap: 10px }
 }
 
+/* ── Touch-scroll fix: image-slot shadow DOM sets touch-action:none on its
+   inner <img>, which blocks page scroll when a finger starts on an image.
+   Override via ::part() so vertical drag over any image scrolls the page. ── */
+image-slot::part(image) { touch-action: pan-y; }
+
 /* ── Footer map — tap-to-activate overlay (prevents accidental map opens) ── */
 .f-map-wrap {
   position: relative;
