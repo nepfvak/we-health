@@ -25,7 +25,7 @@
 
 /* ── Reset ─────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; margin: 0; padding: 0 }
-html { background: #121212; scroll-behavior: smooth }
+html { scroll-behavior: smooth }
 html, body {
   background: var(--ink, #121212);
   color: var(--paper, #e8dfc9);
@@ -50,12 +50,6 @@ body::before {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.87  0 0 0 0 0.79  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.18'/></svg>");
   mix-blend-mode: overlay;
   opacity: var(--grain-opacity, .35);
-}
-body::after {
-  background:
-    radial-gradient(120% 80% at 50% -10%, rgba(168,50,50,.06), transparent 55%),
-    radial-gradient(80% 60% at 100% 100%, rgba(201,162,90,.05), transparent 60%);
-  z-index: 2;
 }
 
 /* ── Page frame border ──────────────────────────────────────────────── */
@@ -281,12 +275,6 @@ footer .grid {
 @media (min-width: 980px) { footer .grid { grid-template-columns: 1.1fr 1fr; gap: 72px } }
 .f-cta { display: flex; flex-direction: column; gap: 24px }
 .f-cta .f-logo img { display: block; max-width: 300px; width: 100% }
-.f-cta .editorial {
-  font-family: var(--serif); font-weight: 300; line-height: .95; color: var(--paper);
-  font-size: clamp(40px,5.6vw,72px); text-wrap: balance; max-width: 14ch; letter-spacing: -.01em;
-}
-.f-cta .editorial em { font-style: italic; color: var(--gold); font-weight: 300; display: block }
-.f-cta .editorial .seal { font-family: var(--brush); font-size: .42em; color: var(--cinnabar); margin-left: .16em; vertical-align: .42em }
 .f-cta .request {
   display: inline-flex; align-items: center; gap: 14px; align-self: flex-start;
   padding: 16px 22px; border: .5px solid var(--gold); color: var(--gold);
@@ -300,33 +288,10 @@ footer .grid {
 .f-cta .request:hover { color: var(--ink) }
 .f-cta .request:hover::before { transform: translateY(0) }
 .f-cta .request .arr { font-family: var(--serif); font-style: italic; font-size: 16px; letter-spacing: 0 }
-.f-cta .wordmark { margin-top: 24px }
-.f-cta .wordmark .name {
-  font-family: var(--brush); font-size: clamp(40px,5vw,64px); line-height: .9; color: var(--paper);
-  letter-spacing: .04em; display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap;
-}
-.f-cta .wordmark .name .lat {
-  font-family: var(--serif); font-style: italic; font-weight: 300;
-  font-size: clamp(22px,2.4vw,30px); letter-spacing: -.005em; color: var(--paper-dim);
-}
-.f-cta .wordmark .tag {
-  margin-top: 14px; font-family: var(--serif); font-style: italic; font-weight: 400;
-  color: var(--paper-dim); font-size: 17px; line-height: 1.65; max-width: 34ch;
-}
-.f-nav { display: flex; flex-direction: column; gap: 14px }
-.f-nav a {
-  position: relative; display: inline-flex; align-items: center; gap: 14px;
-  font-family: var(--serif); font-style: italic; font-weight: 300;
-  font-size: clamp(22px,2.3vw,28px); line-height: 1.1; color: var(--paper); letter-spacing: -.005em;
-  transition: color .3s, padding-left .35s cubic-bezier(.2,.7,.2,1); padding: 4px 0;
-}
-.f-nav a .bullet { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); opacity: 0; transform: scale(.4); transition: opacity .3s, transform .3s }
-.f-nav a:hover { color: var(--gold) }
-.f-nav a:hover .bullet, .f-nav a.active .bullet { opacity: 1; transform: scale(1) }
 .f-details { display: flex; flex-direction: column; gap: 36px }
-.f-block h4 { font-family: var(--mono); font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 400 }
+.f-block h4 { font-family: var(--mono); letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 400 }
 .f-block p, .f-block a { display: block; font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 15px; line-height: 1.7; color: var(--paper) }
-.f-block .muted { color: var(--paper-dim); font-style: italic }
+.f-block .muted { color: var(--paper-dim) }
 .f-block a { position: relative; margin-bottom: 4px }
 .f-block a:hover { color: var(--gold) }
 .f-block a::after {
@@ -391,10 +356,6 @@ footer .bar .legal a:hover { color: var(--gold) }
 .zoom-in.in { opacity: 1; transform: scale(1); clip-path: inset(0 0 0 0) }
 
 /* ── Keyframes ───────────────────────────────────────────────────────── */
-@keyframes fiveSpin    { to { transform: rotate(360deg) } }
-@keyframes fiveSpinCC  { to { transform: rotate(360deg) } }
-@keyframes fiveCounter { to { transform: rotate(-360deg) } }
-@keyframes seal-breathe  { 0%,100% { transform: rotate(-2deg) translateY(0) }   50% { transform: rotate(-2deg) translateY(-3px) } }
 @keyframes stamp-breathe { 0%,100% { transform: rotate(4deg) translateY(0) }    50% { transform: rotate(4deg) translateY(-2px) } }
 @keyframes pulse         { 0%,100% { opacity: .4 }  50% { opacity: 1 } }
 
@@ -414,11 +375,11 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* ── Reduced motion ──────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; scroll-snap-type: none }
+  html { scroll-behavior: auto }
   .splitline .word, .mask-up, .zoom-in, .reveal {
     transition: none !important; transform: none !important; clip-path: none !important; opacity: 1 !important;
   }
-  .philosophy .signature .seal, .about .portrait .stamp, .hero .meridian circle { animation: none }
+  .about .portrait .stamp { animation: none }
 }
 
 /* Grain overlay — multiply blends better on light backgrounds */
@@ -528,8 +489,6 @@ body::after{
     radial-gradient(80% 60% at 100% 100%, rgba(201,162,90,.05), transparent 60%);
 }
 
-/* Type — global size bump (base is 17px, bump to 18px for body copy) */
-html, body{ font-size:18px }
 h2{ color:var(--paper) }
 h3{ color:var(--paper) }
 
@@ -539,20 +498,8 @@ h3{ color:var(--paper) }
 /* Footer — readable text across all themes */
 .f-block h4{ font-size:12px }
 .f-block .muted{ color: var(--paper-dim); font-style: normal }
-footer .bar .crest{ color: var(--paper-dim) }
-
-/* Page-frame corner ticks — jade */
-[data-theme="light"] .page-frame::before,
-[data-theme="light"] .page-frame::after,
-[data-theme="light"] .page-frame .corner-tr,
-[data-theme="light"] .page-frame .corner-bl{ border-color: var(--gold) }
 
 /* ── Mobile / tablet responsive fixes ──────────────────────────────── */
-
-/* Disable scroll-snap on mobile */
-@media(max-width:768px){
-  html{ scroll-snap-type: none }
-}
 
 /* Hide the Book button in the nav on mobile — the burger menu already has
    a "Book Appointment" link, so this button is redundant and causes cramping */
@@ -614,7 +561,7 @@ footer .bar .crest{ color: var(--paper-dim) }
 }
 
 /* ── Footer — universal layout, map, buttons ───────────────────────── */
-footer{ background: var(--ink-2); padding-top: 80px }
+footer{ padding-top: 80px }
 .f-block h4{ color: var(--gold) }
 
 /* Hours rows */

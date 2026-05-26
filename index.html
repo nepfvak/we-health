@@ -9,12 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <script>try{if(localStorage.getItem("wehi-theme")!=="dark")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
 <link rel="stylesheet" href="styles.css" />
-<script src="theme.js"></script>
+<script src="theme.js" defer></script>
 <script src="nav.js" defer></script>
-  <script src="lenis.min.js"></script>
+  <script src="lenis.min.js" defer></script>
   <script src="scroll.js" defer></script>
 <script src="footer-map.js" defer></script>
-<script src="image-slot.js"></script>
+<script src="image-slot.js" defer></script>
 
 <style>
   /* Each section fills the viewport and centres its content */
@@ -69,10 +69,6 @@
     background:radial-gradient(circle at 42% 40%, #c66a4c 0%, #a8492f 55%, #7a2e1c 100%);
     box-shadow:0 0 50px 6px rgba(168,73,47,.18), 0 0 18px 2px rgba(168,73,47,.30);
     opacity:.85;
-  }
-  :root:not([data-theme="light"]) .hero .shanshui .sun{
-    /* Overridden by the dark-mode rule further below — kept here as a stub
-       only so this selector isn't orphaned by older browsers. */
   }
 
   /* ── Shan shui — ink-wash scroll painting (teal-green ink on parchment) ── */
@@ -481,80 +477,13 @@
   .t-label{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2vw,28px);color:var(--paper);line-height:1.1}
   .t-sub{font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-faint)}
 
-  /* ── What to Expect ───────────────────────────────────────────────── */
-  .expect{background:var(--ink-2);border-top:1px solid var(--rule)}
-  .expect-head{display:grid;grid-template-columns:1fr;gap:28px;margin-bottom:64px}
-  @media(min-width:860px){.expect-head{grid-template-columns:1fr 1fr;gap:80px;align-items:end}}
-  .expect-lede{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(15px,1.6vw,18px);color:var(--paper-dim);line-height:1.65;max-width:44ch}
-  .expect-timeline{margin-bottom:64px}
-  .expect-phase{display:grid;grid-template-columns:72px 1fr;gap:28px 40px;padding:40px 0;border-top:1px solid var(--rule)}
-  @media(min-width:680px){.expect-phase{grid-template-columns:108px 1fr}}
-  .ep-time{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(36px,5.5vw,60px);color:var(--gold);line-height:.9;letter-spacing:-.02em;padding-top:4px}
-  .ep-content h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(19px,2.4vw,27px);color:var(--paper);margin-bottom:10px;line-height:1.2}
-  .ep-tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--cinnabar);border:.5px solid rgba(200,146,26,.45);padding:3px 9px;margin-bottom:14px}
-  .ep-content p{color:var(--paper-dim);font-size:15.5px;line-height:1.75;font-weight:400;max-width:56ch}
-  .ep-note{margin-top:14px;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-faint);display:flex;align-items:center;gap:10px}
-  .ep-note::before{content:"";width:18px;height:.5px;background:var(--gold);flex-shrink:0}
-  .ep-note b{color:var(--paper);font-weight:400}
-  .expect-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
-  @media(min-width:720px){.expect-stats{grid-template-columns:repeat(3,1fr)}}
-  .es-stat{background:var(--ink-2);padding:36px 32px;display:flex;flex-direction:column;gap:8px}
-  .es-stat.hi{background:var(--ink-3)}
-  .es-num{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(40px,6vw,72px);color:var(--gold);line-height:.9;letter-spacing:-.02em}
-  .es-stat.hi .es-num{color:var(--paper)}
-  .es-label{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-dim)}
-  .es-sub{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--paper-dim);font-weight:400}
 
-  /* ── Value / Pricing ──────────────────────────────────────────────── */
-  .value{background:var(--ink);border-top:1px solid var(--rule)}
-  .value-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:56px}
-  @media(min-width:800px){.value-grid{grid-template-columns:1fr 1fr}}
-  .value-col{padding:48px 40px;display:flex;flex-direction:column}
-  .value-col.v-ours{background:var(--ink-2)}
-  .value-col.v-theirs{background:var(--ink);opacity:.55}
-  .v-head{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;padding-bottom:20px;border-bottom:.5px solid var(--rule-strong);margin-bottom:28px;display:flex;align-items:center;gap:10px}
-  .value-col.v-ours .v-head{color:var(--gold)}
-  .value-col.v-theirs .v-head{color:var(--paper-faint)}
-  .v-list{list-style:none;display:flex;flex-direction:column;gap:16px}
-  .v-list li{font-family:var(--serif);font-weight:400;font-size:16px;color:var(--paper);line-height:1.65;display:flex;gap:14px;align-items:baseline}
-  .value-col.v-theirs .v-list li{color:var(--paper-dim)}
-  .v-tick{font-family:var(--mono);font-size:9px;flex-shrink:0;padding-top:2px}
-  .value-col.v-ours .v-tick{color:var(--gold)}
-  .value-col.v-theirs .v-tick{color:var(--paper-faint)}
 
-  /* ── Clinical Specialties ─────────────────────────────────────────── */
-  .specialties{background:var(--ink);border-top:1px solid var(--rule)}
-  .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:56px}
-  @media(min-width:640px){.spec-grid{grid-template-columns:repeat(3,1fr)}}
-  @media(min-width:1100px){.spec-grid{grid-template-columns:repeat(4,1fr)}}
-  .spec-card{background:var(--ink);padding:32px 24px 28px;display:flex;flex-direction:column;gap:10px;transition:background .4s}
-  .spec-card:hover{background:var(--ink-2)}
-  .spec-glyph{font-family:var(--brush);font-size:36px;color:var(--gold);line-height:1;margin-bottom:4px;display:var(--glyph-display,block)}
-  .spec-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;color:var(--paper);line-height:1.2}
-  .spec-items{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:4px}
-  .spec-items li{font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-dim);display:flex;align-items:center;gap:8px;line-height:1.4}
-  .spec-items li::before{content:"";width:10px;height:.5px;background:var(--gold);flex-shrink:0}
 
-  /* ── Coming Soon ──────────────────────────────────────────────────── */
-  .coming-soon{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--ink-2);padding:72px 0}
-  .cs-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px}
-  .cs-label{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
-  .cs-label::before{content:"";width:28px;height:.5px;background:var(--gold)}
-  .cs-heading{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(24px,3.6vw,42px);color:var(--paper);line-height:1.05}
-  .cs-cards{display:flex;gap:16px;flex-wrap:wrap}
-  .cs-card{padding:22px 28px;border:.5px solid var(--rule-strong);display:flex;flex-direction:column;gap:7px;min-width:200px;background:var(--ink-3);position:relative;overflow:hidden}
-  .cs-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cinnabar),transparent)}
-  .cs-badge{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--cinnabar);display:flex;align-items:center;gap:6px}
-  .cs-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--cinnabar);box-shadow:0 0 6px var(--cinnabar);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
-  .cs-name{font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;color:var(--paper);line-height:1.2}
-  .cs-sub{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-faint)}
 
   /* ── Credentials bar (about section) ─────────────────────────────── */
   .cred-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
   .cred-pill{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--gold);border:.5px solid rgba(184,175,154,.35);padding:5px 12px}
-  .lineage-note{margin-top:28px;padding:20px 24px;border-left:.5px solid var(--cinnabar);background:rgba(200,146,26,.05)}
-  .lineage-note p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;color:var(--paper-dim);line-height:1.7;max-width:50ch}
-  .lineage-note .ln-label{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--cinnabar);margin-bottom:8px}
 
 /* ═══════════════════════════════════════════════════════════════════
    v2 — CLARITY PASS  (per customer feedback, May 2026)
@@ -563,32 +492,6 @@
    acupunctureinaustintx — simple, vivid, large readable type, hours +
    contact + Google Map at the foot of the page.
    ═══════════════════════════════════════════════════════════════════ */
-
-  /* PALETTE — warm gold accent, near-black text on light cream */
-  [data-theme="light"]{
-    --ink:          #fbfaf7;
-    --ink-2:        #f1ede4;
-    --ink-3:        #e6ddc7;
-    --paper:        #0d0c08;    /* near-black headlines */
-    --paper-dim:    #1a1814;    /* body text \u2014 nearly black */
-    --paper-faint:  #3a352d;    /* meta / eyebrow \u2014 dark warm gray */
-    --gold:         #18762e;
-    --gold-dim:     #115a22;
-    --gold-light:   rgba(24,118,46,.12);
-    --cinnabar:     #a07820;    /* warm gold — small accent marks (seal/chop/dot) */
-    --cinnabar-dim: #7d5e18;
-    --rule:         rgba(21,20,15,.14);
-    --rule-strong:  rgba(21,20,15,.24);
-  }
-  :root:not([data-theme="light"]){
-    --paper:        #f4ecd6;
-    --paper-dim:    #d4c9b0;
-    --paper-faint:  #a89f90;
-    --gold:         #4cb35a;
-    --gold-dim:     #3a9447;
-    --gold-light:   rgba(76,179,90,.15);
-    --cinnabar:     #d6a73a;
-  }
 
   /* TYPE — bump size & weight so it reads from across the room */
   html, body{ font-size:18px; line-height:1.75 }
@@ -875,89 +778,6 @@
   [data-theme="light"] .nav .links a.is-active{ color: var(--gold) }
   [data-theme="light"] .nav .links a::after{ background: var(--gold) }
 
-  /* About — keep the small chop/seal in true cinnabar red.
-     Page-frame corner ticks use jade. */
-  [data-theme="light"] .page-frame::before,
-  [data-theme="light"] .page-frame::after,
-  [data-theme="light"] .page-frame .corner-tr,
-  [data-theme="light"] .page-frame .corner-bl{ border-color: var(--gold) }
-
-  /* Footer — 2-column layout now that the nav column is gone */
-  @media (min-width:980px){
-    footer .grid{ grid-template-columns: 1.1fr 1fr !important; gap: 72px !important }
-  }
-  .f-cta-buttons{
-    display:flex; flex-wrap:wrap; gap:12px; align-items:stretch;
-  }
-  .f-cta-buttons .request{
-    flex: 1 1 0; min-width: 0;
-    justify-content: center; text-align: center;
-    padding: 16px 18px !important;
-  }
-  .f-cta .request-ghost{
-    background: transparent; color: var(--gold);
-    border: 1px solid var(--gold);
-  }
-  .f-cta .request-ghost::before{ display:none !important }
-  .f-cta .request-ghost:hover{ background: var(--gold); color: #fff }
-  .f-cta .request-ghost .arr{ font-family: var(--serif); font-size: 13px }
-
-  /* Nav links \u2014 darken to near-black + slight weight bump for clarity */
-  .nav .links{ color: var(--paper) !important }
-  .nav .links a{ color: var(--paper) !important }
-  .nav .links a:hover,
-  .nav .links a.is-active{ color: var(--gold) !important }
-
-  /* Bump up too-thin text rules from styles.css so darker color reads crisp */
-  .f-block p, .f-block a{ font-weight: 400 !important; color: var(--paper) !important }
-  .f-block .muted{ color: var(--paper-dim) !important; font-style: normal !important }
-  .f-cta .wordmark .name .lat{ font-weight: 400 !important; color: var(--paper-dim) !important }
-  .f-cta .wordmark .tag{ font-weight: 400 !important; font-style: normal !important; color: var(--paper-dim) !important }
-  footer .bar{ color: var(--paper-dim) !important }
-  footer .bar .crest, footer .bar .legal a{ color: var(--paper-dim) !important }
-  p.body{ font-weight: 400 !important }
-  .hero .lede{ color: var(--paper) !important }
-
-  /* About \u2014 multi-paragraph lineage note + specialties grid + appointments list */
-  .lineage-note{ padding: 22px 26px !important }
-  .lineage-note p{
-    font-style: normal !important; font-weight: 400 !important;
-    font-size: 15.5px !important; color: var(--paper) !important;
-    line-height: 1.7 !important; max-width: 56ch !important;
-  }
-  .lineage-note p + p{ margin-top: 14px }
-  .lineage-note p b{ color: var(--gold); font-weight: 600 }
-
-  .specialties{ margin-top: 36px }
-  .svc-specialties{
-    margin-top: 64px !important;
-    padding-top: 48px;
-    border-top: 1px solid var(--rule);
-  }
-  .specialties .sp-label{
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: .28em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
-  }
-  .specialties .sp-grid{
-    display: grid; grid-template-columns: 1fr; gap: 14px 28px;
-  }
-  @media(min-width: 680px){
-    .specialties .sp-grid{ grid-template-columns: 1fr 1fr }
-  }
-  .specialties .sp-item{
-    padding: 14px 0 14px 18px;
-    border-left: 2px solid var(--gold);
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .specialties .sp-item b{
-    font-family: var(--serif); font-weight: 600; font-style: normal;
-    font-size: 16.5px; color: var(--paper); line-height: 1.25;
-  }
-  .specialties .sp-item span{
-    font-family: var(--serif); font-weight: 400; font-style: normal;
-    font-size: 14.5px; color: var(--paper-dim); line-height: 1.5;
-  }
-
   .about .portrait image-slot{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1 }
 
   .appointments{ margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--rule) }
@@ -1068,22 +888,6 @@
     /* Acupoints: reduce large wrap padding */
     .acu-sticky .wrap{ padding: 32px 16px }
 
-    /* Expect section: reduce heavy margins */
-    .expect-head{ margin-bottom: 40px }
-    .expect-timeline{ margin-bottom: 40px }
-    .expect-phase{ padding: 28px 0; gap: 18px 20px }
-
-    /* Value grid: ensure padding is sane on mobile */
-    .value-col{ padding: 32px 24px }
-
-    /* Spec grid: tighter card padding */
-    .spec-card{ padding: 24px 18px 20px }
-
-    /* Coming soon: stack content */
-    .cs-inner{ flex-direction: column; align-items: flex-start }
-    .cs-cards{ flex-direction: column; width: 100% }
-    .cs-card{ min-width: 0; width: 100% }
-
     /* Section wrap: reduce clamp padding */
     section>.wrap{
       padding-top: 40px;
@@ -1116,11 +920,6 @@
       grid-template-columns: 1fr !important;
     }
     .trust-inner{
-      grid-template-columns: 1fr !important;
-    }
-    .expect-phase,
-    .expect-stats,
-    .spec-grid{
       grid-template-columns: 1fr !important;
     }
   }
@@ -1234,94 +1033,6 @@
 <!-- ─── Hero ──────────────────────────────────────────────────────── -->
 <header class="hero" id="top" data-screen-label="Home Hero">
   <div class="hero-frame" aria-hidden="true"></div>
-  <!-- Legacy shan-shui background hidden by v2 CSS, kept here so other
-       pages that share the script can still query .hero .shanshui safely. -->
-  <div class="shanshui-legacy" style="display:none" aria-hidden="true">
-  <div class="shanshui" aria-hidden="true">
-
-    <!-- Sun — red disc in upper area, behind everything else -->
-    <div class="sun" aria-hidden="true"></div>
-
-    <!-- LAYER 1 — farthest background haze -->
-    <svg class="ss-layer ss-l1" viewBox="0 0 1440 700" preserveAspectRatio="none">
-      <path d="M0,700 L0,360 C80,340 140,328 200,334 C265,318 330,305 395,312 C460,296 530,282 600,289 C670,274 740,260 810,267 C880,252 950,238 1020,245 C1090,230 1158,218 1228,225 C1298,210 1368,200 1440,206 L1440,700 Z"/>
-    </svg>
-
-    <!-- LAYER 2 — mid-distant mountains, jagged ridge across full width -->
-    <svg class="ss-layer ss-l2" viewBox="0 0 1440 700" preserveAspectRatio="none">
-      <path d="M0,700 L0,395 L60,368 L110,340 L142,355 L195,318 L232,332 L282,298 L315,312 L368,278 L402,292 L455,258 L490,272 L545,238 L580,252 L635,218 L668,232 L722,198 L758,214 L812,195 L845,210 L898,188 L932,205 L985,188 L1018,205 L1072,188 L1108,205 L1162,188 L1198,205 L1252,192 L1288,208 L1342,195 L1378,212 L1440,200 L1440,700 Z"/>
-    </svg>
-
-    <!-- THICK FOG — the defining mist between back range and main range -->
-    <div class="fog fog-1"></div>
-    <div class="fog fog-2"></div>
-
-    <!-- LAYER 3 — MAIN foreground: hero LEFT cluster, secondary RIGHT cluster -->
-    <svg class="ss-layer ss-l3" viewBox="0 0 1440 700" preserveAspectRatio="none">
-      <path d="M0,700 L0,520 L55,488 L105,450 L138,465 L188,418 L218,430 L252,385 L278,395 L305,348 L322,360 L342,318 L358,295 L372,268 L385,245 L395,218 L402,200 L410,185 L418,200 L425,218 L435,248 L445,272 L458,248 L468,228 L478,210 L485,225 L492,248 L502,275 L512,295 L525,318 L538,340 L552,360 L568,378 L585,355 L598,335 L612,315 L622,330 L635,350 L650,375 L668,398 L688,420 L708,438 L730,455 L752,462 L785,448 L818,428 L850,405 L875,388 L898,368 L915,352 L932,338 L945,348 L958,362 L975,345 L990,328 L1005,315 L1018,328 L1032,345 L1048,362 L1065,378 L1082,392 L1100,405 L1118,418 L1138,428 L1158,415 L1178,400 L1200,388 L1218,400 L1238,415 L1260,428 L1285,442 L1312,455 L1340,465 L1375,475 L1440,482 L1440,700 Z"/>
-    </svg>
-
-    <!-- Valley floor fog — pools in the dip between the two clusters -->
-    <div class="fog fog-3"></div>
-
-    <!-- LAYER 4 — near foreground silhouettes -->
-    <svg class="ss-layer ss-l4" viewBox="0 0 1440 700" preserveAspectRatio="none">
-      <path d="M0,700 L0,548 L95,512 L202,465 L252,480 L348,432 L395,448 L475,405 L520,420 L595,382 L635,395 L678,375 L700,385 L722,372 L745,382 L768,368 L790,378 L812,365 L835,375 L858,368 L882,378 L908,368 L935,380 L968,368 L1005,378 L1042,368 L1080,378 L1118,368 L1158,378 L1200,368 L1242,380 L1290,368 L1340,380 L1395,370 L1440,382 L1440,700 Z"/>
-    </svg>
-
-    <!-- Ground mist — closer, denser -->
-    <div class="fog fog-4"></div>
-    <div class="fog fog-5"></div>
-
-    <!-- LAYER 5 — darkest base ground -->
-    <svg class="ss-layer ss-l5" viewBox="0 0 1440 140" preserveAspectRatio="none">
-      <path d="M0,140 L0,105 L180,82 L365,65 L448,78 L585,58 L675,74 L798,52 L895,68 L1015,50 L1115,66 L1242,52 L1342,68 L1440,56 L1440,140 Z"/>
-    </svg>
-
-    <!-- LEFT painted leaf branch (hero corner) — stems hardcoded, leaves generated by JS -->
-    <svg class="branch branch-l" viewBox="0 0 200 380" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
-      <!-- Main stem -->
-      <path class="stem" d="M-10,380 C10,340 22,295 28,250 C34,205 25,165 35,120 C42,88 52,62 58,35" stroke-width="2.2"/>
-      <!-- Branch right at y=250 -->
-      <path class="stem" d="M28,250 C48,235 72,225 95,218" stroke-width="1.6"/>
-      <!-- Branch right at y=165 -->
-      <path class="stem" d="M30,165 C55,148 78,138 108,132" stroke-width="1.4"/>
-      <!-- Branch left at y=120 -->
-      <path class="stem" d="M35,120 C18,105 5,92 -8,82" stroke-width="1.3"/>
-      <!-- Second stem (slightly behind, lower opacity) -->
-      <path class="stem" d="M-20,380 C5,355 15,320 12,280 C9,245 18,218 22,185 C28,152 40,128 45,98" stroke-width="1.8" opacity=".7"/>
-      <path class="stem" d="M12,280 C-5,265 -18,252 -28,238" stroke-width="1.3" opacity=".7"/>
-      <!-- Leaf clusters — populated by JS at load -->
-      <g class="leaves">
-        <g class="leaf-cluster" data-x="95"  data-y="218" data-size="1.1"  data-rotation="80"></g>
-        <g class="leaf-cluster" data-x="108" data-y="132" data-size="1.0"  data-rotation="75"></g>
-        <g class="leaf-cluster" data-x="58"  data-y="35"  data-size="0.9"  data-rotation="15"></g>
-        <g class="leaf-cluster" data-x="-8"  data-y="82"  data-size="0.85" data-rotation="-30"></g>
-        <g class="leaf-cluster" data-x="45"  data-y="98"  data-size="0.9"  data-rotation="20"></g>
-        <g class="leaf-cluster" data-x="-28" data-y="238" data-size="0.8"  data-rotation="-60"></g>
-      </g>
-    </svg>
-
-    <!-- RIGHT painted leaf branch (mirrored) -->
-    <svg class="branch branch-r" viewBox="0 0 200 380" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
-      <path class="stem" d="M-10,380 C10,340 22,295 28,250 C34,205 25,165 35,120 C42,88 52,62 58,35" stroke-width="2.2"/>
-      <path class="stem" d="M28,250 C48,235 72,225 95,218" stroke-width="1.6"/>
-      <path class="stem" d="M30,165 C55,148 78,138 108,132" stroke-width="1.4"/>
-      <path class="stem" d="M35,120 C18,105 5,92 -8,82" stroke-width="1.3"/>
-      <path class="stem" d="M-20,380 C5,355 15,320 12,280 C9,245 18,218 22,185 C28,152 40,128 45,98" stroke-width="1.8" opacity=".7"/>
-      <g class="leaves">
-        <g class="leaf-cluster" data-x="95"  data-y="218" data-size="1.1"  data-rotation="80"></g>
-        <g class="leaf-cluster" data-x="108" data-y="132" data-size="1.0"  data-rotation="75"></g>
-        <g class="leaf-cluster" data-x="58"  data-y="35"  data-size="0.9"  data-rotation="15"></g>
-        <g class="leaf-cluster" data-x="-8"  data-y="82"  data-size="0.85" data-rotation="-30"></g>
-        <g class="leaf-cluster" data-x="45"  data-y="98"  data-size="0.9"  data-rotation="20"></g>
-      </g>
-    </svg>
-
-    <!-- Vermillion seal -->
-    <div class="seal-mark" aria-hidden="true">醫</div>
-  </div>
-  </div><!-- /shanshui-legacy -->
 
   <div class="wrap">
     <div class="hero-grid">
@@ -1408,7 +1119,7 @@
 
     <div class="inner">
       <div class="portrait reveal d1" role="img" aria-label="Portrait of Dr. Yingjuan Liang">
-        <img src="assets/dr-selina-portrait.png" alt="Portrait of Dr. Yingjuan Liang (Selina)" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" />
+        <img src="assets/dr-selina-portrait.png" loading="lazy" alt="Portrait of Dr. Yingjuan Liang (Selina)" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" />
         <div class="stamp">選</div>
       </div>
 
@@ -1733,7 +1444,7 @@
 
       <div class="f-cta">
         <div class="f-logo">
-          <img src="assets/logo-with-text.png" alt="W&E Health Institute" style="width:100%;max-width:300px;display:block;">
+          <img src="assets/logo-with-text.png" loading="lazy" alt="W&E Health Institute" style="width:100%;max-width:300px;display:block;">
         </div>
         <div class="f-cta-buttons">
           <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="request">
@@ -1934,8 +1645,6 @@
 
   // ── Parallax scroll ────────────────────────────────────────────────
   const parallaxTargets = [
-    {sel:'.hero .glyph', speed: 0.35},
-    {sel:'.hero .photo', speed: 0.15},
     {sel:'footer .glyph', speed: 0.25},
   ].map(t => ({el: document.querySelector(t.sel), speed: t.speed})).filter(t => t.el);
 
@@ -1955,39 +1664,6 @@
   }
   window.addEventListener('scroll', onScrollParallax, {passive:true});
   onScrollParallax();
-
-  // ── Leaf clusters — populate each .leaf-cluster <g> with rotated ellipse
-  // leaves around its anchor (matches the React Leaf/LeafCluster algorithm). ──
-  const SVG_NS = 'http://www.w3.org/2000/svg';
-  document.querySelectorAll('.shanshui .leaf-cluster').forEach(g => {
-    const x = +g.dataset.x, y = +g.dataset.y;
-    const size = +g.dataset.size, rot = +g.dataset.rotation;
-    const arrangement = [
-      { a: rot - 45, d: 10 },
-      { a: rot - 20, d: 12 },
-      { a: rot,      d: 13 },
-      { a: rot + 20, d: 12 },
-      { a: rot + 45, d: 10 },
-      { a: rot - 70, d:  8 },
-      { a: rot + 70, d:  8 },
-    ];
-    arrangement.forEach((leaf, i) => {
-      const rad = leaf.a * Math.PI / 180;
-      const cx = x + Math.sin(rad) * leaf.d * size;
-      const cy = y - Math.cos(rad) * leaf.d * size;
-      const jitter = 0.85 + Math.random() * 0.3;
-      const el = document.createElementNS(SVG_NS, 'ellipse');
-      el.setAttribute('cx', cx.toFixed(2));
-      el.setAttribute('cy', cy.toFixed(2));
-      el.setAttribute('rx', (3.5 * size * jitter).toFixed(2));
-      el.setAttribute('ry', (9   * size * jitter).toFixed(2));
-      el.setAttribute('transform', `rotate(${leaf.a} ${cx.toFixed(2)} ${cy.toFixed(2)})`);
-      if (i % 2) el.setAttribute('class', 'leaf-b');
-      el.setAttribute('opacity', '0.88');
-      g.appendChild(el);
-    });
-  });
-
 
   // ── Acupoint Explorer ──────────────────────────────────────────
   const ACU_DATA = {
