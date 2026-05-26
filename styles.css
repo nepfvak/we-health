@@ -8,9 +8,9 @@
   --paper: #f0ece2;
   --paper-dim: #c8bda1;
   --paper-faint: #a89f90;
-  --gold: #3d8b72;
-  --gold-dim: #2e6e5a;
-  --gold-light: rgba(61,139,114,.15);
+  --gold: #4cb35a;
+  --gold-dim: #3a9447;
+  --gold-light: rgba(76,179,90,.15);
   --cinnabar: #a07820;
   --cinnabar-dim: #7d5e18;
   --rule: rgba(232,232,232,.10);
@@ -465,9 +465,9 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
   --paper:        #0d0c08;
   --paper-dim:    #1a1814;
   --paper-faint:  #3a352d;
-  --gold:         #3d8b72;
-  --gold-dim:     #2e6e5a;
-  --gold-light:   rgba(61,139,114,.12);
+  --gold:         #18762e;
+  --gold-dim:     #115a22;
+  --gold-light:   rgba(24,118,46,.12);
   --cinnabar:     #a07820;
   --cinnabar-dim: #7d5e18;
   --rule:         rgba(21,20,15,.14);
@@ -478,9 +478,9 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 :root:not([data-theme="light"]){
   --paper:        #e8e8e8;
   --paper-dim:    #a8a8a8;
-  --gold:         #3d8b72;
-  --gold-dim:     #2e6e5a;
-  --gold-light:   rgba(61,139,114,.15);
+  --gold:         #4cb35a;
+  --gold-dim:     #3a9447;
+  --gold-light:   rgba(76,179,90,.15);
   --cinnabar:     #a07820;
 }
 
