@@ -1,10 +1,9 @@
 (function () {
   if (typeof Lenis === 'undefined') return;
   var lenis = new Lenis({
-    duration: 1.8,
-    easing: function (t) { return t === 1 ? 1 : 1 - Math.pow(2, -6 * t); },
+    duration: 1.4,
+    easing: function (t) { return 1 - Math.pow(1 - t, 3); },
     smoothWheel: true,
-    wheelMultiplier: 0.8,
   });
   function raf(time) {
     lenis.raf(time);
