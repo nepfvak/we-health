@@ -11,93 +11,116 @@
 <link rel="stylesheet" href="styles.css" />
 <script src="theme.js"></script>
 <style>
-  /* ── Page layout ─────────────────────────────────────────────────────── */
-  .page-hero .wrap { padding-bottom: clamp(32px, 5vh, 64px); }
-
   /* ── Jane booking section ────────────────────────────────────────────── */
   .jane-section {
     background: var(--ink);
     border-top: .5px solid var(--rule);
-    padding: clamp(48px,7vh,96px) 0 clamp(64px,10vh,120px);
+    padding: clamp(64px,10vh,120px) 0 clamp(80px,12vh,140px);
   }
-  .jane-section .wrap { max-width: 1160px; }
 
-  .jane-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-  }
-  .jane-header h2 { margin: 0; }
-  .jane-contact-alt {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--paper-faint);
+  /* Portal card */
+  .jane-portal {
+    margin-top: 52px;
+    border: .5px solid var(--rule-strong);
+    padding: clamp(52px,8vw,96px) clamp(32px,6vw,80px);
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    text-align: right;
-  }
-  .jane-contact-alt a {
-    color: var(--paper-dim);
-    transition: color .2s;
-  }
-  .jane-contact-alt a:hover { color: var(--gold); }
-
-  /* Iframe container */
-  .jane-iframe-wrap {
+    align-items: center;
+    text-align: center;
+    gap: 0;
     position: relative;
-    border: .5px solid var(--rule-strong);
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .7s ease, transform .7s ease;
   }
-  .jane-iframe-wrap.in {
-    opacity: 1;
-    transform: translateY(0);
+  .jane-portal::before {
+    content: "預";
+    position: absolute;
+    font-family: var(--brush);
+    font-size: 380px;
+    color: var(--paper);
+    opacity: .025;
+    right: -40px;
+    bottom: -80px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
   }
 
-  .jane-iframe-wrap iframe {
-    display: block;
-    width: 100%;
-    height: 900px;
-    border: none;
+  .jane-portal-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
   }
-
-  /* Thin gold rule above the iframe */
-  .jane-rule {
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
+  .jane-portal h3 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(26px,3vw,40px);
+    line-height: 1.25;
+    color: var(--paper);
+    margin: 0 0 12px;
+  }
+  .jane-portal-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(15px,1.4vw,18px);
+    color: var(--paper-dim);
     margin-bottom: 48px;
-    opacity: 0;
-    transition: opacity .5s ease .2s;
+    max-width: 44ch;
+    line-height: 1.7;
   }
-  .jane-rule.in { opacity: 1; }
+  .jane-portal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 44px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .20em;
+    text-transform: uppercase;
+    transition: opacity .2s;
+    position: relative;
+    z-index: 1;
+  }
+  .jane-portal-btn:hover { opacity: .88; }
+  .jane-portal-btn .arr {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    letter-spacing: 0;
+  }
+  .jane-portal-divider {
+    width: 32px;
+    height: .5px;
+    background: var(--rule-strong);
+    margin: 48px 0;
+  }
+  .jane-portal-alt {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 40px;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+    position: relative;
+    z-index: 1;
+  }
+  .jane-portal-alt a { color: var(--paper-dim); transition: color .2s; }
+  .jane-portal-alt a:hover { color: var(--gold); }
 
-  /* Light mode: keep iframe section dark */
-  [data-theme="light"] .jane-section {
-    background: var(--ink);
-  }
-  [data-theme="light"] .jane-contact-alt { color: var(--paper-faint); }
-  [data-theme="light"] .jane-contact-alt a { color: var(--paper-dim); }
+  /* Light mode: keep portal section dark */
+  [data-theme="light"] .jane-section { background: var(--ink); }
 
   /* ── Responsive ──────────────────────────────────────────────────────── */
-  @media (max-width: 860px) {
-    .jane-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .jane-contact-alt { text-align: left; }
-  }
   @media (max-width: 640px) {
-    .jane-iframe-wrap iframe { height: 800px; }
-    .jane-header { margin-bottom: 32px; }
-  }
-  @media (max-width: 400px) {
-    .jane-iframe-wrap iframe { height: 700px; }
+    .jane-portal { padding: 48px 28px; }
+    .jane-portal-btn { padding: 18px 32px; width: 100%; justify-content: center; }
   }
 </style>
 </head>
@@ -145,32 +168,29 @@
   </div>
 </div>
 
-<!-- Jane App booking iframe -->
+<!-- Jane App booking portal -->
 <section class="jane-section">
   <div class="wrap">
 
-    <div class="jane-header reveal">
-      <div>
-        <p class="eyebrow"><span class="cn">線上預約</span> Online Booking</p>
-        <h2>Schedule <span class="accent">your visit</span></h2>
-      </div>
-      <div class="jane-contact-alt">
-        <span>Prefer to call or email?</span>
+    <p class="eyebrow reveal"><span class="cn">線上預約</span> Online Booking</p>
+    <h2 class="reveal d1">Schedule <span class="accent">your visit</span></h2>
+
+    <div class="jane-portal reveal d2">
+      <p class="jane-portal-label">W&amp;E Health Institute · Jane App</p>
+      <h3>Ready when you are</h3>
+      <p class="jane-portal-sub">Our booking portal opens in a new tab — browse available appointments, select a service, and confirm your visit in minutes.</p>
+
+      <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="jane-portal-btn">
+        Open Booking Portal <span class="arr">→</span>
+      </a>
+
+      <div class="jane-portal-divider"></div>
+
+      <div class="jane-portal-alt">
+        <span>Or reach us directly —</span>
         <a href="tel:+19013406433">901&middot;340&middot;6433</a>
         <a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a>
       </div>
-    </div>
-
-    <div class="jane-rule reveal"></div>
-
-    <div class="jane-iframe-wrap reveal">
-      <iframe
-        src="https://wehealthinstitute.janeapp.com"
-        title="Book an Appointment at W&amp;E Health Institute"
-        loading="lazy"
-        allow="payment"
-        referrerpolicy="origin-when-cross-origin">
-      </iframe>
     </div>
 
   </div>
