@@ -63,15 +63,11 @@
   .herb-panel{position:relative;border:1px solid var(--rule);margin-top:2px;min-height:280px;overflow:hidden}
   .herb-detail{position:absolute;inset:0;padding:clamp(28px,4vw,52px);opacity:0;transition:opacity .35s ease;pointer-events:none;display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,52px);align-items:center}
   .herb-detail.active{opacity:1;pointer-events:all}
-  /* On mobile the absolute-positioned details can exceed the fixed min-height and get
-     clipped. Switch to a static-flow approach at ≤768px: active detail is in-flow,
-     inactive details are visually hidden but removed from layout with display:none. */
   @media(max-width:768px){
-    .herb-panel{min-height:0;overflow:visible;height:auto}
-    .herb-detail{position:static;opacity:0;height:0;overflow:hidden;padding:0;pointer-events:none;display:block}
-    .herb-detail.active{opacity:1;height:auto;overflow:visible;padding:clamp(20px,5vw,32px);pointer-events:all;display:grid;grid-template-columns:1fr}
+    .herb-panel{min-height:0;height:auto;overflow:visible}
+    .herb-detail{position:static;display:none;opacity:1;transform:none;pointer-events:none}
+    .herb-detail.active{display:grid;grid-template-columns:1fr;gap:20px;padding:clamp(20px,5vw,32px);pointer-events:all}
   }
-  @media(max-width:600px){.herb-detail{grid-template-columns:1fr;gap:20px}}
   .hd-glyph{font-family:var(--brush);font-size:clamp(80px,14vw,160px);color:var(--gold);line-height:1;flex-shrink:0;opacity:.9}
   .hd-cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
   .hd-title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.4vw,32px);color:var(--paper);margin-bottom:10px;line-height:1.1}
