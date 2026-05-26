@@ -603,13 +603,23 @@
   .hero .photo,
   .hero .bg{ display:none !important }
 
+  /* Hide fixed page-frame on homepage — hero-frame takes over */
+  .page-frame { display: none !important; }
+
   /* ── HERO — clean, photo-driven, two-column ─────────────────────── */
   .hero{
+    position: relative !important;
     background: url(assets/hero-section.png) center 55%/cover no-repeat, var(--ink) !important;
     padding: 120px 22px 80px !important;
     min-height: 100vh !important;
     min-height: 100dvh !important;
   }
+  /* Frame border that scrolls with the hero — nav rides along it */
+  .hero-frame{
+    position: absolute; inset: 14px; z-index: 2; pointer-events: none;
+    border: 1px solid rgba(255,255,255,.30);
+  }
+  [data-theme="light"] .hero-frame{ border-color: rgba(30,28,18,.22); }
   /* Atmospheric warm texture — SVG grain + radial warmth */
   .hero::before{
     content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
@@ -1218,6 +1228,7 @@
 
 <!-- ─── Hero ──────────────────────────────────────────────────────── -->
 <header class="hero" id="top" data-screen-label="Home Hero">
+  <div class="hero-frame" aria-hidden="true"></div>
   <!-- Legacy shan-shui background hidden by v2 CSS, kept here so other
        pages that share the script can still query .hero .shanshui safely. -->
   <div class="shanshui-legacy" style="display:none" aria-hidden="true">

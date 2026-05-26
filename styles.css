@@ -88,7 +88,6 @@ body::after {
 .nav::before {
   content: "";
   position: absolute;
-  /* match page-frame inset exactly so nav sits inside the frame */
   inset: 14px;
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,.30);
@@ -100,8 +99,6 @@ body::after {
               border-color .4s ease, background .4s ease;
   z-index: -1;
 }
-@media (min-width: 768px) { .nav::before { inset: 18px } }
-@media (max-width: 480px) { .nav::before { inset: 8px } }
 .nav.scrolled {
   padding: 12px 28px;
 }
