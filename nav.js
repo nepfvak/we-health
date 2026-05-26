@@ -8,7 +8,7 @@
     if (hero) {
       threshold = hero.offsetTop + hero.offsetHeight - nav.offsetHeight;
     } else {
-      threshold = 0;
+      threshold = 80;
     }
     nav.classList.toggle('scrolled', window.scrollY >= threshold);
   }
