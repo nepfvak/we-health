@@ -60,13 +60,11 @@
   .herb-btn:hover .hb-en,.herb-btn.active .hb-en{color:var(--gold)}
   .herb-btn.active{background:rgba(184,175,154,.06)}
   [data-theme="light"] .herb-btn.active{background:rgba(24,118,46,.06)}
-  .herb-panel{position:relative;border:1px solid var(--rule);margin-top:2px;min-height:280px;overflow:hidden}
-  .herb-detail{position:absolute;inset:0;padding:clamp(28px,4vw,52px);opacity:0;transition:opacity .35s ease;pointer-events:none;display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,52px);align-items:center}
-  .herb-detail.active{opacity:1;pointer-events:all}
-  @media(max-width:768px){
-    .herb-panel{min-height:0;height:auto;overflow:visible}
-    .herb-detail{position:static;display:none;opacity:1;transform:none;pointer-events:none}
-    .herb-detail.active{display:grid;grid-template-columns:1fr;gap:20px;padding:clamp(20px,5vw,32px);pointer-events:all}
+  .herb-panel{border:1px solid var(--rule);margin-top:2px}
+  .herb-detail{display:none;padding:clamp(28px,4vw,52px);grid-template-columns:auto 1fr;gap:clamp(24px,4vw,52px);align-items:center}
+  .herb-detail.active{display:grid}
+  @media(max-width:600px){
+    .herb-detail{grid-template-columns:1fr;gap:20px;padding:clamp(20px,5vw,32px)}
   }
   .hd-glyph{font-family:var(--brush);font-size:clamp(80px,14vw,160px);color:var(--gold);line-height:1;flex-shrink:0;opacity:.9}
   .hd-cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
