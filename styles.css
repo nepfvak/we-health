@@ -18,7 +18,10 @@
   --serif: "Cormorant Garamond", "Noto Serif SC", "Times New Roman", serif;
   --brush: "Noto Serif SC", serif;
   --mono: ui-monospace, "Courier New", monospace;
+  --frame-inset: 14px;
 }
+@media (min-width: 768px) { :root { --frame-inset: 18px } }
+@media (max-width: 480px) { :root { --frame-inset: 8px } }
 
 /* ── Reset ─────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; margin: 0; padding: 0 }
@@ -58,7 +61,8 @@ body::after {
 /* ── Page frame border ──────────────────────────────────────────────── */
 .page-frame {
   position: fixed; pointer-events: none; z-index: 48;
-  inset: 14px; border: 1px solid rgba(232,223,201,.28);
+  inset: var(--frame-inset); border: 1px solid rgba(232,223,201,.28);
+  border-radius: 6px;
   transition: opacity .5s ease;
 }
 .page-frame.hidden { opacity: 0 }
@@ -72,8 +76,6 @@ body::after {
 }
 .page-frame .corner-tr { top: -1px; right: -1px; border-left: 0; border-bottom: 0 }
 .page-frame .corner-bl { bottom: -1px; left: -1px; border-right: 0; border-top: 0 }
-@media (min-width: 768px) { .page-frame { inset: 18px } }
-@media (max-width: 480px) { .page-frame { inset: 8px } }
 
 /* ── Nav ────────────────────────────────────────────────────────────── */
 .nav {
@@ -88,7 +90,7 @@ body::after {
 .nav::before {
   content: "";
   position: absolute;
-  inset: 14px;
+  inset: var(--frame-inset);
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,.30);
   background: rgba(12,14,12,.80);
