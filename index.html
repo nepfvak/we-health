@@ -16,9 +16,6 @@
 <script src="image-slot.js"></script>
 
 <style>
-  /* ── Scroll snap ─────────────────────────────────────────────────── */
-  html{scroll-snap-type:y proximity}
-  .hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
   /* Each section fills the viewport and centres its content */
   section{
     min-height:100vh;min-height:100dvh;
@@ -986,9 +983,6 @@
      MOBILE OVERRIDES  (max-width: 768px)
      ═══════════════════════════════════════════════════════════════════ */
   @media(max-width:768px){
-    /* Disable scroll snap — prevents jarring snap on iOS/Android */
-    html{ scroll-snap-type:none }
-
     /* Sections: no forced full-viewport height; give vertical padding instead */
     section{
       min-height:0 !important;
