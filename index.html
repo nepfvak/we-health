@@ -10,6 +10,7 @@
 <script>try{if(localStorage.getItem("wehi-theme")!=="dark")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
 <link rel="stylesheet" href="styles.css" />
 <script src="theme.js"></script>
+<script src="nav.js" defer></script>
 <script src="image-slot.js"></script>
 
 <style>
@@ -1823,15 +1824,6 @@
     menuClose.addEventListener('click', () => overlay.classList.remove('open'));
     overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
   }
-
-  // Sticky-nav background after a bit of scroll
-  const nav = document.getElementById('nav');
-  const onScroll = () => {
-    if (window.scrollY > 24) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  };
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
 
   // Ink-paint reveal — hero elements
   const inkIo = new IntersectionObserver((entries) => {

@@ -10,6 +10,7 @@
 <script>try{if(localStorage.getItem("wehi-theme")!=="dark")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
 <link rel="stylesheet" href="styles.css" />
 <script src="theme.js"></script>
+<script src="nav.js" defer></script>
 <style>
   /* ── Scroll snap & full-viewport sections ───────────────────── */
   html{scroll-snap-type:y proximity}
@@ -307,8 +308,6 @@ if (burger && overlay) {
   menuClose.addEventListener('click', () => overlay.classList.remove('open'));
   overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
 }
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24), {passive:true});
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
 }, {threshold:.1, rootMargin:'0px 0px -5% 0px'});

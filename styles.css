@@ -75,20 +75,18 @@ body::after {
 
 /* ── Nav ────────────────────────────────────────────────────────────── */
 .nav {
-  position: fixed; top: 14px; left: 14px; right: 14px; z-index: 50;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 22px;
-  transition: background .4s ease, padding .3s ease, border-color .3s ease, top .3s ease;
+  padding: 16px 28px;
+  transition: background .4s ease, padding .3s ease, border-color .3s ease;
   border-bottom: 1px solid transparent;
 }
-@media (min-width: 768px) { .nav { top: 18px; left: 18px; right: 18px } }
-@media (max-width: 480px)  { .nav { top: 8px; left: 8px; right: 8px } }
 .nav.scrolled {
-  background: rgba(18,18,18,.92);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(14,16,14,.94);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
   border-bottom-color: var(--rule);
-  padding: 10px 22px;
+  padding: 12px 28px;
 }
 .nav .brand { display: flex; align-items: center; gap: 12px }
 .nav .brand .mark {
@@ -408,9 +406,9 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* Nav scrolled */
 [data-theme="light"] .nav.scrolled {
-  background: rgba(244,242,238,.90);
-  -webkit-backdrop-filter: blur(14px) saturate(120%);
-  backdrop-filter: blur(14px) saturate(120%);
+  background: rgba(244,242,238,.94);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
 }
 
 /* Mobile menu overlay */
