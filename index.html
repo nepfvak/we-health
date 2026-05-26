@@ -388,7 +388,7 @@
   [data-theme="light"] .services::before{opacity:.3}
 
   /* ── Acupoint Explorer ─────────────────────────────────────────── */
-  .acupoints{position:relative} /* height set by JS to create scroll travel */
+  .acupoints{position:relative}
   .acu-sticky{
     position:sticky;top:0;
     height:100vh;height:100dvh;
@@ -2056,76 +2056,31 @@
   if (acuSection && acuGridEl) {
     const acuCards = Array.from(acuGridEl.querySelectorAll('.acu-card'));
     const N = acuCards.length;
-    const MOBILE = window.innerWidth <= 700;
 
-    if (!MOBILE) {
-      // ── Desktop: scroll-driven reveal ──────────────────────────────
-      const TRAVEL = Math.round(window.innerHeight * 1.1);
-      acuSection.style.minHeight = (window.innerHeight + TRAVEL) + 'px';
+    // All viewports: click/tap any card to reveal its detail.
+    acuCards.forEach((card, i) => {
+      card.classList.toggle('active', i === 0);
+      card.classList.toggle('seen',   i !== 0);
+    });
+    acuCardIndex = 0;
+    const firstData = ACU_DATA[acuCards[0].dataset.point];
+    if (firstData) setDetail(firstData);
+    if (acuFill) acuFill.style.right = (100 - (1 / N * 100)) + '%';
 
-      function activateCard(idx) {
-        if (idx === acuCardIndex) return;
-        acuCardIndex = idx;
-        acuCards.forEach((card, i) => {
-          card.classList.toggle('active', i === idx);
-          card.classList.toggle('seen',   i < idx);
-        });
-        if (idx >= 0) {
-          const data = ACU_DATA[acuCards[idx].dataset.point];
-          if (data) setDetail(data);
-          if (acuFill) acuFill.style.right = (100 - ((idx + 1) / N * 100)) + '%';
-        } else {
-          if (acuFill) acuFill.style.right = '100%';
-        }
-      }
-
-      function onAcuScroll() {
-        const scrolled = window.scrollY - acuSection.offsetTop;
-        if (scrolled <= 0) { activateCard(-1); return; }
-        const progress = Math.min(scrolled / TRAVEL, 1);
-        activateCard(Math.min(Math.floor(progress * N), N - 1));
-      }
-
-      window.addEventListener('scroll', onAcuScroll, { passive: true });
-      onAcuScroll();
-
-      // Click a seen/active card to re-read its detail
-      acuGridEl.addEventListener('click', (e) => {
-        const card = e.target.closest('.acu-card');
-        if (!card) return;
-        const idx = acuCards.indexOf(card);
-        if (idx < 0 || idx > acuCardIndex) return;
-        const data = ACU_DATA[card.dataset.point];
-        if (data) setDetail(data);
+    acuGridEl.addEventListener('click', (e) => {
+      const card = e.target.closest('.acu-card');
+      if (!card) return;
+      const idx = acuCards.indexOf(card);
+      if (idx < 0) return;
+      acuCardIndex = idx;
+      acuCards.forEach((c, i) => {
+        c.classList.toggle('active', i === idx);
+        c.classList.toggle('seen',   i !== idx);
       });
-
-    } else {
-      // ── Mobile: tap any card to reveal its detail ──────────────────
-      // Show all cards visible from the start; first card active.
-      acuCards.forEach((card, i) => {
-        card.classList.toggle('active', i === 0);
-        card.classList.toggle('seen',   i !== 0);
-      });
-      acuCardIndex = 0;
-      const firstData = ACU_DATA[acuCards[0].dataset.point];
-      if (firstData) setDetail(firstData);
-      if (acuFill) acuFill.style.right = (100 - (1 / N * 100)) + '%';
-
-      acuGridEl.addEventListener('click', (e) => {
-        const card = e.target.closest('.acu-card');
-        if (!card) return;
-        const idx = acuCards.indexOf(card);
-        if (idx < 0) return;
-        acuCardIndex = idx;
-        acuCards.forEach((c, i) => {
-          c.classList.toggle('active', i === idx);
-          c.classList.toggle('seen',   i !== idx);
-        });
-        if (acuFill) acuFill.style.right = (100 - ((idx + 1) / N * 100)) + '%';
-        const data = ACU_DATA[card.dataset.point];
-        if (data) setDetail(data);
-      });
-    }
+      if (acuFill) acuFill.style.right = (100 - ((idx + 1) / N * 100)) + '%';
+      const data = ACU_DATA[card.dataset.point];
+      if (data) setDetail(data);
+    });
   }
 
   // Smooth in-page anchors
