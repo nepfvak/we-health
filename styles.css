@@ -125,7 +125,7 @@ body::after {
   font-family: var(--serif); font-weight: 500; font-size: 15px;
   letter-spacing: .18em; text-transform: uppercase; color: var(--paper);
 }
-.nav .brand .name em { font-style: normal; color: var(--cinnabar); font-weight: 500 }
+.nav .brand .name em { font-style: normal; color: var(--gold); font-weight: 500 }
 .nav .links {
   display: none; gap: 18px; font-size: 13px; letter-spacing: .10em;
   text-transform: uppercase; color: var(--paper-dim); align-items: center;
