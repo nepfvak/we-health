@@ -58,8 +58,8 @@ body::after {
 /* ── Page frame border ──────────────────────────────────────────────── */
 .page-frame {
   position: fixed; pointer-events: none; z-index: 48;
-  inset: 14px; border: .5px solid rgba(232,223,201,.22);
-  transition: opacity .4s ease;
+  inset: 14px; border: 1px solid rgba(232,223,201,.28);
+  transition: opacity .5s ease;
 }
 .page-frame.hidden { opacity: 0 }
 .page-frame::before, .page-frame::after {
@@ -79,16 +79,20 @@ body::after {
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 26px 34px;
+  /* padding = page-frame inset (14px) + content padding (14px/22px) */
+  padding: 28px 36px;
   transition: padding .5s cubic-bezier(.625,.05,0,1);
 }
+@media (min-width: 768px) { .nav { padding: 32px 40px } }
+@media (max-width: 480px) { .nav { padding: 22px 30px } }
 .nav::before {
   content: "";
   position: absolute;
-  inset: 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,.22);
-  background: rgba(12,14,12,.82);
+  /* match page-frame inset exactly so nav sits inside the frame */
+  inset: 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,.30);
+  background: rgba(12,14,12,.80);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
   transition: inset .5s cubic-bezier(.625,.05,0,1),
@@ -96,6 +100,8 @@ body::after {
               border-color .4s ease, background .4s ease;
   z-index: -1;
 }
+@media (min-width: 768px) { .nav::before { inset: 18px } }
+@media (max-width: 480px) { .nav::before { inset: 8px } }
 .nav.scrolled {
   padding: 12px 28px;
 }
@@ -418,7 +424,7 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 }
 
 /* Page frame */
-[data-theme="light"] .page-frame { border-color: rgba(24,24,26,.12) }
+[data-theme="light"] .page-frame { border-color: rgba(24,24,26,.22) }
 [data-theme="light"] .page-frame::before,
 [data-theme="light"] .page-frame::after,
 [data-theme="light"] .page-frame .corner-tr,
@@ -426,8 +432,8 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* Nav — light mode */
 [data-theme="light"] .nav::before {
-  background: rgba(228,224,214,.88);
-  border-color: rgba(30,28,18,.22);
+  background: rgba(210,204,192,.90);
+  border-color: rgba(30,28,18,.30);
 }
 [data-theme="light"] .nav.scrolled::before {
   background: rgba(240,236,228,.98);
