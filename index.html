@@ -926,18 +926,49 @@
     /* Hero: reduce padding on small screens */
     .hero{
       padding: 88px 16px 56px !important;
+      text-align: center;
     }
 
     /* Hero grid: single column */
     .hero-grid{
       grid-template-columns: 1fr !important;
-      gap: 32px !important;
+      gap: 28px !important;
+    }
+    .hero .eyebrow{
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .hero h1{
+      font-size: clamp(34px, 10.5vw, 48px);
+      line-height: 1.08;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 18px;
+    }
+    .hero .mission,
+    .hero .lede{
+      margin-left: auto !important;
+      margin-right: auto !important;
     }
 
-    /* Hero image: don't stretch to full width on phones */
+    /* Hero image: smaller, square, centered */
     .hero-image{
-      max-width: 100%;
-      aspect-ratio: 4/3;
+      max-width: min(62vw, 250px);
+      aspect-ratio: 1/1;
+      margin: 0 auto;
+    }
+    .hero .quickfacts{
+      justify-content: center;
+      gap: 20px 30px;
+      text-align: left;
+    }
+    .hero .cta-row{
+      justify-content: center;
+      gap: 16px;
+    }
+    .hero .btn-primary,
+    .hero .btn-ghost{
+      min-height: 48px;
     }
 
     /* Trust strip: 2 columns on phones */
@@ -987,10 +1018,34 @@
 
   /* Extra-small phones (< 480px): collapse svc-grid to 1 column */
   @media(max-width:480px){
+    .hero{
+      padding-top: 82px !important;
+    }
+    .hero .quickfacts{
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 24px;
+    }
+    .hero .cta-row{
+      flex-direction: column;
+      width: 100%;
+    }
+    .hero .btn-primary,
+    .hero .btn-ghost{
+      width: 100%;
+      justify-content: center;
+    }
     .svc-grid{
       grid-template-columns: 1fr !important;
     }
     .trust-inner{
+      grid-template-columns: 1fr !important;
+    }
+    .expect-phase,
+    .expect-stats,
+    .spec-grid{
       grid-template-columns: 1fr !important;
     }
   }
