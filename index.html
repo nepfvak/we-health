@@ -361,12 +361,11 @@
   .hero .meridian circle:nth-child(4){animation-delay:1.8s}
 
   /* ── Light mode overrides ───────────────────────────────────────────── */
-  [data-theme="light"] .hero::before{ opacity: .12; mix-blend-mode: multiply }
+  [data-theme="light"] .hero::before{ display: none }
   [data-theme="light"] .hero::after{
     background:
-      radial-gradient(72% 55% at 22% 30%, rgba(24,118,46,.05), transparent 58%),
-      radial-gradient(50% 40% at 80% 10%, rgba(24,118,46,.03), transparent 55%),
-      linear-gradient(180deg, rgba(240,236,226,.55) 0%, rgba(240,236,226,.28) 50%, rgba(240,236,226,.65) 100%);
+      linear-gradient(90deg, rgba(240,236,226,.96) 0%, rgba(240,236,226,.88) 38%, rgba(240,236,226,.42) 62%, transparent 82%),
+      linear-gradient(180deg, rgba(240,236,226,.5) 0%, transparent 40%, rgba(240,236,226,.5) 100%);
   }
   [data-theme="light"] .hero{
     background: url(assets/hero-section.png) center 55%/cover no-repeat, var(--ink-2) !important;
