@@ -8,8 +8,9 @@
   --paper: #f0ece2;
   --paper-dim: #c8bda1;
   --paper-faint: #a89f90;
-  --gold: #4cb35a;
-  --gold-dim: #3a9447;
+  --gold: #A07820;
+  --gold-dim: #7d5e18;
+  --gold-light: rgba(160,120,32,.15);
   --cinnabar: #c8921a;
   --cinnabar-dim: #a07314;
   --rule: rgba(232,232,232,.10);
@@ -27,8 +28,8 @@ html, body {
   color: var(--paper, #e8dfc9);
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -107,11 +108,12 @@ body::after {
 .nav .links a { position: relative; padding: 6px 0; transition: color .25s; white-space: nowrap }
 .nav .links a:hover, .nav .links a.is-active { color: var(--gold) }
 .nav .links a::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
   height: 1px; background: var(--gold);
   transform: scaleX(0); transform-origin: left; transition: transform .35s ease;
 }
-.nav .links a:hover::after, .nav .links a.is-active::after { transform: scaleX(1) }
+.nav .links a:hover::after { transform: scaleX(1) }
+.nav .links a.is-active::after { transform: scaleX(1); background: var(--gold); opacity: .85 }
 .nav-actions { display: flex; align-items: center; gap: 12px }
 .nav .book {
   display: inline-flex; align-items: center; gap: 10px;
@@ -177,7 +179,7 @@ body::after {
 .btn-ghost:hover { color: var(--gold); border-color: var(--gold) }
 
 /* ── Section primitives ─────────────────────────────────────────────── */
-section { position: relative; padding: 80px 0; z-index: 3 }
+section { position: relative; padding: 96px 0; z-index: 3 }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 14px;
   font-family: var(--mono); font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
@@ -455,7 +457,7 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
    testimonials, contact, and saat.
    ════════════════════════════════════════════════════════════════════ */
 
-/* PALETTE — light mode (deep ink text, imperial-jade primary, gold accent) */
+/* PALETTE — light mode (deep ink text, warm gold accent) */
 [data-theme="light"]{
   --ink:          #fbfaf7;
   --ink-2:        #f1ede4;
@@ -463,8 +465,9 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
   --paper:        #0d0c08;
   --paper-dim:    #1a1814;
   --paper-faint:  #3a352d;
-  --gold:         #18762e;
-  --gold-dim:     #115a22;
+  --gold:         #A07820;
+  --gold-dim:     #7d5e18;
+  --gold-light:   rgba(160,120,32,.12);
   --cinnabar:     #c8921a;
   --cinnabar-dim: #a07314;
   --rule:         rgba(21,20,15,.14);
@@ -475,7 +478,9 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 :root:not([data-theme="light"]){
   --paper:        #e8e8e8;
   --paper-dim:    #a8a8a8;
-  --gold:         #4cb35a;
+  --gold:         #A07820;
+  --gold-dim:     #7d5e18;
+  --gold-light:   rgba(160,120,32,.15);
   --cinnabar:     #c8921a;
 }
 
@@ -542,7 +547,7 @@ footer .bar .crest{ color: var(--paper-dim) }
 
 /* Section padding mobile */
 @media(max-width:768px){
-  section{ padding: 56px 0 }
+  section{ padding: 68px 0 }
 }
 
 /* Wrap padding tighter on small screens */
