@@ -317,8 +317,8 @@ footer .grid {
 .f-block h4 { font-family: var(--mono); font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 400 }
 .f-block p, .f-block a { display: block; font-family: var(--serif); font-weight: 400; font-size: 16px; line-height: 1.65; color: var(--paper) }
 .f-block .muted { color: var(--paper-dim); font-style: italic }
+.f-block a { position: relative; margin-bottom: 4px }
 .f-block a:hover { color: var(--gold) }
-.f-block a { position: relative; display: inline-block }
 .f-block a::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
   height: .5px; background: currentColor; transform: scaleX(0); transform-origin: left;
