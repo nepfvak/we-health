@@ -957,15 +957,9 @@
 @keyframes fiveSpin{to{transform:rotate(360deg)}}
 @keyframes fiveSpinCC{to{transform:rotate(360deg)}}
 @keyframes fiveCounter{to{transform:rotate(-360deg)}}
-/* ── Five Elements: mobile scale-to-fit (max-width: 768px) ────────────
-   Desktop layout is preserved exactly. JS reads --five-scale and
-   applies style.scale so the entire stage shrinks proportionally.
-   The gap below is collapsed via style.marginBottom.              ── */
 @media(max-width:768px){
   .five-wrap{padding:36px 0 44px}
   .five-head{margin-bottom:28px}
-  /* Clip any rounding overshoot; JS handles actual sizing */
-  .five-stage{overflow:hidden}
 }
 /* Tablet intermediate (769–880px): slightly smaller, no JS scale needed */
 @media(min-width:769px) and (max-width:880px){
@@ -1803,24 +1797,34 @@
 
 // ── Five Elements: proportional scale on mobile ────────────────────────
 // Scales the entire .five-stage (ring + elements + center) down so the
-// outermost element circles fit within the stage's clipped width.
-// Uses the CSS `scale` individual property (not `transform`) so it
 (function(){
   var stage = document.getElementById('fiveStage');
   if (!stage) return;
+  var NAT = 560; // natural design size: elements need 560×560 to fit
   function applyFiveScale(){
     if (window.innerWidth > 768){
       stage.style.transform = '';
       stage.style.transformOrigin = '';
       stage.style.marginBottom = '';
+      stage.style.marginLeft = '';
+      stage.style.width = '';
+      stage.style.maxWidth = '';
+      stage.style.height = '';
       return;
     }
-    var wrapPad = 44;
-    var stageW = Math.min(window.innerWidth - wrapPad, 560);
-    var scale = Math.min(1, (stageW - 8) / 560);
-    stage.style.transformOrigin = 'top center';
+    var availW = window.innerWidth - 44; // .wrap has 22px padding each side
+    var scale = Math.min(1, (availW - 8) / NAT);
+    // Force stage to natural size so absolutely-positioned elements are not clipped
+    stage.style.width = NAT + 'px';
+    stage.style.maxWidth = 'none';
+    stage.style.height = NAT + 'px';
+    // Center the oversized stage within the available width (negative margin)
+    stage.style.marginLeft = Math.round((availW - NAT) / 2) + 'px';
+    // Scale from top-center of the natural stage
+    stage.style.transformOrigin = 'center top';
     stage.style.transform = 'scale(' + scale.toFixed(4) + ')';
-    stage.style.marginBottom = Math.round((scale - 1) * 560) + 'px';
+    // Collapse excess layout height left after scaling
+    stage.style.marginBottom = Math.round((scale - 1) * NAT) + 'px';
   }
   applyFiveScale();
   window.addEventListener('resize', applyFiveScale, {passive:true});
