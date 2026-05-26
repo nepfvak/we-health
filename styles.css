@@ -59,7 +59,9 @@ body::after {
 .page-frame {
   position: fixed; pointer-events: none; z-index: 48;
   inset: 14px; border: .5px solid rgba(232,223,201,.22);
+  transition: opacity .4s ease;
 }
+.page-frame.hidden { opacity: 0 }
 .page-frame::before, .page-frame::after {
   content: ""; position: absolute; width: 10px; height: 10px; border: .5px solid var(--gold);
 }
@@ -79,22 +81,18 @@ body::after {
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 22px;
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,.32);
-  background: rgba(12,14,12,.84);
+  border: none;
+  background: rgba(12,14,12,.82);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: 0 4px 28px rgba(0,0,0,.22);
-  transition: top .38s ease, left .38s ease, right .38s ease,
-              border-radius .38s ease, border-color .38s ease,
-              background .38s ease, padding .3s ease, box-shadow .38s ease;
+  transition: top .4s ease, left .4s ease, right .4s ease,
+              border-radius .4s ease, background .4s ease, padding .3s ease;
 }
 .nav.scrolled {
   top: 0; left: 0; right: 0;
   border-radius: 0;
-  border-color: transparent;
   border-bottom: 1px solid var(--rule);
   background: rgba(12,14,12,.97);
-  box-shadow: none;
   padding: 12px 28px;
 }
 .nav .brand { display: flex; align-items: center; gap: 12px }
@@ -415,15 +413,10 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* Nav — light mode */
 [data-theme="light"] .nav {
-  background: rgba(228,224,214,.90);
-  border-color: rgba(0,0,0,.22);
-  box-shadow: 0 4px 28px rgba(0,0,0,.10);
+  background: rgba(228,224,214,.88);
 }
 [data-theme="light"] .nav.scrolled {
   background: rgba(240,236,228,.98);
-  border-color: transparent;
-  border-bottom-color: var(--rule);
-  box-shadow: none;
 }
 
 /* Mobile menu overlay */

@@ -2,6 +2,7 @@
   const nav = document.getElementById('nav');
   if (!nav) return;
   const hero = document.querySelector('.hero');
+  const frame = document.querySelector('.page-frame');
 
   function tick() {
     let threshold;
@@ -10,7 +11,9 @@
     } else {
       threshold = 0;
     }
-    nav.classList.toggle('scrolled', window.scrollY >= threshold);
+    const past = window.scrollY >= threshold;
+    nav.classList.toggle('scrolled', past);
+    if (frame) frame.classList.toggle('hidden', past);
   }
 
   window.addEventListener('scroll', tick, { passive: true });
