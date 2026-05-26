@@ -17,8 +17,8 @@
 <style>
   /* ── Scroll snap & full-viewport sections ───────────────────── */
   
-  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
-  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+  section{padding:0;display:flex;flex-direction:column;justify-content:center}
+  section>.wrap{padding-top:clamp(72px,8vh,120px);padding-bottom:clamp(72px,8vh,120px)}
 
 /* ── Accordion stack scroll ─────────────────────────────────────── */
 .svc-accordion { position: relative; border-top: 1px solid var(--rule); background: var(--ink-2); }
@@ -747,10 +747,9 @@ document.querySelectorAll('p.body, .mask').forEach(p => {
     inners.forEach((el, i) => {
       const mh = maxH(i);
       let h;
-      if(i < idx)         h = STRIP;
-      else if(i === idx)  h = mh - (mh - STRIP) * t;
-      else if(i === idx+1)h = STRIP + (maxH(i) - STRIP) * t;
-      else                h = mh;
+      if(i < idx)        h = STRIP;
+      else if(i === idx) h = mh - (mh - STRIP) * t;
+      else               h = mh;
       el.style.height = h + 'px';
     });
   }
