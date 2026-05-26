@@ -364,8 +364,12 @@
   [data-theme="light"] .hero::before{ opacity: .12; mix-blend-mode: multiply }
   [data-theme="light"] .hero::after{
     background:
-      radial-gradient(72% 55% at 22% 30%, rgba(160,120,32,.06), transparent 58%),
-      radial-gradient(50% 40% at 80% 10%, rgba(192,138,60,.04), transparent 55%);
+      radial-gradient(72% 55% at 22% 30%, rgba(24,118,46,.05), transparent 58%),
+      radial-gradient(50% 40% at 80% 10%, rgba(24,118,46,.03), transparent 55%),
+      linear-gradient(180deg, rgba(240,236,226,.55) 0%, rgba(240,236,226,.28) 50%, rgba(240,236,226,.65) 100%);
+  }
+  [data-theme="light"] .hero{
+    background: url(assets/hero-section.png) center 55%/cover no-repeat, var(--ink-2) !important;
   }
   [data-theme="light"] .hero .bg{
     background:
@@ -603,7 +607,7 @@
 
   /* ── HERO — clean, photo-driven, two-column ─────────────────────── */
   .hero{
-    background: var(--ink) !important;
+    background: url(assets/hero-section.png) center 55%/cover no-repeat, var(--ink) !important;
     padding: 120px 22px 80px !important;
     min-height: auto !important;
   }
@@ -619,7 +623,8 @@
     background:
       radial-gradient(72% 55% at 22% 30%, rgba(160,120,32,.09), transparent 58%),
       radial-gradient(50% 40% at 80% 10%, rgba(192,138,60,.06), transparent 55%),
-      radial-gradient(80% 60% at 60% 90%, rgba(100,80,40,.05), transparent 60%);
+      radial-gradient(80% 60% at 60% 90%, rgba(100,80,40,.05), transparent 60%),
+      linear-gradient(180deg, rgba(8,9,8,.78) 0%, rgba(8,9,8,.62) 50%, rgba(8,9,8,.82) 100%);
   }
   .hero .wrap{ position:relative; z-index:2 }
   .hero .wrap{ max-width:1240px; margin:0 auto; padding:0 22px; width:100%; position:relative; z-index:2 }
