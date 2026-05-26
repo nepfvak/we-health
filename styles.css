@@ -77,23 +77,36 @@ body::after {
 
 /* ── Nav ────────────────────────────────────────────────────────────── */
 .nav {
-  position: fixed; top: 12px; left: 12px; right: 12px; z-index: 50;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 22px;
+  padding: 26px 34px;
+  transition: padding .5s cubic-bezier(.625,.05,0,1);
+}
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid rgba(255,255,255,.22);
   background: rgba(12,14,12,.82);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
-  transition: top .4s ease, left .4s ease, right .4s ease,
-              border-radius .4s ease, background .4s ease, padding .3s ease;
+  transition: inset .5s cubic-bezier(.625,.05,0,1),
+              border-radius .5s cubic-bezier(.625,.05,0,1),
+              border-color .4s ease, background .4s ease;
+  z-index: -1;
 }
 .nav.scrolled {
-  top: 0; left: 0; right: 0;
-  border-radius: 0;
-  border-bottom: 1px solid var(--rule);
-  background: rgba(12,14,12,.97);
   padding: 12px 28px;
+}
+.nav.scrolled::before {
+  inset: 0;
+  border-radius: 0;
+  border-color: transparent;
+  border-bottom-color: var(--rule);
+  background: rgba(12,14,12,.97);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 .nav .brand { display: flex; align-items: center; gap: 12px }
 .nav .brand .mark {
@@ -412,11 +425,14 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 [data-theme="light"] .page-frame .corner-bl { border-color: var(--gold) }
 
 /* Nav — light mode */
-[data-theme="light"] .nav {
+[data-theme="light"] .nav::before {
   background: rgba(228,224,214,.88);
+  border-color: rgba(30,28,18,.22);
 }
-[data-theme="light"] .nav.scrolled {
+[data-theme="light"] .nav.scrolled::before {
   background: rgba(240,236,228,.98);
+  border-color: transparent;
+  border-bottom-color: var(--rule);
 }
 
 /* Mobile menu overlay */
