@@ -234,6 +234,12 @@ p.body + p.body { margin-top: 1em }
   position: relative; padding: 160px 22px 80px; overflow: hidden;
   background: var(--ink); border-bottom: 1px solid var(--rule);
 }
+.page-hero-frame {
+  position: absolute; inset: var(--frame-inset); z-index: 2;
+  pointer-events: none; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,.22);
+}
+[data-theme="light"] .page-hero-frame { border-color: rgba(30,28,18,.18); }
 .page-hero .bg {
   position: absolute; inset: 0; z-index: 0;
   background:

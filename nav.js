@@ -2,6 +2,7 @@
   const nav = document.getElementById('nav');
   if (!nav) return;
   const hero = document.querySelector('.hero');
+  const pageHero = document.querySelector('.page-hero');
   const frame = document.querySelector('.page-frame');
 
   function tick() {
@@ -13,9 +14,9 @@
     }
     const scrolled = window.scrollY >= threshold;
     nav.classList.toggle('scrolled', scrolled);
-    // On non-hero pages: show frame only while nav is in pill state
-    if (frame && !hero) {
-      frame.classList.toggle('hidden', scrolled);
+    // Hide fixed frame on pages that have their own hero frame
+    if (frame && (hero || pageHero)) {
+      frame.classList.add('hidden');
     }
   }
 
