@@ -1,6 +1,18 @@
 (function () {
   if (typeof Lenis === 'undefined') return;
 
+  // Register BEFORE Lenis so this capture listener fires first.
+  // Trackpad sends many rapid small-delta events; mouse wheel sends
+  // fewer large-delta events (typically ≥ 100px per click in Chrome).
+  // For trackpad events we call stopImmediatePropagation() so Lenis
+  // never sees them and never calls preventDefault() — native OS
+  // momentum scroll takes over, which is already perfectly smooth.
+  window.addEventListener('wheel', function (e) {
+    if (e.deltaMode === 0 && Math.abs(e.deltaY) < 50) {
+      e.stopImmediatePropagation();
+    }
+  }, { passive: true, capture: true });
+
   var lenis = new Lenis({
     duration: 1.4,
     easing: function (t) { return 1 - Math.pow(1 - t, 3); },
@@ -9,28 +21,6 @@
     touchMultiplier: 1.5,
     wheelMultiplier: 1.0,
   });
-
-  // Trackpad sends many rapid small-delta events; mouse wheel sends
-  // fewer large-delta events (typically ≥ 100px per click in Chrome).
-  // When trackpad is active, stop Lenis so the OS momentum scroll takes
-  // over natively — it's already smooth and doesn't need Lenis on top.
-  var trackpadActive = false;
-  var trackpadTimer;
-
-  window.addEventListener('wheel', function (e) {
-    var isTrackpad = e.deltaMode === 0 && Math.abs(e.deltaY) < 50;
-    if (isTrackpad) {
-      if (!trackpadActive) {
-        lenis.stop();
-        trackpadActive = true;
-      }
-      clearTimeout(trackpadTimer);
-      trackpadTimer = setTimeout(function () {
-        trackpadActive = false;
-        lenis.start();
-      }, 400);
-    }
-  }, { passive: true, capture: true });
 
   function raf(time) {
     lenis.raf(time);
