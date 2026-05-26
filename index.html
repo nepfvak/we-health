@@ -13,6 +13,7 @@
 <script src="nav.js" defer></script>
   <script src="lenis.min.js"></script>
   <script src="scroll.js" defer></script>
+<script src="footer-map.js" defer></script>
 <script src="image-slot.js"></script>
 
 <style>
@@ -983,10 +984,18 @@
      MOBILE OVERRIDES  (max-width: 768px)
      ═══════════════════════════════════════════════════════════════════ */
   @media(max-width:768px){
-    /* Sections: no forced full-viewport height; give vertical padding instead */
+    /* Sections: no forced full-viewport height.
+       Spacing comes entirely from section>.wrap padding-top/bottom below.
+       Do NOT add section-level padding here — it would double-stack with
+       the .wrap padding and add ~96px of dead space per section. */
     section{
       min-height:0 !important;
-      padding:56px 0;
+    }
+
+    /* Acupoints sticky-scroll section must have zero padding so the sticky
+       container aligns flush with the section boundary. */
+    .acupoints{
+      padding: 0 !important;
     }
 
     /* Hero: reduce padding on small screens */
@@ -1150,17 +1159,17 @@
 @keyframes fiveSpinCC{to{transform:rotate(360deg)}}
 @keyframes fiveCounter{to{transform:rotate(-360deg)}}
 @media(max-width:640px){
-  .five-stage{max-width:320px}
-  .elem{width:84px;height:84px;margin:-42px 0 0 -42px;--r:122px}
-  .elem .cn{font-size:22px}
-  .elem .en{font-size:12px}
-  .elem .season{font-size:7.5px;letter-spacing:.04em}
-  .five-center{width:52%}
-  .five-desc{padding:10px;align-items:center}
-  .five-desc .blurb{max-width:100%;text-align:center}
-  .five-desc .label{font-size:11px;letter-spacing:.12em;margin-bottom:6px}
-  .five-desc h4{font-size:15px;margin-bottom:5px;line-height:1.1}
-  .five-desc p{font-size:13px;line-height:1.65}
+  .five-stage{max-width:320px;overflow:hidden}
+  .elem{width:76px;height:76px;margin:-38px 0 0 -38px;--r:114px}
+  .elem .cn{font-size:20px}
+  .elem .en{font-size:11px}
+  .elem .season{font-size:7px;letter-spacing:.04em}
+  .five-center{width:44%}
+  .five-desc{padding:6px;align-items:center}
+  .five-desc .blurb{max-width:100%;text-align:center;overflow:hidden}
+  .five-desc .label{font-size:10px;letter-spacing:.10em;margin-bottom:4px}
+  .five-desc h4{font-size:13px;margin-bottom:4px;line-height:1.1}
+  .five-desc p{font-size:11px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 }
 @media(min-width:641px) and (max-width:880px){.five-stage{max-width:460px}.elem{--r:178px;width:108px;height:108px;margin:-54px 0 0 -54px}}
 @media(prefers-reduced-motion:reduce){.five-ring,.five-ring svg.ring,.elem-inner{animation:none!important}}
