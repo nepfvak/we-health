@@ -363,9 +363,7 @@
   /* ── Light mode overrides ───────────────────────────────────────────── */
   [data-theme="light"] .hero::before{ display: none }
   [data-theme="light"] .hero::after{
-    background:
-      linear-gradient(90deg, rgba(240,236,226,.96) 0%, rgba(240,236,226,.88) 38%, rgba(240,236,226,.42) 62%, transparent 82%),
-      linear-gradient(180deg, rgba(240,236,226,.5) 0%, transparent 40%, rgba(240,236,226,.5) 100%);
+    background: rgba(240,236,226,.80);
   }
   [data-theme="light"] .hero{
     background: url(assets/hero-section.png) center 55%/cover no-repeat, var(--ink-2) !important;
@@ -619,11 +617,7 @@
   }
   .hero::after{
     content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:
-      radial-gradient(72% 55% at 22% 30%, rgba(160,120,32,.09), transparent 58%),
-      radial-gradient(50% 40% at 80% 10%, rgba(192,138,60,.06), transparent 55%),
-      radial-gradient(80% 60% at 60% 90%, rgba(100,80,40,.05), transparent 60%),
-      linear-gradient(180deg, rgba(8,9,8,.78) 0%, rgba(8,9,8,.62) 50%, rgba(8,9,8,.82) 100%);
+    background: rgba(8,9,8,.80);
   }
   .hero .wrap{ position:relative; z-index:2 }
   .hero .wrap{ max-width:1240px; margin:0 auto; padding:0 22px; width:100%; position:relative; z-index:2 }
