@@ -374,20 +374,24 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   const prevBtn = document.getElementById('stepPrev');
   const nextBtn = document.getElementById('stepNext');
   const counter = document.getElementById('stepCounter');
+  const stepper = document.querySelector('.principles-stepper');
   let current = 0;
 
   function goTo(idx, dir) {
     if (idx < 0 || idx >= cards.length) return;
-    const outDir = dir === 'next' ? 'exit-left' : '';
-    cards[current].classList.remove('active');
-    if (outDir) cards[current].classList.add(outDir);
-    setTimeout(() => { if(outDir) cards[current].classList.remove(outDir); }, 400);
+    const leaving = cards[current]; // capture by value before current changes
+    leaving.classList.remove('active');
+    if (dir === 'next') {
+      leaving.classList.add('exit-left');
+      setTimeout(() => leaving.classList.remove('exit-left'), 400);
+    }
     dots[current].classList.remove('active');
     current = idx;
-    // small delay to trigger transition
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         cards[current].classList.add('active');
+        // scroll stepper into view if it's not fully visible
+        stepper.scrollIntoView({behavior:'smooth', block:'nearest'});
       });
     });
     dots[current].classList.add('active');
