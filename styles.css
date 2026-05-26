@@ -117,7 +117,7 @@ body::after {
   border-radius: 50%; overflow: hidden;
 }
 .nav .brand .mark img {
-  width: 100%; height: 100%; object-fit: contain; display: block;
+  width: 120%; height: 120%; margin: -10%; object-fit: contain; display: block;
 }
 .nav .brand .name {
   font-family: var(--serif); font-weight: 500; font-size: 15px;
@@ -315,7 +315,7 @@ footer .grid {
 .f-nav a:hover .bullet, .f-nav a.active .bullet { opacity: 1; transform: scale(1) }
 .f-details { display: flex; flex-direction: column; gap: 36px }
 .f-block h4 { font-family: var(--mono); font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 400 }
-.f-block p, .f-block a { display: block; font-family: var(--serif); font-weight: 400; font-size: 16px; line-height: 1.65; color: var(--paper) }
+.f-block p, .f-block a { display: block; font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 15px; line-height: 1.7; color: var(--paper) }
 .f-block .muted { color: var(--paper-dim); font-style: italic }
 .f-block a { position: relative; margin-bottom: 4px }
 .f-block a:hover { color: var(--gold) }
