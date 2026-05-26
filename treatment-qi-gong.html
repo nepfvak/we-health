@@ -52,13 +52,12 @@
     width:120px;height:120px;border-radius:50%;
     border:2px solid var(--gold);
     box-shadow:0 0 20px color-mix(in srgb,var(--gold) 25%,transparent),inset 0 0 20px color-mix(in srgb,var(--gold) 10%,transparent);
-    transition:width 0s,height 0s,opacity .3s;
+    transition:box-shadow 1.5s ease;
     opacity:.7;
   }
-  .breath-ring.animating{transition:width var(--dur,4s) ease-in-out,height var(--dur,4s) ease-in-out,opacity var(--dur,4s) ease-in-out,box-shadow var(--dur,4s) ease-in-out}
-  .breath-ring.inhale{width:180px;height:180px;opacity:1;box-shadow:0 0 40px color-mix(in srgb,var(--gold) 45%,transparent),inset 0 0 30px color-mix(in srgb,var(--gold) 20%,transparent)}
-  .breath-ring.hold{opacity:.85}
-  .breath-ring.exhale{width:80px;height:80px;opacity:.45;box-shadow:0 0 8px color-mix(in srgb,var(--gold) 15%,transparent)}
+  .breath-ring.expanded{
+    box-shadow:0 0 48px color-mix(in srgb,var(--gold) 50%,transparent),inset 0 0 32px color-mix(in srgb,var(--gold) 22%,transparent);
+  }
   .breath-phase{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,3vw,32px);color:var(--paper);letter-spacing:.02em;min-height:40px;text-align:center}
   .breath-phase em{font-style:normal;color:var(--gold)}
   .breath-controls{flex:1 1 280px;min-width:240px;max-width:380px;display:flex;flex-direction:column;gap:20px}
@@ -362,14 +361,15 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   let inhale = 4, hold = 4, exhale = 4;
   let running = false;
-  let timer = null;
+  let activeAnim = null;
 
   function updateTiming(btn) {
     inhale = parseInt(btn.dataset.inhale);
     hold = parseInt(btn.dataset.hold);
     exhale = parseInt(btn.dataset.exhale);
-    const parts = hold > 0 ? `Inhale ${inhale}s · Hold ${hold}s · Exhale ${exhale}s` : `Inhale ${inhale}s · Exhale ${exhale}s`;
-    timingDisplay.textContent = parts;
+    timingDisplay.textContent = hold > 0
+      ? `Inhale ${inhale}s · Hold ${hold}s · Exhale ${exhale}s`
+      : `Inhale ${inhale}s · Exhale ${exhale}s`;
   }
 
   rhythmBtns.forEach(btn => {
@@ -380,36 +380,51 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     });
   });
 
-  function setPhase(phase, dur) {
-    ring.classList.remove('animating');
-    ring.classList.remove('inhale','hold','exhale');
-    // force reflow
-    void ring.offsetWidth;
-    ring.style.setProperty('--dur', dur + 's');
-    ring.classList.add('animating');
-    ring.classList.add(phase);
-    if (phase === 'inhale') phaseEl.innerHTML = '<em>Inhale</em>';
-    else if (phase === 'hold') phaseEl.innerHTML = '<em>Hold</em>';
-    else phaseEl.innerHTML = '<em>Exhale</em>';
+  // Animate from current committed inline size/opacity to target, returns promise(true) on natural finish
+  function animateTo(toSize, toOpacity, dur) {
+    const fromW = ring.style.width  || '120px';
+    const fromH = ring.style.height || '120px';
+    const fromOp = ring.style.opacity || '0.7';
+    const toSizePx = toSize + 'px';
+    return new Promise(resolve => {
+      activeAnim = ring.animate(
+        [{ width: fromW, height: fromH, opacity: fromOp },
+         { width: toSizePx, height: toSizePx, opacity: String(toOpacity) }],
+        { duration: dur * 1000, easing: 'ease-in-out', fill: 'forwards' }
+      );
+      activeAnim.finished.then(() => {
+        try { activeAnim.commitStyles(); activeAnim.cancel(); } catch(e){}
+        activeAnim = null;
+        resolve(true);
+      }).catch(() => resolve(false));
+    });
   }
 
-  function runCycle() {
-    if (!running) return;
-    setPhase('inhale', inhale);
-    timer = setTimeout(() => {
-      if (!running) return;
-      if (hold > 0) {
-        setPhase('hold', hold);
-        timer = setTimeout(() => {
-          if (!running) return;
-          setPhase('exhale', exhale);
-          timer = setTimeout(() => { if (running) runCycle(); }, exhale * 1000);
-        }, hold * 1000);
-      } else {
-        setPhase('exhale', exhale);
-        timer = setTimeout(() => { if (running) runCycle(); }, exhale * 1000);
-      }
-    }, inhale * 1000);
+  async function runCycle() {
+    ring.classList.add('expanded');
+    phaseEl.innerHTML = '<em>Inhale</em>';
+    if (!await animateTo(180, 1, inhale) || !running) return;
+
+    if (hold > 0) {
+      phaseEl.innerHTML = '<em>Hold</em>';
+      if (!await animateTo(180, 0.9, hold) || !running) return;
+    }
+
+    ring.classList.remove('expanded');
+    phaseEl.innerHTML = '<em>Exhale</em>';
+    if (!await animateTo(80, 0.45, exhale) || !running) return;
+
+    runCycle();
+  }
+
+  function stop() {
+    running = false;
+    if (activeAnim) { activeAnim.cancel(); activeAnim = null; }
+    startBtn.textContent = 'Start';
+    startBtn.classList.remove('running');
+    ring.style.cssText = '';
+    ring.classList.remove('expanded');
+    phaseEl.textContent = 'Ready';
   }
 
   startBtn.addEventListener('click', () => {
@@ -419,16 +434,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       startBtn.classList.add('running');
       runCycle();
     } else {
-      running = false;
-      clearTimeout(timer);
-      startBtn.textContent = 'Start';
-      startBtn.classList.remove('running');
-      ring.classList.remove('animating','inhale','hold','exhale');
-      phaseEl.textContent = 'Ready';
+      stop();
     }
   });
 
-  // init timing display
   updateTiming(document.querySelector('.rhythm-btn.active'));
 })();
 </script>
