@@ -63,6 +63,14 @@
   .herb-panel{position:relative;border:1px solid var(--rule);margin-top:2px;min-height:280px;overflow:hidden}
   .herb-detail{position:absolute;inset:0;padding:clamp(28px,4vw,52px);opacity:0;transition:opacity .35s ease;pointer-events:none;display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,52px);align-items:center}
   .herb-detail.active{opacity:1;pointer-events:all}
+  /* On mobile the absolute-positioned details can exceed the fixed min-height and get
+     clipped. Switch to a static-flow approach at ≤768px: active detail is in-flow,
+     inactive details are visually hidden but removed from layout with display:none. */
+  @media(max-width:768px){
+    .herb-panel{min-height:0;overflow:visible;height:auto}
+    .herb-detail{position:static;opacity:0;height:0;overflow:hidden;padding:0;pointer-events:none;display:block}
+    .herb-detail.active{opacity:1;height:auto;overflow:visible;padding:clamp(20px,5vw,32px);pointer-events:all;display:grid;grid-template-columns:1fr}
+  }
   @media(max-width:600px){.herb-detail{grid-template-columns:1fr;gap:20px}}
   .hd-glyph{font-family:var(--brush);font-size:clamp(80px,14vw,160px);color:var(--gold);line-height:1;flex-shrink:0;opacity:.9}
   .hd-cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
@@ -76,12 +84,14 @@
   @media(max-width:768px){
     html{scroll-snap-type:none}
     section{min-height:0;padding:56px 0}
+    /* Override global rule that centers all section h2 — keep them left-aligned here */
+    section h2{text-align:left;margin-left:0;margin-right:0}
   }
   @media(max-width:600px){
     .tx-cta{padding:48px 0 72px}
     .herb-btn{font-size:22px;padding:10px 16px 8px}
     .hd-glyph{display:none}
-    .herb-panel{min-height:260px}
+    /* min-height now handled by the flow-based approach above; no fixed value needed */
   }
 </style>
 </head>
