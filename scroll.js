@@ -7,8 +7,12 @@
   // For trackpad events we call stopImmediatePropagation() so Lenis
   // never sees them and never calls preventDefault() — native OS
   // momentum scroll takes over, which is already perfectly smooth.
+  // Trackpad two-finger swipe on Linux/libinput produces many small-delta pixel-mode
+  // events (deltaY typically < 120). Mouse wheel clicks produce deltaY >= 120 per notch.
+  // Stop trackpad events before Lenis sees them so the OS handles momentum natively;
+  // large-delta mouse wheel events pass through and get Lenis smoothing.
   window.addEventListener('wheel', function (e) {
-    if (e.deltaMode === 0 && Math.abs(e.deltaY) < 50) {
+    if (e.deltaMode === 0 && Math.abs(e.deltaY) < 120) {
       e.stopImmediatePropagation();
     }
   }, { passive: true, capture: true });

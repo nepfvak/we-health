@@ -9,6 +9,8 @@
     let threshold;
     if (hero) {
       threshold = hero.offsetTop + hero.offsetHeight - nav.offsetHeight;
+    } else if (pageHero) {
+      threshold = pageHero.offsetTop + pageHero.offsetHeight - nav.offsetHeight;
     } else {
       threshold = 80;
     }
