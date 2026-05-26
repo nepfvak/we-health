@@ -1812,7 +1812,9 @@
       stage.style.height = '';
       return;
     }
-    var availW = window.innerWidth - 44; // .wrap has 22px padding each side
+    // .wrap padding: 22px each side (default), 16px at ≤480px (matches styles.css)
+    var wrapPad = window.innerWidth <= 480 ? 32 : 44;
+    var availW = window.innerWidth - wrapPad;
     var scale = Math.min(1, (availW - 8) / NAT);
     // Force stage to natural size so absolutely-positioned elements are not clipped
     stage.style.width = NAT + 'px';
