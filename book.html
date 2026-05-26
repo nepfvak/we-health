@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Testimonials — W&amp;E Health Institute · Memphis</title>
+<title>Book an Appointment — W&amp;E Health Institute · Cordova, TN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -11,70 +11,94 @@
 <link rel="stylesheet" href="styles.css" />
 <script src="theme.js"></script>
 <style>
-  /* ── Scroll snap & full-viewport sections ───────────────────── */
-  html{scroll-snap-type:y proximity}
-  .page-hero,section,footer{scroll-snap-align:start;scroll-snap-stop:normal}
-  
-  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
-  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+  /* ── Page layout ─────────────────────────────────────────────────────── */
+  .page-hero .wrap { padding-bottom: clamp(32px, 5vh, 64px); }
 
-/* ── Testimonials page specific ──────────────────────────────────────── */
-.t-grid{display:grid;grid-template-columns:1fr;gap:24px}
-@media(min-width:760px){.t-grid{grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}}
-.t-card{padding:48px 32px;background:var(--ink);display:flex;flex-direction:column;gap:24px;border:1px solid var(--rule)}
-@media(min-width:760px){.t-card{border:0}}
-.t-card .mark{font-family:var(--brush);font-size:38px;color:var(--cinnabar);line-height:1}
-.t-card .quote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;line-height:1.65;color:var(--paper);flex:1}
-.t-card .who{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:.5px solid var(--rule)}
-.t-card .who .av{width:38px;height:38px;border-radius:50%;border:.5px solid var(--gold-dim);display:grid;place-items:center;font-family:var(--brush);color:var(--gold);font-size:16px}
-.t-card .who .meta-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-faint);line-height:1.6}
-.t-card .who .meta-l b{color:var(--paper);font-weight:400;letter-spacing:.18em}
+  /* ── Jane booking section ────────────────────────────────────────────── */
+  .jane-section {
+    background: var(--ink);
+    border-top: .5px solid var(--rule);
+    padding: clamp(48px,7vh,96px) 0 clamp(64px,10vh,120px);
+  }
+  .jane-section .wrap { max-width: 1160px; }
 
-.t-intro{margin-bottom:72px}
-.t-cta{
-  margin-top:80px;
-  padding:72px 48px;
-  border:.5px solid var(--rule-strong);
-  background:var(--ink-2);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  gap:28px;
-}
-.t-cta .cta-heading{
-  font-family:var(--serif);
-  font-weight:400;
-  font-style:italic;
-  font-size:clamp(28px,4vw,52px);
-  line-height:1.05;
-  color:var(--paper);
-  max-width:20ch;
-  text-wrap:balance;
-}
-.t-cta .cta-sub{
-  font-family:var(--serif);
-  font-weight:400;
-  font-style:italic;
-  color:var(--paper-dim);
-  font-size:17px;
-  line-height:1.65;
-  max-width:42ch;
-}
+  .jane-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .jane-header h2 { margin: 0; }
+  .jane-contact-alt {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--paper-faint);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+  }
+  .jane-contact-alt a {
+    color: var(--paper-dim);
+    transition: color .2s;
+  }
+  .jane-contact-alt a:hover { color: var(--gold); }
 
-/* ── Mobile overrides ─────────────────────────────────────── */
-@media(max-width:768px){
-  html{scroll-snap-type:none}
-  section{min-height:0;padding:56px 0}
-  .t-grid{grid-template-columns:1fr;gap:16px;background:none;border-top:none;border-bottom:none}
-}
-@media(max-width:600px){
-  .t-card{padding:32px 20px}
-  .t-card .quote{font-size:17px}
-  .t-cta{padding:40px 24px;margin-top:48px}
-  .t-cta .cta-heading{font-size:clamp(24px,7vw,36px)}
-  .t-intro{margin-bottom:40px}
-}
+  /* Iframe container */
+  .jane-iframe-wrap {
+    position: relative;
+    border: .5px solid var(--rule-strong);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .jane-iframe-wrap.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .jane-iframe-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 900px;
+    border: none;
+  }
+
+  /* Thin gold rule above the iframe */
+  .jane-rule {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 48px;
+    opacity: 0;
+    transition: opacity .5s ease .2s;
+  }
+  .jane-rule.in { opacity: 1; }
+
+  /* Light mode: keep iframe section dark */
+  [data-theme="light"] .jane-section {
+    background: var(--ink);
+  }
+  [data-theme="light"] .jane-contact-alt { color: var(--paper-faint); }
+  [data-theme="light"] .jane-contact-alt a { color: var(--paper-dim); }
+
+  /* ── Responsive ──────────────────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    .jane-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .jane-contact-alt { text-align: left; }
+  }
+  @media (max-width: 640px) {
+    .jane-iframe-wrap iframe { height: 800px; }
+    .jane-header { margin-bottom: 32px; }
+  }
+  @media (max-width: 400px) {
+    .jane-iframe-wrap iframe { height: 700px; }
+  }
 </style>
 </head>
 <body>
@@ -88,12 +112,12 @@
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="conditions.html">Conditions</a>
-    <a href="testimonials.html" class="is-active">Testimonials</a>
+    <a href="testimonials.html">Testimonials</a>
     <a href="contact.html">Contact</a>
     <a href="saat.html">SAAT</a>
   </div>
   <div class="nav-actions">
-    <a href="book.html" class="book"><span class="dot"></span>Book</a>
+    <a href="book.html" class="book is-active"><span class="dot"></span>Book</a>
     <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
     <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
@@ -105,7 +129,7 @@
   <a href="about.html">About</a>
   <a href="services.html">Services</a>
   <a href="conditions.html">Conditions</a>
-  <a href="testimonials.html" class="is-active">Testimonials</a>
+  <a href="testimonials.html">Testimonials</a>
   <a href="contact.html">Contact</a>
   <a href="saat.html">SAAT Allergy Treatment</a>
   <a href="book.html" class="mob-book">Book Appointment</a>
@@ -113,84 +137,40 @@
 
 <div class="page-hero">
   <div class="bg"></div>
-  <div class="ghost-glyph" aria-hidden="true">證</div>
+  <div class="ghost-glyph" aria-hidden="true">預</div>
   <div class="wrap">
-    <p class="eyebrow"><span class="cn">見證</span> Patient Stories</p>
-    <h1>From those we've <span class="accent">cared for</span></h1>
-    <p class="lede">Genuine accounts from patients at W&amp;E Health Institute.</p>
+    <p class="eyebrow"><span class="cn">預約</span> Schedule</p>
+    <h1>Book your <span class="accent">appointment</span></h1>
+    <p class="lede">Select a service and time directly — no phone call needed.</p>
   </div>
 </div>
 
-<section>
+<!-- Jane App booking iframe -->
+<section class="jane-section">
   <div class="wrap">
 
-    <div class="t-intro reveal">
-      <p class="eyebrow"><span class="cn">口碑</span> In Their Words</p>
-      <h2>What our patients <span class="accent">say</span></h2>
+    <div class="jane-header reveal">
+      <div>
+        <p class="eyebrow"><span class="cn">線上預約</span> Online Booking</p>
+        <h2>Schedule <span class="accent">your visit</span></h2>
+      </div>
+      <div class="jane-contact-alt">
+        <span>Prefer to call or email?</span>
+        <a href="tel:+19013406433">901&middot;340&middot;6433</a>
+        <a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a>
+      </div>
     </div>
 
-    <div class="t-grid">
+    <div class="jane-rule reveal"></div>
 
-      <div class="t-card reveal d1">
-        <div class="mark">"</div>
-        <p class="quote">I came for migraines and stayed for the quiet. After six sessions the pain had loosened; after twelve it was simply gone. Selina listens with her hands.</p>
-        <div class="who">
-          <div class="av">M</div>
-          <div class="meta-l"><b>Marian H.</b><br/>Patient since 2021</div>
-        </div>
-      </div>
-
-      <div class="t-card reveal d2">
-        <div class="mark">"</div>
-        <p class="quote">My acupuncturist back in Shanghai recommended I find Dr. Selina when I moved. I understand why. She is a real practitioner of the old school — slow, exact, and warm.</p>
-        <div class="who">
-          <div class="av">張</div>
-          <div class="meta-l"><b>Aileen C.</b><br/>Patient since 2019</div>
-        </div>
-      </div>
-
-      <div class="t-card reveal d3">
-        <div class="mark">"</div>
-        <p class="quote">I was skeptical. I left feeling like I'd slept ten hours. The room smells of mugwort and old wood and I have come back every other Thursday for three years.</p>
-        <div class="who">
-          <div class="av">D</div>
-          <div class="meta-l"><b>Daniel R.</b><br/>Patient since 2022</div>
-        </div>
-      </div>
-
-      <div class="t-card reveal d1">
-        <div class="mark">"</div>
-        <p class="quote">After years of allergy shots with little relief, one SAAT treatment changed everything. I can eat foods I hadn't touched in a decade. I only wish I had found this sooner.</p>
-        <div class="who">
-          <div class="av">P</div>
-          <div class="meta-l"><b>Patricia W.</b><br/>Patient since 2020</div>
-        </div>
-      </div>
-
-      <div class="t-card reveal d2">
-        <div class="mark">"</div>
-        <p class="quote">Dr. Zhao's background in both Western and Chinese medicine gives me confidence. He explains everything clearly and treats the whole picture, not just the symptom.</p>
-        <div class="who">
-          <div class="av">J</div>
-          <div class="meta-l"><b>James T.</b><br/>Patient since 2023</div>
-        </div>
-      </div>
-
-      <div class="t-card reveal d3">
-        <div class="mark">"</div>
-        <p class="quote">W&amp;E has become part of my wellness routine. The combination of acupuncture and herbal medicine has helped my chronic fatigue more than anything else I've tried.</p>
-        <div class="who">
-          <div class="av">L</div>
-          <div class="meta-l"><b>Linda M.</b><br/>Patient since 2018</div>
-        </div>
-      </div>
-
-    </div><!-- /.t-grid -->
-
-    <div class="t-cta reveal">
-      <p class="cta-heading">Ready to begin your journey?</p>
-      <p class="cta-sub">Take the first step toward lasting relief. We are here to listen and to help.</p>
-      <a href="book.html" class="btn-primary">Book Appointment <span class="arrow">→</span></a>
+    <div class="jane-iframe-wrap reveal">
+      <iframe
+        src="https://wehealthinstitute.janeapp.com"
+        title="Book an Appointment at W&amp;E Health Institute"
+        loading="lazy"
+        allow="payment"
+        referrerpolicy="origin-when-cross-origin">
+      </iframe>
     </div>
 
   </div>
@@ -269,7 +249,6 @@
         </div>
       </div>
 
-      <!-- ── Google Map row ────────────────────────────────────────── -->
       <div class="f-map">
         <div class="pin">
           <div class="h">Find us</div>
@@ -292,7 +271,7 @@
       <div class="legal">
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
-        <span>Memphis · 田納西州曼菲斯</span>
+        <span>Cordova · 田納西州科多瓦</span>
       </div>
     </div>
   </div>
@@ -313,13 +292,6 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
 }, {threshold:.1, rootMargin:'0px 0px -5% 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-document.querySelectorAll('p.body').forEach(p => {
-  p.classList.add('mask-up');
-  const lo = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');lo.unobserve(e.target);} });
-  }, {threshold:.08});
-  lo.observe(p);
-});
 </script>
 </body>
 </html>
