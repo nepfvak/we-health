@@ -954,7 +954,9 @@
 /* Five Elements */
 .five-wrap{position:relative;padding:80px 0 100px;overflow:hidden}
 .five-wrap::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 70% at 50% 50%,rgba(184,175,154,.05),transparent 60%)}
-.five-head{text-align:center;margin:0 auto 72px;max-width:560px}
+/* Shared centering context — both head and wheel use the same axis */
+.five-wrap .wrap{display:flex;flex-direction:column;align-items:center}
+.five-head{text-align:center;margin-bottom:72px;width:100%;max-width:560px}
 .five-head .eyebrow{justify-content:center}
 .five-head h2{margin:0 auto;text-align:center;max-width:22ch}
 .five-head .sub{margin-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-faint);text-align:center}
@@ -990,6 +992,7 @@
 }
 /* Tablet intermediate (769–880px): slightly smaller, no JS scale needed */
 @media(min-width:769px) and (max-width:880px){
+  .five-head{max-width:460px}
   .five-stage{max-width:460px}
   .elem{--r:178px;width:108px;height:108px;margin:-54px 0 0 -54px}
 }
