@@ -398,7 +398,7 @@
       radial-gradient(70% 60% at 50% 0%,rgba(61,139,114,.07),transparent 65%),
       radial-gradient(40% 50% at 80% 100%,rgba(61,139,114,.04),transparent 60%);
   }
-  .acu-sticky .wrap{max-width:1100px;margin:0 auto;padding:40px 22px;position:relative}
+  .acu-sticky .wrap{max-width:1100px;margin:0 auto;padding:80px 22px 40px;position:relative}
   .acu-eyebrow{font:400 13px/1 var(--mono);letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
   .acu-heading{font:400 clamp(26px,3vw,42px)/1.12 var(--serif);color:var(--paper);max-width:520px;margin:0 0 8px}
   .acu-sub{font:400 16px/1.6 var(--serif);color:var(--paper-dim);max-width:400px;margin:0 0 36px}
@@ -410,7 +410,7 @@
   @media(max-width:700px){.acu-grid{grid-template-columns:repeat(2,1fr)}}
   /* cards — opacity driven per-element so borders stay crisp */
   .acu-card{
-    padding:22px 18px 18px;cursor:pointer;
+    padding:22px 18px 18px;cursor:pointer;text-align:center;
     border:1px solid var(--rule);background:transparent;
     position:relative;overflow:hidden;
     -webkit-tap-highlight-color:transparent;
@@ -435,7 +435,7 @@
   }
   .acu-name em{display:block;font-style:italic;font-size:13px;margin-top:3px;color:var(--paper-dim)}
   .acu-meridian{
-    display:inline-block;margin-top:12px;
+    display:block;margin-top:12px;
     font:400 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
     color:var(--gold);opacity:.55;transition:opacity .45s ease;
   }
@@ -954,10 +954,10 @@
 /* Five Elements */
 .five-wrap{position:relative;padding:80px 0 100px;overflow:hidden}
 .five-wrap::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 70% at 50% 50%,rgba(184,175,154,.05),transparent 60%)}
-.five-head{text-align:center;margin-bottom:72px}
+.five-head{text-align:center;margin:0 auto 72px;max-width:560px}
 .five-head .eyebrow{justify-content:center}
 .five-head h2{margin:0 auto;text-align:center;max-width:22ch}
-.five-head .sub{margin-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-faint)}
+.five-head .sub{margin-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-faint);text-align:center}
 .five-stage{position:relative;width:100%;max-width:560px;margin:0 auto;aspect-ratio:1/1}
 .five-ring{position:absolute;inset:0;animation:fiveSpin 80s linear infinite;will-change:transform}
 .five-stage.is-paused .five-ring{animation-play-state:paused}
