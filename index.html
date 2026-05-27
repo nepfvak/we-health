@@ -959,6 +959,7 @@
 .five-head{text-align:center;margin-bottom:72px}
 .five-head .eyebrow{justify-content:center}
 .five-head h2{margin:0 auto;text-align:center;max-width:22ch}
+.five-h2-br{display:none}
 .five-head .sub{margin-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-faint);text-align:center}
 .five-stage{position:relative;width:100%;max-width:560px;aspect-ratio:1/1}
 .five-ring{position:absolute;inset:0;animation:fiveSpin 80s linear infinite;will-change:transform}
@@ -989,11 +990,7 @@
 @media(max-width:768px){
   .five-wrap{padding:36px 0 44px}
   .five-head{margin-bottom:28px}
-  /* Force text blocks to fill the same width as the stage so their
-     left/right edges align with the ring — otherwise max-content eyebrow
-     and 22ch h2 appear narrower and look left-shifted vs the wheel */
-  .five-head .eyebrow{width:100%;justify-content:center}
-  .five-head h2{max-width:100%}
+  .five-h2-br{display:inline}
   .five-head .sub{display:block;text-align:center}
 }
 /* Tablet intermediate (769–880px): slightly smaller, no JS scale needed */
@@ -1333,7 +1330,7 @@
     <div class="five-layout">
       <div class="five-head">
         <div class="eyebrow reveal"><span class="cn">五行</span>Five Element Theory</div>
-        <h2 class="reveal d1">A medicine of <span class="accent">cycles,</span> not parts.</h2>
+        <h2 class="reveal d1">A medicine of<br class="five-h2-br"><span class="accent">cycles,</span> not parts.</h2>
         <div class="sub reveal d2">Hover an element · 懸停元素</div>
       </div>
 
