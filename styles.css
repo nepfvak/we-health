@@ -36,7 +36,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-body { overflow-x: hidden }
+body { overflow-x: clip }
 img { max-width: 100%; height: auto; display: block; touch-action: pan-y; -webkit-user-drag: none }
 a { color: inherit; text-decoration: none }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer }

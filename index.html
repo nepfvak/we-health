@@ -1001,6 +1001,9 @@
   .five-head .sub{display:block;text-align:center}
   /* Hide asymmetric left-side gold line on mobile so eyebrow text is visually centred */
   .five-head .eyebrow::before{display:none}
+  /* Centre the oversized stage with flex instead of JS negative margin */
+  .five-layout{display:flex;justify-content:center}
+  .five-stage{flex-shrink:0}
 }
 /* Tablet intermediate (769–880px): slightly smaller, no JS scale needed */
 @media(min-width:769px) and (max-width:880px){
@@ -1872,9 +1875,8 @@
     stage.style.width = NAT + 'px';
     stage.style.maxWidth = 'none';
     stage.style.height = NAT + 'px';
-    // Manual left-offset centers the 560px stage inside the narrower container
-    // Clamp to ≤0: negative offsets center the scaled ring; positive would push it right
-    stage.style.marginLeft = Math.min(0, Math.round((availW - NAT) / 2)) + 'px';
+    // CSS flex on .five-layout handles horizontal centering — no manual margin needed
+    stage.style.marginLeft = '';
     stage.style.marginRight = '';
     stage.style.alignSelf = '';
     stage.style.position = '';
