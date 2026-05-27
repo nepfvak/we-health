@@ -1859,7 +1859,10 @@
     stage.style.width = NAT + 'px';
     stage.style.maxWidth = 'none';
     stage.style.height = NAT + 'px';
-    // Flexbox on .five-layout centers the stage — no manual marginLeft needed
+    // .wrap has overflow:hidden, so a 560px child in a narrower flex container won't be
+    // centered by flexbox — it aligns to the left edge and clips on the right.
+    // Manually offset so the stage (and its scaled visual) sits centered in availW.
+    stage.style.marginLeft = Math.round((availW - NAT) / 2) + 'px';
     // Scale from top-center of the natural stage
     stage.style.transformOrigin = 'center top';
     stage.style.transform = 'scale(' + scale.toFixed(4) + ')';
