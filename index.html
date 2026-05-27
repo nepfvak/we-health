@@ -963,7 +963,7 @@
 .five-wrap::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 70% at 50% 50%,rgba(184,175,154,.05),transparent 60%)}
 /* Single centering wrapper — head and wheel share the same 560px column */
 .five-layout{width:100%;max-width:560px;margin:0 auto}
-.five-head{text-align:center;margin-bottom:72px}
+.five-head{text-align:center;margin-bottom:72px;max-width:560px;margin-left:auto;margin-right:auto}
 .five-head .eyebrow{justify-content:center}
 .five-head h2{margin:0 auto;text-align:center;max-width:22ch}
 .five-h2-br{display:none}
@@ -1336,13 +1336,13 @@
 <!-- ─── Five Elements ─────────────────────────────────────────────── -->
 <section class="five-wrap" id="five-elements">
   <div class="wrap">
-    <div class="five-layout">
-      <div class="five-head">
-        <div class="eyebrow reveal"><span class="cn">五行</span>Five Element Theory</div>
-        <h2 class="reveal d1">A medicine of<br class="five-h2-br"><span class="accent">cycles,</span> not parts.</h2>
-        <div class="sub reveal d2">Hover an element · 懸停元素</div>
-      </div>
+    <div class="five-head">
+      <div class="eyebrow reveal"><span class="cn">五行</span>Five Element Theory</div>
+      <h2 class="reveal d1">A medicine of<br class="five-h2-br"><span class="accent">cycles,</span> not parts.</h2>
+      <div class="sub reveal d2">Hover an element · 懸停元素</div>
+    </div>
 
+    <div class="five-layout">
       <div class="five-stage reveal d1" id="fiveStage">
       <div class="five-ring">
         <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
@@ -1380,7 +1380,7 @@
         <div class="five-desc" data-id="wood"  style="--accent:#5db730"><div class="blurb"><div class="label">木 · Wood · Spring</div><h4>Growth &amp; vision</h4><p>The liver and gallbladder. The upward push of qì — plans, anger, the courage to begin. When stagnant, the body grows tight.</p></div></div>
       </div>
     </div><!-- /.five-layout -->
-  </div>
+  </div><!-- /.wrap -->
 </section>
 
 <!-- ─── Acupoint Explorer ──────────────────────────────────────── -->
@@ -1873,7 +1873,8 @@
     stage.style.maxWidth = 'none';
     stage.style.height = NAT + 'px';
     // Manual left-offset centers the 560px stage inside the narrower container
-    stage.style.marginLeft = Math.round((availW - NAT) / 2) + 'px';
+    // Clamp to ≤0: negative offsets center the scaled ring; positive would push it right
+    stage.style.marginLeft = Math.min(0, Math.round((availW - NAT) / 2)) + 'px';
     stage.style.marginRight = '';
     stage.style.alignSelf = '';
     stage.style.position = '';
