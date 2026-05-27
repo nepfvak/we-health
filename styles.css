@@ -274,7 +274,7 @@ footer .grid {
 }
 @media (min-width: 980px) { footer .grid { grid-template-columns: 1.1fr 1fr; gap: 72px } }
 .f-cta { display: flex; flex-direction: column; gap: 24px }
-.f-cta .f-logo img { display: block; max-width: 300px; width: 100% }
+.f-cta .f-logo img { display: block; max-width: 420px; width: 100% }
 .f-cta .request {
   display: inline-flex; align-items: center; gap: 14px; align-self: flex-start;
   padding: 16px 22px; border: .5px solid var(--gold); color: var(--gold);
@@ -522,9 +522,8 @@ h3{ color:var(--paper) }
   .nav .brand .name{ font-size: 13px; letter-spacing: .10em }
 }
 
-/* Page hero mobile */
+/* Page hero mobile — h1 size (padding handled in global mobile block below) */
 @media(max-width:768px){
-  .page-hero{ padding: 110px 0 56px }
   .page-hero h1{ font-size: clamp(34px,8vw,56px) }
 }
 
@@ -629,7 +628,11 @@ footer{ padding-top: 80px }
   }
   section h2 { margin-left: auto; margin-right: auto; text-align: center }
 
-  .page-hero { text-align: center }
+  /* Page hero — inner pages (services, about, contact, etc.) */
+  .page-hero {
+    text-align: center;
+    padding: 116px 0 60px; /* enough clearance for the nav bar */
+  }
   .page-hero .eyebrow { justify-content: center }
   .page-hero h1, .page-hero .lede { margin-left: auto; margin-right: auto }
 
@@ -637,6 +640,19 @@ footer{ padding-top: 80px }
   footer .bar { margin-top: 52px }
   .f-cta .f-logo img { max-width: min(72vw, 260px) }
   .f-social a { width: 44px; height: 44px }
+
+  /* Footer CTA buttons: stack on mobile */
+  .f-cta-buttons {
+    flex-direction: column;
+  }
+  .f-cta-buttons .request {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Footer grid: single-column, tighter gap */
+  footer .grid { gap: 32px }
 }
 
 @media (max-width: 480px) {
