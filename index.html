@@ -1846,6 +1846,7 @@
       stage.style.transformOrigin = '';
       stage.style.marginBottom = '';
       stage.style.marginLeft = '';
+      stage.style.marginRight = '';
       stage.style.width = '';
       stage.style.maxWidth = '';
       stage.style.height = '';
@@ -1854,21 +1855,21 @@
       stage.style.left = '';
       return;
     }
-    // .wrap padding: 22px each side (default), 16px at ≤480px (matches styles.css)
-    var wrapPad = window.innerWidth <= 480 ? 32 : 44;
-    var availW = window.innerWidth - wrapPad;
-    var scale = Math.min(1, (availW - 8) / NAT);
-    // Force stage to natural size so absolutely-positioned elements are not clipped
+    // Measure the actual container width so centering is pixel-accurate
+    var containerW = stage.parentElement.offsetWidth || (window.innerWidth - (window.innerWidth <= 480 ? 32 : 44));
+    var scale = Math.min(1, (containerW - 8) / NAT);
+    // Force stage to natural size so absolutely-positioned children fit correctly
     stage.style.width = NAT + 'px';
     stage.style.maxWidth = 'none';
     stage.style.height = NAT + 'px';
-    // Pin to the left edge of the flex column, then offset with `left` so the
-    // 560px stage is centered in availW. This is predictable regardless of how
-    // the browser handles align-items:center for an oversized flex child.
-    stage.style.alignSelf = 'flex-start';
-    stage.style.position = 'relative';
-    stage.style.left = Math.round((availW - NAT) / 2) + 'px';
-    stage.style.marginLeft = '';
+    // Equal negative margins shrink the flex margin-box to exactly containerW,
+    // so align-items:center centers reliably without affecting sibling elements.
+    var half = Math.round((NAT - containerW) / 2);
+    stage.style.marginLeft = -half + 'px';
+    stage.style.marginRight = -half + 'px';
+    stage.style.alignSelf = '';
+    stage.style.position = '';
+    stage.style.left = '';
     // Scale from top-center of the natural stage
     stage.style.transformOrigin = 'center top';
     stage.style.transform = 'scale(' + scale.toFixed(4) + ')';
