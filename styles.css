@@ -273,8 +273,9 @@ footer .grid {
   display: grid; grid-template-columns: 1fr; gap: 64px; position: relative; z-index: 2;
 }
 @media (min-width: 980px) { footer .grid { grid-template-columns: 1.1fr 1fr; gap: 72px } }
-.f-cta { display: flex; flex-direction: column; gap: 24px; align-items: center }
-.f-cta .f-logo img { display: block; max-width: 420px; width: 100% }
+.f-cta { display: flex; flex-direction: column; gap: 24px }
+.f-cta .f-logo { text-align: center }
+.f-cta .f-logo img { display: block; max-width: 420px; width: 100%; margin: 0 auto }
 .f-cta .request {
   display: inline-flex; align-items: center; gap: 14px; align-self: flex-start;
   padding: 16px 22px; border: .5px solid var(--gold); color: var(--gold);
