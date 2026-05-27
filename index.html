@@ -1857,7 +1857,7 @@
     }
     // Measure the actual container width so centering is pixel-accurate
     var containerW = stage.parentElement.offsetWidth || (window.innerWidth - (window.innerWidth <= 480 ? 32 : 44));
-    var scale = Math.min(1, (containerW - 8) / NAT);
+    var scale = Math.min(1, containerW / NAT);
     // Force stage to natural size so absolutely-positioned children fit correctly
     stage.style.width = NAT + 'px';
     stage.style.maxWidth = 'none';
