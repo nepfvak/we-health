@@ -818,9 +818,10 @@
       padding: 0 !important;
     }
 
-    /* Hero: reduce padding on small screens */
+    /* Hero: reduce padding on small screens — keep at least 96px top so nav
+       (≈64px tall at mobile) doesn't overlap the headline */
     .hero{
-      padding: 88px 16px 56px !important;
+      padding: 96px 16px 60px !important;
       text-align: center;
     }
 
@@ -844,6 +845,7 @@
     .hero .lede{
       margin-left: auto !important;
       margin-right: auto !important;
+      font-size: clamp(17px, 4.6vw, 22px) !important;
     }
 
     /* Hero image: smaller, square, centered */
@@ -854,8 +856,13 @@
     }
     .hero .quickfacts{
       justify-content: center;
-      gap: 20px 30px;
+      gap: 16px 24px;
       text-align: left;
+      padding-top: 16px;
+      margin-bottom: 24px;
+    }
+    .hero .qf .v{
+      font-size: 15px;
     }
     .hero .cta-row{
       justify-content: center;
@@ -898,7 +905,8 @@
   /* Extra-small phones (< 480px): collapse svc-grid to 1 column */
   @media(max-width:480px){
     .hero{
-      padding-top: 82px !important;
+      /* Keep enough room for the nav — nav is ~60px tall at this size */
+      padding-top: 94px !important;
     }
     .hero .quickfacts{
       flex-direction: column;
@@ -906,6 +914,12 @@
       text-align: center;
       margin-top: 20px;
       margin-bottom: 24px;
+    }
+    /* Hide the pull-quote testimonial inside the hero on phones —
+       it adds too much length and the same review appears in the
+       Trust / Testimonials sections */
+    .hero-testimonial{
+      display: none;
     }
     .hero .cta-row{
       flex-direction: column;
@@ -921,6 +935,19 @@
     }
     .trust-inner{
       grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* Service card body — reduce h3 size in 2-column mode on narrow screens */
+  @media(max-width:600px){
+    .svc .svc-body h3{
+      font-size: 17px;
+    }
+    .svc .svc-body p{
+      font-size: 13.5px;
+    }
+    .svc .svc-body{
+      padding: 16px 14px 20px;
     }
   }
 

@@ -256,9 +256,28 @@
       gap: 20px;
     }
 
+    /* Services intro: reduce wrap padding */
+    .services-intro .wrap{
+      padding-top: 48px;
+      padding-bottom: 40px;
+    }
+
+    /* Accordion: ensure items don't stretch to 100vh on mobile */
+    .svc-item{ height: auto; min-height: 0; }
+    .svc-item-inner{
+      position: relative !important;
+      top: 0 !important;
+      height: auto !important;
+    }
+
     /* svc-item-text: reduce padding on mobile */
     .svc-item-text{
-      padding: 32px 20px !important;
+      padding: 28px 20px 36px !important;
+    }
+
+    /* svc-item-text h3: prevent oversized heading in narrow viewport */
+    .svc-item-text h3{
+      font-size: clamp(20px, 5.5vw, 28px);
     }
 
     /* Value grid: already 1-column below 800px — reduce padding */
@@ -268,6 +287,25 @@
     .cs-inner{ flex-direction: column; align-items: flex-start }
     .cs-cards{ flex-direction: column; width: 100% }
     .cs-card{ min-width: 0; width: 100% }
+
+    /* CTA box: give it explicit vertical padding */
+    .services-cta .wrap{
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+    .services-cta .sub{
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+  }
+
+  @media(max-width:480px){
+    /* svc-item-img: taller on very small screens for better visual impact */
+    .svc-item-img{ aspect-ratio: 4/3; }
+    /* svc-item-text: tighter padding */
+    .svc-item-text{ padding: 24px 16px 32px !important; }
+    /* value col: tightest padding */
+    .value-col{ padding: 28px 18px; }
   }
 
 </style>
@@ -727,12 +765,23 @@ document.querySelectorAll('p.body, .mask').forEach(p => {
   const inners = Array.from(accordion.querySelectorAll('.svc-item-inner'));
   const NAV    = 68;
   const STRIP  = 52;
+  // Breakpoint that matches the CSS mobile switch (max-width:860px)
+  const MOBILE_BP = 860;
+
+  function isMobile(){ return window.innerWidth <= MOBILE_BP; }
 
   function maxH(i){ return window.innerHeight - NAV - i * STRIP; }
 
   function ease(t){ return -(Math.cos(Math.PI*t)-1)/2; }
 
+  function clearHeights(){
+    // Remove JS-set heights so the CSS (height:auto !important) takes over
+    inners.forEach(el => el.style.removeProperty('height'));
+  }
+
   function tick(){
+    if(isMobile()){ clearHeights(); return; }
+
     const accordionTop = accordion.getBoundingClientRect().top + window.scrollY;
     const scrolled     = window.scrollY - accordionTop;
     const sectionH     = window.innerHeight;
@@ -762,6 +811,7 @@ document.querySelectorAll('p.body, .mask').forEach(p => {
 
   window.addEventListener('scroll', tick, {passive:true});
   window.addEventListener('resize', () => {
+    if(isMobile()){ clearHeights(); return; }
     inners.forEach((el,i) => el.style.height = maxH(i)+'px');
     tick();
   });
