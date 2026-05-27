@@ -1849,6 +1849,9 @@
       stage.style.width = '';
       stage.style.maxWidth = '';
       stage.style.height = '';
+      stage.style.alignSelf = '';
+      stage.style.position = '';
+      stage.style.left = '';
       return;
     }
     // .wrap padding: 22px each side (default), 16px at ≤480px (matches styles.css)
@@ -1859,10 +1862,13 @@
     stage.style.width = NAT + 'px';
     stage.style.maxWidth = 'none';
     stage.style.height = NAT + 'px';
-    // .wrap has overflow:hidden, so a 560px child in a narrower flex container won't be
-    // centered by flexbox — it aligns to the left edge and clips on the right.
-    // Manually offset so the stage (and its scaled visual) sits centered in availW.
-    stage.style.marginLeft = Math.round((availW - NAT) / 2) + 'px';
+    // Pin to the left edge of the flex column, then offset with `left` so the
+    // 560px stage is centered in availW. This is predictable regardless of how
+    // the browser handles align-items:center for an oversized flex child.
+    stage.style.alignSelf = 'flex-start';
+    stage.style.position = 'relative';
+    stage.style.left = Math.round((availW - NAT) / 2) + 'px';
+    stage.style.marginLeft = '';
     // Scale from top-center of the natural stage
     stage.style.transformOrigin = 'center top';
     stage.style.transform = 'scale(' + scale.toFixed(4) + ')';
