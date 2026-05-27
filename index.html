@@ -989,6 +989,12 @@
 @media(max-width:768px){
   .five-wrap{padding:36px 0 44px}
   .five-head{margin-bottom:28px}
+  /* Force text blocks to fill the same width as the stage so their
+     left/right edges align with the ring — otherwise max-content eyebrow
+     and 22ch h2 appear narrower and look left-shifted vs the wheel */
+  .five-head .eyebrow{width:100%;justify-content:center}
+  .five-head h2{max-width:100%}
+  .five-head .sub{display:block;text-align:center}
 }
 /* Tablet intermediate (769–880px): slightly smaller, no JS scale needed */
 @media(min-width:769px) and (max-width:880px){
