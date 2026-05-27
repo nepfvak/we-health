@@ -493,7 +493,7 @@ h2{ color:var(--paper) }
 h3{ color:var(--paper) }
 
 /* Nav — readable links */
-.nav .links a{ font-weight: 600 }
+.nav .links a{ font-weight: 500 }
 
 /* Footer — readable text across all themes */
 .f-block h4{ font-size:12px }
