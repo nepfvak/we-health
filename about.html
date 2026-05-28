@@ -52,7 +52,7 @@
   position:absolute;right:24px;bottom:24px;z-index:2;
   width:56px;height:56px;border:.5px solid var(--cinnabar);display:grid;place-items:center;
   font-family:var(--brush);font-size:26px;color:var(--cinnabar);background:rgba(168,50,50,.08);
-  transform:rotate(4deg);
+  transform:rotate(0deg);
 }
 
 .practitioner-name{
@@ -60,25 +60,26 @@
   font-size:clamp(28px,3.6vw,44px);line-height:1.05;color:var(--paper);margin-bottom:6px;
 }
 .practitioner-name .surname{color:var(--gold);font-style:normal;font-weight:400}
+.practitioner-name .alias{font-style:normal;font-weight:300;font-size:.72em;color:var(--paper-dim)}
 .practitioner-credentials{
   font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;
   color:var(--paper-faint);margin-bottom:32px;
 }
 .practitioner-bio{
-  list-style:none;display:flex;flex-direction:column;gap:14px;
+  list-style:none;display:flex;flex-direction:column;gap:18px;
 }
 .practitioner-bio li{
-  position:relative;padding-left:22px;
-  font-family:var(--serif);font-weight:400;font-size:16px;line-height:1.7;color:var(--paper-dim);
+  position:relative;padding-left:24px;
+  font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.7;color:var(--paper-dim);
 }
 .practitioner-bio li::before{
-  content:"";position:absolute;left:0;top:.65em;
-  width:6px;height:.5px;background:var(--gold);
+  content:"";position:absolute;left:0;top:.58em;
+  width:6px;height:6px;border-radius:50%;background:var(--gold);
 }
 .practitioner-bio li strong{color:var(--paper);font-weight:400}
 .practitioner-bio li em{font-style:italic;color:var(--gold)}
 .practitioner-divider{
-  width:100%;height:1px;background:linear-gradient(90deg,var(--gold),transparent 70%);
+  width:100%;height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(76,179,90,.35) 55%,transparent 100%);
   margin:32px 0;
 }
 
@@ -248,7 +249,7 @@
   <div class="wrap">
     <div class="practitioners-intro reveal">
       <div class="eyebrow"><span class="cn">醫</span>Our Team</div>
-      <h2>Healing hands, <span class="accent">rooted in tradition</span></h2>
+      <h2>Healing hands, <span class="accent">caring heart,</span> rooted in tradition</h2>
       <p class="sub">Board-certified · NCCAOM Diplomates · Tennessee Licensed</p>
     </div>
 
@@ -261,9 +262,9 @@
           <div class="stamp">醫</div>
         </div>
         <div class="practitioner-name">
-          Yingjuan <span class="surname">Liang</span>
+          Dr. Yingjuan <span class="surname">Liang</span> <span class="alias">(Dr. Selina)</span>
         </div>
-        <div class="practitioner-credentials">DACM · L.Ac. · Memphis, Tennessee</div>
+        <div class="practitioner-credentials">DACM · L.Ac. · Tennessee and Mississippi</div>
         <div class="practitioner-divider"></div>
         <ul class="practitioner-bio">
           <li>Licensed Acupuncturist and Herbalist in Tennessee; doctoral degree in Acupuncture and Chinese Medicine; board-certified Diplomate of Oriental Medicine (NCCAOM)</li>
@@ -273,10 +274,10 @@
           <li>Direct disciple of <strong>Prof. Ying Wang</strong> in Modern Abdominal Diagnosis &amp; Acupuncture — the <em>only overseas practitioner</em> to receive formal lineage recognition</li>
           <li>Selected as one of twelve practitioners nationwide for the inaugural Overseas Chinese Medicine Mentorship, studying under <strong>Prof. Ming Jin</strong> in reproductive health &amp; infertility; clinically certified in <strong>Soliman Auricular Allergy Treatment</strong> (SAAT) by Dr. Nader Soliman directly</li>
           <li>Member of the American Traditional Chinese Medicine Society (ATCMS) and the American Traditional Chinese Medicine Association (ATCMA)</li>
+          <li><em>Certified SAAT allergy treatment provider</em></li>
           <li>Secretary-General, Mid-South Chinese Chamber of Commerce · Board Member, Greater Memphis United Federation · Co-Chair, inaugural 2025 Memphis Lunar New Year Fair (Miao Hui)</li>
           <li>Yingjuan's parents are both doctors — she was deeply influenced not only by their skills for healing patients, but also their genuine personalities</li>
           <li>Her practice prioritises treating patient's body, mind, and spirit with a holistic approach, especially at the spiritual level</li>
-          <li><em>Certified SAAT allergy treatment provider</em></li>
           <li>We welcome you to experience Yingjuan's caring heart and healing hands!</li>
         </ul>
       </div>
@@ -285,19 +286,20 @@
       <div class="practitioner-card reveal d2">
         <div class="practitioner-portrait">
           <img src="assets/dr-zhao-portrait.png" loading="lazy" alt="Portrait of Dr. Tieqiang Zhao" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" />
-          <div class="stamp" style="transform:rotate(-3deg)">仁</div>
+          <div class="stamp">仁</div>
         </div>
         <div class="practitioner-name">
-          Tieqiang <span class="surname">Zhao</span>
+          Dr. Tieqiang <span class="surname">Zhao</span>
         </div>
         <div class="practitioner-credentials">MD(CN) · L.Ac. · Ph.D.</div>
         <div class="practitioner-divider"></div>
         <ul class="practitioner-bio">
+          <li>Board-Certified Diplomate of Acupuncture (NCCAOM)</li>
+          <li>Licensed Acupuncturist in Tennessee</li>
+          <li>Certified SAAT (Soliman Auricular Allergy Treatment) provider</li>
           <li>Graduated from the prestigious 7-year Clinical Medicine program at Harbin Medical University — one of only 15 medical schools in China authorised to offer this elite track; completed a 3-year doctoral program, earning both M.D. and Ph.D. degrees</li>
           <li>Served as Attending Physician in Internal Medicine/Cardiology at Harbin Medical University; later Associate Professor at Peking University Health Science Center</li>
           <li>Completed a comprehensive apprenticeship in Traditional Chinese Medicine under the direct supervision of renowned practitioner Dr. Alex Ly</li>
-          <li>Licensed Acupuncturist in Tennessee</li>
-          <li>Board-Certified Diplomate of Acupuncture (NCCAOM)</li>
           <li>Executive Director, World Federation of Chinese Medicine Societies – Cardiovascular Disease Committee</li>
           <li>Professional Member, American Heart Association &amp; American Stroke Association</li>
           <li>National-level Judge of Tai Chi and Kung Fu (USA Wushu Kungfu Federation)</li>

@@ -552,8 +552,8 @@
    ═══════════════════════════════════════════════════════════════════ */
 
   /* TYPE — bump size & weight so it reads from across the room */
-  html, body{ font-size:18px; line-height:1.75 }
-  .body, p.body{ font-size:18px; line-height:1.78; color:var(--paper); font-weight:600 }
+  html, body{ font-size:20px; line-height:1.75 }
+  .body, p.body{ font-size:22px; line-height:1.78; color:var(--paper); font-weight:600 }
   .eyebrow{ color:var(--paper-faint); font-size:12px; letter-spacing:.3em }
   .eyebrow::before{ background: var(--gold) }
   .eyebrow .cn{ color: var(--gold) }
@@ -611,7 +611,7 @@
     text-wrap: pretty;
   }
   :root:not([data-theme="light"]) .hero h1{ color: #f5f5f5 }
-  .hero h1 .accent{ font-style: italic; font-weight: 400; color: var(--gold); letter-spacing: -.005em }
+  .hero h1 .accent{ font-style: italic; font-weight: 400; color: var(--paper); letter-spacing: -.005em }
   .hero h1 .cn{
     display:inline-block; font-family:var(--brush); color:var(--gold);
     font-size:.52em; vertical-align:.35em; margin-left:.18em; font-weight:500;
@@ -621,9 +621,9 @@
     font-family: var(--serif) !important;
     font-style: italic !important;
     font-weight: 400 !important;
-    font-size: clamp(42px, 4.6vw, 60px) !important;
+    font-size: clamp(50px, 5.5vw, 74px) !important;
     line-height: 1.45 !important;
-    color: var(--gold) !important;
+    color: var(--paper) !important;
     max-width: 30ch;
     margin: 0 auto 32px !important;
     letter-spacing: 0 !important;
@@ -653,16 +653,16 @@
   .hero .qf .v a:hover{ color:var(--gold); border-color:var(--gold) }
 
   /* CTAs */
-  .hero .cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; margin-top:40px }
+  .hero .cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:stretch; justify-content:center; margin-top:40px; max-width:660px; margin-left:auto; margin-right:auto; }
   .hero .btn-primary{
-    display: inline-flex !important; align-items: center !important; gap: 10px !important;
+    display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important;
     background: var(--gold) !important; color: var(--ink) !important;
     border: none !important;
-    padding: 16px 32px !important;
+    padding: 16px 32px !important; flex: 1 1 0 !important;
     font-family: var(--mono) !important;
     font-size: 13px !important; letter-spacing:.22em !important;
     font-weight: 600 !important; text-transform: uppercase !important;
-    border-radius: 2px !important;
+    border-radius: 10px !important;
     box-shadow: 0 4px 24px rgba(76,179,90,.18) !important;
     transition: background .25s, transform .22s, box-shadow .25s !important;
     position: relative !important; overflow: visible !important;
@@ -681,23 +681,24 @@
   .hero .btn-primary:hover .arrow{ transform: translateX(3px) !important }
 
   .hero .btn-ghost{
-    display: inline-flex !important; align-items: center !important; gap: 9px !important;
-    color: var(--paper-dim) !important;
-    background: transparent !important;
-    border: 1px solid rgba(76,179,90,.3) !important;
-    padding: 15px 28px !important;
+    display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 9px !important;
+    color: var(--ink) !important;
+    background: var(--gold-dim) !important;
+    border: none !important;
+    padding: 16px 32px !important; flex: 1 1 0 !important;
     font-family: var(--mono) !important;
     font-size: 13px !important; letter-spacing:.22em !important;
-    font-weight: 400 !important; text-transform: uppercase !important;
-    border-radius: 2px !important;
-    transition: color .25s, border-color .25s, background .25s !important;
+    font-weight: 600 !important; text-transform: uppercase !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 24px rgba(58,148,71,.18) !important;
+    transition: background .25s, transform .22s, box-shadow .25s !important;
   }
   .hero .btn-ghost:hover{
-    color: var(--gold) !important;
-    border-color: var(--gold) !important;
-    background: rgba(76,179,90,.07) !important;
+    background: #2d7a39 !important; color: var(--ink) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 36px rgba(58,148,71,.3) !important;
   }
-  .hero .btn-phone-icon{ display:inline-flex; align-items:center; opacity:.7 }
+  .hero .btn-phone-icon{ display:inline-flex; align-items:center; opacity:.85 }
   .hero .btn-ghost:hover .btn-phone-icon{ opacity:1 }
 
   /* Testimonial pull-quote below CTAs */
@@ -1243,7 +1244,7 @@
       </div>
 
       <div class="text reveal d2">
-        <div class="name">Dr. Yingjuan Liang <span class="surname">(Selina)</span></div>
+        <div class="name">Dr. Yingjuan Liang <span class="surname">(Dr. Selina)</span></div>
         <div class="cred-bar">
           <span class="cred-pill">DACM</span>
           <span class="cred-pill">L.Ac.</span>
