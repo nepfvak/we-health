@@ -590,12 +590,13 @@
   }
   .hero::after{
     content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-    background: rgba(8,9,8,.80);
+    background: rgba(8,9,8,.50);
   }
   .hero .wrap{ position:relative; z-index:2 }
   .hero .wrap{ max-width:1240px; margin:0 auto; padding:0 22px; width:100%; position:relative; z-index:2 }
   .hero-grid{ display:grid; grid-template-columns:1fr; gap:0; align-items:center }
-  .hero-text{ max-width: 680px }
+  .hero-text{ max-width: 680px; margin: 0 auto; text-align: center }
+  .hero .eyebrow{ justify-content: center }
 
   .hero h1{
     font-family: var(--serif);
@@ -606,7 +607,7 @@
     letter-spacing: -.005em;
     color: var(--paper);
     max-width: 28ch;
-    margin-bottom: 24px;
+    margin: 0 auto 24px;
     text-wrap: pretty;
   }
   .hero h1 .accent{ font-style: italic; font-weight: 400; color: var(--gold); letter-spacing: -.005em }
@@ -619,11 +620,11 @@
     font-family: var(--serif) !important;
     font-style: italic !important;
     font-weight: 400 !important;
-    font-size: clamp(36px, 4vw, 52px) !important;
-    line-height: 1.55 !important;
+    font-size: clamp(42px, 4.6vw, 60px) !important;
+    line-height: 1.45 !important;
     color: var(--gold) !important;
-    max-width: 38ch;
-    margin: 0 0 32px !important;
+    max-width: 30ch;
+    margin: 0 auto 32px !important;
     letter-spacing: 0 !important;
   }
   .hero .lede{
@@ -651,7 +652,7 @@
   .hero .qf .v a:hover{ color:var(--gold); border-color:var(--gold) }
 
   /* CTAs */
-  .hero .cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:40px }
+  .hero .cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; margin-top:40px }
   .hero .btn-primary{
     display: inline-flex !important; align-items: center !important; gap: 10px !important;
     background: var(--gold) !important; color: var(--ink) !important;
