@@ -207,7 +207,7 @@ body::before {
 }
 .nav-dropdown a {
   display: flex; align-items: center;
-  padding: 9px 32px;
+  padding: 9px 32px 9px 44px;
   font-family: "Times New Roman", serif; font-size: 13px; letter-spacing: .09em; text-transform: uppercase;
   color: #0d0c08; white-space: nowrap;
   transition: color .18s; text-decoration: none;
