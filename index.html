@@ -327,12 +327,6 @@
   .about .text .name .surname{color:var(--gold);font-style:normal;font-weight:400}
   .about .text .credentials{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--paper-faint);margin-bottom:32px}
   .about .text p.body{font-size:17px;max-width:54ch}
-  .about .text .quote{
-    margin:36px 0 28px;padding-left:24px;border-left:.5px solid var(--gold);
-    font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;line-height:1.65;color:var(--paper);max-width:36ch;
-  }
-  .about .text .quote::before{content:"\201C";font-size:32px;color:var(--gold);margin-right:4px;line-height:0;vertical-align:-.1em}
-  .about .text .quote::after{content:"\201D";font-size:32px;color:var(--gold);margin-left:2px;line-height:0;vertical-align:-.1em}
 
 /* ── Ink-paint reveal ──────────────────────────────────────────────── */
   @keyframes ink-reveal {
@@ -1200,37 +1194,6 @@
   </div>
 </div>
 
-<!-- ─── Trust Strip ───────────────────────────────────────────────── -->
-<div class="trust-strip" role="complementary" aria-label="Credentials and coverage">
-  <div class="trust-inner">
-    <div class="trust-item reveal">
-      <div class="t-mark">Credentials</div>
-      <div class="t-label">DACM · L.Ac.</div>
-      <div class="t-sub">Doctoral acupuncturist</div>
-    </div>
-    <div class="trust-item reveal d1">
-      <div class="t-mark">Veterans</div>
-      <div class="t-label">VA Authorized</div>
-      <div class="t-sub">Certified VA provider</div>
-    </div>
-    <div class="trust-item reveal d2">
-      <div class="t-mark">Insurance</div>
-      <div class="t-label">UnitedHealthcare</div>
-      <div class="t-sub">UHC plans accepted</div>
-    </div>
-    <div class="trust-item reveal d3">
-      <div class="t-mark">Flex Spending</div>
-      <div class="t-label">HSA · FSA</div>
-      <div class="t-sub">Health savings accepted</div>
-    </div>
-    <div class="trust-item reveal d4">
-      <div class="t-mark">First Visit</div>
-      <div class="t-label">90 Minutes</div>
-      <div class="t-sub">vs. 60 min elsewhere</div>
-    </div>
-  </div>
-</div>
-
 <!-- ─── The Practitioner ─────────────────────────────────────────── -->
 <section class="about" id="about">
   <div class="wrap">
@@ -1270,15 +1233,42 @@
           tailored to the patient in front of her.
         </p>
 
-        <div class="quote" style="margin-top:36px">
-          We welcome you to experience Dr. Liang&rsquo;s caring heart and healing hands.
-        </div>
-
         <a href="about.html" class="btn-ghost">Read full bio &amp; lineage <span style="font-family:var(--serif);font-style:italic">&rarr;</span></a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ─── Trust Strip ───────────────────────────────────────────────── -->
+<div class="trust-strip" role="complementary" aria-label="Credentials and coverage">
+  <div class="trust-inner">
+    <div class="trust-item reveal">
+      <div class="t-mark">Credentials</div>
+      <div class="t-label">DACM · L.Ac.</div>
+      <div class="t-sub">Doctoral acupuncturist</div>
+    </div>
+    <div class="trust-item reveal d1">
+      <div class="t-mark">Veterans</div>
+      <div class="t-label">VA Authorized</div>
+      <div class="t-sub">Certified VA provider</div>
+    </div>
+    <div class="trust-item reveal d2">
+      <div class="t-mark">Insurance</div>
+      <div class="t-label">UnitedHealthcare</div>
+      <div class="t-sub">UHC plans accepted</div>
+    </div>
+    <div class="trust-item reveal d3">
+      <div class="t-mark">Flex Spending</div>
+      <div class="t-label">HSA · FSA</div>
+      <div class="t-sub">Health savings accepted</div>
+    </div>
+    <div class="trust-item reveal d4">
+      <div class="t-mark">First Visit</div>
+      <div class="t-label">90 Minutes</div>
+      <div class="t-sub">vs. 60 min elsewhere</div>
+    </div>
+  </div>
+</div>
 
 <!-- divider -->
 <div class="divider" aria-hidden="true">
