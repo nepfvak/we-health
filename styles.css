@@ -682,6 +682,14 @@ image-slot::part(image) { touch-action: pan-y; }
   background: transparent;
   /* Only shown on touch devices via JS — see footer-map.js */
 }
+.f-map-overlay::after {
+  content: "Tap to interact with map";
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--paper); opacity: .7;
+  background: rgba(18,18,18,.55); padding: 6px 14px; pointer-events: none;
+  white-space: nowrap;
+}
 .f-map-overlay.is-active {
   display: none;
 }

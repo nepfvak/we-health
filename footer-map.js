@@ -25,10 +25,9 @@
     overlay.setAttribute('aria-hidden', 'true');
     wrap.appendChild(overlay);
 
-    // On first tap, remove the overlay so the iframe becomes interactive
-    overlay.addEventListener('touchstart', function (e) {
-      e.preventDefault();
+    // On deliberate tap (not scroll), remove the overlay so the iframe becomes interactive
+    overlay.addEventListener('click', function () {
       overlay.classList.add('is-active');
-    }, { passive: false });
+    });
   });
 })();

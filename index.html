@@ -835,7 +835,7 @@
   /* 4-column info grid */
   .f-info{
     display:grid; grid-template-columns:repeat(4,1fr);
-    gap:40px 32px; margin-bottom:52px;
+    gap:40px 32px; margin-bottom:52px; align-items:start;
   }
 
   /* Map — fixed height, slim */
@@ -1614,10 +1614,15 @@
         <p>985 Cordova Station Ave<br>Ste 101, Cordova, TN 38018</p>
         <a href="https://maps.google.com/?q=985+Cordova+Station+Ave+Ste+101,+Cordova,+TN+38018" target="_blank" rel="noopener">Open in Maps &rarr;</a>
       </div>
-      <div class="f-block">
+      <div class="f-block f-hours">
         <h4>Hours</h4>
-        <p>Mon&ndash;Sat &middot; 8:00 am&ndash;6:00 pm</p>
-        <p class="muted">Sunday &middot; Closed</p>
+        <div class="row"><span class="day">Monday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Tuesday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Wednesday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Thursday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Friday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Saturday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
       </div>
       <div class="f-block">
         <h4>Follow</h4>
