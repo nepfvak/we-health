@@ -475,8 +475,8 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* Dark mode overrides */
 :root:not([data-theme="light"]){
-  --paper:        #f5f5f5;
-  --paper-dim:    #b8b8b8;
+  --paper:        #e8e8e8;
+  --paper-dim:    #a8a8a8;
   --gold:         #4cb35a;
   --gold-dim:     #3a9447;
   --gold-light:   rgba(76,179,90,.15);
