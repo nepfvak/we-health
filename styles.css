@@ -175,25 +175,22 @@ body::before {
 /* Services dropdown — camera-notch, seamlessly connected to nav */
 .nav .links .has-dropdown { position: relative; display: inline-flex; align-items: center }
 
-/* Invisible bridge: fills the space between the link's bottom and the nav glass edge */
+/* Hover bridge: real pointer-events target filling the gap so the dropdown stays open */
 .has-dropdown::after {
-  content: ''; position: absolute; top: 100%; left: 0; right: 0;
-  height: calc(var(--frame-inset) + 6px);
-  background: rgba(12,14,12,.97);
-  pointer-events: none; opacity: 0;
-  transition: opacity .14s ease; z-index: 99;
+  content: ''; position: absolute; top: 100%; left: -8px; right: -8px;
+  height: 12px;
+  background: transparent;
+  pointer-events: auto; z-index: 101;
 }
-.has-dropdown:hover::after,
-.has-dropdown:focus-within::after { opacity: 1 }
 
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + var(--frame-inset));
+  top: calc(100% + 6px);
   left: 50%; transform: translateX(-50%);
   min-width: 220px;
-  background: rgba(12,14,12,.97);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  backdrop-filter: blur(20px) saturate(140%);
+  background: rgba(12,14,12,.80);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
   border: .5px solid rgba(255,255,255,.14); border-top: none;
   border-radius: 0 0 20px 20px;
   padding: 10px 0 18px; z-index: 100;
@@ -225,10 +222,10 @@ body::before {
 .nav-dropdown a::after { display: none }
 
 /* Light mode — match the olive-sage nav */
-.has-dropdown::after,
-[data-theme="light"] .has-dropdown::after { background: rgba(118,158,92,.97) }
 [data-theme="light"] .nav-dropdown {
-  background: rgba(118,158,92,.97);
+  background: rgba(118,158,92,.90);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
   border-color: rgba(20,46,12,.22);
   box-shadow: 0 14px 36px rgba(0,0,0,.18);
 }
