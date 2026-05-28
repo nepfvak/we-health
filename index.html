@@ -321,7 +321,7 @@
     transform:rotate(4deg);display:var(--glyph-display,grid);
   }
   .about .text .name{
-    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-family:var(--serif);font-style:italic;font-weight:400;
     font-size:clamp(36px,4.8vw,56px);line-height:1.05;color:var(--paper);margin-bottom:8px;
   }
   .about .text .name .surname{color:var(--gold);font-style:normal;font-weight:400}
@@ -423,7 +423,7 @@
   /* inactive text — visible but clearly secondary */
   .acu-code{
     font:400 13px/1 var(--mono);letter-spacing:.2em;color:var(--gold);
-    margin-bottom:8px;opacity:.6;transition:opacity .45s ease;
+    margin-bottom:8px;opacity:.7;transition:opacity .45s ease;
   }
   .acu-hanzi{
     font:400 clamp(26px,3vw,40px)/1 var(--brush);color:var(--paper);
@@ -436,8 +436,8 @@
   .acu-name em{display:block;font-style:italic;font-size:13px;margin-top:3px;color:var(--paper-dim)}
   .acu-meridian{
     display:block;margin-top:12px;
-    font:400 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
-    color:var(--gold);opacity:.55;transition:opacity .45s ease;
+    font:400 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);opacity:.65;transition:opacity .45s ease;
   }
   /* seen — clearly readable */
   .acu-card.seen .acu-code    {opacity:.8}
@@ -458,8 +458,8 @@
   }
   .acu-detail-inner.fading{opacity:0}
   @media(max-width:700px){.acu-detail-inner{grid-template-columns:1fr;padding:20px}}
-  .acu-d-label{font:400 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-  .acu-d-body{font:400 15px/1.7 var(--serif);color:var(--paper)}
+  .acu-d-label{font:400 13px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .acu-d-body{font:400 16px/1.7 var(--serif);color:var(--paper)}
   .acu-d-quote{font:400 15px/1.75 var(--serif);font-style:italic;color:var(--paper);border-left:1.5px solid var(--gold);padding-left:14px}
   [data-theme="light"] .acu-card.active{background:rgba(61,139,114,.12);box-shadow:0 0 0 .5px var(--gold)}
   [data-theme="light"] .acu-detail{background:rgba(24,24,26,.015)}
@@ -473,9 +473,9 @@
   @media(max-width:480px){.trust-inner{grid-template-columns:1fr}}
   .trust-item{padding:28px 24px;display:flex;flex-direction:column;gap:10px;background:var(--ink-2);border:1px solid var(--rule);border-top:2px solid var(--rule);transition:border-top-color .25s,transform .25s,box-shadow .25s}
   .trust-item:hover{border-top-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.18)}
-  .t-mark{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-faint)}
-  .t-label{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2vw,28px);color:var(--paper);line-height:1.1}
-  .t-sub{font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-faint)}
+  .t-mark{font-family:var(--mono);font-size:13px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-faint)}
+  .t-label{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2vw,28px);color:var(--paper);line-height:1.1}
+  .t-sub{font-family:var(--mono);font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-faint)}
 
   /* Featured care carousel */
   .focus-slider{
@@ -527,7 +527,7 @@
   .focus-image{height:clamp(210px,20vw,262px);background:var(--ink)}
   .focus-image image-slot{display:block;width:100%;height:100%}
   .focus-body{padding:18px 22px 22px;display:flex;justify-content:space-between;gap:12px;align-items:flex-end;border-top:1px solid var(--rule)}
-  .focus-count{font-family:var(--mono);font-size:11px;letter-spacing:.20em;color:var(--paper-faint);padding-bottom:2px}
+  .focus-count{font-family:var(--mono);font-size:12px;letter-spacing:.20em;color:var(--paper-faint);padding-bottom:2px}
   .focus-name{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:400;font-style:italic;color:var(--paper);line-height:1.1}
   /* Scroll progress line */
   .focus-progress{height:1px;background:var(--rule);margin-top:28px;position:relative;overflow:hidden}
@@ -661,7 +661,7 @@
     border: none !important;
     padding: 16px 32px !important;
     font-family: var(--mono) !important;
-    font-size: 11px !important; letter-spacing:.22em !important;
+    font-size: 13px !important; letter-spacing:.22em !important;
     font-weight: 600 !important; text-transform: uppercase !important;
     border-radius: 2px !important;
     box-shadow: 0 4px 24px rgba(76,179,90,.18) !important;
@@ -688,7 +688,7 @@
     border: 1px solid rgba(76,179,90,.3) !important;
     padding: 15px 28px !important;
     font-family: var(--mono) !important;
-    font-size: 11px !important; letter-spacing:.22em !important;
+    font-size: 13px !important; letter-spacing:.22em !important;
     font-weight: 400 !important; text-transform: uppercase !important;
     border-radius: 2px !important;
     transition: color .25s, border-color .25s, background .25s !important;
@@ -800,13 +800,13 @@
     font-size: 14.5px; color: var(--gold); letter-spacing:.02em;
   }
   .svc .svc-body p{
-    font-family: var(--serif); font-weight:400; font-size:15.5px;
+    font-family: var(--serif); font-weight:400; font-size:16px;
     line-height: 1.65; color: var(--paper); margin-top:6px;
   }
   .svc .icon, .svc .cn, .svc .num + .icon{ display:none !important }
   .svc .learn{
     display:inline-flex !important;
-    font-family: var(--mono); font-size:10.5px; letter-spacing:.22em; text-transform:uppercase;
+    font-family: var(--mono); font-size:12px; letter-spacing:.22em; text-transform:uppercase;
     color: var(--gold); margin-top:14px; padding-top:14px; border-top:.5px solid var(--rule);
     align-items:center; gap:8px; transition: gap .3s ease;
   }
@@ -842,13 +842,13 @@
     font-family: var(--serif); font-size: 15px; line-height: 1.55;
   }
   .f-map .pin .h{
-    font-family: var(--mono); font-size:10.5px; letter-spacing:.26em;
+    font-family: var(--mono); font-size:12px; letter-spacing:.26em;
     text-transform:uppercase; color: var(--gold); margin-bottom:8px;
   }
   .f-map .pin b{ font-weight:600; color: var(--paper) }
   .f-map .pin a{
     display:inline-block; margin-top:10px; font-family:var(--mono);
-    font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    font-size:12px; letter-spacing:.22em; text-transform:uppercase;
     color: var(--gold); border-bottom:1px solid var(--gold); padding-bottom:1px;
   }
 
@@ -1004,7 +1004,7 @@
       font-size: 17px;
     }
     .svc .svc-body p{
-      font-size: 13.5px;
+      font-size: 15px;
     }
     .svc .svc-body{
       padding: 16px 14px 20px;
@@ -1041,9 +1041,9 @@
 .five-desc{position:absolute;inset:0;display:grid;place-items:center;padding:36px;opacity:0;transform:scale(.96);transition:opacity .35s ease,transform .35s ease}
 .five-desc.on{opacity:1;transform:none}
 .five-desc .blurb{max-width:24ch}
-.five-desc .label{font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--accent,var(--gold));margin-bottom:14px}
-.five-desc h4{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2.6vw,28px);line-height:1.1;color:var(--paper);margin-bottom:10px}
-.five-desc p{font-family:var(--serif);font-size:13.5px;line-height:1.65;color:var(--paper-dim);font-weight:400;font-style:italic}
+.five-desc .label{font-family:var(--mono);font-size:13px;letter-spacing:.20em;text-transform:uppercase;color:var(--accent,var(--gold));margin-bottom:14px}
+.five-desc h4{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.6vw,28px);line-height:1.1;color:var(--paper);margin-bottom:10px}
+.five-desc p{font-family:var(--serif);font-size:15px;line-height:1.65;color:var(--paper-dim);font-weight:400;font-style:italic}
 @keyframes fiveSpin{to{transform:rotate(360deg)}}
 @keyframes fiveSpinCC{to{transform:rotate(360deg)}}
 @keyframes fiveCounter{to{transform:rotate(-360deg)}}
