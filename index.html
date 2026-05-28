@@ -478,33 +478,65 @@
   .t-sub{font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-faint)}
 
   /* Featured care carousel */
-  .focus-slider{position:relative;z-index:3;padding:clamp(58px,7vw,92px) 0 clamp(34px,4vw,54px)}
-  .focus-inner{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
-  .focus-head{margin-bottom:28px}
-  .focus-head h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(32px,4.2vw,48px);line-height:1.05;color:var(--paper);margin-top:12px}
-  .focus-stage{position:relative}
-  .focus-controls{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:2}
-  .focus-arrow{width:54px;height:54px;border:1px solid rgba(240,236,226,.48);background:rgba(240,236,226,.44);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);display:grid;place-items:center;font-family:var(--serif);font-size:27px;color:var(--paper);pointer-events:auto;transition:border-color .25s,color .25s,background .25s,opacity .25s}
-  .focus-arrow:first-child{transform:translateX(-50%)}
-  .focus-arrow:last-child{transform:translateX(50%)}
-  .focus-arrow:hover:not(:disabled),.focus-arrow:focus-visible:not(:disabled){border-color:rgba(76,179,90,.72);color:var(--gold);background:rgba(240,236,226,.64)}
-  .focus-arrow:disabled{opacity:.35;cursor:default}
+  .focus-slider{
+    position:relative; z-index:3;
+    background:var(--ink-2);
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    padding:clamp(64px,7vw,96px) 0 clamp(52px,5vw,72px);
+    overflow:hidden;
+  }
+  /* Grain texture overlay */
+  .focus-slider::before{
+    content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.88  0 0 0 0 0.72  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+    opacity:0.15; mix-blend-mode:overlay;
+  }
+  /* Decorative background glyph — 療 (healing) */
+  .focus-slider::after{
+    content:"療"; position:absolute; right:clamp(20px,4vw,72px); top:50%;
+    transform:translateY(-55%); z-index:0; pointer-events:none;
+    font-family:var(--brush); font-size:clamp(180px,24vw,340px);
+    line-height:1; color:var(--gold); opacity:0.045;
+  }
+  .focus-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
+  /* Heading row: text left, arrows right */
+  .focus-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;gap:24px}
+  .focus-head-nav{display:flex;gap:8px;flex-shrink:0;padding-bottom:4px}
+  .focus-head h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(32px,4.2vw,48px);line-height:1.05;color:var(--paper);margin-top:12px;margin-bottom:0}
+  /* Editorial arrow buttons */
+  .focus-arrow{
+    width:44px;height:44px;
+    border:1px solid var(--rule-strong);
+    background:transparent;
+    display:grid;place-items:center;
+    font-family:var(--serif);font-size:20px;color:var(--paper-dim);
+    transition:border-color .25s,color .25s;
+  }
+  .focus-arrow:hover:not(:disabled),.focus-arrow:focus-visible:not(:disabled){border-color:var(--gold);color:var(--gold)}
+  .focus-arrow:disabled{opacity:.28;cursor:default}
   .focus-viewport{overflow:hidden}
-  .focus-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px) / 3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:1px}
+  .focus-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px) / 3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:2px}
   .focus-track::-webkit-scrollbar{display:none}
-  .focus-card{scroll-snap-align:start;border:1px solid var(--rule);background:var(--ink-2);overflow:hidden;min-width:0}
-  .focus-image{height:clamp(210px,20vw,262px);background:var(--ink-3)}
+  .focus-card{
+    scroll-snap-align:start; min-width:0; overflow:hidden;
+    background:var(--ink-3);
+    border:1px solid var(--rule); border-top:2px solid var(--rule);
+    transition:border-top-color .25s,transform .25s,box-shadow .25s;
+  }
+  .focus-card:hover{border-top-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.30)}
+  .focus-image{height:clamp(210px,20vw,262px);background:var(--ink)}
   .focus-image image-slot{display:block;width:100%;height:100%}
-  .focus-body{padding:22px 22px 25px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-  .focus-count{font-family:var(--mono);font-size:11px;letter-spacing:.20em;color:var(--paper-faint)}
-  .focus-name{font-family:var(--serif);font-size:clamp(23px,2.2vw,28px);font-weight:400;font-style:italic;color:var(--paper);line-height:1.1}
+  .focus-body{padding:18px 22px 22px;display:flex;justify-content:space-between;gap:12px;align-items:flex-end;border-top:1px solid var(--rule)}
+  .focus-count{font-family:var(--mono);font-size:11px;letter-spacing:.20em;color:var(--paper-faint);padding-bottom:2px}
+  .focus-name{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:400;font-style:italic;color:var(--paper);line-height:1.1}
+  /* Scroll progress line */
+  .focus-progress{height:1px;background:var(--rule);margin-top:28px;position:relative;overflow:hidden}
+  .focus-progress-bar{position:absolute;left:0;top:0;height:100%;width:0;background:var(--gold);transition:width .25s ease}
   @media(max-width:920px){.focus-track{grid-auto-columns:calc((100% - 18px) / 2)}}
   @media(max-width:600px){
     .focus-inner{padding:0 16px}
-    .focus-head h2{font-size:32px}
-    .focus-arrow{width:44px;height:44px;background:rgba(240,236,226,.58)}
-    .focus-arrow:first-child{transform:translateX(-18%)}
-    .focus-arrow:last-child{transform:translateX(18%)}
+    .focus-head h2{font-size:28px}
+    .focus-head-nav{padding-bottom:2px}
     .focus-track{grid-auto-columns:100%;gap:12px}
   }
 
@@ -1128,44 +1160,43 @@
   <div class="focus-inner">
     <div class="focus-head">
       <div>
-        <div class="eyebrow reveal"><span>Areas of Care</span></div>
+        <div class="eyebrow reveal"><span class="cn">診</span><span>Areas of Care</span></div>
         <h2 class="reveal d1">How we can help</h2>
       </div>
-    </div>
-    <div class="focus-stage">
-      <div class="focus-controls reveal d2" aria-label="Slide controls">
+      <div class="focus-head-nav reveal d1" aria-label="Slide controls">
         <button class="focus-arrow" id="focusPrev" type="button" aria-label="Previous topics">&#8592;</button>
         <button class="focus-arrow" id="focusNext" type="button" aria-label="Next topics">&#8594;</button>
       </div>
-      <div class="focus-viewport">
-        <div class="focus-track" id="focusTrack">
-        <article class="focus-card">
-          <div class="focus-image"><image-slot id="focus-pain" placeholder="Pain management photo"></image-slot></div>
-          <div class="focus-body"><h3 class="focus-name">Pain management</h3><span class="focus-count">01 / 06</span></div>
-        </article>
-        <article class="focus-card">
-          <div class="focus-image"><image-slot id="focus-saat" placeholder="SAAT photo"></image-slot></div>
-          <div class="focus-body"><h3 class="focus-name">SAAT</h3><span class="focus-count">02 / 06</span></div>
-        </article>
-        <article class="focus-card">
-          <div class="focus-image"><image-slot id="focus-cardiac" placeholder="Functional cardiac issues photo"></image-slot></div>
-          <div class="focus-body"><h3 class="focus-name">Functional cardiac issues</h3><span class="focus-count">03 / 06</span></div>
-        </article>
-        <article class="focus-card">
-          <div class="focus-image"><image-slot id="focus-infertility" placeholder="Infertility photo"></image-slot></div>
-          <div class="focus-body"><h3 class="focus-name">Infertility</h3><span class="focus-count">04 / 06</span></div>
-        </article>
-        <article class="focus-card">
-          <div class="focus-image"><image-slot id="focus-taichi-qigong" placeholder="Tai Chi and Qi Gong photo"></image-slot></div>
-          <div class="focus-body"><h3 class="focus-name">Tai Chi &amp; Qi Gong</h3><span class="focus-count">05 / 06</span></div>
-        </article>
-        <article class="focus-card">
-          <div class="focus-image"><image-slot id="focus-cosmetic" placeholder="Cosmetic acupuncture photo"></image-slot></div>
-          <div class="focus-body"><h3 class="focus-name">Cosmetic acupuncture</h3><span class="focus-count">06 / 06</span></div>
-        </article>
-        </div>
+    </div>
+    <div class="focus-viewport">
+      <div class="focus-track" id="focusTrack">
+      <article class="focus-card">
+        <div class="focus-image"><image-slot id="focus-pain" placeholder="Pain management photo"></image-slot></div>
+        <div class="focus-body"><h3 class="focus-name">Pain management</h3><span class="focus-count">01 / 06</span></div>
+      </article>
+      <article class="focus-card">
+        <div class="focus-image"><image-slot id="focus-saat" placeholder="SAAT photo"></image-slot></div>
+        <div class="focus-body"><h3 class="focus-name">SAAT</h3><span class="focus-count">02 / 06</span></div>
+      </article>
+      <article class="focus-card">
+        <div class="focus-image"><image-slot id="focus-cardiac" placeholder="Functional cardiac issues photo"></image-slot></div>
+        <div class="focus-body"><h3 class="focus-name">Functional cardiac issues</h3><span class="focus-count">03 / 06</span></div>
+      </article>
+      <article class="focus-card">
+        <div class="focus-image"><image-slot id="focus-infertility" placeholder="Infertility photo"></image-slot></div>
+        <div class="focus-body"><h3 class="focus-name">Infertility</h3><span class="focus-count">04 / 06</span></div>
+      </article>
+      <article class="focus-card">
+        <div class="focus-image"><image-slot id="focus-taichi-qigong" placeholder="Tai Chi and Qi Gong photo"></image-slot></div>
+        <div class="focus-body"><h3 class="focus-name">Tai Chi &amp; Qi Gong</h3><span class="focus-count">05 / 06</span></div>
+      </article>
+      <article class="focus-card">
+        <div class="focus-image"><image-slot id="focus-cosmetic" placeholder="Cosmetic acupuncture photo"></image-slot></div>
+        <div class="focus-body"><h3 class="focus-name">Cosmetic acupuncture</h3><span class="focus-count">06 / 06</span></div>
+      </article>
       </div>
     </div>
+    <div class="focus-progress" aria-hidden="true"><div class="focus-progress-bar" id="focusProgressBar"></div></div>
   </div>
 </div>
 
@@ -1865,17 +1896,19 @@
     });
   });
 
-  // Featured care carousel arrows
+  // Featured care carousel
   (() => {
     const track = document.getElementById('focusTrack');
     const prev = document.getElementById('focusPrev');
     const next = document.getElementById('focusNext');
+    const bar  = document.getElementById('focusProgressBar');
     if (!track || !prev || !next) return;
 
     const updateControls = () => {
       const maxScroll = track.scrollWidth - track.clientWidth;
       prev.disabled = track.scrollLeft <= 2;
       next.disabled = track.scrollLeft >= maxScroll - 2;
+      if (bar) bar.style.width = (maxScroll > 0 ? (track.scrollLeft / maxScroll) * 100 : 0) + '%';
     };
 
     const slide = (direction) => {
