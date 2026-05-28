@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Acupuncture (针) — W&amp;E Health Institute · Cordova, TN</title>
+<title>Cardiac Health (心) — W&amp;E Health Institute · Cordova, TN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -18,7 +18,6 @@
   section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-  /* Treatment page shared layout */
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-overview p{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
   .tx-overview p:last-child{margin-bottom:0}
@@ -48,13 +47,11 @@
 .tx-float-back:hover,.tx-float-prev:hover,.tx-float-next:hover{color:var(--gold);border-color:var(--gold)}
 .tx-float-pager{display:flex;gap:1px}
 [data-theme="light"] .tx-float-back,[data-theme="light"] .tx-float-prev,[data-theme="light"] .tx-float-next{background:rgba(244,242,238,.88)}
-@media(max-width:480px){.tx-float-nav{top:76px;padding:0 12px}}
+@media(max-width:480px){.tx-float-nav{top:88px;padding:0 12px}}
 
-  /* Interactive section */
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-interactive>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-  /* Meridian Explorer */
   .meridian-explorer{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px}
   @media(min-width:700px){.meridian-explorer{grid-template-columns:240px 1fr;gap:56px;align-items:start}}
   .meridian-figure{position:relative;width:200px;margin:0 auto}
@@ -79,24 +76,18 @@
   .meridian-hint{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-dim);margin-top:16px;text-align:center}
   @media(min-width:700px){.meridian-hint{text-align:left}}
 
-  /* ── Mobile overrides ─────────────────────────────────────── */
   @media(max-width:768px){
     section{min-height:0;padding:56px 0}
   }
-  @media(max-width:600px){
-    .tx-cta{padding:48px 0 72px}
-    .meridian-explorer{gap:24px;margin-top:24px}
-    .meridian-figure{width:160px}
-    .meridian-panel{padding:20px;min-height:auto}
-  }
+  @media(max-width:600px){.tx-cta{padding:48px 0 72px}.meridian-explorer{gap:24px;margin-top:24px}.meridian-figure{width:160px}.meridian-panel{padding:20px;min-height:180px}.acupoint{width:28px;height:28px}.acupoint-ring{width:28px;height:28px}}
 </style>
 </head>
 <body>
 <div class="tx-float-nav" aria-label="Treatment navigation">
   <a href="services.html" class="tx-float-back">← All Treatments</a>
   <div class="tx-float-pager">
-    <a href="treatment-qi-gong.html" class="tx-float-prev">← Qi Gong</a>
-    <a href="treatment-moxibustion.html" class="tx-float-next">Moxibustion →</a>
+    <a href="treatment-pain-management.html" class="tx-float-prev">← Pain Management</a>
+    <a href="treatment-infertility.html" class="tx-float-next">Fertility Support →</a>
   </div>
 </div>
 
@@ -135,11 +126,11 @@
 <!-- Page Hero -->
 <header class="page-hero"><div class="page-hero-frame" aria-hidden="true"></div>
   <div class="bg" aria-hidden="true"></div>
-  <div class="ghost-glyph" aria-hidden="true">针</div>
+  <div class="ghost-glyph" aria-hidden="true">心</div>
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="cn">针</span>Acupuncture</div>
-    <h1 class="reveal d1"><span class="accent">针</span> Acupuncture</h1>
-    <p class="lede reveal d2"><em>zhēn</em> — Hair-thin sterile needles placed along the body's meridians to release stagnation and restore the flow of qì.</p>
+    <div class="eyebrow reveal"><span class="cn">心</span>Cardiac Health</div>
+    <h1 class="reveal d1"><span class="accent">心</span> Cardiac Health</h1>
+    <p class="lede reveal d2"><em>xīn</em> — In Chinese medicine the Heart is the Emperor: sovereign of all organs, house of consciousness, and keeper of the spirit. Supporting it is not incidental — it is foundational.</p>
   </div>
 </header>
 
@@ -150,9 +141,9 @@
     <div class="eyebrow reveal"><span class="cn">概</span>Overview</div>
     <h2 class="reveal d1">Needles, points, and <span class="accent">whole-person care.</span></h2>
     <div style="margin-top:40px">
-      <p class="reveal d2">Acupuncture is a treatment in which very thin, sterile needles are inserted into specific points on the body. It is commonly used in traditional East Asian medicine and is often sought for pain relief, stress management, headaches, nausea, and general wellness. Many patients describe it as relaxing, and some feel improvement after just a few sessions.</p>
-      <p class="reveal d3">Possible benefits may include reduced pain, improved mobility, decreased muscle tension, and a sense of calm or better sleep. Research suggests acupuncture may help certain conditions, especially some types of chronic pain, although results vary from person to person. It is not a cure-all, but it can be a useful part of a broader care plan.</p>
-      <p class="reveal d3">Most people tolerate acupuncture well. Common side effects are mild and may include temporary soreness, slight bleeding, bruising, or dizziness. Patients should seek treatment from a properly trained, licensed provider who uses sterile, single-use needles.</p>
+      <p class="reveal d2">Functional cardiac concerns — palpitations, irregular rhythm, chest tension, and breathlessness that arise without identifiable structural disease — are among the most common presentations in Chinese medicine practice. From a TCM perspective, these symptoms often reflect a disturbance in the Heart organ system: either Heart Qi deficiency, in which the organ lacks the force to maintain steady rhythm and circulation, or Heart Blood deficiency, in which inadequate nourishment leaves the Shen (spirit) unanchored, producing anxiety, restlessness, and a fluttering pulse. Treatment is not aimed at the symptom alone but at restoring the underlying balance from which steady cardiac function naturally follows.</p>
+      <p class="reveal d3">Acupuncture's influence on cardiovascular function is one of the better-researched areas of TCM science. Clinical studies have documented effects on heart rate variability (HRV), a key marker of autonomic nervous system health and cardiac resilience. By stimulating specific points along the Heart and Pericardium meridians, acupuncture appears to shift the autonomic balance toward parasympathetic dominance — the rest-and-regulate state — reducing the chronic sympathetic overactivation that strains the heart over time. Patients often report a pronounced calming of the chest following treatment, alongside improved sleep and reduced anxiety.</p>
+      <p class="reveal d3">Dr. Zhao brings an exceptionally rare combination of credentials to cardiac care. He completed a seven-year clinical medicine program at Harbin Medical University and served as Attending Physician in both Internal Medicine and Cardiology before dedicating his practice to integrative Chinese medicine. He currently serves as Executive Director of the World Federation of Chinese Medicine Societies Cardiovascular Disease Committee — one of the world's leading bodies coordinating research and clinical standards at the intersection of Chinese medicine and heart health. Patients with cardiac concerns benefit from that dual lens: the diagnostic precision of biomedical cardiology alongside the constitutional depth of classical TCM.</p>
     </div>
   </div>
 </section>
@@ -160,146 +151,128 @@
 <section class="tx-history">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">史</span>History</div>
-    <h2 class="reveal d1">Two thousand years of <span class="accent">documented medicine.</span></h2>
+    <h2 class="reveal d1">The Emperor organ in <span class="accent">two thousand years of medicine.</span></h2>
     <div class="tx-history-grid reveal d2">
       <div class="tx-history-text">
-        <p>Acupuncture's earliest systematic record appears in the Huangdi Neijing — the Yellow Emperor's Classic of Internal Medicine — compiled during the Han dynasty (206 BCE–220 CE). The text, written as a dialogue between the mythical Yellow Emperor Huangdi and his minister Qibo, codifies the theory of Qi flowing through twelve primary meridians, invisible channels that map the body's functional landscape. Disruptions in this flow, whether from emotion, climate, or poor diet, were understood to produce illness.</p>
-        <p>The mythological foundation runs deeper still. Bian Que, a legendary physician of the Warring States period, is said to have received the secrets of diagnosis — including acupuncture — from a divine elder who appeared to him in a dream. Later traditions credit Shennong, the Divine Farmer, with first mapping the body's energetic pathways through direct experimentation. Whether myth or history, these accounts reflect a consistent belief: that the body is not merely mechanical, but participates in the same energetic order as heaven and earth.</p>
+        <p>In the Huangdi Neijing — the foundational text of Chinese medicine compiled during the Han dynasty — the Heart holds a position unlike any other organ: it is described as the "sovereign official," the lord from whom all vitality and clarity descend. Chapter 8 of the Suwen presents the famous allegory of the twelve officials: each organ is assigned a role in governance, but the Heart alone is emperor, and its radiance is the source from which the spirits of all the other officials shine. This was not merely metaphor. The Neijing understood the Heart as the seat of shen — consciousness, perception, and emotional life — making cardiac health inseparable from mental and spiritual wellbeing. Joy in excess scatters the Heart Qi; shock injures it abruptly; prolonged grief exhausts the Lung but eventually depletes the Heart Blood that anchors the spirit. Emotional medicine and cardiac medicine were, from the beginning, the same discipline.</p>
+        <p>Dr. Zhao's training spans both traditions with unusual depth. He completed a seven-year program in clinical medicine at Harbin Medical University — one of China's leading institutions — where his clinical rotations included cardiology and internal medicine. That biomedical foundation was later integrated with advanced TCM training, producing a practitioner who can interpret an EKG and a pulse diagnosis within the same consultation. His role as Executive Director of the World Federation of Chinese Medicine Societies Cardiovascular Disease Committee reflects a career spent not simply practicing at this intersection, but helping define the international standards by which it is studied, taught, and applied.</p>
       </div>
       <div class="tx-history-aside">
         <div class="tx-history-quote">
-          <span class="tx-hq-cn">氣</span>
-          <p class="tx-hq-text">The Yellow Emperor asked: 'I wish to hear about the puncturing of the nine needles.' Qibo replied: 'The needle follows Qi.'</p>
-          <p class="tx-hq-source">— Huangdi Neijing, Lingshu 黃帝內經·靈樞</p>
+          <span class="tx-hq-cn">心</span>
+          <p class="tx-hq-text">"The Heart holds the office of lord and sovereign. The radiance of the spirits stems from it."</p>
+          <p class="tx-hq-source">— Huangdi Neijing, Suwen 黃帝內經·素問</p>
         </div>
         <div class="tx-history-facts">
-          <div class="tx-hf-item"><span class="tx-hf-label">Origin</span><span class="tx-hf-val">Han dynasty, ~200 BCE</span></div>
-          <div class="tx-hf-item"><span class="tx-hf-label">Classic text</span><span class="tx-hf-val">Huangdi Neijing 黃帝內經</span></div>
-          <div class="tx-hf-item"><span class="tx-hf-label">Core concept</span><span class="tx-hf-val">Qi flowing through twelve meridians</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Organ</span><span class="tx-hf-val">Heart (心) — Emperor of the five organs</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Classic</span><span class="tx-hf-val">Huangdi Neijing, Chapter 8</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Dr. Zhao</span><span class="tx-hf-val">MD, Cardiology · NCCAOM Diplomate</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Interactive: Meridian Point Explorer -->
+<!-- Interactive: Cardiac Meridian Map -->
 <section class="tx-interactive">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">互</span>Interactive</div>
-    <h2 class="reveal d1">Explore key <span class="accent">acupuncture points.</span></h2>
-    <p class="reveal d2" style="font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:56ch;margin-top:12px">Click any glowing point on the figure to learn where it is and what it is commonly used for.</p>
+    <h2 class="reveal d1">Explore key points for <span class="accent">cardiac support.</span></h2>
+    <p class="reveal d2" style="font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:56ch;margin-top:12px">Click a highlighted point to learn how it supports heart function and the cardiovascular system.</p>
 
     <div class="meridian-explorer reveal d2">
-      <!-- Minimal abstract figure SVG -->
       <div>
         <div class="meridian-figure" id="meridianFigure">
           <svg viewBox="0 0 120 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Head -->
             <ellipse cx="60" cy="28" rx="20" ry="24" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Neck -->
             <line x1="52" y1="50" x2="50" y2="64" stroke="var(--paper-dim)" stroke-width="1.2"/>
             <line x1="68" y1="50" x2="70" y2="64" stroke="var(--paper-dim)" stroke-width="1.2"/>
-            <!-- Shoulders -->
             <path d="M50 64 Q30 68 18 78" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
             <path d="M70 64 Q90 68 102 78" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Torso -->
             <path d="M50 64 L46 148 L74 148 L70 64Z" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Arms -->
             <path d="M18 78 Q10 112 12 148" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
             <path d="M102 78 Q110 112 108 148" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Hands -->
             <ellipse cx="12" cy="153" rx="7" ry="6" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
             <ellipse cx="108" cy="153" rx="7" ry="6" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
-            <!-- Hips -->
             <path d="M46 148 Q34 156 32 168" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
             <path d="M74 148 Q86 156 88 168" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Legs -->
             <line x1="32" y1="168" x2="30" y2="260" stroke="var(--paper-dim)" stroke-width="1.2"/>
             <line x1="88" y1="168" x2="90" y2="260" stroke="var(--paper-dim)" stroke-width="1.2"/>
-            <!-- Feet -->
             <path d="M30 260 Q26 270 22 272 Q26 276 34 274 L34 260Z" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
             <path d="M90 260 Q94 270 98 272 Q94 276 86 274 L86 260Z" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
           </svg>
 
-          <!-- Acupoint dots — positioned as % of figure container -->
-          <!-- GV20 Baihui — top of head -->
-          <div class="acupoint" style="left:50%;top:5%" data-point="gv20" aria-label="GV20 Baihui">
+          <div class="acupoint" style="left:45%;top:33%" data-point="heart" aria-label="HT7 Shenmen">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- GB20 Fengchi — base of skull / neck area -->
-          <div class="acupoint" style="left:72%;top:18%" data-point="gb20" aria-label="GB20 Fengchi">
+          <div class="acupoint" style="left:55%;top:28%" data-point="chest" aria-label="PC6 Neiguan">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- PC6 Neiguan — inner wrist, left arm -->
-          <div class="acupoint" style="left:7%;top:47%" data-point="pc6" aria-label="PC6 Neiguan">
+          <div class="acupoint" style="left:7%;top:47%" data-point="circulation" aria-label="PC8 Laogong">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- LI4 Hegu — hand, right side -->
-          <div class="acupoint" style="left:91%;top:50%" data-point="li4" aria-label="LI4 Hegu">
+          <div class="acupoint" style="left:50%;top:5%" data-point="stress" aria-label="GV20 Baihui">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- ST36 Zusanli — below knee, right shin -->
-          <div class="acupoint" style="left:78%;top:68%" data-point="st36" aria-label="ST36 Zusanli">
+          <div class="acupoint" style="left:72%;top:18%" data-point="sleep" aria-label="HT3 Shaohai">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- SP6 Sanyinjiao — inner ankle, left -->
-          <div class="acupoint" style="left:24%;top:84%" data-point="sp6" aria-label="SP6 Sanyinjiao">
+          <div class="acupoint" style="left:24%;top:84%" data-point="bp" aria-label="SP6 Sanyinjiao">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
         </div>
         <p class="meridian-hint">Tap a point to explore</p>
       </div>
 
-      <!-- Info panel -->
       <div class="meridian-panel" id="meridianPanel">
-        <p class="meridian-panel-empty" id="meridianEmpty">Select a glowing point on the figure to see its name, location, and common uses.</p>
+        <p class="meridian-panel-empty" id="meridianEmpty">Select a glowing point on the figure to see its name, location, and cardiac uses.</p>
 
-        <div class="meridian-panel-content" id="point-gv20">
-          <div class="point-code">GV20</div>
-          <div class="point-name">Baihui</div>
-          <div class="point-cn">百會</div>
-          <p class="point-location">Located at the top of the head, on the midline between the two ear apices.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Mental clarity, dizziness, and headaches. Also used to lift the spirit and support focus.</p>
+        <div class="meridian-panel-content" id="point-heart">
+          <div class="point-code">HT7</div>
+          <div class="point-name">Shenmen</div>
+          <div class="point-cn">神門</div>
+          <p class="point-location">At the wrist crease, on the little-finger side, in the hollow at the base of the hand.</p>
+          <p class="point-uses"><strong>Cardiac use:</strong> Calms the Heart, anchors the Shen (spirit). The primary point for palpitations, anxiety, and insomnia linked to Heart disturbance.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-gb20">
-          <div class="point-code">GB20</div>
-          <div class="point-name">Fengchi</div>
-          <div class="point-cn">風池</div>
-          <p class="point-location">Located at the base of the skull, in the hollow between the two large neck muscles.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Headaches, neck tension, colds, and eye strain.</p>
-        </div>
-
-        <div class="meridian-panel-content" id="point-pc6">
+        <div class="meridian-panel-content" id="point-chest">
           <div class="point-code">PC6</div>
           <div class="point-name">Neiguan</div>
           <div class="point-cn">內關</div>
-          <p class="point-location">Located on the inner wrist, two finger-widths above the wrist crease between the two tendons.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Nausea, anxiety, and heart palpitations.</p>
+          <p class="point-location">On the inner wrist, two finger-widths above the wrist crease between the two tendons.</p>
+          <p class="point-uses"><strong>Cardiac use:</strong> Regulates Heart rhythm and eases chest constriction. One of the most studied acupuncture points for cardiovascular symptoms.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-li4">
-          <div class="point-code">LI4</div>
-          <div class="point-name">Hegu</div>
-          <div class="point-cn">合谷</div>
-          <p class="point-location">Located on the hand, in the fleshy webbing between the thumb and index finger.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Headaches, facial pain, and immune support.</p>
+        <div class="meridian-panel-content" id="point-circulation">
+          <div class="point-code">PC8</div>
+          <div class="point-name">Laogong</div>
+          <div class="point-cn">勞宮</div>
+          <p class="point-location">In the center of the palm, between the 2nd and 3rd metacarpals.</p>
+          <p class="point-uses"><strong>Cardiac use:</strong> Clears Heart fire and calms agitation. Used for palpitations with a racing sensation and heat in the chest.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-st36">
-          <div class="point-code">ST36</div>
-          <div class="point-name">Zusanli</div>
-          <div class="point-cn">足三里</div>
-          <p class="point-location">Located below the knee, one finger-width to the outside of the shin bone.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Digestion, fatigue, and immune support. One of the most widely used points in all of Chinese medicine.</p>
+        <div class="meridian-panel-content" id="point-stress">
+          <div class="point-code">GV20</div>
+          <div class="point-name">Baihui</div>
+          <div class="point-cn">百會</div>
+          <p class="point-location">At the vertex of the head, on the midline.</p>
+          <p class="point-uses"><strong>Cardiac use:</strong> Regulates autonomic nervous system tone — supports parasympathetic (rest) response and reduces sympathetic overactivation that strains the heart.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-sp6">
+        <div class="meridian-panel-content" id="point-sleep">
+          <div class="point-code">HT3</div>
+          <div class="point-name">Shaohai</div>
+          <div class="point-cn">少海</div>
+          <p class="point-location">At the inner elbow, in the hollow at the end of the crease when the arm is bent.</p>
+          <p class="point-uses"><strong>Cardiac use:</strong> Nourishes Heart Yin and calms the mind. Used when insomnia is accompanied by night sweats and palpitations.</p>
+        </div>
+
+        <div class="meridian-panel-content" id="point-bp">
           <div class="point-code">SP6</div>
           <div class="point-name">Sanyinjiao</div>
           <div class="point-cn">三陰交</div>
-          <p class="point-location">Located above the inner ankle, three finger-widths above the tip of the medial malleolus.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Menstrual health, insomnia, and digestion.</p>
+          <p class="point-location">Above the inner ankle, three finger-widths above the tip of the medial malleolus.</p>
+          <p class="point-uses"><strong>Cardiac use:</strong> Meeting point of the three Yin leg meridians. Nourishes Yin and Blood, supporting vascular tone and blood pressure regulation.</p>
         </div>
       </div>
     </div>
@@ -311,7 +284,7 @@
 <div class="tx-cta">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">始</span>Begin</div>
-    <p class="cta-text reveal d1">Ready to begin? Book an appointment with <em>Dr. Selina.</em></p>
+    <p class="cta-text reveal d1">Ready to begin? Book an appointment with <em>Dr. Zhao.</em></p>
     <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="btn-primary reveal d2">
       Book an appointment <span class="arrow">→</span>
     </a>
@@ -439,8 +412,6 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
 }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// Meridian point explorer
 (function(){
   const dots = document.querySelectorAll('.acupoint');
   const panel = document.getElementById('meridianPanel');
@@ -451,7 +422,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     dot.addEventListener('click', function(){
       const key = this.dataset.point;
       if(active === key){
-        // deselect
         this.classList.remove('active');
         contents.forEach(c => c.classList.remove('active'));
         empty.style.display = '';
@@ -462,10 +432,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       this.classList.add('active');
       contents.forEach(c => c.classList.remove('active'));
       const target = document.getElementById('point-' + key);
-      if(target){
-        target.classList.add('active');
-        empty.style.display = 'none';
-      }
+      if(target){ target.classList.add('active'); empty.style.display = 'none'; }
       active = key;
     });
   });

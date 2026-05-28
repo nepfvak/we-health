@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Acupuncture (针) — W&amp;E Health Institute · Cordova, TN</title>
+<title>Cosmetic Acupuncture (美) — W&amp;E Health Institute · Cordova, TN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -18,7 +18,6 @@
   section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-  /* Treatment page shared layout */
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-overview p{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
   .tx-overview p:last-child{margin-bottom:0}
@@ -48,17 +47,15 @@
 .tx-float-back:hover,.tx-float-prev:hover,.tx-float-next:hover{color:var(--gold);border-color:var(--gold)}
 .tx-float-pager{display:flex;gap:1px}
 [data-theme="light"] .tx-float-back,[data-theme="light"] .tx-float-prev,[data-theme="light"] .tx-float-next{background:rgba(244,242,238,.88)}
-@media(max-width:480px){.tx-float-nav{top:76px;padding:0 12px}}
+@media(max-width:480px){.tx-float-nav{top:88px;padding:0 12px}}
 
-  /* Interactive section */
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-interactive>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
 
-  /* Meridian Explorer */
   .meridian-explorer{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px}
   @media(min-width:700px){.meridian-explorer{grid-template-columns:240px 1fr;gap:56px;align-items:start}}
-  .meridian-figure{position:relative;width:200px;margin:0 auto}
-  @media(min-width:700px){.meridian-figure{width:200px;margin:0}}
+  .meridian-figure{position:relative;width:160px;margin:0 auto}
+  @media(min-width:700px){.meridian-figure{width:160px;margin:0}}
   .meridian-figure svg{display:block;width:100%;height:auto}
   .acupoint{position:absolute;transform:translate(-50%,-50%);cursor:pointer;width:18px;height:18px}
   .acupoint-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:transform .2s}
@@ -79,24 +76,18 @@
   .meridian-hint{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-dim);margin-top:16px;text-align:center}
   @media(min-width:700px){.meridian-hint{text-align:left}}
 
-  /* ── Mobile overrides ─────────────────────────────────────── */
   @media(max-width:768px){
     section{min-height:0;padding:56px 0}
   }
-  @media(max-width:600px){
-    .tx-cta{padding:48px 0 72px}
-    .meridian-explorer{gap:24px;margin-top:24px}
-    .meridian-figure{width:160px}
-    .meridian-panel{padding:20px;min-height:auto}
-  }
+  @media(max-width:600px){.tx-cta{padding:48px 0 72px}.meridian-explorer{gap:24px;margin-top:24px}.meridian-figure{width:160px}.meridian-panel{padding:20px;min-height:180px}.acupoint{width:28px;height:28px}.acupoint-ring{width:28px;height:28px}}
 </style>
 </head>
 <body>
 <div class="tx-float-nav" aria-label="Treatment navigation">
   <a href="services.html" class="tx-float-back">← All Treatments</a>
   <div class="tx-float-pager">
-    <a href="treatment-qi-gong.html" class="tx-float-prev">← Qi Gong</a>
-    <a href="treatment-moxibustion.html" class="tx-float-next">Moxibustion →</a>
+    <a href="treatment-infertility.html" class="tx-float-prev">← Fertility Support</a>
+    <a href="treatment-acupuncture.html" class="tx-float-next">Acupuncture →</a>
   </div>
 </div>
 
@@ -135,11 +126,11 @@
 <!-- Page Hero -->
 <header class="page-hero"><div class="page-hero-frame" aria-hidden="true"></div>
   <div class="bg" aria-hidden="true"></div>
-  <div class="ghost-glyph" aria-hidden="true">针</div>
+  <div class="ghost-glyph" aria-hidden="true">美</div>
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="cn">针</span>Acupuncture</div>
-    <h1 class="reveal d1"><span class="accent">针</span> Acupuncture</h1>
-    <p class="lede reveal d2"><em>zhēn</em> — Hair-thin sterile needles placed along the body's meridians to release stagnation and restore the flow of qì.</p>
+    <div class="eyebrow reveal"><span class="cn">美</span>Cosmetic Acupuncture</div>
+    <h1 class="reveal d1"><span class="accent">美</span> Cosmetic Acupuncture</h1>
+    <p class="lede reveal d2"><em>měi</em> — Beauty in Chinese medicine is not applied to the surface — it rises from within. Cosmetic acupuncture works by restoring what the body already knows how to do.</p>
   </div>
 </header>
 
@@ -148,11 +139,11 @@
 <section class="tx-overview">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">概</span>Overview</div>
-    <h2 class="reveal d1">Needles, points, and <span class="accent">whole-person care.</span></h2>
+    <h2 class="reveal d1">Renewal through <span class="accent">constitutional care.</span></h2>
     <div style="margin-top:40px">
-      <p class="reveal d2">Acupuncture is a treatment in which very thin, sterile needles are inserted into specific points on the body. It is commonly used in traditional East Asian medicine and is often sought for pain relief, stress management, headaches, nausea, and general wellness. Many patients describe it as relaxing, and some feel improvement after just a few sessions.</p>
-      <p class="reveal d3">Possible benefits may include reduced pain, improved mobility, decreased muscle tension, and a sense of calm or better sleep. Research suggests acupuncture may help certain conditions, especially some types of chronic pain, although results vary from person to person. It is not a cure-all, but it can be a useful part of a broader care plan.</p>
-      <p class="reveal d3">Most people tolerate acupuncture well. Common side effects are mild and may include temporary soreness, slight bleeding, bruising, or dizziness. Patients should seek treatment from a properly trained, licensed provider who uses sterile, single-use needles.</p>
+      <p class="reveal d2">Cosmetic acupuncture is a natural aesthetic treatment in which very fine, sterile needles are inserted at specific points on the face and body to stimulate the skin's own regenerative processes. The micro-injuries created by each needle trigger a local healing response: increased blood flow, collagen and elastin synthesis, and toning of the underlying facial muscles. The result is a gradual brightening and firming that comes from within the tissue itself — not from filling, paralyzing, or resurfacing it. For patients who want visible improvement without the recovery time, risk, or frozen quality of injectable procedures, facial acupuncture offers a meaningful alternative.</p>
+      <p class="reveal d3">Cosmetic acupuncture addresses a broad range of aesthetic concerns: fine lines and wrinkles, loss of facial tone, puffiness and fluid retention, dull or uneven skin texture, and the early softening of jaw definition. Crucially, facial work at W&E Health Institute is always grounded in constitutional treatment — the whole body is assessed and treated alongside the face. If the skin is dry and dull, the underlying Lung Qi deficiency is addressed. If puffiness persists, the Spleen's fluid metabolism is considered. A face cannot sustainably improve without the organ systems behind it in balance, and that systemic approach is what distinguishes a TCM facial from a spa treatment.</p>
+      <p class="reveal d3">Realistic expectations matter. Cosmetic acupuncture is not a single-session cure, and it does not produce the immediate, dramatic effect of Botox or fillers. Results build over a course of treatments — typically eight to twelve sessions, spaced one to two weeks apart — with many patients noticing a meaningful difference by the fourth or fifth visit. Those who maintain treatment with monthly sessions sustain their results well over time. Ideal candidates are patients who value gradual, natural-looking improvement and who prefer to support rather than suppress their skin's biology. Those with very advanced laxity may need to combine facial acupuncture with other modalities for optimal results.</p>
     </div>
   </div>
 </section>
@@ -160,146 +151,127 @@
 <section class="tx-history">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">史</span>History</div>
-    <h2 class="reveal d1">Two thousand years of <span class="accent">documented medicine.</span></h2>
+    <h2 class="reveal d1">Classical beauty through the <span class="accent">language of meridians.</span></h2>
     <div class="tx-history-grid reveal d2">
       <div class="tx-history-text">
-        <p>Acupuncture's earliest systematic record appears in the Huangdi Neijing — the Yellow Emperor's Classic of Internal Medicine — compiled during the Han dynasty (206 BCE–220 CE). The text, written as a dialogue between the mythical Yellow Emperor Huangdi and his minister Qibo, codifies the theory of Qi flowing through twelve primary meridians, invisible channels that map the body's functional landscape. Disruptions in this flow, whether from emotion, climate, or poor diet, were understood to produce illness.</p>
-        <p>The mythological foundation runs deeper still. Bian Que, a legendary physician of the Warring States period, is said to have received the secrets of diagnosis — including acupuncture — from a divine elder who appeared to him in a dream. Later traditions credit Shennong, the Divine Farmer, with first mapping the body's energetic pathways through direct experimentation. Whether myth or history, these accounts reflect a consistent belief: that the body is not merely mechanical, but participates in the same energetic order as heaven and earth.</p>
+        <p>The idea that the face reflects the state of the internal organs is as old as Chinese medicine itself. Classical texts including Sun Simiao's seventh-century Qianjin Yaofang — "Prescriptions Worth a Thousand Gold" — contain detailed formulas for skin luminosity, hair vitality, and the softening of lines, combining acupuncture with herbal preparations applied externally and taken internally. Imperial palace medicine of the Tang and Song dynasties refined these practices further, with court physicians tasked specifically with maintaining the complexion of the imperial household through seasonal acupuncture protocols and medicinal washes. The classical framework was explicit: the liver opens to the eyes, so clarity of gaze reflects hepatic health; the lungs govern the skin, so radiant, elastic skin signals strong Lung Qi; the kidneys rule the hair and the bones beneath the face, so vitality of the underlying structure is inseparable from kidney essence. Beauty, in this system, was not decoration — it was a legible sign of internal equilibrium.</p>
+        <p>Contemporary facial acupuncture represents a revival and refinement of these classical principles, now enriched by modern understanding of collagen biology, microcirculation, and the neuromuscular anatomy of the face. Where injectable aesthetics work by blocking or filling — paralyzing the muscle with botulinum toxin or plumping volume loss with hyaluronic acid — facial acupuncture works by activating. It invites the body's own repair mechanisms to do the work, producing changes that are sustainable because they are biological rather than chemical. This whole-body orientation — treating the patient's constitution rather than isolating the wrinkle — is the defining difference between TCM aesthetic medicine and the injectable model, and it is why patients who complete a full course often report improvements in energy, sleep, and digestion alongside the changes they see in the mirror.</p>
       </div>
       <div class="tx-history-aside">
         <div class="tx-history-quote">
-          <span class="tx-hq-cn">氣</span>
-          <p class="tx-hq-text">The Yellow Emperor asked: 'I wish to hear about the puncturing of the nine needles.' Qibo replied: 'The needle follows Qi.'</p>
-          <p class="tx-hq-source">— Huangdi Neijing, Lingshu 黃帝內經·靈樞</p>
+          <span class="tx-hq-cn">美</span>
+          <p class="tx-hq-text">"When the five organs are in harmony and qi and blood are abundant, the complexion will naturally be radiant."</p>
+          <p class="tx-hq-source">— Qianjin Yaofang 千金要方 (Tang dynasty)</p>
         </div>
         <div class="tx-history-facts">
-          <div class="tx-hf-item"><span class="tx-hf-label">Origin</span><span class="tx-hf-val">Han dynasty, ~200 BCE</span></div>
-          <div class="tx-hf-item"><span class="tx-hf-label">Classic text</span><span class="tx-hf-val">Huangdi Neijing 黃帝內經</span></div>
-          <div class="tx-hf-item"><span class="tx-hf-label">Core concept</span><span class="tx-hf-val">Qi flowing through twelve meridians</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Classic</span><span class="tx-hf-val">Qianjin Yaofang 千金要方</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Dynasty</span><span class="tx-hf-val">Tang (618–907 CE) — imperial palace medicine</span></div>
+          <div class="tx-hf-item"><span class="tx-hf-label">Mechanism</span><span class="tx-hf-val">Collagen induction · Qi and Blood circulation</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Interactive: Meridian Point Explorer -->
+<!-- Interactive: Facial Acupuncture Map -->
 <section class="tx-interactive">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="cn">互</span>Interactive</div>
-    <h2 class="reveal d1">Explore key <span class="accent">acupuncture points.</span></h2>
-    <p class="reveal d2" style="font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:56ch;margin-top:12px">Click any glowing point on the figure to learn where it is and what it is commonly used for.</p>
+    <h2 class="reveal d1">Explore facial <span class="accent">acupuncture zones.</span></h2>
+    <p class="reveal d2" style="font-family:var(--serif);font-weight:300;font-size:16px;line-height:1.8;color:var(--paper-dim);max-width:56ch;margin-top:12px">Click a highlighted zone on the face to see which point is treated and what it addresses.</p>
 
     <div class="meridian-explorer reveal d2">
-      <!-- Minimal abstract figure SVG -->
       <div>
         <div class="meridian-figure" id="meridianFigure">
-          <svg viewBox="0 0 120 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Head -->
-            <ellipse cx="60" cy="28" rx="20" ry="24" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
+          <svg viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Face outline -->
+            <ellipse cx="60" cy="72" rx="44" ry="58" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
+            <!-- Eyes -->
+            <ellipse cx="44" cy="60" rx="10" ry="6" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
+            <ellipse cx="76" cy="60" rx="10" ry="6" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
+            <!-- Nose bridge -->
+            <path d="M60 68 Q58 80 56 86 Q58 90 64 90 Q66 86 60 86" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
+            <!-- Mouth -->
+            <path d="M46 108 Q60 118 74 108" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
+            <!-- Eyebrows -->
+            <path d="M34 52 Q44 48 54 52" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
+            <path d="M66 52 Q76 48 86 52" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
             <!-- Neck -->
-            <line x1="52" y1="50" x2="50" y2="64" stroke="var(--paper-dim)" stroke-width="1.2"/>
-            <line x1="68" y1="50" x2="70" y2="64" stroke="var(--paper-dim)" stroke-width="1.2"/>
-            <!-- Shoulders -->
-            <path d="M50 64 Q30 68 18 78" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <path d="M70 64 Q90 68 102 78" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Torso -->
-            <path d="M50 64 L46 148 L74 148 L70 64Z" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Arms -->
-            <path d="M18 78 Q10 112 12 148" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <path d="M102 78 Q110 112 108 148" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Hands -->
-            <ellipse cx="12" cy="153" rx="7" ry="6" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
-            <ellipse cx="108" cy="153" rx="7" ry="6" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
-            <!-- Hips -->
-            <path d="M46 148 Q34 156 32 168" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <path d="M74 148 Q86 156 88 168" stroke="var(--paper-dim)" stroke-width="1.2" fill="none"/>
-            <!-- Legs -->
-            <line x1="32" y1="168" x2="30" y2="260" stroke="var(--paper-dim)" stroke-width="1.2"/>
-            <line x1="88" y1="168" x2="90" y2="260" stroke="var(--paper-dim)" stroke-width="1.2"/>
-            <!-- Feet -->
-            <path d="M30 260 Q26 270 22 272 Q26 276 34 274 L34 260Z" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
-            <path d="M90 260 Q94 270 98 272 Q94 276 86 274 L86 260Z" stroke="var(--paper-dim)" stroke-width="1" fill="none"/>
+            <line x1="50" y1="128" x2="48" y2="148" stroke="var(--paper-dim)" stroke-width="1.2"/>
+            <line x1="70" y1="128" x2="72" y2="148" stroke="var(--paper-dim)" stroke-width="1.2"/>
           </svg>
 
-          <!-- Acupoint dots — positioned as % of figure container -->
-          <!-- GV20 Baihui — top of head -->
-          <div class="acupoint" style="left:50%;top:5%" data-point="gv20" aria-label="GV20 Baihui">
+          <div class="acupoint" style="left:50%;top:14%" data-point="forehead" aria-label="GV24 Shenting">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- GB20 Fengchi — base of skull / neck area -->
-          <div class="acupoint" style="left:72%;top:18%" data-point="gb20" aria-label="GB20 Fengchi">
+          <div class="acupoint" style="left:28%;top:36%" data-point="eye" aria-label="BL2 Zanzhu">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- PC6 Neiguan — inner wrist, left arm -->
-          <div class="acupoint" style="left:7%;top:47%" data-point="pc6" aria-label="PC6 Neiguan">
+          <div class="acupoint" style="left:22%;top:62%" data-point="nasolabial" aria-label="ST4 Dicang">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- LI4 Hegu — hand, right side -->
-          <div class="acupoint" style="left:91%;top:50%" data-point="li4" aria-label="LI4 Hegu">
+          <div class="acupoint" style="left:18%;top:82%" data-point="jaw" aria-label="ST6 Jiache">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- ST36 Zusanli — below knee, right shin -->
-          <div class="acupoint" style="left:78%;top:68%" data-point="st36" aria-label="ST36 Zusanli">
+          <div class="acupoint" style="left:78%;top:55%" data-point="cheek" aria-label="ST3 Juliao">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
-          <!-- SP6 Sanyinjiao — inner ankle, left -->
-          <div class="acupoint" style="left:24%;top:84%" data-point="sp6" aria-label="SP6 Sanyinjiao">
+          <div class="acupoint" style="left:55%;top:88%" data-point="neck" aria-label="CV22 Tiantu">
             <div class="acupoint-ring"></div><div class="acupoint-dot"></div>
           </div>
         </div>
-        <p class="meridian-hint">Tap a point to explore</p>
+        <p class="meridian-hint">Tap a zone to explore</p>
       </div>
 
-      <!-- Info panel -->
       <div class="meridian-panel" id="meridianPanel">
-        <p class="meridian-panel-empty" id="meridianEmpty">Select a glowing point on the figure to see its name, location, and common uses.</p>
+        <p class="meridian-panel-empty" id="meridianEmpty">Select a glowing zone on the face to see which point is treated and what it addresses.</p>
 
-        <div class="meridian-panel-content" id="point-gv20">
-          <div class="point-code">GV20</div>
-          <div class="point-name">Baihui</div>
-          <div class="point-cn">百會</div>
-          <p class="point-location">Located at the top of the head, on the midline between the two ear apices.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Mental clarity, dizziness, and headaches. Also used to lift the spirit and support focus.</p>
+        <div class="meridian-panel-content" id="point-forehead">
+          <div class="point-code">GV24</div>
+          <div class="point-name">Shenting</div>
+          <div class="point-cn">神庭</div>
+          <p class="point-location">On the midline of the forehead, half a cun above the hairline.</p>
+          <p class="point-uses"><strong>Cosmetic use:</strong> Calms the mind and addresses forehead lines. Local needling stimulates collagen in the frontalis muscle area.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-gb20">
-          <div class="point-code">GB20</div>
-          <div class="point-name">Fengchi</div>
-          <div class="point-cn">風池</div>
-          <p class="point-location">Located at the base of the skull, in the hollow between the two large neck muscles.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Headaches, neck tension, colds, and eye strain.</p>
+        <div class="meridian-panel-content" id="point-eye">
+          <div class="point-code">BL2</div>
+          <div class="point-name">Zanzhu</div>
+          <div class="point-cn">攢竹</div>
+          <p class="point-location">At the inner end of the eyebrow, above the inner corner of the eye.</p>
+          <p class="point-uses"><strong>Cosmetic use:</strong> Reduces puffiness and dark circles around the eye. Stimulates circulation in the delicate periorbital tissue.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-pc6">
-          <div class="point-code">PC6</div>
-          <div class="point-name">Neiguan</div>
-          <div class="point-cn">內關</div>
-          <p class="point-location">Located on the inner wrist, two finger-widths above the wrist crease between the two tendons.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Nausea, anxiety, and heart palpitations.</p>
+        <div class="meridian-panel-content" id="point-nasolabial">
+          <div class="point-code">ST4</div>
+          <div class="point-name">Dicang</div>
+          <div class="point-cn">地倉</div>
+          <p class="point-location">At the corner of the mouth, 0.4 cun lateral to the angle of the mouth.</p>
+          <p class="point-uses"><strong>Cosmetic use:</strong> Tones the muscles around the mouth. Addresses nasolabial folds and sagging at the mouth corners.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-li4">
-          <div class="point-code">LI4</div>
-          <div class="point-name">Hegu</div>
-          <div class="point-cn">合谷</div>
-          <p class="point-location">Located on the hand, in the fleshy webbing between the thumb and index finger.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Headaches, facial pain, and immune support.</p>
+        <div class="meridian-panel-content" id="point-jaw">
+          <div class="point-code">ST6</div>
+          <div class="point-name">Jiache</div>
+          <div class="point-cn">頰車</div>
+          <p class="point-location">On the cheek, in the depression anterior to the angle of the jaw, over the masseter muscle.</p>
+          <p class="point-uses"><strong>Cosmetic use:</strong> Tones the jaw and lower face. Used for jowl definition, jaw tension (TMJ), and facial asymmetry.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-st36">
-          <div class="point-code">ST36</div>
-          <div class="point-name">Zusanli</div>
-          <div class="point-cn">足三里</div>
-          <p class="point-location">Located below the knee, one finger-width to the outside of the shin bone.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Digestion, fatigue, and immune support. One of the most widely used points in all of Chinese medicine.</p>
+        <div class="meridian-panel-content" id="point-cheek">
+          <div class="point-code">ST3</div>
+          <div class="point-name">Juliao</div>
+          <div class="point-cn">巨髎</div>
+          <p class="point-location">Directly below the pupil, at the level of the lower border of the nostril.</p>
+          <p class="point-uses"><strong>Cosmetic use:</strong> Lifts the midface and plumps the cheeks. Stimulates circulation and collagen in the malar (cheekbone) region.</p>
         </div>
 
-        <div class="meridian-panel-content" id="point-sp6">
-          <div class="point-code">SP6</div>
-          <div class="point-name">Sanyinjiao</div>
-          <div class="point-cn">三陰交</div>
-          <p class="point-location">Located above the inner ankle, three finger-widths above the tip of the medial malleolus.</p>
-          <p class="point-uses"><strong>Commonly used for:</strong> Menstrual health, insomnia, and digestion.</p>
+        <div class="meridian-panel-content" id="point-neck">
+          <div class="point-code">CV22</div>
+          <div class="point-name">Tiantu</div>
+          <div class="point-cn">天突</div>
+          <p class="point-location">In the hollow at the base of the front of the neck, above the breastbone.</p>
+          <p class="point-uses"><strong>Cosmetic use:</strong> Addresses the platysma muscle of the neck. Used for neck banding, loose skin at the throat, and décolleté rejuvenation.</p>
         </div>
       </div>
     </div>
@@ -439,8 +411,6 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
 }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// Meridian point explorer
 (function(){
   const dots = document.querySelectorAll('.acupoint');
   const panel = document.getElementById('meridianPanel');
@@ -451,7 +421,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     dot.addEventListener('click', function(){
       const key = this.dataset.point;
       if(active === key){
-        // deselect
         this.classList.remove('active');
         contents.forEach(c => c.classList.remove('active'));
         empty.style.display = '';
@@ -462,10 +431,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       this.classList.add('active');
       contents.forEach(c => c.classList.remove('active'));
       const target = document.getElementById('point-' + key);
-      if(target){
-        target.classList.add('active');
-        empty.style.display = 'none';
-      }
+      if(target){ target.classList.add('active'); empty.style.display = 'none'; }
       active = key;
     });
   });

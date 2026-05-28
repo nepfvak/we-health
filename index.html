@@ -520,7 +520,9 @@
     border:1px solid var(--rule); border-top:2px solid var(--rule);
     transition:border-top-color .25s,transform .25s,box-shadow .25s;
   }
+  a.focus-card{display:block;text-decoration:none;color:inherit;cursor:pointer}
   .focus-card:hover{border-top-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.30)}
+  .focus-card:hover .focus-name{color:var(--gold)}
   .focus-image{height:clamp(210px,20vw,262px);background:var(--ink)}
   .focus-image image-slot{display:block;width:100%;height:100%}
   .focus-body{padding:18px 22px 22px;display:flex;justify-content:space-between;gap:12px;align-items:flex-end;border-top:1px solid var(--rule)}
@@ -1130,7 +1132,7 @@
   <div class="links">
     <a href="index.html" class="is-active">Home</a>
     <a href="about.html">About</a>
-    <a href="services.html">Services</a>
+    <div class="has-dropdown"><a href="services.html">Services</a><div class="nav-dropdown"><a href="treatment-pain-management.html">Pain Management</a><a href="saat.html">SAAT Allergy Treatment</a><a href="treatment-cardiac.html">Cardiac Health</a><a href="treatment-infertility.html">Fertility Support</a><a href="treatment-tai-chi.html">Tai Chi &amp; Qi Gong</a><a href="treatment-cosmetic-acupuncture.html">Cosmetic Acupuncture</a></div></div>
     <a href="conditions.html">Conditions</a>
     <a href="testimonials.html">Testimonials</a>
     <a href="contact.html">Contact</a>
@@ -1147,7 +1149,7 @@
   <button class="mob-close" id="menuClose">✕</button>
   <a href="index.html" class="is-active">Home</a>
   <a href="about.html">About</a>
-  <a href="services.html">Services</a>
+  <a href="services.html">Services</a><a href="treatment-pain-management.html" class="mob-sub">↳ Pain Management</a><a href="saat.html" class="mob-sub">↳ SAAT Allergy Treatment</a><a href="treatment-cardiac.html" class="mob-sub">↳ Cardiac Health</a><a href="treatment-infertility.html" class="mob-sub">↳ Fertility Support</a><a href="treatment-tai-chi.html" class="mob-sub">↳ Tai Chi &amp; Qi Gong</a><a href="treatment-cosmetic-acupuncture.html" class="mob-sub">↳ Cosmetic Acupuncture</a>
   <a href="conditions.html">Conditions</a>
   <a href="testimonials.html">Testimonials</a>
   <a href="contact.html">Contact</a>
@@ -1202,30 +1204,30 @@
     </div>
     <div class="focus-viewport">
       <div class="focus-track" id="focusTrack">
-      <article class="focus-card">
+      <a class="focus-card" href="treatment-pain-management.html">
         <div class="focus-image"><image-slot id="focus-pain" placeholder="Pain management photo" src="assets/pain_manage.jpeg"></image-slot></div>
         <div class="focus-body"><h3 class="focus-name">Pain management</h3><span class="focus-count">01 / 06</span></div>
-      </article>
-      <article class="focus-card">
+      </a>
+      <a class="focus-card" href="saat.html">
         <div class="focus-image"><image-slot id="focus-saat" placeholder="SAAT photo" src="assets/saat.jpeg"></image-slot></div>
         <div class="focus-body"><h3 class="focus-name">SAAT</h3><span class="focus-count">02 / 06</span></div>
-      </article>
-      <article class="focus-card">
+      </a>
+      <a class="focus-card" href="treatment-cardiac.html">
         <div class="focus-image"><image-slot id="focus-cardiac" placeholder="Functional cardiac issues photo" src="assets/cardiacissues.jpeg"></image-slot></div>
         <div class="focus-body"><h3 class="focus-name">Functional cardiac issues</h3><span class="focus-count">03 / 06</span></div>
-      </article>
-      <article class="focus-card">
+      </a>
+      <a class="focus-card" href="treatment-infertility.html">
         <div class="focus-image"><image-slot id="focus-infertility" placeholder="Infertility photo"></image-slot></div>
         <div class="focus-body"><h3 class="focus-name">Infertility</h3><span class="focus-count">04 / 06</span></div>
-      </article>
-      <article class="focus-card">
+      </a>
+      <a class="focus-card" href="treatment-tai-chi.html">
         <div class="focus-image"><image-slot id="focus-taichi-qigong" placeholder="Tai Chi and Qi Gong photo" src="assets/tai_chi.jpeg"></image-slot></div>
         <div class="focus-body"><h3 class="focus-name">Tai Chi &amp; Qi Gong</h3><span class="focus-count">05 / 06</span></div>
-      </article>
-      <article class="focus-card">
+      </a>
+      <a class="focus-card" href="treatment-cosmetic-acupuncture.html">
         <div class="focus-image"><image-slot id="focus-cosmetic" placeholder="Cosmetic acupuncture photo"></image-slot></div>
         <div class="focus-body"><h3 class="focus-name">Cosmetic acupuncture</h3><span class="focus-count">06 / 06</span></div>
-      </article>
+      </a>
       </div>
     </div>
     <div class="focus-progress" aria-hidden="true"><div class="focus-progress-bar" id="focusProgressBar"></div></div>
