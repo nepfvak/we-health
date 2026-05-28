@@ -173,7 +173,7 @@ body::before {
 @media (min-width: 1100px) { .nav .links { display: flex } .nav .burger { display: none } }
 
 /* ── Container ──────────────────────────────────────────────────────── */
-.wrap { max-width: 1240px; margin: 0 auto; padding: 0 22px; position: relative; z-index: 3 }
+.wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 22px; position: relative; z-index: 3 }
 
 /* ── Buttons ────────────────────────────────────────────────────────── */
 .btn-primary {
