@@ -206,12 +206,16 @@ body::before {
   opacity: 1; pointer-events: all;
 }
 .nav-dropdown a {
-  display: flex; align-items: center;
-  padding: 9px 32px 9px 44px;
+  display: block;
+  padding: 9px 20px;
+  text-align: center;
   font-family: "Times New Roman", serif; font-size: 13px; letter-spacing: .09em; text-transform: uppercase;
   color: #0d0c08; white-space: nowrap;
   transition: color .18s; text-decoration: none;
 }
+/* Scrolled nav has no frame-inset, so gap to glass bottom is 2px less */
+.nav.scrolled .nav-dropdown { top: calc(100% + 12px) }
+.nav.scrolled .has-dropdown::after { height: 16px }
 .nav-dropdown a:hover { color: var(--gold) }
 .nav-dropdown a::after { display: none }
 
