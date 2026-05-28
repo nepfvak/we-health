@@ -477,7 +477,36 @@
   .t-label{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2vw,28px);color:var(--paper);line-height:1.1}
   .t-sub{font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--paper-faint)}
 
-
+  /* Featured care carousel */
+  .focus-slider{position:relative;z-index:3;padding:clamp(58px,7vw,92px) 0 clamp(34px,4vw,54px)}
+  .focus-inner{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
+  .focus-head{margin-bottom:28px}
+  .focus-head h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(32px,4.2vw,48px);line-height:1.05;color:var(--paper);margin-top:12px}
+  .focus-stage{position:relative}
+  .focus-controls{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:2}
+  .focus-arrow{width:54px;height:54px;border:1px solid rgba(240,236,226,.48);background:rgba(240,236,226,.44);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);display:grid;place-items:center;font-family:var(--serif);font-size:27px;color:var(--paper);pointer-events:auto;transition:border-color .25s,color .25s,background .25s,opacity .25s}
+  .focus-arrow:first-child{transform:translateX(-50%)}
+  .focus-arrow:last-child{transform:translateX(50%)}
+  .focus-arrow:hover:not(:disabled),.focus-arrow:focus-visible:not(:disabled){border-color:rgba(76,179,90,.72);color:var(--gold);background:rgba(240,236,226,.64)}
+  .focus-arrow:disabled{opacity:.35;cursor:default}
+  .focus-viewport{overflow:hidden}
+  .focus-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px) / 3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:1px}
+  .focus-track::-webkit-scrollbar{display:none}
+  .focus-card{scroll-snap-align:start;border:1px solid var(--rule);background:var(--ink-2);overflow:hidden;min-width:0}
+  .focus-image{height:clamp(210px,20vw,262px);background:var(--ink-3)}
+  .focus-image image-slot{display:block;width:100%;height:100%}
+  .focus-body{padding:22px 22px 25px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .focus-count{font-family:var(--mono);font-size:11px;letter-spacing:.20em;color:var(--paper-faint)}
+  .focus-name{font-family:var(--serif);font-size:clamp(23px,2.2vw,28px);font-weight:400;font-style:italic;color:var(--paper);line-height:1.1}
+  @media(max-width:920px){.focus-track{grid-auto-columns:calc((100% - 18px) / 2)}}
+  @media(max-width:600px){
+    .focus-inner{padding:0 16px}
+    .focus-head h2{font-size:32px}
+    .focus-arrow{width:44px;height:44px;background:rgba(240,236,226,.58)}
+    .focus-arrow:first-child{transform:translateX(-18%)}
+    .focus-arrow:last-child{transform:translateX(18%)}
+    .focus-track{grid-auto-columns:100%;gap:12px}
+  }
 
 
 
@@ -1093,6 +1122,52 @@
     </div>
   </div>
 </header>
+
+<!-- Featured Care Carousel -->
+<div class="focus-slider" role="region" aria-label="Featured care topics">
+  <div class="focus-inner">
+    <div class="focus-head">
+      <div>
+        <div class="eyebrow reveal"><span>Areas of Care</span></div>
+        <h2 class="reveal d1">How we can help</h2>
+      </div>
+    </div>
+    <div class="focus-stage">
+      <div class="focus-controls reveal d2" aria-label="Slide controls">
+        <button class="focus-arrow" id="focusPrev" type="button" aria-label="Previous topics">&#8592;</button>
+        <button class="focus-arrow" id="focusNext" type="button" aria-label="Next topics">&#8594;</button>
+      </div>
+      <div class="focus-viewport">
+        <div class="focus-track" id="focusTrack">
+        <article class="focus-card">
+          <div class="focus-image"><image-slot id="focus-pain" placeholder="Pain management photo"></image-slot></div>
+          <div class="focus-body"><h3 class="focus-name">Pain management</h3><span class="focus-count">01 / 06</span></div>
+        </article>
+        <article class="focus-card">
+          <div class="focus-image"><image-slot id="focus-saat" placeholder="SAAT photo"></image-slot></div>
+          <div class="focus-body"><h3 class="focus-name">SAAT</h3><span class="focus-count">02 / 06</span></div>
+        </article>
+        <article class="focus-card">
+          <div class="focus-image"><image-slot id="focus-cardiac" placeholder="Functional cardiac issues photo"></image-slot></div>
+          <div class="focus-body"><h3 class="focus-name">Functional cardiac issues</h3><span class="focus-count">03 / 06</span></div>
+        </article>
+        <article class="focus-card">
+          <div class="focus-image"><image-slot id="focus-infertility" placeholder="Infertility photo"></image-slot></div>
+          <div class="focus-body"><h3 class="focus-name">Infertility</h3><span class="focus-count">04 / 06</span></div>
+        </article>
+        <article class="focus-card">
+          <div class="focus-image"><image-slot id="focus-taichi-qigong" placeholder="Tai Chi and Qi Gong photo"></image-slot></div>
+          <div class="focus-body"><h3 class="focus-name">Tai Chi &amp; Qi Gong</h3><span class="focus-count">05 / 06</span></div>
+        </article>
+        <article class="focus-card">
+          <div class="focus-image"><image-slot id="focus-cosmetic" placeholder="Cosmetic acupuncture photo"></image-slot></div>
+          <div class="focus-body"><h3 class="focus-name">Cosmetic acupuncture</h3><span class="focus-count">06 / 06</span></div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ─── Trust Strip ───────────────────────────────────────────────── -->
 <div class="trust-strip" role="complementary" aria-label="Credentials and coverage">
@@ -1789,6 +1864,32 @@
       t.scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
+
+  // Featured care carousel arrows
+  (() => {
+    const track = document.getElementById('focusTrack');
+    const prev = document.getElementById('focusPrev');
+    const next = document.getElementById('focusNext');
+    if (!track || !prev || !next) return;
+
+    const updateControls = () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= maxScroll - 2;
+    };
+
+    const slide = (direction) => {
+      const card = track.querySelector('.focus-card');
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      track.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: 'smooth' });
+    };
+
+    prev.addEventListener('click', () => slide(-1));
+    next.addEventListener('click', () => slide(1));
+    track.addEventListener('scroll', updateControls, { passive: true });
+    window.addEventListener('resize', updateControls);
+    updateControls();
+  })();
 
 // Five elements hover
 (function(){
