@@ -536,8 +536,8 @@
   }
   .hero .wrap{ position:relative; z-index:2 }
   .hero .wrap{ max-width:1240px; margin:0 auto; padding:0 22px; width:100%; position:relative; z-index:2 }
-  .hero-grid{ display:grid; grid-template-columns:1fr; gap:48px; align-items:center }
-  @media(min-width:880px){ .hero-grid{ grid-template-columns: 1.05fr .95fr; gap:72px } }
+  .hero-grid{ display:grid; grid-template-columns:1fr; gap:0; align-items:center }
+  .hero-text{ max-width: 680px }
 
   .hero h1{
     font-family: var(--serif);
@@ -592,32 +592,53 @@
   .hero .qf .v a{ color:inherit; border-bottom:.5px solid var(--rule-strong); padding-bottom:1px }
   .hero .qf .v a:hover{ color:var(--gold); border-color:var(--gold) }
 
-  /* CTAs — elegant, typographic weight, slim */
-  .hero .cta-row{ display:flex; gap:20px 32px; flex-wrap:wrap; align-items:center; margin-top:32px }
+  /* CTAs */
+  .hero .cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:40px }
   .hero .btn-primary{
-    background: transparent !important; color: var(--paper) !important;
-    border: .5px solid var(--gold) !important;
-    padding: 15px 28px !important;
-    font-size: 13px !important; letter-spacing:.20em !important;
-    font-weight: 500 !important;
-    transition: background .35s ease, color .35s ease !important;
-    position: relative; overflow: hidden;
-  }
-  .hero .btn-primary::before{
-    content:"" !important; display:block !important;
-    position:absolute; inset:0; background:var(--gold);
-    transform:translateY(101%); transition:transform .4s cubic-bezier(.7,0,.2,1); z-index:-1;
-  }
-  .hero .btn-primary:hover{ color: var(--ink) !important }
-  .hero .btn-primary:hover::before{ transform:translateY(0) !important }
-  .hero .btn-ghost{
-    color: var(--paper-dim) !important;
+    display: inline-flex !important; align-items: center !important; gap: 10px !important;
+    background: var(--gold) !important; color: var(--ink) !important;
     border: none !important;
-    border-bottom: .5px solid var(--rule-strong) !important;
-    font-size: 13px !important; letter-spacing:.20em !important;
-    padding: 2px 0 4px !important;
+    padding: 16px 32px !important;
+    font-family: var(--mono) !important;
+    font-size: 11px !important; letter-spacing:.22em !important;
+    font-weight: 600 !important; text-transform: uppercase !important;
+    border-radius: 2px !important;
+    box-shadow: 0 4px 24px rgba(76,179,90,.18) !important;
+    transition: background .25s, transform .22s, box-shadow .25s !important;
+    position: relative !important; overflow: visible !important;
   }
-  .hero .btn-ghost:hover{ color:var(--gold) !important; border-color:var(--gold) !important }
+  .hero .btn-primary::before{ display:none !important }
+  .hero .btn-primary:hover{
+    background: var(--gold-dim) !important; color: var(--ink) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 36px rgba(76,179,90,.3) !important;
+  }
+  .hero .btn-primary .arrow{
+    font-style: normal !important;
+    transition: transform .2s !important;
+    display: inline-block !important;
+  }
+  .hero .btn-primary:hover .arrow{ transform: translateX(3px) !important }
+
+  .hero .btn-ghost{
+    display: inline-flex !important; align-items: center !important; gap: 9px !important;
+    color: var(--paper-dim) !important;
+    background: transparent !important;
+    border: 1px solid rgba(76,179,90,.3) !important;
+    padding: 15px 28px !important;
+    font-family: var(--mono) !important;
+    font-size: 11px !important; letter-spacing:.22em !important;
+    font-weight: 400 !important; text-transform: uppercase !important;
+    border-radius: 2px !important;
+    transition: color .25s, border-color .25s, background .25s !important;
+  }
+  .hero .btn-ghost:hover{
+    color: var(--gold) !important;
+    border-color: var(--gold) !important;
+    background: rgba(76,179,90,.07) !important;
+  }
+  .hero .btn-phone-icon{ display:inline-flex; align-items:center; opacity:.7 }
+  .hero .btn-ghost:hover .btn-phone-icon{ opacity:1 }
 
   /* Testimonial pull-quote below CTAs */
   .hero-testimonial{
@@ -848,22 +869,6 @@
       font-size: clamp(17px, 4.6vw, 22px) !important;
     }
 
-    /* Hero image: smaller, square, centered */
-    .hero-image{
-      max-width: min(62vw, 250px);
-      aspect-ratio: 1/1;
-      margin: 0 auto;
-    }
-    .hero .quickfacts{
-      justify-content: center;
-      gap: 16px 24px;
-      text-align: left;
-      padding-top: 16px;
-      margin-bottom: 24px;
-    }
-    .hero .qf .v{
-      font-size: 15px;
-    }
     .hero .cta-row{
       justify-content: center;
       gap: 16px;
@@ -914,19 +919,6 @@
     .hero{
       /* Keep enough room for the nav — nav is ~60px tall at this size */
       padding-top: 94px !important;
-    }
-    .hero .quickfacts{
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-top: 20px;
-      margin-bottom: 24px;
-    }
-    /* Hide the pull-quote testimonial inside the hero on phones —
-       it adds too much length and the same review appears in the
-       Trust / Testimonials sections */
-    .hero-testimonial{
-      display: none;
     }
     .hero .cta-row{
       flex-direction: column;
@@ -1078,44 +1070,25 @@
     <div class="hero-grid">
       <div class="hero-text">
         <div class="eyebrow reveal in"><span>W&amp;E Health Institute</span> <span class="cn">醫</span></div>
-        <h1 class="reveal in d1">
-          Acupuncture &amp; <span class="accent">classical Chinese medicine.</span>
-        </h1>
-        <p class="mission reveal in d2">
+        <p class="mission reveal in d1">
           At W&amp;E Health Institute we provide the holistic approach to help your body, mind, and spirit.
         </p>
-        <div class="quickfacts reveal in d2">
-          <div class="qf">
-            <div class="k">Address</div>
-            <div class="v">985 Cordova Station Ave<br/>Ste 101, Cordova, TN 38018</div>
-          </div>
-          <div class="qf">
-            <div class="k">Phone</div>
-            <div class="v"><a href="tel:+19013406433">901&middot;340&middot;6433</a></div>
-          </div>
-          <div class="qf">
-            <div class="k">Hours</div>
-            <div class="v">Mon &ndash; Sat<br/>8:00 am &ndash; 6:00 pm</div>
-          </div>
-        </div>
+        <h1 class="reveal in d2">
+          Acupuncture &amp; <span class="accent">classical Chinese medicine.</span>
+        </h1>
 
         <div class="cta-row reveal in d3">
           <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="btn-primary">
             <span>Book an Appointment</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="tel:+19013406433" class="btn-ghost">Call 901&middot;340&middot;6433</a>
+          <a href="tel:+19013406433" class="btn-ghost">
+            <span class="btn-phone-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.74a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </span>
+            <span>Call 901&middot;340&middot;6433</span>
+          </a>
         </div>
-
-        <div class="hero-testimonial reveal in d3">
-          <p class="quote-text">&ldquo;Dr. Selina has completely transformed how I manage my chronic pain. I feel like myself again.&rdquo;</p>
-          <span class="quote-attr">&mdash;&thinsp;Sarah M., patient since 2022</span>
-        </div>
-      </div>
-
-      <div class="hero-image reveal in d2">
-        <span class="corner-mark" aria-hidden="true">醫</span>
-        <image-slot id="hero-photo" src="assets/logo-no-text.png" placeholder="Photo of the clinic, treatment room, or Dr. Selina &mdash; portrait orientation, 4:5"></image-slot>
       </div>
     </div>
   </div>
