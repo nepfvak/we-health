@@ -178,14 +178,14 @@ body::before {
 /* Hover bridge: real pointer-events target filling the gap so the dropdown stays open */
 .has-dropdown::after {
   content: ''; position: absolute; top: 100%; left: -8px; right: -8px;
-  height: 12px;
+  height: 18px;
   background: transparent;
   pointer-events: auto; z-index: 101;
 }
 
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 14px);
   left: 50%; transform: translateX(-50%);
   min-width: 220px;
   background: rgba(12,14,12,.80);
