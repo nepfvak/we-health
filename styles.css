@@ -208,17 +208,11 @@ body::before {
 .nav-dropdown a {
   display: flex; align-items: center;
   padding: 9px 22px 9px 20px;
-  font-family: var(--mono); font-size: 12px; letter-spacing: .13em; text-transform: uppercase;
-  color: var(--paper); white-space: nowrap;
-  transition: color .18s, padding-left .18s; text-decoration: none;
+  font-family: "Times New Roman", serif; font-size: 13px; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--paper-dim); white-space: nowrap;
+  transition: color .18s; text-decoration: none;
 }
-.nav-dropdown a::before {
-  content: '—'; font-size: 8px; letter-spacing: 0;
-  color: var(--gold); margin-right: 10px; flex-shrink: 0;
-  opacity: 0; transition: opacity .18s;
-}
-.nav-dropdown a:hover { color: var(--gold); padding-left: 26px }
-.nav-dropdown a:hover::before { opacity: 1 }
+.nav-dropdown a:hover { color: var(--paper) }
 .nav-dropdown a::after { display: none }
 
 /* Light mode — match the olive-sage nav */
@@ -229,9 +223,8 @@ body::before {
   border-color: rgba(20,46,12,.22);
   box-shadow: 0 14px 36px rgba(0,0,0,.18);
 }
-[data-theme="light"] .nav-dropdown a { color: rgba(10,28,8,.90) }
+[data-theme="light"] .nav-dropdown a { color: rgba(10,28,8,.70) }
 [data-theme="light"] .nav-dropdown a:hover { color: rgba(10,28,8,1) }
-[data-theme="light"] .nav-dropdown a::before { color: rgba(10,28,8,.70) }
 /* Mobile sub-links in overlay */
 .mob-sub {
   font-size: clamp(15px, 3.5vw, 20px) !important;
