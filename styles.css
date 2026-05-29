@@ -218,6 +218,17 @@ body::before {
 .nav.scrolled .has-dropdown::after { height: 16px }
 .nav-dropdown a:hover { color: var(--gold) }
 .nav-dropdown a::after { display: none }
+.nav-dropdown-label {
+  padding: 10px 20px 8px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(13,12,8,.45);
+  border-bottom: .5px solid rgba(13,12,8,.18);
+  margin-bottom: 4px;
+}
+[data-theme="light"] .nav-dropdown-label {
+  color: rgba(13,12,8,.50);
+  border-bottom-color: rgba(13,12,8,.20);
+}
 
 /* Light mode — match the olive-sage nav */
 [data-theme="light"] .nav-dropdown {
