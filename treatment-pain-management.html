@@ -48,7 +48,7 @@
 .tx-float-back:hover,.tx-float-prev:hover,.tx-float-next:hover{color:var(--gold);border-color:var(--gold)}
 .tx-float-pager{display:flex;gap:1px}
 [data-theme="light"] .tx-float-back,[data-theme="light"] .tx-float-prev,[data-theme="light"] .tx-float-next{background:rgba(244,242,238,.88)}
-@media(max-width:480px){.tx-float-nav{top:88px;padding:0 12px}}
+@media(max-width:480px){.tx-float-nav{top:calc(88px + env(safe-area-inset-top, 0px));padding:0 12px}}
 
   /* Interactive section */
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}

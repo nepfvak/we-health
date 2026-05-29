@@ -23,7 +23,7 @@
 .tx-float-back:hover,.tx-float-prev:hover,.tx-float-next:hover{color:var(--gold);border-color:var(--gold)}
 .tx-float-pager{display:flex;gap:1px}
 [data-theme="light"] .tx-float-back,[data-theme="light"] .tx-float-prev,[data-theme="light"] .tx-float-next{background:rgba(244,242,238,.88)}
-@media(max-width:480px){.tx-float-nav{top:76px;padding:0 12px}}
+@media(max-width:480px){.tx-float-nav{top:calc(76px + env(safe-area-inset-top, 0px));padding:0 12px}}
 
   .tx-overview{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-overview p{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.7vw,19px);line-height:1.8;color:var(--paper);max-width:66ch;margin-bottom:28px}
@@ -80,11 +80,18 @@
   @media(max-width:768px){
     section{min-height:0;padding:56px 0}
     .elem-panel.active{grid-template-columns:1fr}
+    /* 5-button row: flex-wrap keeps all 5 visible without overflowing */
+    .elem-nav{flex-wrap:wrap}
+    .elem-btn{flex:1 1 calc(33.33% - 2px);min-width:0}
   }
   @media(max-width:480px){
     .tx-cta{padding:48px 0 72px}
-    .elem-btn{padding:16px 8px 22px;min-width:60px}
-    .elem-btn-cn{font-size:24px}
+    .elem-btn{padding:14px 6px 20px;min-width:0;flex:1 1 calc(33.33% - 2px)}
+    .elem-btn-cn{font-size:22px}
+    .elem-btn-name{font-size:9px;letter-spacing:.12em}
+  }
+  @media(max-width:360px){
+    .elem-btn{flex:1 1 calc(50% - 2px)}
   }
 </style>
 </head>
