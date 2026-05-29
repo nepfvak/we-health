@@ -1076,7 +1076,8 @@
 .five-desc .blurb{max-width:24ch}
 .five-desc .label{font-family:var(--mono);font-size:13px;letter-spacing:.20em;text-transform:uppercase;color:var(--accent,var(--gold));margin-bottom:14px}
 .five-desc h4{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,2.6vw,28px);line-height:1.1;color:var(--paper);margin-bottom:10px}
-.five-desc p{font-family:var(--serif);font-size:15px;line-height:1.65;color:var(--paper-dim);font-weight:500;font-style:italic}
+.five-desc p{font-family:"Times New Roman",serif;font-size:17px;line-height:1.65;color:var(--paper-dim);font-weight:700;font-style:italic}
+@media(min-width:769px){.five-center{width:54%}}
 @keyframes fiveSpin{to{transform:rotate(360deg)}}
 @keyframes fiveSpinCC{to{transform:rotate(360deg)}}
 @keyframes fiveCounter{to{transform:rotate(-360deg)}}
@@ -1147,15 +1148,35 @@
 </nav>
 
 <div class="menu-overlay" id="menuOverlay">
-  <button class="mob-close" id="menuClose">✕</button>
-  <a href="index.html" class="is-active">Home</a>
-  <a href="about.html">About</a>
-  <div class="mob-services-wrap"><a href="services.html">Services</a><button class="mob-services-toggle" aria-expanded="false" aria-label="Toggle specialty treatments">▾</button></div><div class="mob-sub-group" id="mobSubGroup"><a href="treatment-pain-management.html" class="mob-sub">↳ Pain Management</a><a href="saat.html" class="mob-sub">↳ SAAT Allergy Treatment</a><a href="treatment-cardiac.html" class="mob-sub">↳ Cardiac Health</a><a href="treatment-infertility.html" class="mob-sub">↳ Fertility Support</a><a href="treatment-tai-chi.html" class="mob-sub">↳ Tai Chi &amp; Qi Gong</a><a href="treatment-cosmetic-acupuncture.html" class="mob-sub">↳ Cosmetic Acupuncture</a></div>
-  <a href="conditions.html">Conditions</a>
-  <a href="testimonials.html">Testimonials</a>
-  <a href="contact.html">Contact</a>
-  <a href="saat.html">Allergy Treatment</a>
-  <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="mob-book">Book Appointment</a>
+  <div class="mob-overlay-bar">
+    <a href="index.html" class="mob-overlay-logo" tabindex="-1" aria-hidden="true"><img src="assets/logo-no-text.webp" alt="W&amp;E logo"></a>
+    <button class="mob-close" id="menuClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mob-nav-links">
+    <a href="index.html" class="is-active">Home</a>
+    <a href="about.html">About</a>
+    <div class="mob-services-wrap">
+      <a href="services.html">Services</a>
+      <button class="mob-services-toggle" aria-expanded="false" aria-label="Toggle services"></button>
+    </div>
+    <div class="mob-sub-group" id="mobSubGroup">
+      <a href="treatment-pain-management.html" class="mob-sub">Pain Management</a>
+      <a href="saat.html" class="mob-sub">SAAT Allergy Treatment</a>
+      <a href="treatment-cardiac.html" class="mob-sub">Cardiac Health</a>
+      <a href="treatment-infertility.html" class="mob-sub">Fertility Support</a>
+      <a href="treatment-tai-chi.html" class="mob-sub">Tai Chi &amp; Qi Gong</a>
+      <a href="treatment-cosmetic-acupuncture.html" class="mob-sub">Cosmetic Acupuncture</a>
+    </div>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="saat.html">Allergy Treatment</a>
+  </div>
+  <div class="mob-overlay-rule"></div>
+  <div class="mob-overlay-bottom">
+    <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="mob-book">Book Appointment</a>
+    <p class="mob-overlay-info"><span>901·340·6433</span>&ensp;·&ensp;<span>985 Cordova Station Ave, Ste 101, Cordova TN 38018</span></p>
+  </div>
 </div>
 
 <!-- ─── Hero ──────────────────────────────────────────────────────── -->
@@ -1493,6 +1514,9 @@
         <div class="five-desc" data-id="wood"  style="--accent:#5db730"><div class="blurb"><div class="label">木 · Wood · Spring</div><h4>Growth &amp; vision</h4><p>The liver and gallbladder. The upward push of qì — plans, anger, the courage to begin. When stagnant, the body grows tight.</p></div></div>
       </div>
     </div><!-- /.five-layout -->
+    <div style="text-align:center;margin-top:48px">
+      <a href="treatment-five-element.html" class="btn-ghost">Learn more about Five Element Acupuncture <span class="arrow">→</span></a>
+    </div>
   </div><!-- /.wrap -->
 </section>
 
