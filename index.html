@@ -512,7 +512,7 @@
   .focus-arrow:hover:not(:disabled),.focus-arrow:focus-visible:not(:disabled){border-color:var(--gold);color:var(--gold)}
   .focus-arrow:disabled{opacity:.28;cursor:default}
   .focus-viewport{overflow:hidden}
-  .focus-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px) / 3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:2px}
+  .focus-track{display:grid;grid-auto-flow:column;grid-auto-columns:100%;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:2px}
   .focus-track::-webkit-scrollbar{display:none}
   .focus-card{
     scroll-snap-align:start; min-width:0; overflow:hidden;
@@ -532,7 +532,6 @@
   .focus-dots{display:flex;justify-content:center;gap:10px;margin-top:28px}
   .focus-dot{width:8px;height:8px;border-radius:50%;background:var(--rule-strong);border:none;padding:0;cursor:pointer;transition:background .3s,transform .3s;flex-shrink:0}
   .focus-dot.active{background:var(--gold);transform:scale(1.25)}
-  @media(max-width:920px){.focus-track{grid-auto-columns:calc((100% - 18px) / 2)}}
   @media(max-width:600px){
     .focus-inner{padding:0 16px}
     .focus-head h2{font-size:28px}
