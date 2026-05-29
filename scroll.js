@@ -1,24 +1,20 @@
 (function () {
   if (typeof Lenis === 'undefined') return;
 
-  // Register BEFORE Lenis so this capture listener fires first.
-  // Trackpad sends many rapid small-delta events; mouse wheel sends
-  // fewer large-delta events (typically ≥ 100px per click in Chrome).
-  // For trackpad events we call stopImmediatePropagation() so Lenis
-  // never sees them and never calls preventDefault() — native OS
-  // momentum scroll takes over, which is already perfectly smooth.
-  // Trackpad two-finger swipe on Linux/libinput produces many small-delta pixel-mode
-  // events (deltaY typically < 120). Mouse wheel clicks produce deltaY >= 120 per notch.
-  // Stop trackpad events before Lenis sees them so the OS handles momentum natively;
-  // large-delta mouse wheel events pass through and get Lenis smoothing.
+  // Block ALL pixel-mode wheel events (deltaMode === 0) from reaching Lenis.
+  // deltaMode 0 = trackpad / high-resolution wheel (MacBook, Magic Mouse, touchpad).
+  // The OS already provides excellent momentum scrolling for these — Lenis on top
+  // creates a double-animation that stutters on fast swipes.
+  // deltaMode 1 = discrete mouse wheel clicks → these pass through to Lenis for
+  // smooth scrolling on traditional mice that would otherwise feel steppy.
   window.addEventListener('wheel', function (e) {
-    if (e.deltaMode === 0 && Math.abs(e.deltaY) < 120) {
+    if (e.deltaMode === 0) {
       e.stopImmediatePropagation();
     }
   }, { passive: true, capture: true });
 
   var lenis = new Lenis({
-    duration: 1.4,
+    duration: 1.0,
     easing: function (t) { return 1 - Math.pow(1 - t, 3); },
     smoothWheel: true,
     smoothTouch: false,
