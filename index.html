@@ -1086,11 +1086,21 @@
   .five-head{margin-bottom:52px}
   .five-h2-br{display:inline}
   .five-head .sub{display:block;text-align:center}
-  /* Hide asymmetric left-side gold line on mobile so eyebrow text is visually centred */
   .five-head .eyebrow::before{display:none}
-  /* Centre the oversized stage with flex instead of JS negative margin */
-  .five-layout{display:flex;justify-content:center}
-  .five-stage{flex-shrink:0}
+  .five-layout{display:flex;justify-content:center;width:100%;max-width:none}
+  /* Stage sized to viewport — no JS scale needed */
+  .five-stage{width:min(calc(100vw - 36px),400px);max-width:none;flex-shrink:1}
+  .elem{--r:120px;width:76px;height:76px;margin:-38px 0 0 -38px}
+  .elem .cn{font-size:26px}
+  .elem .en{font-size:13px}
+  .elem .season{font-size:8px}
+  .five-desc{padding:10px 16px 20px}
+  .five-desc h4{font-size:clamp(16px,4.5vw,22px)}
+  .five-desc p{font-size:clamp(12px,3.2vw,15px)}
+}
+@media(max-width:350px){
+  .five-stage{width:calc(100vw - 24px)}
+  .elem{--r:100px;width:64px;height:64px;margin:-32px 0 0 -32px}
 }
 /* Tablet intermediate (769–880px): slightly smaller, no JS scale needed */
 @media(min-width:769px) and (max-width:880px){
@@ -2041,49 +2051,15 @@
   });
 })();
 
-// ── Five Elements: proportional scale on mobile ────────────────────────
-// Scales the entire .five-stage (ring + elements + center) down so the
+// ── Five Elements: clear any JS-set inline styles — CSS handles sizing ──
 (function(){
   var stage = document.getElementById('fiveStage');
   if (!stage) return;
-  var NAT = 560; // natural design size: elements need 560×560 to fit
-  function applyFiveScale(){
-    if (window.innerWidth > 768){
-      stage.style.transform = '';
-      stage.style.transformOrigin = '';
-      stage.style.marginBottom = '';
-      stage.style.marginLeft = '';
-      stage.style.marginRight = '';
-      stage.style.width = '';
-      stage.style.maxWidth = '';
-      stage.style.height = '';
-      stage.style.alignSelf = '';
-      stage.style.position = '';
-      stage.style.left = '';
-      return;
-    }
-    // Available width = viewport minus horizontal padding of the .wrap
-    var wrapPad = window.innerWidth <= 480 ? 32 : 44;
-    var availW = window.innerWidth - wrapPad;
-    var scale = Math.min(1, (availW - 8) / NAT);
-    // Force stage to natural size so absolutely-positioned children fit correctly
-    stage.style.width = NAT + 'px';
-    stage.style.maxWidth = 'none';
-    stage.style.height = NAT + 'px';
-    // CSS flex on .five-layout handles horizontal centering — no manual margin needed
-    stage.style.marginLeft = '';
-    stage.style.marginRight = '';
-    stage.style.alignSelf = '';
-    stage.style.position = '';
-    stage.style.left = '';
-    // Scale from top-center of the natural stage
-    stage.style.transformOrigin = 'center top';
-    stage.style.transform = 'scale(' + scale.toFixed(4) + ')';
-    // Collapse excess layout height left after scaling
-    stage.style.marginBottom = Math.round((scale - 1) * NAT) + 'px';
-  }
-  applyFiveScale();
-  window.addEventListener('resize', applyFiveScale, {passive:true});
+  var props = ['transform','transformOrigin','marginBottom','marginLeft','marginRight',
+               'width','maxWidth','height','alignSelf','position','left'];
+  function clearStageStyles(){ props.forEach(function(p){ stage.style[p]=''; }); }
+  clearStageStyles();
+  window.addEventListener('resize', clearStageStyles, {passive:true});
 })();
 
 </script>
