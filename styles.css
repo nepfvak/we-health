@@ -123,8 +123,8 @@ body::before {
 }
 .nav .brand .name em { font-style: normal; color: var(--gold); font-weight: 500 }
 .nav .links {
-  display: none; gap: 14px; font-family: "Times New Roman", serif; font-size: 13px; font-weight: 600; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--paper-dim); align-items: center;
+  display: none; gap: 14px; font-family: "Times New Roman", serif; font-size: 13px; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--paper); align-items: center;
 }
 .nav .links a { position: relative; padding: 6px 0; transition: color .25s; white-space: nowrap }
 .nav .links a:hover, .nav .links a.is-active { color: var(--gold) }
@@ -576,7 +576,7 @@ h2{ color:var(--paper) }
 h3{ color:var(--paper) }
 
 /* Nav — readable links */
-.nav .links a{ font-weight: 500 }
+.nav .links a{ font-weight: 700 }
 
 /* Footer — readable text across all themes */
 .f-block .muted{ color: var(--paper-dim); font-style: normal }
