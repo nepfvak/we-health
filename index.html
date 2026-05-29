@@ -1088,19 +1088,14 @@
   .five-head .sub{display:block;text-align:center}
   .five-head .eyebrow::before{display:none}
   .five-layout{display:flex;justify-content:center;width:100%;max-width:none}
-  /* Stage sized to viewport — no JS scale needed */
-  .five-stage{width:min(calc(100vw - 36px),400px);max-width:none;flex-shrink:1}
-  .elem{--r:120px;width:76px;height:76px;margin:-38px 0 0 -38px}
-  .elem .cn{font-size:26px}
+  .five-stage{width:min(calc(100vw - 24px),360px);max-width:none;flex-shrink:1}
+  .elem{--r:122px;width:78px;height:78px;margin:-39px 0 0 -39px}
+  .elem .cn{font-size:27px}
   .elem .en{font-size:13px}
   .elem .season{font-size:8px}
-  .five-desc{padding:10px 16px 20px}
-  .five-desc h4{font-size:clamp(16px,4.5vw,22px)}
-  .five-desc p{font-size:clamp(12px,3.2vw,15px)}
-}
-@media(max-width:350px){
-  .five-stage{width:calc(100vw - 24px)}
-  .elem{--r:100px;width:64px;height:64px;margin:-32px 0 0 -32px}
+  .five-desc{padding:8px 14px 16px}
+  .five-desc h4{font-size:clamp(15px,4.5vw,22px)}
+  .five-desc p{font-size:clamp(12px,3.5vw,15px);line-height:1.5}
 }
 /* Tablet intermediate (769–880px): slightly smaller, no JS scale needed */
 @media(min-width:769px) and (max-width:880px){
