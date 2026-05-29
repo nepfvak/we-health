@@ -4,6 +4,20 @@
   const hero = document.querySelector('.hero');
   const pageHero = document.querySelector('.page-hero');
   const frame = document.querySelector('.page-frame');
+  const trigger = document.querySelector('.has-dropdown');
+
+  function positionDropdown() {
+    if (!trigger) return;
+    const isScrolled = nav.classList.contains('scrolled');
+    const navRect = nav.getBoundingClientRect();
+    const trigRect = trigger.getBoundingClientRect();
+    const rawInset = getComputedStyle(document.documentElement)
+      .getPropertyValue('--frame-inset').trim();
+    const frameInset = isScrolled ? 0 : (parseFloat(rawInset) || 14);
+    const offset = Math.max((navRect.bottom - frameInset) - trigRect.bottom, 0);
+    trigger.style.setProperty('--dd-offset', offset + 'px');
+    trigger.style.setProperty('--dd-bridge', (offset + 4) + 'px');
+  }
 
   function tick() {
     let threshold;
@@ -16,6 +30,7 @@
     }
     const scrolled = window.scrollY >= threshold;
     nav.classList.toggle('scrolled', scrolled);
+    positionDropdown();
     // Hide fixed frame on pages that have their own hero frame
     if (frame && (hero || pageHero)) {
       frame.classList.add('hidden');
@@ -24,6 +39,7 @@
 
   window.addEventListener('scroll', tick, { passive: true });
   window.addEventListener('resize', tick, { passive: true });
+  nav.addEventListener('transitionend', positionDropdown, { passive: true });
   tick();
 })();
 

@@ -32,7 +32,16 @@
 .t-card .who .meta-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-faint);line-height:1.6}
 .t-card .who .meta-l b{color:var(--paper);font-weight:400;letter-spacing:.18em}
 
-.t-intro{margin-bottom:72px}
+/* Google Reviews styling */
+.t-stars{font-size:13px;color:var(--gold);letter-spacing:1px;line-height:1}
+.t-source{margin-left:auto;flex-shrink:0;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-faint);border:.5px solid var(--rule);padding:3px 8px}
+.t-google-bar{display:flex;align-items:center;gap:20px;padding:28px 0;border-bottom:1px solid var(--rule);margin-bottom:48px}
+.t-g-score{font-family:var(--serif);font-style:italic;font-size:clamp(48px,6vw,72px);color:var(--gold);line-height:1;flex-shrink:0}
+.t-g-meta{display:flex;flex-direction:column;gap:4px}
+.t-g-stars{font-size:16px;color:var(--gold);letter-spacing:2px}
+.t-g-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-faint)}
+
+.t-intro{margin-bottom:36px}
 .t-cta{
   margin-top:80px;
   padding:72px 48px;
@@ -83,7 +92,7 @@
 <div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
 
 <nav class="nav" id="nav">
-  <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-no-text.png" alt="W&amp;E logo"></span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-no-text.webp" alt="W&amp;E logo"></span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
   <div class="links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -126,63 +135,77 @@
   <div class="wrap">
 
     <div class="t-intro reveal">
-      <p class="eyebrow"><span class="cn">口碑</span> In Their Words</p>
+      <p class="eyebrow"><span class="cn">口碑</span> Google Reviews</p>
       <h2>What our patients <span class="accent">say</span></h2>
+    </div>
+
+    <div class="t-google-bar reveal">
+      <div class="t-g-score">5.0</div>
+      <div class="t-g-meta">
+        <div class="t-g-stars">★★★★★</div>
+        <div class="t-g-label">Google Reviews · W&amp;E Health Institute</div>
+      </div>
     </div>
 
     <div class="t-grid">
 
       <div class="t-card reveal d1">
-        <div class="mark">"</div>
-        <p class="quote">I came for migraines and stayed for the quiet. After six sessions the pain had loosened; after twelve it was simply gone. Selina listens with her hands.</p>
+        <div class="t-stars">★★★★★</div>
+        <p class="quote">A few days ago, I went to see Dr. Liang for acupuncture. I had been dealing with a cold and coughing for three nights, and because I had an urgent task to complete, I went to see the doctor right away. After one treatment I felt immediate relief — it was remarkable.</p>
         <div class="who">
-          <div class="av">M</div>
-          <div class="meta-l"><b>Marian H.</b><br/>Patient since 2021</div>
+          <div class="av">C</div>
+          <div class="meta-l"><b>Celine King</b><br/>Google Review</div>
+          <span class="t-source">Google</span>
         </div>
       </div>
 
       <div class="t-card reveal d2">
-        <div class="mark">"</div>
-        <p class="quote">My acupuncturist back in Shanghai recommended I find Dr. Selina when I moved. I understand why. She is a real practitioner of the old school — slow, exact, and warm.</p>
+        <div class="t-stars">★★★★★</div>
+        <p class="quote">Doctor Liang works like a magician. I was bothered by migraine for many years and it became worse and worse recently. My headache existed every second with half of the days severe pain related to my menstrual cycle. The results have been life-changing.</p>
         <div class="who">
-          <div class="av">張</div>
-          <div class="meta-l"><b>Aileen C.</b><br/>Patient since 2019</div>
+          <div class="av">M</div>
+          <div class="meta-l"><b>Mia Hu</b><br/>Google Review</div>
+          <span class="t-source">Google</span>
         </div>
       </div>
 
       <div class="t-card reveal d3">
-        <div class="mark">"</div>
-        <p class="quote">I was skeptical. I left feeling like I'd slept ten hours. The room smells of mugwort and old wood and I have come back every other Thursday for three years.</p>
+        <div class="t-stars">★★★★★</div>
+        <p class="quote">Dr. Liang is an outstanding acupuncturist who helped my son past two important national sports competitions. The care and attention to detail was exceptional throughout.</p>
         <div class="who">
-          <div class="av">D</div>
-          <div class="meta-l"><b>Daniel R.</b><br/>Patient since 2022</div>
+          <div class="av">L</div>
+          <div class="meta-l"><b>Lisha Wu</b><br/>Google Review</div>
+          <span class="t-source">Google</span>
         </div>
       </div>
 
       <div class="t-card reveal d1">
-        <div class="mark">"</div>
-        <p class="quote">After years of allergy shots with little relief, one SAAT treatment changed everything. I can eat foods I hadn't touched in a decade. I only wish I had found this sooner.</p>
+        <div class="t-stars">★★★★★</div>
+        <p class="quote">I've had headaches for over 5 years, and for the last couple of years they were almost every single day — including constant migraines. I was exhausted from feeling bad all the time and it was honestly draining my life. The treatment here made a real difference.</p>
         <div class="who">
-          <div class="av">P</div>
-          <div class="meta-l"><b>Patricia W.</b><br/>Patient since 2020</div>
+          <div class="av">M</div>
+          <div class="meta-l"><b>Mackenzie Hammons</b><br/>Google Review</div>
+          <span class="t-source">Google</span>
         </div>
       </div>
 
       <div class="t-card reveal d2">
-        <div class="mark">"</div>
-        <p class="quote">Dr. Zhao's background in both Western and Chinese medicine gives me confidence. He explains everything clearly and treats the whole picture, not just the symptom.</p>
+        <div class="t-stars">★★★★★</div>
+        <p class="quote">I almost don't want to leave a review as this is my hidden gem! But after my PCP, endocrinologist and OBGYN couldn't find out why I had lost 70% of my hair, in 4 weeks (4 visits) I have new hair growth from a mixture of acupuncture treatments. Truly incredible.</p>
         <div class="who">
-          <div class="av">J</div>
-          <div class="meta-l"><b>James T.</b><br/>Patient since 2023</div>
+          <div class="av">A</div>
+          <div class="meta-l"><b>A.E.</b><br/>Google Review</div>
+          <span class="t-source">Google</span>
         </div>
       </div>
 
       <div class="t-card reveal d3">
-        <div class="mark">"</div>
-        <p class="quote">W&amp;E has become part of my wellness routine. The combination of acupuncture and herbal medicine has helped my chronic fatigue more than anything else I've tried.</p>
+        <div class="t-stars">★★★★★</div>
+        <p class="quote">Referred to Dr. Liang for daily icepick headaches and loss of facial feeling. Acupuncture worked wonders that over 15 years of specialists and drugs could not. Headaches gone or down to 1 every 2 weeks vice daily, and feeling was brought back.</p>
         <div class="who">
-          <div class="av">L</div>
-          <div class="meta-l"><b>Linda M.</b><br/>Patient since 2018</div>
+          <div class="av">M</div>
+          <div class="meta-l"><b>Michael O'Driscoll</b><br/>Google Review</div>
+          <span class="t-source">Google</span>
         </div>
       </div>
 
@@ -205,7 +228,7 @@
 
       <div class="f-cta">
         <div class="f-logo">
-          <img src="assets/logo-with-text.png" loading="lazy" alt="W&E Health Institute" style="width:100%;max-width:300px;display:block;">
+          <img src="assets/logo-with-text.webp" loading="lazy" alt="W&E Health Institute" style="width:100%;max-width:300px;display:block;">
         </div>
         <div class="f-cta-buttons">
           <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="request">

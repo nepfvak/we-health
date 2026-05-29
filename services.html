@@ -21,141 +21,79 @@
   section{padding:0;display:flex;flex-direction:column;justify-content:center}
   section>.wrap{padding-top:clamp(72px,8vh,120px);padding-bottom:clamp(72px,8vh,120px)}
 
-/* ── Accordion stack scroll ─────────────────────────────────────── */
-.svc-accordion { position: relative; border-top: 1px solid var(--rule); background: var(--ink-2); }
-[data-theme="light"] .svc-accordion { background: var(--ink-2); }
+/* ── Click-to-expand row list ───────────────────────────────────── */
+.svc-list { border-top: 1px solid var(--rule); background: var(--ink-2); }
+.svc-row { border-bottom: 1px solid var(--rule); }
+.svc-row:last-child { border-bottom: none; }
 
-.svc-item { height: 100vh; background: var(--ink-2); }
-
-.svc-item-inner {
-  position: sticky;
-  top: calc(68px + var(--i) * 52px);
-  width: 100%;
-  height: calc(100vh - 68px - var(--i) * 52px);
-  overflow: hidden;
-  background: var(--ink-2);
-  border-bottom: 1px solid var(--rule);
-  display: flex;
-  flex-direction: column;
-  z-index: calc(var(--i) + 1);
+.svc-row-btn {
+  width: 100%; display: flex; align-items: center; gap: 20px;
+  padding: 0 clamp(20px,4vw,52px); height: 64px;
+  text-align: left; background: transparent; border: none; cursor: pointer;
+  transition: background .2s;
 }
+.svc-row-btn:hover { background: rgba(255,255,255,.03); }
+[data-theme="light"] .svc-row-btn:hover { background: rgba(0,0,0,.03); }
+.svc-row.is-open > .svc-row-btn { border-bottom: 1px solid var(--rule); }
 
-/* Header strip — always visible */
-.svc-item-header {
-  height: 52px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 0 clamp(20px,4vw,52px);
-  border-bottom: 1px solid var(--rule);
-  background: var(--ink-2);
-}
-.svc-i-num {
+.svc-row-num {
   font-family: var(--mono); font-size: 12px; letter-spacing: .20em;
   text-transform: uppercase; color: var(--paper-faint); flex-shrink: 0; width: 28px;
 }
-.svc-i-name {
+.svc-row-name {
   font-family: var(--serif); font-style: italic; font-size: clamp(16px,1.6vw,20px);
   color: var(--paper); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.svc-i-cn {
+.svc-row-cn {
   font-family: var(--brush); font-size: 15px; color: var(--gold);
   letter-spacing: .06em; flex-shrink: 0;
 }
+.svc-row-toggle {
+  flex-shrink: 0; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 20px; font-weight: 300;
+  color: var(--gold); margin-left: 12px;
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.svc-row.is-open .svc-row-toggle { transform: rotate(45deg); }
 
-/* Body — image + text */
-.svc-item-body {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 55% 45%;
-  min-height: 0;
-  overflow: hidden;
-}
-@media(max-width:860px){
-  /* Switch to single column; give the image a fixed height so it doesn't
-     collapse (percentage rows resolve to 0 when the parent is height:auto) */
-  .svc-item-body { grid-template-columns: 1fr; grid-template-rows: auto auto; }
-}
+/* grid-template-rows trick — smooth height to unknown size */
+.svc-row-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .42s cubic-bezier(.4,0,.2,1); }
+.svc-row.is-open .svc-row-body { grid-template-rows: 1fr; }
+/* overflow:hidden must be on the inner child, not .svc-row-body, for the trick to work */
+.svc-row-body-inner { overflow: hidden; }
 
-/* Image half */
-.svc-item-img {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #0f0c09, #161716);
-}
-.svc-item-img img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center; opacity: 1;
-}
-.svc-img-num {
-  position:absolute; left:20px; bottom:20px; z-index:3;
-  font-family:var(--mono); font-size:12px; letter-spacing:.20em;
-  text-transform:uppercase; color:var(--paper-faint);
-}
-[data-theme="light"] .svc-item-img { background: linear-gradient(135deg,#e3e0d8,#ece9e2) }
+/* Expanded panel — full-bleed */
+.svc-row-content { display: grid; grid-template-columns: 55% 45%; }
 
-/* Text half */
-.svc-item-text {
+.svc-row-img {
+  height: 400px; position: relative; overflow: hidden;
+  background: linear-gradient(135deg,#0f0c09,#161716);
+}
+[data-theme="light"] .svc-row-img { background: linear-gradient(135deg,#e3e0d8,#ece9e2); }
+.svc-row-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+.svc-row-text {
   padding: clamp(32px,4.5vw,56px) clamp(24px,4vw,56px);
-  display: flex; flex-direction: column; justify-content: flex-start;
   padding-top: clamp(36px,5vw,64px);
-  overflow-y: auto;
-  position: relative;
+  display: flex; flex-direction: column; justify-content: flex-start;
 }
+.svc-row-text .svc-num { font-family:var(--mono); font-size:12px; letter-spacing:.20em; text-transform:uppercase; color:var(--paper-faint); margin-bottom:16px; }
+.svc-row-text h3 { font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(24px,2.6vw,36px); color:var(--paper); margin-bottom:6px; line-height:1.1; }
+.svc-row-text .svc-cn { font-family:var(--brush); font-size:16px; color:var(--gold-dim); letter-spacing:.06em; margin-bottom:20px; display:block; }
+.svc-row-text p { color:var(--paper-dim); font-size:16px; line-height:1.75; font-weight:400; max-width:44ch; }
+.svc-row-text .svc-link { display:inline-flex; align-items:center; gap:10px; margin-top:28px; font-family:var(--mono); font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); padding-bottom:6px; border-bottom:.5px solid var(--gold-dim); transition:color .3s,border-color .3s; }
+.svc-row-text .svc-link:hover { color:var(--paper); border-color:var(--paper-faint); }
+[data-theme="light"] .svc-row-text .svc-link:hover { color:var(--gold-dim); border-color:var(--gold); }
+.svc-row-text .svc-link .arr { font-family:var(--serif); font-style:italic; font-size:15px; letter-spacing:0; transition:transform .3s; }
+.svc-row-text .svc-link:hover .arr { transform:translateX(4px); }
 
-/* Body — fade out bottom so collapse feels seamless */
-.svc-item-body {
-  position: relative;
-}
-.svc-item-body::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(transparent, var(--ink-2));
-  pointer-events: none;
-  z-index: 4;
-}
-[data-theme="light"] .svc-item-body::after {
-  background: linear-gradient(transparent, var(--ink-2));
-}
-.svc-item-text .svc-num {
-  font-family:var(--mono); font-size:12px; letter-spacing:.20em;
-  text-transform:uppercase; color:var(--paper-faint); margin-bottom:16px;
-}
-.svc-item-text h3 {
-  font-family:var(--serif); font-style:italic; font-weight:400;
-  font-size:clamp(24px,2.6vw,36px); color:var(--paper); margin-bottom:6px; line-height:1.1;
-}
-.svc-item-text .svc-cn {
-  font-family:var(--brush); font-size:16px; color:var(--gold-dim);
-  letter-spacing:.06em; margin-bottom:20px; display:block;
-}
-.svc-item-text p {
-  color:var(--paper-dim); font-size:16px; line-height:1.75; font-weight:400; max-width:44ch;
-}
-.svc-item-text .svc-link {
-  display:inline-flex; align-items:center; gap:10px; margin-top:28px;
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.26em; text-transform:uppercase;
-  color:var(--gold); padding-bottom:6px; border-bottom:.5px solid var(--gold-dim);
-  transition:color .3s,border-color .3s;
-}
-.svc-item-text .svc-link:hover { color:var(--paper); border-color:var(--paper-faint) }
-[data-theme="light"] .svc-item-text .svc-link:hover { color:var(--gold-dim); border-color:var(--gold) }
-.svc-item-text .svc-link .arr { font-family:var(--serif); font-style:italic; font-size:15px; letter-spacing:0; transition:transform .3s }
-.svc-item-text .svc-link:hover .arr { transform:translateX(4px) }
-
-/* Mobile: disable sticky effect */
 @media(max-width:860px){
-  .svc-item { height: auto; }
-  .svc-item-inner { position: relative; top: 0 !important; height: auto !important; border-radius: 8px; margin-bottom: 2px; }
-  .svc-item-img { aspect-ratio: 16/9; position: relative; }
-  /* Remove the bottom fade on mobile — it clips the learn-more link
-     when the card is not scroll-sticky and text is fully visible */
-  .svc-item-body::after { display: none; }
-  /* Give the text panel enough bottom padding so the link clears the container */
-  .svc-item-text { overflow-y: visible; padding-bottom: 36px !important; }
+  .svc-row-btn { height: 60px; }
+  .svc-row-content { grid-template-columns: 1fr; }
+  .svc-row-img { height: auto; aspect-ratio: 4/3; }
+  .svc-row-img img { position: static; width: 100%; height: 100%; object-fit: cover; }
+  .svc-row-text { padding: 28px 20px 36px; }
 }
 
 /* Intro / count strip */
@@ -262,24 +200,6 @@
       padding-bottom: 40px;
     }
 
-    /* Accordion: ensure items don't stretch to 100vh on mobile */
-    .svc-item{ height: auto; min-height: 0; }
-    .svc-item-inner{
-      position: relative !important;
-      top: 0 !important;
-      height: auto !important;
-    }
-
-    /* svc-item-text: reduce padding on mobile */
-    .svc-item-text{
-      padding: 28px 20px 36px !important;
-    }
-
-    /* svc-item-text h3: prevent oversized heading in narrow viewport */
-    .svc-item-text h3{
-      font-size: clamp(20px, 5.5vw, 28px);
-    }
-
     /* Value grid: already 1-column below 800px — reduce padding */
     .value-col{ padding: 32px 24px }
 
@@ -300,10 +220,6 @@
   }
 
   @media(max-width:480px){
-    /* svc-item-img: taller on very small screens for better visual impact */
-    .svc-item-img{ aspect-ratio: 4/3; }
-    /* svc-item-text: tighter padding */
-    .svc-item-text{ padding: 24px 16px 32px !important; }
     /* value col: tightest padding */
     .value-col{ padding: 28px 18px; }
   }
@@ -315,7 +231,7 @@
 <div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
 
 <nav class="nav" id="nav">
-  <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-no-text.png" alt="W&amp;E logo"></span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-no-text.webp" alt="W&amp;E logo"></span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
   <div class="links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -368,186 +284,204 @@
   </div>
 </div>
 
-<!-- Services — accordion stack scroll -->
-<div class="svc-accordion" id="svcAccordion">
-  <div class="svc-item" style="--i:0">
-    <div class="svc-item-inner">
-      <div class="svc-item-header">
-        <span class="svc-i-num">01</span>
-        <span class="svc-i-name">Acupuncture</span>
-        <span class="svc-i-cn">針灸</span>
-      </div>
-      <div class="svc-item-body">
-        <div class="svc-item-img">
-          <img src="assets/pain_manage.jpeg" alt="Acupuncture needles" loading="lazy">
-          <span class="svc-img-num">01 / 08</span>
-        </div>
-        <div class="svc-item-text">
-          <div class="svc-num">01 — Acupuncture</div>
-          <h3>Acupuncture</h3>
-          <span class="svc-cn">針灸</span>
-          <p>Sterile, thin needles inserted into specific acupoints to enhance vital energy flow and restore balance. Used for pain management and hundreds of conditions over 3,000 years of history — now widely recognised across the US.</p>
-        <a href="treatment-acupuncture.html" class="svc-link">Explore Acupuncture <span class="arr">→</span></a>
+<!-- Services — click-to-expand row list -->
+<div class="svc-list" id="svcList" role="list">
+
+  <div class="svc-row is-open" role="listitem">
+    <button class="svc-row-btn" aria-expanded="true" aria-controls="svc-body-1" id="svc-btn-1">
+      <span class="svc-row-num" aria-hidden="true">01</span>
+      <span class="svc-row-name">Acupuncture</span>
+      <span class="svc-row-cn" aria-hidden="true">針灸</span>
+      <span class="svc-row-toggle" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-row-body" id="svc-body-1" role="region" aria-labelledby="svc-btn-1">
+      <div class="svc-row-body-inner">
+        <div class="svc-row-content">
+          <div class="svc-row-img">
+            <img src="assets/svc-acupuncture.webp" alt="Acupuncture needles" loading="lazy">
+          </div>
+          <div class="svc-row-text">
+            <div class="svc-num">01 — Acupuncture</div>
+            <h3>Acupuncture</h3>
+            <span class="svc-cn">針灸</span>
+            <p>Sterile, thin needles inserted into specific acupoints to enhance vital energy flow and restore balance. Used for pain management and hundreds of conditions over 3,000 years of history — now widely recognised across the US.</p>
+            <a href="treatment-acupuncture.html" class="svc-link">Explore Acupuncture <span class="arr">→</span></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="svc-item" style="--i:1">
-    <div class="svc-item-inner">
-      <div class="svc-item-header">
-        <span class="svc-i-num">02</span>
-        <span class="svc-i-name">SAAT Allergy Treatments</span>
-        <span class="svc-i-cn">耳針脫敏</span>
-      </div>
-      <div class="svc-item-body">
-        <div class="svc-item-img">
-          <img src="assets/saat.jpeg" alt="Auricular therapy" loading="lazy">
-          <span class="svc-img-num">02 / 08</span>
-        </div>
-        <div class="svc-item-text">
-          <div class="svc-num">02 — SAAT Allergy Treatments</div>
-          <h3>SAAT Allergy Treatments</h3>
-          <span class="svc-cn">耳針脫敏</span>
-          <p>Soliman Auricular Allergy Treatment (SAAT) is a patented auricular acupuncture technique that desensitises the immune system to allergens — including Alpha-gal, food, environmental, and chemical sensitivities — often providing long-term remission from a single tiny ear needle.</p>
-        <a href="saat.html" class="svc-link">Learn more about SAAT <span class="arr">→</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="svc-item" style="--i:2">
-    <div class="svc-item-inner">
-      <div class="svc-item-header">
-        <span class="svc-i-num">03</span>
-        <span class="svc-i-name">Five Element Acupuncture</span>
-        <span class="svc-i-cn">五行針灸</span>
-      </div>
-      <div class="svc-item-body">
-        <div class="svc-item-img">
-          <img src="assets/svc-five-element.jpg" alt="Five elements nature" loading="lazy">
-          <span class="svc-img-num">03 / 08</span>
-        </div>
-        <div class="svc-item-text">
-          <div class="svc-num">03 — Five Element Acupuncture</div>
-          <h3>Five Element Acupuncture</h3>
-          <span class="svc-cn">五行針灸</span>
-          <p>Rooted in ancient Chinese five-element theory, this unique system treats allergies and root-cause conditions by addressing body, mind, and spirit together. One of its most distinguishing qualities is its priority on treating at the level of spirit.</p>
+  <div class="svc-row" role="listitem">
+    <button class="svc-row-btn" aria-expanded="false" aria-controls="svc-body-2" id="svc-btn-2">
+      <span class="svc-row-num" aria-hidden="true">02</span>
+      <span class="svc-row-name">SAAT Allergy Treatment</span>
+      <span class="svc-row-cn" aria-hidden="true">耳針脫敏</span>
+      <span class="svc-row-toggle" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-row-body" id="svc-body-2" role="region" aria-labelledby="svc-btn-2">
+      <div class="svc-row-body-inner">
+        <div class="svc-row-content">
+          <div class="svc-row-img">
+            <img src="assets/svc-saat.webp" alt="Auricular therapy" loading="lazy">
+          </div>
+          <div class="svc-row-text">
+            <div class="svc-num">02 — SAAT Allergy Treatment</div>
+            <h3>SAAT Allergy Treatment</h3>
+            <span class="svc-cn">耳針脫敏</span>
+            <p>Soliman Auricular Allergy Treatment (SAAT) is a patented auricular acupuncture technique that desensitises the immune system to allergens — including Alpha-gal, food, environmental, and chemical sensitivities — often providing long-term remission from a single tiny ear needle.</p>
+            <a href="saat.html" class="svc-link">Learn more about SAAT <span class="arr">→</span></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="svc-item" style="--i:3">
-    <div class="svc-item-inner">
-      <div class="svc-item-header">
-        <span class="svc-i-num">04</span>
-        <span class="svc-i-name">Herbal Medicine</span>
-        <span class="svc-i-cn">中草藥</span>
-      </div>
-      <div class="svc-item-body">
-        <div class="svc-item-img">
-          <img src="assets/herbal_medicine.png" alt="Herbal medicine" loading="lazy">
-          <span class="svc-img-num">04 / 08</span>
-        </div>
-        <div class="svc-item-text">
-          <div class="svc-num">04 — Herbal Medicine</div>
-          <h3>Herbal Medicine</h3>
-          <span class="svc-cn">中草藥</span>
-          <p>Leaves, fruits, flowers, and roots with proven health benefits, prescribed as concentrated natural plant granules and herbal pills. Chinese herbal medicine has demonstrated success across a wide range of conditions, guided by Traditional Chinese Medicine theory.</p>
-        <a href="treatment-herbal-medicine.html" class="svc-link">Explore Herbal Medicine <span class="arr">→</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="svc-item" style="--i:4">
-    <div class="svc-item-inner">
-      <div class="svc-item-header">
-        <span class="svc-i-num">05</span>
-        <span class="svc-i-name">Cupping</span>
-        <span class="svc-i-cn">拔罐</span>
-      </div>
-      <div class="svc-item-body">
-        <div class="svc-item-img">
-          <img src="assets/cupping.jpeg" alt="Cupping therapy" loading="lazy">
-          <span class="svc-img-num">05 / 08</span>
-        </div>
-        <div class="svc-item-text">
-          <div class="svc-num">05 — Cupping</div>
-          <h3>Cupping</h3>
-          <span class="svc-cn">拔罐</span>
-          <p>An ancient technique where special cups create suction on the skin to relieve pain, reduce inflammation, improve blood flow, and promote relaxation. We offer Sancai Fire Cupping — always included at no extra charge.</p>
-        <a href="treatment-cupping.html" class="svc-link">Explore Cupping <span class="arr">→</span></a>
+  <div class="svc-row" role="listitem">
+    <button class="svc-row-btn" aria-expanded="false" aria-controls="svc-body-3" id="svc-btn-3">
+      <span class="svc-row-num" aria-hidden="true">03</span>
+      <span class="svc-row-name">Five Element Acupuncture</span>
+      <span class="svc-row-cn" aria-hidden="true">五行針灸</span>
+      <span class="svc-row-toggle" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-row-body" id="svc-body-3" role="region" aria-labelledby="svc-btn-3">
+      <div class="svc-row-body-inner">
+        <div class="svc-row-content">
+          <div class="svc-row-img">
+            <img src="assets/svc-five-element.webp" alt="Five elements nature" loading="lazy">
+          </div>
+          <div class="svc-row-text">
+            <div class="svc-num">03 — Five Element Acupuncture</div>
+            <h3>Five Element Acupuncture</h3>
+            <span class="svc-cn">五行針灸</span>
+            <p>Rooted in ancient Chinese five-element theory, this unique system treats allergies and root-cause conditions by addressing body, mind, and spirit together. One of its most distinguishing qualities is its priority on treating at the level of spirit.</p>
+            <a href="treatment-five-element.html" class="svc-link">Explore Five Element Acupuncture <span class="arr">→</span></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="svc-item" style="--i:5">
-    <div class="svc-item-inner">
-      <div class="svc-item-header">
-        <span class="svc-i-num">06</span>
-        <span class="svc-i-name">Moxibustion</span>
-        <span class="svc-i-cn">艾灸</span>
-      </div>
-      <div class="svc-item-body">
-        <div class="svc-item-img">
-          <img src="assets/moxibustion.jpeg" alt="Moxibustion" loading="lazy">
-          <span class="svc-img-num">06 / 08</span>
-        </div>
-        <div class="svc-item-text">
-          <div class="svc-num">06 — Moxibustion</div>
-          <h3>Moxibustion</h3>
-          <span class="svc-cn">艾灸</span>
-          <p>Burning moxa — a specially prepared plant material — is applied over meridians and acupoints to improve Qi flow and circulation, and to expel negative influences. A deeply warming, restorative therapy.</p>
-        <a href="treatment-moxibustion.html" class="svc-link">Explore Moxibustion <span class="arr">→</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="svc-item" style="--i:6">
-    <div class="svc-item-inner">
-      <div class="svc-item-header">
-        <span class="svc-i-num">07</span>
-        <span class="svc-i-name">Gua Sha</span>
-        <span class="svc-i-cn">刮痧</span>
-      </div>
-      <div class="svc-item-body">
-        <div class="svc-item-img">
-          <img src="assets/guasha.jpeg" alt="Gua sha" loading="lazy">
-          <span class="svc-img-num">07 / 08</span>
-        </div>
-        <div class="svc-item-text">
-          <div class="svc-num">07 — Gua Sha</div>
-          <h3>Gua Sha</h3>
-          <span class="svc-cn">刮痧</span>
-          <p>A tool is used to apply pressure and scrape the skin, relieving pain and tension while improving circulation. Used for musculoskeletal conditions, immune support, and deep fascial release.</p>
-        <a href="treatment-gua-sha.html" class="svc-link">Explore Gua Sha <span class="arr">→</span></a>
+  <div class="svc-row" role="listitem">
+    <button class="svc-row-btn" aria-expanded="false" aria-controls="svc-body-4" id="svc-btn-4">
+      <span class="svc-row-num" aria-hidden="true">04</span>
+      <span class="svc-row-name">Herbal Medicine</span>
+      <span class="svc-row-cn" aria-hidden="true">中草藥</span>
+      <span class="svc-row-toggle" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-row-body" id="svc-body-4" role="region" aria-labelledby="svc-btn-4">
+      <div class="svc-row-body-inner">
+        <div class="svc-row-content">
+          <div class="svc-row-img">
+            <img src="assets/svc-herbal.webp" alt="Herbal medicine" loading="lazy">
+          </div>
+          <div class="svc-row-text">
+            <div class="svc-num">04 — Herbal Medicine</div>
+            <h3>Herbal Medicine</h3>
+            <span class="svc-cn">中草藥</span>
+            <p>Leaves, fruits, flowers, and roots with proven health benefits, prescribed as concentrated natural plant granules and herbal pills. Chinese herbal medicine has demonstrated success across a wide range of conditions, guided by Traditional Chinese Medicine theory.</p>
+            <a href="treatment-herbal-medicine.html" class="svc-link">Explore Herbal Medicine <span class="arr">→</span></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="svc-item" style="--i:7">
-    <div class="svc-item-inner">
-      <div class="svc-item-header">
-        <span class="svc-i-num">08</span>
-        <span class="svc-i-name">Training</span>
-        <span class="svc-i-cn">培訓</span>
-      </div>
-      <div class="svc-item-body">
-        <div class="svc-item-img">
-          <img src="assets/tai_chi.jpeg" alt="Tai Chi training" loading="lazy">
-          <span class="svc-img-num">08 / 08</span>
+  <div class="svc-row" role="listitem">
+    <button class="svc-row-btn" aria-expanded="false" aria-controls="svc-body-5" id="svc-btn-5">
+      <span class="svc-row-num" aria-hidden="true">05</span>
+      <span class="svc-row-name">Cupping</span>
+      <span class="svc-row-cn" aria-hidden="true">拔罐</span>
+      <span class="svc-row-toggle" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-row-body" id="svc-body-5" role="region" aria-labelledby="svc-btn-5">
+      <div class="svc-row-body-inner">
+        <div class="svc-row-content">
+          <div class="svc-row-img">
+            <img src="assets/svc-cupping.webp" alt="Cupping therapy" loading="lazy">
+          </div>
+          <div class="svc-row-text">
+            <div class="svc-num">05 — Cupping</div>
+            <h3>Cupping</h3>
+            <span class="svc-cn">拔罐</span>
+            <p>An ancient technique where special cups create suction on the skin to relieve pain, reduce inflammation, improve blood flow, and promote relaxation. We offer Sancai Fire Cupping — always included at no extra charge.</p>
+            <a href="treatment-cupping.html" class="svc-link">Explore Cupping <span class="arr">→</span></a>
+          </div>
         </div>
-        <div class="svc-item-text">
-          <div class="svc-num">08 — Training</div>
-          <h3>Training</h3>
-          <span class="svc-cn">培訓</span>
-          <p>We offer professional training in cupping therapy, moxibustion, and Gua Sha to practitioners and healthcare professionals. Contact us for programme details and scheduling.</p>
-        <a href="contact.html" class="svc-link">Contact us for details <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-row" role="listitem">
+    <button class="svc-row-btn" aria-expanded="false" aria-controls="svc-body-6" id="svc-btn-6">
+      <span class="svc-row-num" aria-hidden="true">06</span>
+      <span class="svc-row-name">Moxibustion</span>
+      <span class="svc-row-cn" aria-hidden="true">艾灸</span>
+      <span class="svc-row-toggle" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-row-body" id="svc-body-6" role="region" aria-labelledby="svc-btn-6">
+      <div class="svc-row-body-inner">
+        <div class="svc-row-content">
+          <div class="svc-row-img">
+            <img src="assets/svc-moxibustion.webp" alt="Moxibustion" loading="lazy">
+          </div>
+          <div class="svc-row-text">
+            <div class="svc-num">06 — Moxibustion</div>
+            <h3>Moxibustion</h3>
+            <span class="svc-cn">艾灸</span>
+            <p>Burning moxa — a specially prepared plant material — is applied over meridians and acupoints to improve Qi flow and circulation, and to expel negative influences. A deeply warming, restorative therapy.</p>
+            <a href="treatment-moxibustion.html" class="svc-link">Explore Moxibustion <span class="arr">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-row" role="listitem">
+    <button class="svc-row-btn" aria-expanded="false" aria-controls="svc-body-7" id="svc-btn-7">
+      <span class="svc-row-num" aria-hidden="true">07</span>
+      <span class="svc-row-name">Gua Sha</span>
+      <span class="svc-row-cn" aria-hidden="true">刮痧</span>
+      <span class="svc-row-toggle" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-row-body" id="svc-body-7" role="region" aria-labelledby="svc-btn-7">
+      <div class="svc-row-body-inner">
+        <div class="svc-row-content">
+          <div class="svc-row-img">
+            <img src="assets/svc-gua-sha.webp" alt="Gua sha" loading="lazy">
+          </div>
+          <div class="svc-row-text">
+            <div class="svc-num">07 — Gua Sha</div>
+            <h3>Gua Sha</h3>
+            <span class="svc-cn">刮痧</span>
+            <p>A tool is used to apply pressure and scrape the skin, relieving pain and tension while improving circulation. Used for musculoskeletal conditions, immune support, and deep fascial release.</p>
+            <a href="treatment-gua-sha.html" class="svc-link">Explore Gua Sha <span class="arr">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-row" role="listitem">
+    <button class="svc-row-btn" aria-expanded="false" aria-controls="svc-body-8" id="svc-btn-8">
+      <span class="svc-row-num" aria-hidden="true">08</span>
+      <span class="svc-row-name">Training</span>
+      <span class="svc-row-cn" aria-hidden="true">培訓</span>
+      <span class="svc-row-toggle" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-row-body" id="svc-body-8" role="region" aria-labelledby="svc-btn-8">
+      <div class="svc-row-body-inner">
+        <div class="svc-row-content">
+          <div class="svc-row-img">
+            <img src="assets/svc-training.webp" alt="Tai Chi training" loading="lazy">
+          </div>
+          <div class="svc-row-text">
+            <div class="svc-num">08 — Training</div>
+            <h3>Training</h3>
+            <span class="svc-cn">培訓</span>
+            <p>We offer professional training in cupping therapy, moxibustion, and Gua Sha to practitioners and healthcare professionals. Contact us for programme details and scheduling.</p>
+            <a href="contact.html" class="svc-link">Contact us for details <span class="arr">→</span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -634,7 +568,7 @@
 
       <div class="f-cta">
         <div class="f-logo">
-          <img src="assets/logo-with-text.png" loading="lazy" alt="W&E Health Institute" style="width:100%;max-width:300px;display:block;">
+          <img src="assets/logo-with-text.webp" loading="lazy" alt="W&E Health Institute" style="width:100%;max-width:300px;display:block;">
         </div>
         <div class="f-cta-buttons">
           <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="request">
@@ -757,65 +691,28 @@ document.querySelectorAll('p.body, .mask').forEach(p => {
   lo.observe(p);
 });
 
-// ── Accordion stack scroll ────────────────────────────────────────
-(function(){
-  const accordion = document.getElementById('svcAccordion');
-  if(!accordion) return;
-  const items  = Array.from(accordion.querySelectorAll('.svc-item'));
-  const inners = Array.from(accordion.querySelectorAll('.svc-item-inner'));
-  const NAV    = 68;
-  const STRIP  = 52;
-  // Breakpoint that matches the CSS mobile switch (max-width:860px)
-  const MOBILE_BP = 860;
+// ── Click-to-expand row list ──────────────────────────────────────
+(function () {
+  const list = document.getElementById('svcList');
+  if (!list) return;
+  const rows = Array.from(list.querySelectorAll('.svc-row'));
 
-  function isMobile(){ return window.innerWidth <= MOBILE_BP; }
-
-  function maxH(i){ return window.innerHeight - NAV - i * STRIP; }
-
-  function ease(t){ return -(Math.cos(Math.PI*t)-1)/2; }
-
-  function clearHeights(){
-    // Remove JS-set heights so the CSS (height:auto !important) takes over
-    inners.forEach(el => el.style.removeProperty('height'));
+  function openRow(row) {
+    row.classList.add('is-open');
+    row.querySelector('.svc-row-btn').setAttribute('aria-expanded', 'true');
+  }
+  function closeRow(row) {
+    row.classList.remove('is-open');
+    row.querySelector('.svc-row-btn').setAttribute('aria-expanded', 'false');
   }
 
-  function tick(){
-    if(isMobile()){ clearHeights(); return; }
-
-    const accordionTop = accordion.getBoundingClientRect().top + window.scrollY;
-    const scrolled     = window.scrollY - accordionTop;
-    const sectionH     = window.innerHeight;
-
-    if(scrolled < 0){
-      inners.forEach((el,i) => el.style.height = maxH(i)+'px');
-      return;
-    }
-    const total = items.length * sectionH;
-    if(scrolled >= total){
-      inners.forEach(el => el.style.height = STRIP+'px');
-      return;
-    }
-
-    const idx = Math.floor(scrolled / sectionH);
-    const t   = ease((scrolled % sectionH) / sectionH);
-
-    inners.forEach((el, i) => {
-      const mh = maxH(i);
-      let h;
-      if(i < idx)        h = STRIP;
-      else if(i === idx) h = mh - (mh - STRIP) * t;
-      else               h = mh;
-      el.style.height = h + 'px';
+  rows.forEach(function (row) {
+    row.querySelector('.svc-row-btn').addEventListener('click', function () {
+      var wasOpen = row.classList.contains('is-open');
+      rows.forEach(closeRow);
+      if (!wasOpen) openRow(row);
     });
-  }
-
-  window.addEventListener('scroll', tick, {passive:true});
-  window.addEventListener('resize', () => {
-    if(isMobile()){ clearHeights(); return; }
-    inners.forEach((el,i) => el.style.height = maxH(i)+'px');
-    tick();
   });
-  tick();
 })();
 </script>
 </body>

@@ -178,14 +178,14 @@ body::before {
 /* Hover bridge: real pointer-events target filling the gap so the dropdown stays open */
 .has-dropdown::after {
   content: ''; position: absolute; top: 100%; left: -8px; right: -8px;
-  height: 18px;
+  height: var(--dd-bridge, 20px);
   background: transparent;
   pointer-events: auto; z-index: 101;
 }
 
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + var(--dd-offset, 14px));
   left: 50%; transform: translateX(-50%);
   min-width: 220px;
   background: rgba(12,14,12,.80);
@@ -213,16 +213,14 @@ body::before {
   color: #ffffff; white-space: nowrap;
   transition: color .18s; text-decoration: none;
 }
-/* Scrolled nav has no frame-inset, so gap to glass bottom is 2px less */
-.nav.scrolled .nav-dropdown { top: calc(100% + 8px) }
-.nav.scrolled .has-dropdown::after { height: 16px }
+/* Dropdown top and bridge height are set precisely by nav.js via --dd-offset / --dd-bridge */
 .nav-dropdown a:hover { color: var(--gold) }
 .nav-dropdown a::after { display: none }
 .nav-dropdown-label {
   padding: 10px 20px 8px;
   font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(13,12,8,.45);
-  border-bottom: .5px solid rgba(13,12,8,.18);
+  color: rgba(255,255,255,.45);
+  border-bottom: .5px solid rgba(255,255,255,.14);
   margin-bottom: 4px;
 }
 [data-theme="light"] .nav-dropdown-label {
