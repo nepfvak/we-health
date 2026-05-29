@@ -48,11 +48,11 @@
   .tx-interactive{background:var(--ink);border-top:1px solid var(--rule)}
   .tx-interactive>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
   .elem-nav{display:flex;flex-wrap:wrap;gap:1px;margin-top:40px;background:var(--rule);border:1px solid var(--rule)}
-  .elem-btn{flex:1 1 0;min-width:120px;background:var(--ink-2);border:none;cursor:pointer;padding:24px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;transition:background .2s}
+  .elem-btn{flex:1 1 0;min-width:120px;background:var(--ink-2);border:none;cursor:pointer;padding:20px 12px 28px;display:flex;flex-direction:column;align-items:center;gap:8px;transition:background .2s}
   .elem-btn:hover{background:var(--ink-3)}
   .elem-btn.active{background:var(--ink);outline:1px solid var(--gold)}
   .elem-btn-cn{font-family:var(--brush);font-size:32px;color:var(--gold);line-height:1}
-  .elem-btn-name{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-faint);transition:color .2s}
+  .elem-btn-name{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-faint);font-weight:500;transition:color .2s}
   .elem-btn.active .elem-btn-name{color:var(--paper)}
   [data-theme="light"] .elem-btn{background:var(--ink-3)}
   [data-theme="light"] .elem-btn:hover{background:var(--ink-2)}
@@ -83,7 +83,7 @@
   }
   @media(max-width:480px){
     .tx-cta{padding:48px 0 72px}
-    .elem-btn{padding:18px 8px;min-width:60px}
+    .elem-btn{padding:16px 8px 22px;min-width:60px}
     .elem-btn-cn{font-size:24px}
   }
 </style>
@@ -253,8 +253,8 @@
       <div class="elem-panel" id="elem-panel-earth" data-elem="earth" role="tabpanel">
         <div class="elem-panel-text">
           <h3>Earth — 土</h3>
-          <span class="elem-cn">tǔ · Late Summer · Transformation</span>
-          <p>Earth is the element of nourishment, stability, and belonging. It governs the Spleen and Stomach — the organs at the centre of digestion and the transformation of food into Qi and Blood. Earth is associated with late summer, the pivot point between the active and retiring seasons. A balanced Earth element brings groundedness, the ability to receive and give nourishment, and a sense of being at home.</p>
+          <span class="elem-cn" style="font-size:15px">tǔ · Late Summer · Transformation</span>
+          <p>Earth is the element of nourishment, stability, and belonging. It governs the Spleen and Stomach — the organs of digestion and the transformation of food into Qi and Blood. Earth is associated with late summer, the pivot point between the active and retiring seasons. A balanced Earth element brings groundedness, the ability to receive and give nourishment, and a sense of being at home.</p>
           <p>When Earth is imbalanced, the person may struggle to nourish themselves — physically or emotionally. Digestive difficulties, bloating, loose stools, fatigue after eating, and poor appetite are physical signs. Mentally the person may overthink, ruminate, or have difficulty finding firm ground. Worry is the emotion of Earth; when excessive, it disrupts the Spleen's ability to transform and transport.</p>
         </div>
         <div class="elem-attrs">
