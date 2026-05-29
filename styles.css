@@ -210,7 +210,7 @@ body::before {
   padding: 9px 20px;
   text-align: center;
   font-family: "Times New Roman", serif; font-size: 13px; letter-spacing: .09em; text-transform: uppercase;
-  color: #0d0c08; white-space: nowrap;
+  color: #ffffff; white-space: nowrap;
   transition: color .18s; text-decoration: none;
 }
 /* Scrolled nav has no frame-inset, so gap to glass bottom is 2px less */
