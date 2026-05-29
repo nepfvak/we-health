@@ -220,7 +220,7 @@ body::before {
 .nav-dropdown a::after { display: none }
 .nav-dropdown-label {
   padding: 10px 20px 8px;
-  font-family: var(--mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
   color: rgba(13,12,8,.45);
   border-bottom: .5px solid rgba(13,12,8,.18);
   margin-bottom: 4px;
@@ -370,8 +370,8 @@ footer .grid {
 .f-cta .request:hover::before { transform: translateY(0) }
 .f-cta .request .arr { font-family: var(--serif); font-style: italic; font-size: 16px; letter-spacing: 0 }
 .f-details { display: flex; flex-direction: column; gap: 36px }
-.f-block h4 { font-family: var(--mono); font-size: 13px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 400 }
-.f-block p, .f-block a { display: block; font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: 16px; line-height: 1.7; color: var(--paper) }
+.f-block h4 { font-family: var(--mono); font-size: 15px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 400 }
+.f-block p, .f-block a { display: block; font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: 17px; line-height: 1.7; color: var(--paper) }
 .f-block .muted { color: var(--paper-dim) }
 .f-block a { position: relative; margin-bottom: 4px }
 .f-block a:hover { color: var(--gold) }
@@ -395,7 +395,7 @@ footer .grid {
 footer .bar {
   margin-top: 100px; padding-top: 28px; border-top: 1px solid var(--rule);
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px;
-  font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+  font-family: var(--mono); font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
   color: var(--paper-dim); position: relative; z-index: 2;
 }
 footer .bar .crest { display: flex; align-items: center; gap: 10px; color: var(--paper-dim) }
@@ -579,7 +579,6 @@ h3{ color:var(--paper) }
 .nav .links a{ font-weight: 500 }
 
 /* Footer — readable text across all themes */
-.f-block h4{ font-size:12px }
 .f-block .muted{ color: var(--paper-dim); font-style: normal }
 
 /* ── Mobile / tablet responsive fixes ──────────────────────────────── */
@@ -674,13 +673,13 @@ footer{ padding-top: 80px }
   font-family:var(--serif); font-size:15px; line-height:1.55;
 }
 .f-map .pin .h{
-  font-family:var(--mono); font-size:11px; letter-spacing:.26em;
+  font-family:var(--mono); font-size:13px; letter-spacing:.26em;
   text-transform:uppercase; color:var(--gold); margin-bottom:8px;
 }
 .f-map .pin b{ font-weight:600; color:var(--paper) }
 .f-map .pin a{
   display:inline-block; margin-top:10px; font-family:var(--mono);
-  font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+  font-size:13px; letter-spacing:.22em; text-transform:uppercase;
   color:var(--gold); border-bottom:1px solid var(--gold); padding-bottom:1px;
 }
 
