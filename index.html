@@ -529,8 +529,9 @@
   .focus-count{font-family:var(--mono);font-size:12px;letter-spacing:.20em;color:var(--paper-faint);padding-bottom:2px}
   .focus-name{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:400;font-style:italic;color:var(--paper);line-height:1.1}
   /* Scroll progress line */
-  .focus-progress{height:1px;background:var(--rule);margin-top:28px;position:relative;overflow:hidden}
-  .focus-progress-bar{position:absolute;left:0;top:0;height:100%;width:0;background:var(--gold);transition:width .25s ease}
+  .focus-dots{display:flex;justify-content:center;gap:10px;margin-top:28px}
+  .focus-dot{width:8px;height:8px;border-radius:50%;background:var(--rule-strong);border:none;padding:0;cursor:pointer;transition:background .3s,transform .3s;flex-shrink:0}
+  .focus-dot.active{background:var(--gold);transform:scale(1.25)}
   @media(max-width:920px){.focus-track{grid-auto-columns:calc((100% - 18px) / 2)}}
   @media(max-width:600px){
     .focus-inner{padding:0 16px}
@@ -1230,7 +1231,7 @@
       </a>
       </div>
     </div>
-    <div class="focus-progress" aria-hidden="true"><div class="focus-progress-bar" id="focusProgressBar"></div></div>
+    <div class="focus-dots" id="focusDots" aria-label="Slide indicators"></div>
   </div>
 </div>
 
@@ -1921,33 +1922,70 @@
     });
   });
 
-  // Featured care carousel
+  // Featured care carousel — auto-rotating slideshow
   (() => {
-    const track = document.getElementById('focusTrack');
-    const prev = document.getElementById('focusPrev');
-    const next = document.getElementById('focusNext');
-    const bar  = document.getElementById('focusProgressBar');
+    const track  = document.getElementById('focusTrack');
+    const prev   = document.getElementById('focusPrev');
+    const next   = document.getElementById('focusNext');
+    const dotsEl = document.getElementById('focusDots');
     if (!track || !prev || !next) return;
 
-    const updateControls = () => {
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      prev.disabled = track.scrollLeft <= 2;
-      next.disabled = track.scrollLeft >= maxScroll - 2;
-      if (bar) bar.style.width = (maxScroll > 0 ? (track.scrollLeft / maxScroll) * 100 : 0) + '%';
-    };
+    const cards = Array.from(track.querySelectorAll('.focus-card'));
+    const n = cards.length;
+    let idx = 0, timer = null;
 
-    const slide = (direction) => {
-      const card = track.querySelector('.focus-card');
+    // Build dot indicators
+    const dots = cards.map((_, i) => {
+      const b = document.createElement('button');
+      b.className = 'focus-dot';
+      b.setAttribute('aria-label', 'Slide ' + (i + 1));
+      b.addEventListener('click', () => { goTo(i); resetTimer(); });
+      dotsEl && dotsEl.appendChild(b);
+      return b;
+    });
+
+    const cardW = () => {
       const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      track.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: 'smooth' });
+      return cards[0].offsetWidth + gap;
     };
 
-    prev.addEventListener('click', () => slide(-1));
-    next.addEventListener('click', () => slide(1));
-    track.addEventListener('scroll', updateControls, { passive: true });
-    track.addEventListener('wheel', (e) => { e.preventDefault(); track.scrollLeft += e.deltaY || e.deltaX; }, { passive: false });
-    window.addEventListener('resize', updateControls);
-    updateControls();
+    const goTo = (i, instant = false) => {
+      idx = ((i % n) + n) % n;
+      if (instant) {
+        track.style.scrollBehavior = 'auto';
+        track.scrollLeft = idx * cardW();
+        track.getBoundingClientRect(); // force reflow
+        track.style.scrollBehavior = '';
+      } else {
+        track.scrollTo({ left: idx * cardW(), behavior: 'smooth' });
+      }
+      dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+      prev.disabled = false;
+      next.disabled = false;
+    };
+
+    const advance = () => idx >= n - 1 ? goTo(0, true) : goTo(idx + 1);
+
+    const resetTimer = () => { clearInterval(timer); timer = setInterval(advance, 4500); };
+    const stopTimer  = () => clearInterval(timer);
+
+    prev.addEventListener('click', () => { goTo(idx - 1); resetTimer(); });
+    next.addEventListener('click', () => { goTo(idx + 1); resetTimer(); });
+
+    track.addEventListener('mouseenter', stopTimer);
+    track.addEventListener('mouseleave', resetTimer);
+    track.addEventListener('touchstart', stopTimer, { passive: true });
+    track.addEventListener('touchend',   resetTimer, { passive: true });
+    track.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      (e.deltaY > 0 || e.deltaX > 0) ? goTo(idx + 1) : goTo(idx - 1);
+      resetTimer();
+    }, { passive: false });
+
+    window.addEventListener('resize', () => goTo(idx, true));
+
+    goTo(0, true);
+    resetTimer();
   })();
 
 // Five elements hover
