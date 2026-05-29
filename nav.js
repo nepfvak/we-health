@@ -26,3 +26,26 @@
   window.addEventListener('resize', tick, { passive: true });
   tick();
 })();
+
+// Mobile Services accordion toggle
+(function () {
+  const toggle = document.querySelector('.mob-services-toggle');
+  const group  = document.getElementById('mobSubGroup');
+  const overlay = document.getElementById('menuOverlay');
+  if (!toggle || !group) return;
+
+  toggle.addEventListener('click', function () {
+    const open = group.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  // Reset accordion whenever overlay is closed
+  if (overlay) {
+    new MutationObserver(function () {
+      if (!overlay.classList.contains('open')) {
+        group.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    }).observe(overlay, { attributes: true, attributeFilter: ['class'] });
+  }
+})();

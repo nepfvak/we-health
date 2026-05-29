@@ -185,7 +185,7 @@ body::before {
 
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 14px);
+  top: calc(100% + 10px);
   left: 50%; transform: translateX(-50%);
   min-width: 220px;
   background: rgba(12,14,12,.80);
@@ -214,7 +214,7 @@ body::before {
   transition: color .18s; text-decoration: none;
 }
 /* Scrolled nav has no frame-inset, so gap to glass bottom is 2px less */
-.nav.scrolled .nav-dropdown { top: calc(100% + 12px) }
+.nav.scrolled .nav-dropdown { top: calc(100% + 8px) }
 .nav.scrolled .has-dropdown::after { height: 16px }
 .nav-dropdown a:hover { color: var(--gold) }
 .nav-dropdown a::after { display: none }
@@ -240,6 +240,23 @@ body::before {
 }
 [data-theme="light"] .nav-dropdown a { color: #0d0c08 }
 [data-theme="light"] .nav-dropdown a:hover { color: #0d0c08 }
+/* Mobile Services accordion */
+.mob-services-wrap {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.mob-services-toggle {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border: .5px solid var(--rule-strong); background: none;
+  color: var(--paper-dim); display: grid; place-items: center;
+  border-radius: 4px; font-size: 16px;
+  transition: transform .3s ease, color .3s ease, border-color .3s ease;
+}
+.mob-services-toggle[aria-expanded="true"] {
+  transform: rotate(180deg); color: var(--gold); border-color: var(--gold);
+}
+.mob-sub-group { display: none; flex-direction: column; align-items: center; width: 100% }
+.mob-sub-group.open { display: flex }
+
 /* Mobile sub-links in overlay */
 .mob-sub {
   font-size: clamp(15px, 3.5vw, 20px) !important;
