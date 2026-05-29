@@ -471,7 +471,7 @@ footer .grid {
 .f-social a::after { display: none }
 .f-social a svg { width: 16px; height: 16px; display: block }
 footer .bar {
-  margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--rule);
+  margin-top: 40px; padding-top: 28px; padding-bottom: 28px; border-top: 1px solid var(--rule);
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px;
   font-family: var(--mono); font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
   color: var(--paper-dim); position: relative; z-index: 2;
