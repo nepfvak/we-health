@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Journal — W&amp;E Health Institute · Cordova, TN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")!=="dark")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js" defer></script>
+<script src="nav.js" defer></script>
+<script src="lenis.min.js" defer></script>
+<script src="scroll.js" defer></script>
+<script src="footer-map.js" defer></script>
+<style>
+/* ── Blog index ─────────────────────────────────────────────────── */
+.blog-index { padding: 80px 0 120px; background: var(--ink); }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  margin-top: 64px;
+}
+.blog-card {
+  display: flex; flex-direction: column; gap: 18px;
+  cursor: pointer;
+}
+.blog-card-thumb {
+  aspect-ratio: 16/9; overflow: hidden;
+  background: var(--ink-3); border: .5px solid var(--rule);
+}
+.blog-card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.blog-card:hover .blog-card-thumb img { transform: scale(1.04); }
+.blog-card-body { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.blog-card-meta {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--paper-faint);
+}
+.blog-card-title {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 30px); color: var(--paper);
+  line-height: 1.1; margin: 0;
+  transition: color .25s;
+}
+.blog-card:hover .blog-card-title { color: var(--gold); }
+.blog-card-excerpt {
+  font-size: 15px; color: var(--paper-dim);
+  line-height: 1.65; flex: 1;
+}
+.blog-card-link {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  align-self: flex-start; margin-top: 6px;
+}
+.blog-card-link:hover { text-decoration: underline; }
+
+/* empty / loading */
+.blog-empty {
+  font-family: var(--mono); font-size: 13px; color: var(--paper-faint);
+  letter-spacing: .12em; text-transform: uppercase;
+  grid-column: 1 / -1; text-align: center; padding: 60px 0;
+}
+
+@media(max-width: 640px) {
+  .blog-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 44px; }
+  .blog-index { padding: 60px 0 80px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-no-text.webp" alt="W&amp;E logo"></span><span class="name">W<em>&amp;</em>E Health Institute</span></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <div class="has-dropdown"><a href="services.html">Services</a><div class="nav-dropdown"><div class="nav-dropdown-label">Specialty Treatments</div><a href="treatment-pain-management.html">Pain Management</a><a href="saat.html">SAAT Allergy Treatment</a><a href="treatment-cardiac.html">Cardiac Health</a><a href="treatment-infertility.html">Fertility Support</a><a href="treatment-tai-chi.html">Tai Chi &amp; Qi Gong</a><a href="treatment-cosmetic-acupuncture.html">Cosmetic Acupuncture</a></div></div>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html" class="is-active">Blog</a>
+  </div>
+  <div class="nav-actions">
+    <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="mob-overlay-bar">
+    <a href="index.html" class="mob-overlay-logo" tabindex="-1" aria-hidden="true"><img src="assets/logo-no-text.webp" alt="W&amp;E logo"></a>
+    <button class="mob-close" id="menuClose" aria-label="Close menu">&#x2715;</button>
+  </div>
+  <div class="mob-nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <div class="mob-services-wrap">
+      <a href="services.html">Services</a>
+      <button class="mob-services-toggle" aria-expanded="false" aria-label="Toggle services"></button>
+    </div>
+    <div class="mob-sub-group" id="mobSubGroup">
+      <a href="treatment-pain-management.html" class="mob-sub">Pain Management</a>
+      <a href="saat.html" class="mob-sub">SAAT Allergy Treatment</a>
+      <a href="treatment-cardiac.html" class="mob-sub">Cardiac Health</a>
+      <a href="treatment-infertility.html" class="mob-sub">Fertility Support</a>
+      <a href="treatment-tai-chi.html" class="mob-sub">Tai Chi &amp; Qi Gong</a>
+      <a href="treatment-cosmetic-acupuncture.html" class="mob-sub">Cosmetic Acupuncture</a>
+    </div>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html" class="is-active">Blog</a>
+  </div>
+  <div class="mob-overlay-rule"></div>
+  <div class="mob-overlay-bottom">
+    <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="mob-book">Book Appointment</a>
+    <p class="mob-overlay-info"><span>901&#xB7;340&#xB7;6433</span>&ensp;&middot;&ensp;<span>985 Cordova Station Ave, Ste 101, Cordova TN 38018</span></p>
+  </div>
+</div>
+
+<!-- Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-frame" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="ghost-glyph" aria-hidden="true">文</div>
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">文章</span>Journal</div>
+    <h1 class="reveal d1">Insights on <span class="accent">healing.</span></h1>
+    <p class="lede reveal d2">Perspectives on traditional Chinese medicine, acupuncture, and whole-body wellness from our practitioners.</p>
+  </div>
+</header>
+
+<!-- Blog Grid -->
+<section class="blog-index">
+  <div class="wrap">
+    <div class="blog-grid" id="blogGrid">
+      <p class="blog-empty">Loading posts…</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-top-brand">
+        <div class="f-top-eyebrow">W&amp;E Health Institute <span class="cn">醫</span></div>
+        <p class="f-tagline">Traditional Chinese medicine, <em>rooted in compassion.</em></p>
+      </div>
+      <div class="f-top-actions">
+        <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="request">
+          <span>Book an Appointment</span><span class="arr">→</span>
+        </a>
+        <a href="tel:+19013406433" class="request request-ghost">
+          <span>Call 901&middot;340&middot;6433</span><span class="arr">☎</span>
+        </a>
+      </div>
+    </div>
+    <div class="f-info">
+      <div class="f-block">
+        <h4>Contact</h4>
+        <a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a>
+        <a href="tel:+19013406433">901&middot;340&middot;6433</a>
+      </div>
+      <div class="f-block">
+        <h4>Visit</h4>
+        <p>985 Cordova Station Ave<br>Ste 101, Cordova, TN 38018</p>
+        <a href="https://maps.google.com/?q=985+Cordova+Station+Ave+Ste+101,+Cordova,+TN+38018" target="_blank" rel="noopener">Open in Maps &rarr;</a>
+      </div>
+      <div class="f-block f-hours">
+        <h4>Hours</h4>
+        <div class="row"><span class="day">Monday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Tuesday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Wednesday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Thursday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Friday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Saturday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+      </div>
+      <div class="f-block">
+        <h4>Follow</h4>
+        <div class="f-social">
+          <a href="https://instagram.com/wehealthinstitute" target="_blank" rel="noopener" aria-label="Instagram — @wehealthinstitute">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="WeChat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><ellipse cx="9.2" cy="9.5" rx="6.2" ry="4.8"/><circle cx="7" cy="8.5" r=".5" fill="currentColor"/><circle cx="11.2" cy="8.5" r=".5" fill="currentColor"/><path d="M5,13.6 L4,15.6 L6,14.6"/><ellipse cx="15.4" cy="15" rx="5.2" ry="4"/><circle cx="13.8" cy="14" r=".4" fill="currentColor"/><circle cx="17" cy="14" r=".4" fill="currentColor"/><path d="M18.4,18 L19.2,19.6 L17.6,18.8"/></svg>
+          </a>
+          <a href="mailto:wehiusa@gmail.com" aria-label="Email — wehiusa@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5,6 L12,13 L20.5,6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="f-map">
+      <div class="pin">
+        <div class="h">Find us</div>
+        <b>W&amp;E Health Institute</b><br/>
+        985 Cordova Station Ave, Ste 101<br/>
+        Cordova, TN 38018<br/>
+        <a href="https://maps.google.com/?q=985+Cordova+Station+Ave+Ste+101,+Cordova,+TN+38018" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </div>
+      <iframe src="https://www.google.com/maps?q=985+Cordova+Station+Ave+Ste+101,+Cordova,+TN+38018&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to W&amp;E Health Institute"></iframe>
+    </div>
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <span>Memphis · 田納西州曼菲斯</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function fmtDate(iso) {
+    try {
+      return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch { return iso; }
+  }
+
+  fetch('content/blog/posts.json')
+    .then(r => r.json())
+    .then(posts => {
+      const grid = document.getElementById('blogGrid');
+      if (!posts.length) {
+        grid.innerHTML = '<p class="blog-empty">No posts yet — check back soon.</p>';
+        return;
+      }
+      grid.innerHTML = posts.map(post => `
+        <article class="blog-card">
+          <a href="blog/post.html?slug=${encodeURIComponent(post.slug)}" class="blog-card-thumb" aria-label="${post.title}">
+            ${post.thumbnail
+              ? `<img src="${post.thumbnail}" alt="${post.title}" loading="lazy">`
+              : ''}
+          </a>
+          <div class="blog-card-body">
+            <p class="blog-card-meta">${fmtDate(post.date)}</p>
+            <h2 class="blog-card-title">
+              <a href="blog/post.html?slug=${encodeURIComponent(post.slug)}" style="text-decoration:none;color:inherit;">${post.title}</a>
+            </h2>
+            <p class="blog-card-excerpt">${post.excerpt}</p>
+            <a href="blog/post.html?slug=${encodeURIComponent(post.slug)}" class="blog-card-link">Read more →</a>
+          </div>
+        </article>
+      `).join('');
+    })
+    .catch(() => {
+      document.getElementById('blogGrid').innerHTML =
+        '<p class="blog-empty">Could not load posts.</p>';
+    });
+})();
+</script>
+
+</body>
+</html>
