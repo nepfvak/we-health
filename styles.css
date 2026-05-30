@@ -378,6 +378,9 @@ section { position: relative; padding: 96px 0; z-index: 3 }
 }
 .eyebrow::before { content: ""; width: 32px; height: .5px; background: var(--gold) }
 .eyebrow .cn { font-family: var(--brush); font-size: 14px; color: var(--gold); letter-spacing: 0 }
+/* Hero eyebrow: white text in dark mode, .cn stays gold via rule above */
+.hero .eyebrow { color: #ffffff; }
+[data-theme="light"] .hero .eyebrow { color: var(--paper-dim); }
 h2 {
   font-family: var(--serif); font-weight: 400; font-style: italic;
   font-size: clamp(40px,6vw,80px); line-height: 1.04; letter-spacing: -.005em;
