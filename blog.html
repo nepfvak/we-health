@@ -15,59 +15,50 @@
 <script src="scroll.js" defer></script>
 <script src="footer-map.js" defer></script>
 <style>
-/* ── Blog index ─────────────────────────────────────────────────── */
-.blog-index { padding: 80px 0 120px; background: var(--ink); }
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
-  margin-top: 64px;
+/* ── Blog coming soon ───────────────────────────────────────────── */
+.blog-soon { padding: 100px 0 140px; background: var(--ink); }
+.blog-soon-box {
+  max-width: 600px; margin: 0 auto;
+  border: .5px solid var(--rule-strong);
+  padding: 64px 56px;
+  text-align: center;
+  position: relative;
+  background: var(--ink-2);
 }
-.blog-card {
-  display: flex; flex-direction: column; gap: 18px;
-  cursor: pointer;
+.blog-soon-box::before {
+  content: "";
+  position: absolute; inset: 6px;
+  border: .5px solid var(--rule);
+  pointer-events: none;
 }
-.blog-card-thumb {
-  aspect-ratio: 16/9; overflow: hidden;
-  background: var(--ink-3); border: .5px solid var(--rule);
+.blog-soon-glyph {
+  font-family: var(--brush); font-size: 72px; line-height: 1;
+  color: var(--gold); opacity: .25;
+  margin-bottom: 28px; display: block;
 }
-.blog-card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.blog-card:hover .blog-card-thumb img { transform: scale(1.04); }
-.blog-card-body { display: flex; flex-direction: column; gap: 10px; flex: 1; }
-.blog-card-meta {
+.blog-soon-label {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
-  color: var(--paper-faint);
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px; display: block;
 }
-.blog-card-title {
-  font-family: var(--serif); font-style: italic; font-weight: 400;
-  font-size: clamp(20px, 2.4vw, 30px); color: var(--paper);
-  line-height: 1.1; margin: 0;
-  transition: color .25s;
+.blog-soon-heading {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: clamp(28px, 4vw, 42px); line-height: 1.15;
+  color: var(--paper); margin: 0 0 18px;
 }
-.blog-card:hover .blog-card-title { color: var(--gold); }
-.blog-card-excerpt {
-  font-size: 15px; color: var(--paper-dim);
-  line-height: 1.65; flex: 1;
+.blog-soon-text {
+  font-family: var(--serif); font-size: 16px; font-weight: 300;
+  color: var(--paper-dim); line-height: 1.75;
+  max-width: 38ch; margin: 0 auto;
 }
-.blog-card-link {
-  font-family: var(--mono); font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase;
-  color: var(--gold); text-decoration: none;
-  align-self: flex-start; margin-top: 6px;
-}
-.blog-card-link:hover { text-decoration: underline; }
-
-/* empty / loading */
-.blog-empty {
-  font-family: var(--mono); font-size: 13px; color: var(--paper-faint);
-  letter-spacing: .12em; text-transform: uppercase;
-  grid-column: 1 / -1; text-align: center; padding: 60px 0;
+.blog-soon-rule {
+  width: 32px; height: .5px; background: var(--gold);
+  margin: 28px auto 0; opacity: .6;
 }
 
 @media(max-width: 640px) {
-  .blog-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 44px; }
-  .blog-index { padding: 60px 0 80px; }
+  .blog-soon { padding: 64px 0 100px; }
+  .blog-soon-box { padding: 44px 28px; }
 }
 </style>
 </head>
@@ -137,11 +128,15 @@
   </div>
 </header>
 
-<!-- Blog Grid -->
-<section class="blog-index">
+<!-- Blog Coming Soon -->
+<section class="blog-soon">
   <div class="wrap">
-    <div class="blog-grid" id="blogGrid">
-      <p class="blog-empty">Loading posts…</p>
+    <div class="blog-soon-box reveal">
+      <span class="blog-soon-glyph" aria-hidden="true">文</span>
+      <span class="blog-soon-label">Coming Soon</span>
+      <h2 class="blog-soon-heading">Stay tuned.</h2>
+      <p class="blog-soon-text">We're preparing thoughtful articles on traditional Chinese medicine, acupuncture, and whole-body wellness. Check back soon.</p>
+      <div class="blog-soon-rule" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -220,46 +215,6 @@
   </div>
 </footer>
 
-<script>
-(function () {
-  function fmtDate(iso) {
-    try {
-      return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    } catch { return iso; }
-  }
-
-  fetch('content/blog/posts.json')
-    .then(r => r.json())
-    .then(posts => {
-      const grid = document.getElementById('blogGrid');
-      if (!posts.length) {
-        grid.innerHTML = '<p class="blog-empty">No posts yet — check back soon.</p>';
-        return;
-      }
-      grid.innerHTML = posts.map(post => `
-        <article class="blog-card">
-          <a href="blog/post.html?slug=${encodeURIComponent(post.slug)}" class="blog-card-thumb" aria-label="${post.title}">
-            ${post.thumbnail
-              ? `<img src="${post.thumbnail}" alt="${post.title}" loading="lazy">`
-              : ''}
-          </a>
-          <div class="blog-card-body">
-            <p class="blog-card-meta">${fmtDate(post.date)}</p>
-            <h2 class="blog-card-title">
-              <a href="blog/post.html?slug=${encodeURIComponent(post.slug)}" style="text-decoration:none;color:inherit;">${post.title}</a>
-            </h2>
-            <p class="blog-card-excerpt">${post.excerpt}</p>
-            <a href="blog/post.html?slug=${encodeURIComponent(post.slug)}" class="blog-card-link">Read more →</a>
-          </div>
-        </article>
-      `).join('');
-    })
-    .catch(() => {
-      document.getElementById('blogGrid').innerHTML =
-        '<p class="blog-empty">Could not load posts.</p>';
-    });
-})();
-</script>
 
 </body>
 </html>
