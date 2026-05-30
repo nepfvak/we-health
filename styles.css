@@ -423,7 +423,7 @@ p.body + p.body { margin-top: 1em }
 .page-hero .bg {
   position: absolute; inset: 0; z-index: 0;
   background:
-    radial-gradient(ellipse 65% 70% at 50% 42%, rgba(8,6,4,.74) 0%, rgba(8,6,4,.28) 68%, transparent 100%),
+    radial-gradient(ellipse 65% 70% at 50% 42%, rgba(8,6,4,.84) 0%, rgba(8,6,4,.44) 68%, transparent 100%),
     radial-gradient(60% 70% at 22% 18%, rgba(201,162,90,.08), transparent 55%),
     radial-gradient(80% 90% at 78% 110%, rgba(168,50,50,.08), transparent 60%);
 }
@@ -593,7 +593,7 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 /* Page hero (inner pages) */
 [data-theme="light"] .page-hero .bg {
   background:
-    radial-gradient(ellipse 70% 65% at 50% 45%, rgba(248,246,240,.82) 0%, rgba(248,246,240,.04) 100%),
+    radial-gradient(ellipse 70% 65% at 50% 45%, rgba(248,246,240,.92) 0%, rgba(248,246,240,.18) 100%),
     radial-gradient(60% 70% at 22% 18%, rgba(61,139,114,.10), transparent 55%),
     radial-gradient(80% 90% at 78% 110%, rgba(200,146,26,.06), transparent 60%);
 }
