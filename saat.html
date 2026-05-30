@@ -28,16 +28,14 @@
   align-items:center;
 }
 @media(min-width:900px){
-  .saat-intro-grid{grid-template-columns:1fr 1.25fr;gap:80px}
+  .saat-intro-grid{grid-template-columns:1.25fr 1fr;gap:80px}
 }
 .ear-photo{
-  aspect-ratio:3/4;
   background:var(--ink-2);
   border:.5px solid var(--rule-strong);
   position:relative;
   overflow:hidden;
-  margin:0 auto;
-  max-width:400px;
+  align-self:stretch;
 }
 .ear-photo::before{
   content:"";
@@ -228,11 +226,11 @@
   <div class="links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <div class="has-dropdown"><a href="services.html">Services</a><div class="nav-dropdown"><div class="nav-dropdown-label">Specialty Treatments</div><a href="treatment-pain-management.html">Pain Management</a><a href="saat.html">SAAT Allergy Treatment</a><a href="treatment-cardiac.html">Cardiac Health</a><a href="treatment-infertility.html">Fertility Support</a><a href="treatment-tai-chi.html">Tai Chi &amp; Qi Gong</a><a href="treatment-cosmetic-acupuncture.html">Cosmetic Acupuncture</a></div></div>
+    <div class="has-dropdown"><a href="services.html" class="is-active">Services</a><div class="nav-dropdown"><div class="nav-dropdown-label">Specialty Treatments</div><a href="treatment-cardiac.html">Cardiac Health</a><a href="treatment-cosmetic-acupuncture.html">Cosmetic Acupuncture</a><a href="treatment-infertility.html">Fertility Support</a><a href="treatment-pain-management.html">Pain Management</a><a href="saat.html">SAAT Allergy</a><a href="treatment-tai-chi.html">Tai Chi &amp; Qi Gong</a></div></div>
     <a href="conditions.html">Conditions</a>
     <a href="testimonials.html">Testimonials</a>
     <a href="contact.html">Contact</a>
-    <a href="blog.html" class="is-active">Blog</a>
+    <a href="blog.html">Blog</a>
   </div>
   <div class="nav-actions">
     <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="book"><span class="dot"></span>Book</a>
@@ -250,21 +248,21 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <div class="mob-services-wrap">
-      <a href="services.html">Services</a>
+      <a href="services.html" class="is-active">Services</a>
       <button class="mob-services-toggle" aria-expanded="false" aria-label="Toggle services"></button>
     </div>
     <div class="mob-sub-group" id="mobSubGroup">
-      <a href="treatment-pain-management.html" class="mob-sub">Pain Management</a>
-      <a href="saat.html" class="mob-sub">SAAT Allergy Treatment</a>
       <a href="treatment-cardiac.html" class="mob-sub">Cardiac Health</a>
-      <a href="treatment-infertility.html" class="mob-sub">Fertility Support</a>
-      <a href="treatment-tai-chi.html" class="mob-sub">Tai Chi &amp; Qi Gong</a>
       <a href="treatment-cosmetic-acupuncture.html" class="mob-sub">Cosmetic Acupuncture</a>
+      <a href="treatment-infertility.html" class="mob-sub">Fertility Support</a>
+      <a href="treatment-pain-management.html" class="mob-sub">Pain Management</a>
+      <a href="saat.html" class="mob-sub">SAAT Allergy</a>
+      <a href="treatment-tai-chi.html" class="mob-sub">Tai Chi &amp; Qi Gong</a>
     </div>
     <a href="conditions.html">Conditions</a>
     <a href="testimonials.html">Testimonials</a>
     <a href="contact.html">Contact</a>
-    <a href="blog.html" class="is-active">Blog</a>
+    <a href="blog.html">Blog</a>
   </div>
   <div class="mob-overlay-rule"></div>
   <div class="mob-overlay-bottom">
