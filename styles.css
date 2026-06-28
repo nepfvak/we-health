@@ -11,8 +11,8 @@
   --gold: #4cb35a;
   --gold-dim: #3a9447;
   --gold-light: rgba(76,179,90,.15);
-  --cinnabar: #a07820;
-  --cinnabar-dim: #7d5e18;
+  --cinnabar: #e03a2e;
+  --cinnabar-dim: #b52d22;
   --rule: rgba(232,232,232,.10);
   --rule-strong: rgba(232,232,232,.18);
   --serif: "Cormorant Garamond", "Noto Serif SC", "Times New Roman", serif;
@@ -25,13 +25,13 @@
 
 /* ── Reset ─────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; margin: 0; padding: 0 }
-html { scroll-behavior: smooth; zoom: 0.87 }
+html { scroll-behavior: smooth }
 html, body {
   background: var(--ink, #121212);
   color: var(--paper, #e8dfc9);
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -76,11 +76,11 @@ body::before {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
   /* padding = page-frame inset (14px) + content padding (14px/22px) */
-  padding: 28px 36px;
+  padding: 30px 31px;
   transition: padding .5s cubic-bezier(.625,.05,0,1);
 }
-@media (min-width: 768px) { .nav { padding: 32px 40px } }
-@media (max-width: 480px) { .nav { padding: 22px 30px } }
+@media (min-width: 768px) { .nav { padding: 34px 35px } }
+@media (max-width: 480px) { .nav { padding: 19px 26px } }
 .nav::before {
   content: "";
   position: absolute;
@@ -96,20 +96,20 @@ body::before {
   z-index: -1;
 }
 .nav.scrolled {
-  padding: 12px 28px;
+  padding: 10px 24px;
 }
 .nav.scrolled::before {
   inset: 0;
   border-radius: 0;
   border-color: transparent;
   border-bottom-color: var(--rule);
-  background: rgba(12,14,12,.97);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  background: rgba(12,14,12,.80);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
 }
 .nav .brand { display: flex; align-items: center; gap: 12px }
 .nav .brand .mark {
-  width: 44px; height: 44px; flex-shrink: 0;
+  width: 48px; height: 48px; flex-shrink: 0;
   border-radius: 50%; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
 }
@@ -121,18 +121,18 @@ body::before {
   display: flex; flex-direction: column; gap: 0;
 }
 .nav .brand .name {
-  font-family: "Times New Roman", serif; font-weight: 500; font-size: 19px;
+  font-family: "Times New Roman", serif; font-weight: 500; font-size: 21px;
   line-height: 1; letter-spacing: .18em; text-transform: uppercase; color: var(--paper);
   white-space: nowrap;
 }
-.nav .brand .name em { font-style: normal; color: var(--gold); font-weight: 500 }
+.nav .brand .name em { font-style: normal; color: #000000; font-weight: 500 }
 .nav .brand .tagline {
-  font-family: var(--serif); font-style: italic; font-weight: 500;
-  font-size: 13px; letter-spacing: .06em; text-transform: none;
+  font-family: var(--serif); font-style: italic; font-weight: 600;
+  font-size: 19px; letter-spacing: .06em; text-transform: none;
   color: var(--paper-dim); line-height: 1; margin-top: 2px;
 }
 .nav .links {
-  display: none; gap: 14px; font-family: "Times New Roman", serif; font-size: 13px; font-weight: 700; letter-spacing: .07em;
+  display: none; gap: 12px; font-family: "Times New Roman", serif; font-size: 14px; font-weight: 600 !important; letter-spacing: .07em;
   text-transform: uppercase; color: var(--paper); align-items: center;
 }
 .nav .links a { position: relative; padding: 6px 0; transition: color .25s; white-space: nowrap }
@@ -146,18 +146,18 @@ body::before {
 .nav .links a.is-active::after { transform: scaleX(1); background: var(--gold); opacity: .85 }
 .nav-actions { display: flex; align-items: center; gap: 12px }
 .nav .book {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 9px 16px; border: .5px solid var(--gold); color: var(--gold);
-  font-family: var(--mono); font-size: 14px; letter-spacing: .18em; text-transform: uppercase;
+  display: none; align-items: center; gap: 10px;
+  padding: 8px 35px; border: .5px solid #000; color: #000;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
   transition: background .3s ease, color .3s ease; white-space: nowrap;
 }
 .nav .book:hover { background: var(--gold); color: var(--ink) }
-.nav .book .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cinnabar); box-shadow: 0 0 8px var(--cinnabar) }
+.nav .book .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--cinnabar); box-shadow: 0 0 8px var(--cinnabar) }
 .nav .burger {
-  display: inline-flex; flex-direction: column; justify-content: center; gap: 6px;
-  width: 44px; height: 44px; border: .5px solid var(--rule-strong); align-items: center; padding: 0; background: none;
+  display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+  width: 38px; height: 38px; border: .5px solid var(--rule-strong); align-items: center; padding: 0; background: none;
 }
-.nav .burger span { display: block; width: 20px; height: 1.5px; background: var(--paper) }
+.nav .burger span { display: block; width: 17px; height: 1.5px; background: var(--paper) }
 /* ── Mobile full-screen overlay ─────────────────────────────────────── */
 .menu-overlay {
   position: fixed; inset: 0; z-index: 60;
@@ -356,7 +356,7 @@ body::before {
 .mob-sub:hover { color: var(--gold) !important; }
 
 /* ── Container ──────────────────────────────────────────────────────── */
-.wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 22px; position: relative; z-index: 3 }
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 22px; position: relative; z-index: 3 }
 
 /* ── Buttons ────────────────────────────────────────────────────────── */
 .btn-primary {
@@ -579,11 +579,10 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* Nav — light mode */
 [data-theme="light"] .nav::before {
-  background: rgba(118,158,92,.90);
-  border-color: rgba(30,28,18,.30);
+  background: rgba(128, 188, 87, 0.9);
 }
 [data-theme="light"] .nav.scrolled::before {
-  background: rgba(108,148,82,.93);
+  background: rgba(128, 188, 87, 0.9);
   border-color: transparent;
   border-bottom-color: var(--rule);
 }
@@ -621,8 +620,8 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* ── Theme toggle button ─────────────────────────────────────────────── */
 .theme-btn {
+  display: none;
   width: 44px; height: 44px; flex-shrink: 0;
-  display: grid; place-items: center;
   border: .5px solid var(--rule-strong);
   color: var(--gold);
   transition: border-color .3s ease, color .3s ease, background .3s ease;
@@ -677,7 +676,7 @@ h2{ color:var(--paper) }
 h3{ color:var(--paper) }
 
 /* Nav — readable links */
-.nav .links a{ font-weight: 700 }
+.nav .links a{ font-weight: 600 }
 
 /* Footer — readable text across all themes */
 .f-block .muted{ color: var(--paper-dim); font-style: normal }
@@ -693,16 +692,16 @@ h3{ color:var(--paper) }
 /* Nav bar on mobile — reduce padding and brand tracking so brand + theme + burger
    all fit on 375px without overlap (Book is already hidden above 1100px) */
 @media(max-width:768px){
-  .nav{ padding: 12px 18px }
-  .nav.scrolled{ padding: 10px 18px }
-  .nav .brand .name{ font-size: 14px; letter-spacing: .12em }
-  .nav-actions{ gap: 8px }
+  .nav{ padding: 10px 16px }
+  .nav.scrolled{ padding: 9px 16px }
+  .nav .brand .name{ font-size: 12px; letter-spacing: .12em }
+  .nav-actions{ gap: 7px }
 }
 
 /* Extra-small phones */
 @media(max-width:380px){
-  .nav{ top: 8px; left: 8px; right: 8px; padding: 10px 12px }
-  .nav .brand .name{ font-size: 13px; letter-spacing: .10em }
+  .nav{ top: 8px; left: 8px; right: 8px; padding: 9px 10px }
+  .nav .brand .name{ font-size: 11px; letter-spacing: .10em }
 }
 
 /* Page hero mobile — h1 size (padding handled in global mobile block below) */
@@ -846,7 +845,7 @@ footer{ padding-top: 80px }
 
 /* ── Global mobile shell improvements ──────────────────────────────── */
 @media (max-width: 768px) {
-  html, body { font-size: 17px }
+  html, body { font-size: 15px }
   h2 { font-size: clamp(30px, 9vw, 44px) }
   p, li, address { overflow-wrap: anywhere }
 
@@ -887,7 +886,7 @@ footer{ padding-top: 80px }
 }
 
 @media (max-width: 480px) {
-  .theme-btn, .burger { width: 44px; height: 44px }
+  .burger { width: 44px; height: 44px }
   section .btn-primary, .f-cta .request { width: 100% }
   .page-hero h1 { font-size: clamp(32px, 11vw, 42px) }
   .eyebrow { letter-spacing: .14em; gap: 10px }

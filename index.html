@@ -19,7 +19,7 @@
 <style>
   /* Each section fills the viewport and centres its content */
   section{
-    min-height:100vh;min-height:100dvh;
+    min-height: 100vh;min-height:100dvh;
     padding:0;
     display:flex;flex-direction:column;justify-content:center;
   }
@@ -30,7 +30,7 @@
 
 /* ── Hero ──────────────────────────────────────────────────────────── */
   .hero{
-    position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    position:relative;height:calc(100dvh / 0.87);min-height:calc(100dvh / 0.87);display:flex;flex-direction:column;justify-content:center;
     padding:100px 22px 72px;overflow:hidden;isolation:isolate;
   }
   .hero .bg{
@@ -357,10 +357,10 @@
   /* ── Light mode overrides ───────────────────────────────────────────── */
   [data-theme="light"] .hero::before{ display: none }
   [data-theme="light"] .hero::after{
-    background: radial-gradient(ellipse 75% 65% at 50% 52%, rgba(248,246,240,.78) 0%, rgba(248,246,240,.04) 100%);
+    background: linear-gradient(to bottom, rgba(248,246,240,.50) 0%, rgba(248,246,240,.50) 100%);
   }
   [data-theme="light"] .hero{
-    background: url(assets/hero-section.webp) center 55%/cover no-repeat, var(--ink-2) !important;
+    background: url(assets/AdobeStock_99423718.jpeg) center 55%/cover no-repeat, var(--ink-2) !important;
   }
   [data-theme="light"] .hero .bg{
     background:
@@ -572,7 +572,7 @@
   /* ── HERO — clean, photo-driven, two-column ─────────────────────── */
   .hero{
     position: relative !important;
-    background: url(assets/hero-section.webp) center 55%/cover no-repeat, var(--ink) !important;
+    background: url(assets/AdobeStock_99423718.jpeg) center 55%/cover no-repeat, var(--ink) !important;
     padding: 120px 22px 80px !important;
     min-height: 100vh !important;
     min-height: 100dvh !important;
@@ -618,17 +618,29 @@
     display:inline-block; font-family:var(--brush); color:var(--gold);
     font-size:.52em; vertical-align:.35em; margin-left:.18em; font-weight:500;
   }
-  /* Mission statement — italic serif subheadline in gold accent */
+  /* Institute name — small gold mono eyebrow label */
   .hero .mission{
     font-family: var(--serif) !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 40px !important;
+    letter-spacing: 0.30em !important;
+    text-transform: uppercase !important;
+    color: var(--gold) !important;
+    white-space: nowrap !important;
+    margin: 0 auto 20px !important;
+  }
+  /* Tagline — large italic serif headline */
+  .hero .mission-sub{
+    font-family: var(--serif) !important;
     font-style: italic !important;
-    font-weight: 400 !important;
-    font-size: clamp(50px, 5.5vw, 74px) !important;
-    line-height: 1.45 !important;
+    font-weight: 300 !important;
+    font-size: clamp(44px, 6.5vw, 60px) !important;
+    line-height: 1.1 !important;
     color: var(--paper) !important;
-    max-width: 30ch;
-    margin: 0 auto 32px !important;
-    letter-spacing: 0 !important;
+    max-width: 16ch;
+    margin: 0 auto 44px !important;
+    letter-spacing: -0.02em !important;
   }
   .hero .lede{
     font-family: var(--serif); font-style: normal; font-weight: 400;
@@ -659,7 +671,7 @@
   .hero .btn-primary{
     display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important;
     background: var(--gold) !important; color: var(--ink) !important;
-    border: none !important;
+    border: none !important; white-space: nowrap !important;
     padding: 16px 32px !important; flex: 1 1 0 !important;
     font-family: var(--mono) !important;
     font-size: 13px !important; letter-spacing:.22em !important;
@@ -684,7 +696,7 @@
 
   .hero .btn-ghost{
     display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 9px !important;
-    color: var(--ink) !important;
+    color: var(--ink) !important; white-space: nowrap !important;
     background: var(--gold) !important;
     border: none !important;
     padding: 16px 32px !important; flex: 1 1 0 !important;
@@ -956,11 +968,11 @@
       margin-right: auto;
       margin-bottom: 18px;
     }
-    .hero .mission,
+    .hero .mission-sub,
     .hero .lede{
       margin-left: auto !important;
       margin-right: auto !important;
-      font-size: clamp(17px, 4.6vw, 22px) !important;
+      font-size: clamp(36px, 9vw, 52px) !important;
     }
 
     .hero .cta-row{
@@ -1056,6 +1068,9 @@
 .five-h2-br{display:none}
 .five-head .sub{margin-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-faint);text-align:center}
 .five-stage{position:relative;width:100%;max-width:560px;aspect-ratio:1/1}
+/* Centered halo — anchored to the stage itself so it always tracks the circle of nodes,
+   independent of the raster bg position, section height, or the html zoom. */
+.five-stage::before{content:"";position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(184,175,154,.18),rgba(184,175,154,.05) 42%,transparent 70%);pointer-events:none}
 .five-ring{position:absolute;inset:0;animation:fiveSpin 80s linear infinite;will-change:transform}
 .five-stage.is-paused .five-ring{animation-play-state:paused}
 .five-ring svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:fiveSpinCC 80s linear infinite}
@@ -1068,7 +1083,9 @@
 .elem .en{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--paper);line-height:1.1;margin-top:4px}
 .elem .season{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper-faint);margin-top:4px}
 .five-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46%;aspect-ratio:1/1;border-radius:50%;display:grid;place-items:center;text-align:center;pointer-events:none}
-.five-center::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(8,9,8,.6),transparent 70%)}
+/* Dark vignette behind the central 氣 — sized to fill out to the SVG ring (r=42 → 235px).
+   inset:-30% makes the box reach the ring; the gradient holds dark until it gets there. */
+.five-center::before{content:"";position:absolute;inset:-30%;border-radius:50%;background:radial-gradient(circle,rgba(8,9,8,.8),rgba(8,9,8,.45) 55%,transparent 73%)}
 .five-center .plate{position:relative;z-index:1;display:grid;place-items:center;padding:18px}
 .five-center .default{font-family:var(--brush);font-size:clamp(80px,12vw,140px);line-height:.9;color:var(--gold);opacity:.85;transition:opacity .4s ease,transform .4s ease}
 .five-stage[data-active] .five-center .default{opacity:0;transform:scale(.94)}
@@ -1080,7 +1097,7 @@
 .five-desc p{font-family:"Times New Roman",serif;font-size:17px;line-height:1.65;color:var(--paper-dim);font-weight:700;font-style:italic}
 @media(min-width:769px){.five-center{width:54%}}
 @keyframes fiveSpin{to{transform:rotate(360deg)}}
-@keyframes fiveSpinCC{to{transform:rotate(360deg)}}
+@keyframes fiveSpinCC{to{transform:rotate(-360deg)}}
 @keyframes fiveCounter{to{transform:rotate(-360deg)}}
 @media(max-width:768px){
   .five-wrap{padding:48px 0 60px}
@@ -1109,6 +1126,7 @@
   .elem{--r:178px;width:108px;height:108px;margin:-54px 0 0 -54px}
 }
 @media(prefers-reduced-motion:reduce){.five-ring,.five-ring svg.ring,.elem-inner{animation:none!important}}
+[data-theme="light"] .five-stage::before{background:radial-gradient(circle at 50% 50%,rgba(24,118,46,.12),rgba(24,118,46,.04) 42%,transparent 70%)}
 [data-theme="light"] .five-wrap{background-image:url(assets/element-bg.webp);background-position:center 35%}
 [data-theme="light"] .five-wrap::before{background:rgba(251,250,247,.50)}
 [data-theme="light"] .five-wrap::after{background:radial-gradient(60% 70% at 50% 50%,rgba(24,118,46,.04),transparent 60%),linear-gradient(to bottom,transparent 60%,var(--ink) 95%)}
@@ -1198,13 +1216,13 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-text">
-        <div class="eyebrow reveal in"><span>W&amp;E Health Institute</span> <span class="cn">醫</span></div>
         <p class="mission reveal in d1">
-          At W&amp;E Health Institute we provide the holistic approach to help your body, mind, and spirit.
+          W&amp;E Health Institute
         </p>
-        <h1 class="reveal in d2">
-          Acupuncture &amp; <span class="accent">classical Chinese medicine.</span>
-        </h1>
+        <p class="mission-sub reveal in d2">
+          We provide the holistic approach to help your body, mind, and spirit.
+        </p>
+  
 
         <div class="cta-row reveal in d3">
           <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="btn-primary">
@@ -1626,22 +1644,6 @@
 <footer>
   <div class="glyph" aria-hidden="true">安</div>
   <div class="wrap">
-
-    <!-- CTA band -->
-    <div class="f-top">
-      <div class="f-top-brand">
-        <div class="f-top-eyebrow">W&amp;E Health Institute <span class="cn">醫</span></div>
-        <p class="f-tagline">Traditional Chinese medicine, <em>rooted in compassion.</em></p>
-      </div>
-      <div class="f-top-actions">
-        <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="request">
-          <span>Book an Appointment</span><span class="arr">→</span>
-        </a>
-        <a href="tel:+19013406433" class="request request-ghost">
-          <span>Call 901&middot;340&middot;6433</span><span class="arr">☎</span>
-        </a>
-      </div>
-    </div>
 
     <!-- 4-column info grid -->
     <div class="f-info">
