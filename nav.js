@@ -4,19 +4,20 @@
   const hero = document.querySelector('.hero');
   const pageHero = document.querySelector('.page-hero');
   const frame = document.querySelector('.page-frame');
-  const trigger = document.querySelector('.has-dropdown');
+  const triggers = document.querySelectorAll('.has-dropdown');
 
   function positionDropdown() {
-    if (!trigger) return;
     const isScrolled = nav.classList.contains('scrolled');
     const navRect = nav.getBoundingClientRect();
-    const trigRect = trigger.getBoundingClientRect();
     const rawInset = getComputedStyle(document.documentElement)
       .getPropertyValue('--frame-inset').trim();
     const frameInset = isScrolled ? 0 : (parseFloat(rawInset) || 14);
-    const offset = Math.max((navRect.bottom - frameInset) - trigRect.bottom, 0);
-    trigger.style.setProperty('--dd-offset', offset + 'px');
-    trigger.style.setProperty('--dd-bridge', (offset + 4) + 'px');
+    triggers.forEach(function (trigger) {
+      const trigRect = trigger.getBoundingClientRect();
+      const offset = Math.max((navRect.bottom - frameInset) - trigRect.bottom, 0);
+      trigger.style.setProperty('--dd-offset', offset + 'px');
+      trigger.style.setProperty('--dd-bridge', (offset + 4) + 'px');
+    });
   }
 
   function tick() {
@@ -56,6 +57,28 @@
   });
 
   // Reset accordion whenever overlay is closed
+  if (overlay) {
+    new MutationObserver(function () {
+      if (!overlay.classList.contains('open')) {
+        group.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    }).observe(overlay, { attributes: true, attributeFilter: ['class'] });
+  }
+})();
+
+// Mobile Practitioners accordion toggle
+(function () {
+  const toggle = document.querySelector('.mob-practitioners-toggle');
+  const group  = document.getElementById('mobPractitionersGroup');
+  const overlay = document.getElementById('menuOverlay');
+  if (!toggle || !group) return;
+
+  toggle.addEventListener('click', function () {
+    const open = group.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
   if (overlay) {
     new MutationObserver(function () {
       if (!overlay.classList.contains('open')) {

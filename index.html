@@ -357,10 +357,10 @@
   /* ── Light mode overrides ───────────────────────────────────────────── */
   [data-theme="light"] .hero::before{ display: none }
   [data-theme="light"] .hero::after{
-    background: linear-gradient(to bottom, rgba(248,246,240,.50) 0%, rgba(248,246,240,.50) 100%);
+    background: linear-gradient(to bottom, rgba(248,246,240,.65) 0%, rgba(248,246,240,.65) 100%);
   }
   [data-theme="light"] .hero{
-    background: url(assets/AdobeStock_99423718.jpeg) center 55%/cover no-repeat, var(--ink-2) !important;
+    background: url(assets/AdobeStock_99423718.jpeg) center 75%/cover no-repeat, var(--ink-2) !important;
   }
   [data-theme="light"] .hero .bg{
     background:
@@ -572,8 +572,8 @@
   /* ── HERO — clean, photo-driven, two-column ─────────────────────── */
   .hero{
     position: relative !important;
-    background: url(assets/AdobeStock_99423718.jpeg) center 55%/cover no-repeat, var(--ink) !important;
-    padding: 120px 22px 80px !important;
+    background: url(assets/AdobeStock_99423718.jpeg) center 70%/cover no-repeat, var(--ink) !important;
+    padding: 80px 22px 160px !important;
     min-height: 100vh !important;
     min-height: 100dvh !important;
   }
@@ -623,12 +623,13 @@
     font-family: var(--serif) !important;
     font-style: normal !important;
     font-weight: 500 !important;
-    font-size: 40px !important;
-    letter-spacing: 0.30em !important;
+    font-size: 46px !important;
+    letter-spacing: 0.22em !important;
     text-transform: uppercase !important;
-    color: var(--gold) !important;
+    color: #ffffff !important;
     white-space: nowrap !important;
-    margin: 0 auto 20px !important;
+    margin: 0 0 2rem !important;
+    text-shadow: 0 5px 24px rgba(0,0,0,0.72), 0 1px 8px rgba(0,0,0,0.55) !important;
   }
   /* Tagline — large italic serif headline */
   .hero .mission-sub{
@@ -638,9 +639,10 @@
     font-size: clamp(44px, 6.5vw, 60px) !important;
     line-height: 1.1 !important;
     color: var(--paper) !important;
-    max-width: 16ch;
-    margin: 0 auto 44px !important;
+    max-width: 22ch;
+    margin: 8px auto 56px !important;
     letter-spacing: -0.02em !important;
+    text-shadow: 0 2px 20px rgba(255, 255, 255, 0.45), 0 1px 6px rgba(0,0,0,0.30) !important;
   }
   .hero .lede{
     font-family: var(--serif); font-style: normal; font-weight: 400;
@@ -1161,7 +1163,7 @@
   </a>
   <div class="links">
     <a href="index.html" class="is-active">Home</a>
-    <a href="about.html">About</a>
+    <div class="has-dropdown"><a href="about.html">About</a><div class="nav-dropdown"><div class="nav-dropdown-label">Meet Our Team</div><a href="practitioner-selina.html">Dr. Selina Liang</a><a href="practitioner-zhao.html">Dr. Tieqiang Zhao</a></div></div>
     <div class="has-dropdown"><a href="services.html">Services</a><div class="nav-dropdown"><div class="nav-dropdown-label">Specialty Treatments</div><a href="treatment-cardiac.html">Cardiac Health</a><a href="treatment-cosmetic-acupuncture.html">Cosmetic Acupuncture</a><a href="treatment-infertility.html">Fertility Support</a><a href="treatment-pain-management.html">Pain Management</a><a href="saat.html">SAAT Allergy</a><a href="treatment-tai-chi.html">Tai Chi &amp; Qi Gong</a></div></div>
     <a href="conditions.html">Conditions</a>
     <a href="testimonials.html">Testimonials</a>
@@ -1183,7 +1185,14 @@
   </div>
   <div class="mob-nav-links">
     <a href="index.html" class="is-active">Home</a>
-    <a href="about.html">About</a>
+    <div class="mob-practitioners-wrap">
+      <a href="about.html">About</a>
+      <button class="mob-practitioners-toggle" aria-expanded="false" aria-label="Toggle practitioners"></button>
+    </div>
+    <div class="mob-sub-group" id="mobPractitionersGroup">
+      <a href="practitioner-selina.html" class="mob-sub">Dr. Selina Liang</a>
+      <a href="practitioner-zhao.html" class="mob-sub">Dr. Tieqiang Zhao</a>
+    </div>
     <div class="mob-services-wrap">
       <a href="services.html">Services</a>
       <button class="mob-services-toggle" aria-expanded="false" aria-label="Toggle services"></button>
@@ -1220,14 +1229,13 @@
           W&amp;E Health Institute
         </p>
         <p class="mission-sub reveal in d2">
-          We provide the holistic approach to help your body, mind, and spirit.
+          We provide personalized, holistic care that nurtures your body, mind, and spirit.
         </p>
   
 
         <div class="cta-row reveal in d3">
           <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="btn-primary">
-            <span>Book an Appointment</span>
-            <span class="arrow">&rarr;</span>
+            <span>Book Appointment Here</span>
           </a>
           <a href="tel:+19013406433" class="btn-ghost">
             <span class="btn-phone-icon" aria-hidden="true">
@@ -1285,50 +1293,6 @@
     <div class="focus-dots" id="focusDots" aria-label="Slide indicators"></div>
   </div>
 </div>
-
-<!-- ─── The Practitioner ─────────────────────────────────────────── -->
-<section class="about" id="about">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span>I.</span> <span>The Practitioner</span> <span class="cn">人</span></div>
-
-    <div class="inner">
-      <div class="portrait reveal d1" role="img" aria-label="Portrait of Dr. Yingjuan Liang">
-        <img src="assets/dr-selina-portrait.webp" loading="lazy" alt="Portrait of Dr. Yingjuan Liang (Selina)" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" />
-      </div>
-
-      <div class="text reveal d2">
-        <div class="name">Dr. Yingjuan Liang<br><span class="surname">(Dr. Selina)</span></div>
-        <div class="cred-bar">
-          <span class="cred-pill">DACM</span>
-          <span class="cred-pill">L.Ac.</span>
-          <span class="cred-pill">NCCAOM Diplomate</span>
-          <span class="cred-pill">VA Authorized</span>
-        </div>
-        <div class="credentials">Cordova, Tennessee &middot; W&amp;E Health Institute</div>
-
-        <p class="body">
-          Dr. Yingjuan Liang is a Doctor of Acupuncture and Chinese Medicine
-          (DACM), a Licensed Acupuncturist in Tennessee, and a certified Chinese
-          herbalist board-certified as a Diplomate of Oriental Medicine by the
-          NCCAOM. Raised by parents who were both integrative physicians
-          practicing Western and Chinese medicine, she carries forward a
-          holistic approach: <em>harmonising body and mind, nurturing both
-          form and spirit.</em>
-        </p>
-
-        <p class="body">
-          In clinic she integrates modern abdominal diagnosis and tongue
-          diagnosis with Jiao&rsquo;s Scalp Acupuncture, Abdominal Acupuncture,
-          Master Tung&rsquo;s Acupuncture, Motion Needle, Five Element, and
-          traditional acupuncture &mdash; complemented by herbal prescriptions
-          tailored to the patient in front of her.
-        </p>
-
-        <a href="about.html" class="btn-ghost" style="margin-top:auto;padding-top:36px">Read full bio &amp; lineage <span style="font-family:var(--serif);font-style:italic">&rarr;</span></a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ─── Trust Strip ───────────────────────────────────────────────── -->
 <div class="trust-strip" role="complementary" aria-label="Credentials and coverage">

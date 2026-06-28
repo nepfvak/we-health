@@ -19,6 +19,8 @@
   --brush: "Noto Serif SC", serif;
   --mono: ui-monospace, "Courier New", monospace;
   --frame-inset: 14px;
+  --nav-bg: #f3f1efa0;
+  --nav-border: rgba(255,255,255,.30);
 }
 @media (min-width: 768px) { :root { --frame-inset: 18px } }
 @media (max-width: 480px) { :root { --frame-inset: 8px } }
@@ -86,8 +88,8 @@ body::before {
   position: absolute;
   inset: var(--frame-inset);
   border-radius: 6px;
-  border: 1px solid rgba(255,255,255,.30);
-  background: rgba(12,14,12,.80);
+  border: 1px solid var(--nav-border);
+  background: rgba(42, 35, 15, 0.95);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
   transition: inset .5s cubic-bezier(.625,.05,0,1),
@@ -103,13 +105,13 @@ body::before {
   border-radius: 0;
   border-color: transparent;
   border-bottom-color: var(--rule);
-  background: rgba(12,14,12,.80);
+  background: var(--nav-bg);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
 }
 .nav .brand { display: flex; align-items: center; gap: 12px }
 .nav .brand .mark {
-  width: 48px; height: 48px; flex-shrink: 0;
+  width: 60px; height: 60px; flex-shrink: 0;
   border-radius: 50%; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
 }
@@ -132,7 +134,7 @@ body::before {
   color: var(--paper-dim); line-height: 1; margin-top: 2px;
 }
 .nav .links {
-  display: none; gap: 12px; font-family: "Times New Roman", serif; font-size: 14px; font-weight: 600 !important; letter-spacing: .07em;
+  display: none; gap: 20px; font-family: "Times New Roman", serif; font-size: 15px; font-weight: 600 !important; letter-spacing: .07em;
   text-transform: uppercase; color: var(--paper); align-items: center;
 }
 .nav .links a { position: relative; padding: 6px 0; transition: color .25s; white-space: nowrap }
@@ -263,7 +265,7 @@ body::before {
   top: calc(100% + var(--dd-offset, 14px));
   left: 50%; transform: translateX(-50%) translateY(-6px);
   min-width: 220px;
-  background: rgba(12,14,12,.88);
+  background: rgba(42,35,15,0.97);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
   border: .5px solid rgba(255,255,255,.14);
@@ -309,14 +311,35 @@ body::before {
 
 /* Light mode */
 [data-theme="light"] .nav-dropdown {
-  background: rgba(118,158,92,.92);
+  background: rgba(243,241,239,0.97);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
-  border-color: rgba(20,46,12,.22);
+  border-color: rgba(13,12,8,.14);
   box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.08);
 }
 [data-theme="light"] .nav-dropdown a { color: #0d0c08 }
 [data-theme="light"] .nav-dropdown a:hover { background: rgba(0,0,0,.08); color: #0d0c08 }
+
+/* Chevron on nav items with dropdowns */
+.nav .links .has-dropdown > a::after {
+  content: '';
+  position: static;
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  background: transparent !important;
+  transform: rotate(45deg);
+  transform-origin: center;
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-bottom: 2px;
+  transition: transform .22s ease;
+}
+.nav .links .has-dropdown:hover > a::after,
+.nav .links .has-dropdown:focus-within > a::after {
+  transform: rotate(-135deg);
+}
 /* Mobile Services accordion */
 .mob-services-wrap {
   position: relative;
@@ -427,9 +450,9 @@ p.body + p.body { margin-top: 1em }
 .page-hero .bg {
   position: absolute; inset: 0; z-index: 0;
   background:
-    radial-gradient(ellipse 65% 70% at 50% 42%, rgba(8,6,4,.84) 0%, rgba(8,6,4,.44) 68%, transparent 100%),
     radial-gradient(60% 70% at 22% 18%, rgba(201,162,90,.08), transparent 55%),
-    radial-gradient(80% 90% at 78% 110%, rgba(168,50,50,.08), transparent 60%);
+    radial-gradient(80% 90% at 78% 110%, rgba(168,50,50,.08), transparent 60%),
+    linear-gradient(rgba(8,6,4,0.25), rgba(8,6,4,0.25));
 }
 .page-hero .ghost-glyph {
   position: absolute; right: 0; top: 50%; transform: translateY(-50%);
@@ -445,8 +468,9 @@ p.body + p.body { margin-top: 1em }
 }
 .page-hero h1 .accent { font-style: normal; color: inherit; font-weight: 400 }
 .page-hero .lede {
-  max-width: 46ch; color: var(--paper);
-  font-size: clamp(16px,1.6vw,19px); line-height: 1.7; font-weight: 400; font-style: italic;
+  max-width: 46ch; color: #0d0c08;
+  font-size: clamp(16px,1.6vw,19px); line-height: 1.7; font-weight: 600; font-style: italic;
+  text-shadow: 0 0 8px #fff, 0 0 16px #fff, 0 0 28px #fff, 0 0 44px #fff, 0 0 70px #fff, 0 0 100px rgba(255,255,255,0.9), 0 0 140px rgba(255,255,255,0.7);
 }
 
 /* ── Footer ─────────────────────────────────────────────────────────── */
@@ -579,10 +603,10 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 
 /* Nav — light mode */
 [data-theme="light"] .nav::before {
-  background: rgba(128, 188, 87, 0.9);
+  background: var(--nav-bg);
 }
 [data-theme="light"] .nav.scrolled::before {
-  background: rgba(128, 188, 87, 0.9);
+  background: var(--nav-bg);
   border-color: transparent;
   border-bottom-color: var(--rule);
 }
@@ -607,9 +631,9 @@ body[data-glyphs="0"] .nav .brand { gap: 0 }
 /* Page hero (inner pages) */
 [data-theme="light"] .page-hero .bg {
   background:
-    radial-gradient(ellipse 70% 65% at 50% 45%, rgba(248,246,240,.92) 0%, rgba(248,246,240,.18) 100%),
-    radial-gradient(60% 70% at 22% 18%, rgba(61,139,114,.10), transparent 55%),
-    radial-gradient(80% 90% at 78% 110%, rgba(200,146,26,.06), transparent 60%);
+    radial-gradient(60% 70% at 22% 18%, rgba(61,139,114,.10), transparent 35%),
+    radial-gradient(80% 90% at 78% 110%, rgba(200,146,26,.06), transparent 60%),
+    linear-gradient(rgba(248,246,240,0.40), rgba(248,246,240,0.40));
 }
 
 /* Divider SVG stroke — keep it visible on light bg */
@@ -695,7 +719,7 @@ h3{ color:var(--paper) }
   .nav{ padding: 10px 16px }
   .nav.scrolled{ padding: 9px 16px }
   .nav .brand .name{ font-size: 12px; letter-spacing: .12em }
-  .nav-actions{ gap: 7px }
+  .nav-actions{ gap: 8px }
 }
 
 /* Extra-small phones */

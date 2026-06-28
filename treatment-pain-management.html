@@ -101,7 +101,7 @@
   <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-no-text.webp" alt="W&amp;E logo"></span><span class="name-wrap"><span class="name">W<em>&amp;</em>E Health Institute</span><span class="tagline">Acupuncture &amp; Integrative Care</span></span></a>
   <div class="links">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <div class="has-dropdown"><a href="about.html">About</a><div class="nav-dropdown"><div class="nav-dropdown-label">Meet Our Team</div><a href="practitioner-selina.html">Dr. Selina Liang</a><a href="practitioner-zhao.html">Dr. Tieqiang Zhao</a></div></div>
     <div class="has-dropdown"><a href="services.html" class="is-active">Services</a><div class="nav-dropdown"><div class="nav-dropdown-label">Specialty Treatments</div><a href="treatment-cardiac.html">Cardiac Health</a><a href="treatment-cosmetic-acupuncture.html">Cosmetic Acupuncture</a><a href="treatment-infertility.html">Fertility Support</a><a href="treatment-pain-management.html">Pain Management</a><a href="saat.html">SAAT Allergy</a><a href="treatment-tai-chi.html">Tai Chi &amp; Qi Gong</a></div></div>
     <a href="conditions.html">Conditions</a>
     <a href="testimonials.html">Testimonials</a>
@@ -123,7 +123,14 @@
   </div>
   <div class="mob-nav-links">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <div class="mob-practitioners-wrap">
+      <a href="about.html">About</a>
+      <button class="mob-practitioners-toggle" aria-expanded="false" aria-label="Toggle practitioners"></button>
+    </div>
+    <div class="mob-sub-group" id="mobPractitionersGroup">
+      <a href="practitioner-selina.html" class="mob-sub">Dr. Selina Liang</a>
+      <a href="practitioner-zhao.html" class="mob-sub">Dr. Tieqiang Zhao</a>
+    </div>
     <div class="mob-services-wrap">
       <a href="services.html" class="is-active">Services</a>
       <button class="mob-services-toggle" aria-expanded="false" aria-label="Toggle services"></button>
