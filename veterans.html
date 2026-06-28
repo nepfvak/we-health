@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Veterans Care (護) — W&amp;E Health Institute · Cordova, TN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>try{if(localStorage.getItem("wehi-theme")!=="dark")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<link rel="stylesheet" href="styles.css" />
+<script src="theme.js" defer></script>
+<script src="nav.js" defer></script>
+<script src="lenis.min.js" defer></script>
+<script src="scroll.js" defer></script>
+<script src="footer-map.js" defer></script>
+
+<style>
+  section{min-height:100vh;min-height:100dvh;padding:0;display:flex;flex-direction:column;justify-content:center}
+  section>.wrap{padding-top:clamp(48px,7vh,100px);padding-bottom:clamp(48px,7vh,100px)}
+
+  /* ── Overview ──────────────────────────────────────────────────────── */
+  .va-overview{background:var(--ink);border-top:1px solid var(--rule)}
+  .va-overview p{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(16px,1.7vw,19px);line-height:1.8;
+    color:var(--paper);max-width:66ch;margin-bottom:28px;
+  }
+  .va-overview p:last-child{margin-bottom:0}
+
+  /* Callout — "100% covered" highlight */
+  .va-callout{
+    border-left:3px solid var(--gold);
+    background:rgba(76,179,90,.07);
+    padding:28px 32px;
+    margin:40px 0;
+    max-width:66ch;
+  }
+  .va-callout .vc-label{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:12px;
+  }
+  .va-callout .vc-headline{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(22px,2.6vw,30px);line-height:1.2;color:var(--paper);
+    margin-bottom:14px;
+  }
+  .va-callout .vc-body{
+    font-family:var(--serif);font-weight:400;font-size:17px;
+    line-height:1.75;color:var(--paper-dim);
+  }
+
+  /* Stat row */
+  .va-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--rule);border:1px solid var(--rule);
+    margin-top:56px;
+  }
+  @media(max-width:600px){.va-stats{grid-template-columns:1fr}}
+  .va-stat{
+    background:var(--ink);padding:36px 32px;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .va-stat.hi{background:var(--ink-2)}
+  .vs-num{
+    font-family:"Times New Roman",serif;font-weight:400;font-style:italic;
+    font-size:clamp(40px,5vw,64px);color:var(--gold);line-height:.9;letter-spacing:-.02em;
+  }
+  .va-stat.hi .vs-num{color:var(--paper)}
+  .vs-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.20em;text-transform:uppercase;color:var(--paper-dim)}
+  .vs-sub{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--paper-dim);font-weight:400}
+
+  /* ── Benefits ──────────────────────────────────────────────────────── */
+  .va-benefits{background:var(--ink-2);border-top:1px solid var(--rule)}
+  .va-benefits-grid{
+    display:grid;grid-template-columns:1fr;
+    gap:1px;background:var(--rule);border:1px solid var(--rule);
+    margin-top:56px;
+  }
+  @media(min-width:760px){.va-benefits-grid{grid-template-columns:1fr 1fr}}
+
+  .va-benefit{
+    background:var(--ink-2);padding:44px 40px;
+    display:flex;flex-direction:column;gap:14px;
+    transition:background .3s ease;
+  }
+  .va-benefit:hover{background:var(--ink-3)}
+  .vb-num{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--paper-faint);
+  }
+  .vb-icon{
+    width:56px;height:56px;border:.5px solid var(--gold-dim);
+    display:grid;place-items:center;
+    font-family:var(--brush);font-size:28px;color:var(--gold);line-height:1;
+  }
+  .vb-title{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(20px,2.2vw,26px);line-height:1.15;color:var(--paper);
+  }
+  .vb-body{
+    font-family:var(--serif);font-weight:400;font-size:16px;
+    line-height:1.75;color:var(--paper-dim);
+  }
+  .vb-divider{height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(76,179,90,.3) 55%,transparent 100%);margin-top:4px}
+
+  /* ── Steps ─────────────────────────────────────────────────────────── */
+  .va-steps{background:var(--ink);border-top:1px solid var(--rule)}
+  .va-steps-intro{margin-bottom:64px}
+  .va-timeline{margin-bottom:64px}
+  .va-step{
+    display:grid;grid-template-columns:80px 1fr;
+    gap:28px 40px;padding:40px 0;border-top:1px solid var(--rule);
+  }
+  @media(min-width:680px){.va-step{grid-template-columns:120px 1fr}}
+  .vs-step-num{
+    font-family:"Times New Roman",serif;font-weight:400;font-style:italic;
+    font-size:clamp(36px,5vw,60px);color:var(--gold);line-height:.9;
+    letter-spacing:-.01em;padding-top:4px;
+  }
+  .vs-content h3{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(20px,2.4vw,28px);color:var(--paper);
+    margin-bottom:10px;line-height:1.2;
+  }
+  .vs-tag{
+    display:inline-block;font-family:var(--mono);font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--cinnabar);
+    border:.5px solid rgba(160,120,32,.45);padding:3px 9px;margin-bottom:14px;
+  }
+  .vs-content p{
+    color:var(--paper-dim);font-family:var(--serif);font-weight:400;
+    font-size:16px;line-height:1.75;max-width:56ch;
+  }
+
+  /* Closing note */
+  .va-closing{
+    border-top:1px solid var(--rule);padding-top:40px;margin-top:8px;
+    font-family:var(--serif);font-weight:400;font-style:italic;
+    font-size:clamp(16px,1.6vw,19px);line-height:1.8;
+    color:var(--paper-dim);max-width:58ch;
+  }
+  .va-closing strong{color:var(--paper);font-style:normal;font-weight:400}
+
+  /* ── CTA ────────────────────────────────────────────────────────────── */
+  .va-cta{
+    padding:80px 0 120px;border-top:1px solid var(--rule);
+    text-align:center;background:var(--ink-2);
+  }
+  .va-cta .eyebrow{justify-content:center}
+  .va-cta .cta-text{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(22px,3vw,36px);line-height:1.3;color:var(--paper);
+    max-width:36ch;margin:0 auto 36px;
+  }
+  .va-cta .cta-text em{font-style:normal;color:var(--gold)}
+
+  /* ── Light mode — callout tint ─────────────────────────────────────── */
+  [data-theme="light"] .va-callout{background:rgba(24,118,46,.06)}
+
+  /* ── Mobile overrides ──────────────────────────────────────────────── */
+  @media(max-width:768px){
+    section{min-height:0 !important;padding:56px 0}
+    section>.wrap{padding-top:40px;padding-bottom:40px}
+    .va-steps-intro{margin-bottom:40px}
+    .va-timeline{margin-bottom:40px}
+    .va-step{padding:28px 0;gap:18px 20px}
+    .va-benefits-grid{grid-template-columns:1fr}
+    .va-benefit{padding:32px 28px}
+    .va-callout{padding:22px 22px}
+    .va-cta{padding:56px 0 80px}
+  }
+  @media(max-width:480px){
+    .va-stats{grid-template-columns:1fr !important}
+    .va-step{grid-template-columns:60px 1fr;gap:16px 14px}
+    .vs-step-num{font-size:clamp(28px,8vw,42px)}
+  }
+</style>
+</head>
+<body>
+
+<div class="page-frame" aria-hidden="true"><span class="corner-tr"></span><span class="corner-bl"></span></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-no-text.webp" alt="W&amp;E logo"></span><span class="name-wrap"><span class="name">W<em>&amp;</em>E Health Institute</span><span class="tagline">Acupuncture &amp; Integrative Care</span></span></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <div class="has-dropdown"><a href="services.html">Services</a><div class="nav-dropdown"><div class="nav-dropdown-label">Specialty Treatments</div><a href="treatment-cardiac.html">Cardiac Health</a><a href="treatment-cosmetic-acupuncture.html">Cosmetic Acupuncture</a><a href="treatment-infertility.html">Fertility Support</a><a href="treatment-pain-management.html">Pain Management</a><a href="saat.html">SAAT Allergy</a><a href="treatment-tai-chi.html">Tai Chi &amp; Qi Gong</a></div></div>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+    <a href="veterans.html" class="is-active">Veterans</a>
+  </div>
+  <div class="nav-actions">
+    <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="book"><span class="dot"></span>Book</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch to light mode"><span class="tg"></span></button>
+    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="mob-overlay-bar">
+    <a href="index.html" class="mob-overlay-logo" tabindex="-1" aria-hidden="true"><img src="assets/logo-no-text.webp" alt="W&amp;E logo"></a>
+    <button class="mob-close" id="menuClose" aria-label="Close menu">&#x2715;</button>
+  </div>
+  <div class="mob-nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <div class="mob-services-wrap">
+      <a href="services.html">Services</a>
+      <button class="mob-services-toggle" aria-expanded="false" aria-label="Toggle services"></button>
+    </div>
+    <div class="mob-sub-group" id="mobSubGroup">
+      <a href="treatment-cardiac.html" class="mob-sub">Cardiac Health</a>
+      <a href="treatment-cosmetic-acupuncture.html" class="mob-sub">Cosmetic Acupuncture</a>
+      <a href="treatment-infertility.html" class="mob-sub">Fertility Support</a>
+      <a href="treatment-pain-management.html" class="mob-sub">Pain Management</a>
+      <a href="saat.html" class="mob-sub">SAAT Allergy</a>
+      <a href="treatment-tai-chi.html" class="mob-sub">Tai Chi &amp; Qi Gong</a>
+    </div>
+    <a href="conditions.html">Conditions</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+    <a href="veterans.html" class="is-active">Veterans</a>
+  </div>
+  <div class="mob-overlay-rule"></div>
+  <div class="mob-overlay-bottom">
+    <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="mob-book">Book Appointment</a>
+    <p class="mob-overlay-info"><span>901&#xB7;340&#xB7;6433</span>&ensp;&middot;&ensp;<span>985 Cordova Station Ave, Ste 101, Cordova TN 38018</span></p>
+  </div>
+</div>
+
+<!-- Page Hero -->
+<header class="page-hero">
+  <div class="page-hero-frame" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="ghost-glyph" aria-hidden="true">護</div>
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">護</span>Veterans Care</div>
+    <h1 class="reveal d1">Honoring those <span class="accent">who served.</span></h1>
+    <p class="lede reveal d2">You protected our country. Let us protect your health.</p>
+  </div>
+</header>
+
+<!-- ─── Overview ─────────────────────────────────────────────────── -->
+<section class="va-overview">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">心</span>Our Commitment</div>
+
+    <p class="reveal d1">
+      At W&amp;E Health Institute, we are proud to be an <strong>authorized VA Community Care Provider.</strong> We understand that the transition from active duty to civilian life often comes with physical and emotional burdens that traditional medicine alone may not fully address.
+    </p>
+
+    <div class="va-callout reveal d2">
+      <div class="vc-label">Veteran Benefit</div>
+      <div class="vc-headline">The best part? Your treatments are likely 100% covered.</div>
+      <div class="vc-body">
+        Under VA guidelines, eligible Veterans can receive <strong>12 to 28 acupuncture treatments per year</strong> at no cost to them. With a referral from your VA doctor, the VA pays for your sessions in full.
+      </div>
+    </div>
+
+    <div class="va-stats reveal d3">
+      <div class="va-stat hi">
+        <div class="vs-num">$0</div>
+        <div class="vs-label">Out-of-pocket cost</div>
+        <div class="vs-sub">With VA authorization</div>
+      </div>
+      <div class="va-stat">
+        <div class="vs-num">12–28</div>
+        <div class="vs-label">Treatments per year</div>
+        <div class="vs-sub">Covered under VA guidelines</div>
+      </div>
+      <div class="va-stat">
+        <div class="vs-num">VA</div>
+        <div class="vs-label">Community Care Provider</div>
+        <div class="vs-sub">Authorized &amp; accepting referrals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Why Acupuncture for Veterans? ────────────────────────────── -->
+<section class="va-benefits">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">醫</span>Why Acupuncture</div>
+    <h2 class="reveal d1">We don't just treat symptoms — <span class="accent">we treat the whole person.</span></h2>
+    <p style="font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.6vw,18px);color:var(--paper-dim);max-width:58ch;line-height:1.75;margin-top:20px" class="reveal d2">
+      Our acupuncture protocols are specifically designed to address the unique challenges faced by the military community.
+    </p>
+
+    <div class="va-benefits-grid">
+
+      <div class="va-benefit reveal">
+        <div class="vb-num">01 / 04</div>
+        <div class="vb-icon">痛</div>
+        <div class="vb-title">Chronic Pain Management</div>
+        <div class="vb-divider"></div>
+        <div class="vb-body">Effective relief for any kind of pain, joint issues, migraines, and old service-connected injuries — without the use of opioids.</div>
+      </div>
+
+      <div class="va-benefit reveal d1">
+        <div class="vb-num">02 / 04</div>
+        <div class="vb-icon">心</div>
+        <div class="vb-title">PTSD &amp; Mental Wellness</div>
+        <div class="vb-divider"></div>
+        <div class="vb-body">Acupuncture helps regulate the nervous system, shifting your body from &ldquo;fight or flight&rdquo; mode into a state of deep relaxation.</div>
+      </div>
+
+      <div class="va-benefit reveal d2">
+        <div class="vb-num">03 / 04</div>
+        <div class="vb-icon">眠</div>
+        <div class="vb-title">Improved Sleep</div>
+        <div class="vb-divider"></div>
+        <div class="vb-body">Calm the mind and reduce the anxiety or hyper-vigilance that often leads to insomnia, restoring the deep, restorative rest your body needs.</div>
+      </div>
+
+      <div class="va-benefit reveal d3">
+        <div class="vb-num">04 / 04</div>
+        <div class="vb-icon">神</div>
+        <div class="vb-title">Stress &amp; Emotional Resilience</div>
+        <div class="vb-divider"></div>
+        <div class="vb-body">Rebalance your spirit to help manage the invisible wounds of service. Ancient wisdom meets your modern needs.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Three Simple Steps ────────────────────────────────────────── -->
+<section class="va-steps">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span>How to Get Started</span> <span class="cn">始</span></div>
+
+    <div class="va-steps-intro">
+      <h2 class="reveal d1">Three simple steps <span class="accent">to begin healing.</span></h2>
+    </div>
+
+    <div class="va-timeline">
+
+      <div class="va-step reveal">
+        <div class="vs-step-num">1</div>
+        <div class="vs-content">
+          <div class="vs-tag">VA Primary Care</div>
+          <h3>Request a Referral</h3>
+          <p>Speak with your VA Primary Care Provider and let them know you would like to receive acupuncture at W&amp;E Health Institute. Mention that we are an authorized VA Community Care Provider.</p>
+        </div>
+      </div>
+
+      <div class="va-step reveal">
+        <div class="vs-step-num">2</div>
+        <div class="vs-content">
+          <div class="vs-tag">VA Authorization</div>
+          <h3>Authorization</h3>
+          <p>Once the VA approves the request, they will send the authorization directly to our clinic. No additional paperwork is required on your end — we handle the rest.</p>
+        </div>
+      </div>
+
+      <div class="va-step reveal">
+        <div class="vs-step-num">3</div>
+        <div class="vs-content">
+          <div class="vs-tag">Your First Visit</div>
+          <h3>Begin Healing</h3>
+          <p>Our team will contact you to schedule your initial consultation and first treatment. We will make sure you feel welcome, informed, and at ease from the moment you arrive.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="va-closing reveal">
+      Our clinic provides a <strong>Zen-like, peaceful environment</strong> where you can feel safe and supported. We combine ancient wisdom with modern diagnostic techniques to help you reclaim the quality of life you deserve.
+    </p>
+  </div>
+</section>
+
+<!-- ─── CTA Strip ─────────────────────────────────────────────────── -->
+<div class="va-cta">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="cn">始</span>Begin Your Journey</div>
+    <p class="cta-text reveal d1">Ready to experience healing <em>at no cost to you?</em></p>
+    <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="btn-primary reveal d2">
+      Book a first visit <span class="arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<!-- ─── Footer ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="glyph" aria-hidden="true">安</div>
+  <div class="wrap">
+
+    <div class="f-top">
+      <div class="f-top-brand">
+        <div class="f-top-eyebrow">W&amp;E Health Institute <span class="cn">醫</span></div>
+        <p class="f-tagline">Traditional Chinese medicine, <em>rooted in compassion.</em></p>
+      </div>
+      <div class="f-top-actions">
+        <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="request">
+          <span>Book an Appointment</span><span class="arr">→</span>
+        </a>
+        <a href="tel:+19013406433" class="request request-ghost">
+          <span>Call 901&middot;340&middot;6433</span><span class="arr">☎</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="f-info">
+      <div class="f-block">
+        <h4>Contact</h4>
+        <a href="mailto:wehiusa@gmail.com">wehiusa@gmail.com</a>
+        <a href="tel:+19013406433">901&middot;340&middot;6433</a>
+      </div>
+      <div class="f-block">
+        <h4>Visit</h4>
+        <p>985 Cordova Station Ave<br>Ste 101, Cordova, TN 38018</p>
+        <a href="https://maps.google.com/?q=985+Cordova+Station+Ave+Ste+101,+Cordova,+TN+38018" target="_blank" rel="noopener">Open in Maps &rarr;</a>
+      </div>
+      <div class="f-block f-hours">
+        <h4>Hours</h4>
+        <div class="row"><span class="day">Monday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Tuesday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Wednesday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Thursday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Friday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row"><span class="day">Saturday</span><span class="time">8:00 am &ndash; 6:00 pm</span></div>
+        <div class="row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+      </div>
+      <div class="f-block">
+        <h4>Follow</h4>
+        <div class="f-social">
+          <a href="https://instagram.com/wehealthinstitute" target="_blank" rel="noopener" aria-label="Instagram — @wehealthinstitute">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="3" y="3" width="18" height="18" rx="4"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="WeChat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+              <ellipse cx="9.2" cy="9.5" rx="6.2" ry="4.8"/>
+              <circle cx="7" cy="8.5" r=".5" fill="currentColor"/>
+              <circle cx="11.2" cy="8.5" r=".5" fill="currentColor"/>
+              <path d="M5,13.6 L4,15.6 L6,14.6"/>
+              <ellipse cx="15.4" cy="15" rx="5.2" ry="4"/>
+              <circle cx="13.8" cy="14" r=".4" fill="currentColor"/>
+              <circle cx="17" cy="14" r=".4" fill="currentColor"/>
+              <path d="M18.4,18 L19.2,19.6 L17.6,18.8"/>
+            </svg>
+          </a>
+          <a href="mailto:wehiusa@gmail.com" aria-label="Email — wehiusa@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+              <path d="M3.5,6 L12,13 L20.5,6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="f-map">
+      <div class="pin">
+        <div class="h">Find us</div>
+        <b>W&amp;E Health Institute</b><br/>
+        985 Cordova Station Ave, Ste 101<br/>
+        Cordova, TN 38018<br/>
+        <a href="https://maps.google.com/?q=985+Cordova+Station+Ave+Ste+101,+Cordova,+TN+38018" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </div>
+      <iframe
+        src="https://www.google.com/maps?q=985+Cordova+Station+Ave+Ste+101,+Cordova,+TN+38018&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Map to W&amp;E Health Institute"></iframe>
+    </div>
+
+    <div class="bar">
+      <div class="crest"><span class="dot"></span>© 2026 W&amp;E Health Institute · All rights reserved.</div>
+      <div class="legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <span>Memphis · 田納西州曼菲斯</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burgerBtn');
+const overlay = document.getElementById('menuOverlay');
+const menuClose = document.getElementById('menuClose');
+if (burger && overlay) {
+  burger.addEventListener('click', () => overlay.classList.add('open'));
+  menuClose.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+}
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+}, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

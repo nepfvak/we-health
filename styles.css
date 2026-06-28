@@ -25,7 +25,7 @@
 
 /* ── Reset ─────────────────────────────────────────────────────────── */
 * { box-sizing: border-box; margin: 0; padding: 0 }
-html { scroll-behavior: smooth }
+html { scroll-behavior: smooth; zoom: 0.87 }
 html, body {
   background: var(--ink, #121212);
   color: var(--paper, #e8dfc9);
@@ -127,8 +127,8 @@ body::before {
 }
 .nav .brand .name em { font-style: normal; color: var(--gold); font-weight: 500 }
 .nav .brand .tagline {
-  font-family: var(--serif); font-style: italic; font-weight: 400;
-  font-size: 11px; letter-spacing: .06em; text-transform: none;
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: 13px; letter-spacing: .06em; text-transform: none;
   color: var(--paper-dim); line-height: 1; margin-top: 2px;
 }
 .nav .links {
@@ -261,58 +261,62 @@ body::before {
 .nav-dropdown {
   position: absolute;
   top: calc(100% + var(--dd-offset, 14px));
-  left: 50%; transform: translateX(-50%);
+  left: 50%; transform: translateX(-50%) translateY(-6px);
   min-width: 220px;
-  background: rgba(12,14,12,.80);
+  background: rgba(12,14,12,.88);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
-  border: .5px solid rgba(255,255,255,.14); border-top: none;
-  border-radius: 0 0 20px 20px;
-  padding: 10px 0 18px; z-index: 100;
+  border: .5px solid rgba(255,255,255,.14);
+  border-radius: 10px;
+  padding: 6px 0 8px;
+  z-index: 100;
   pointer-events: none;
-  clip-path: inset(0 -1px 100% -1px round 0 0 20px 20px);
-  transition: clip-path .28s cubic-bezier(.4,1.08,.6,1), opacity .14s ease;
   opacity: 0;
-  box-shadow: 0 14px 36px rgba(0,0,0,.45);
+  box-shadow: 0 8px 32px rgba(0,0,0,.50), 0 2px 8px rgba(0,0,0,.25);
+  transition: opacity .18s ease, transform .18s ease;
 }
 .has-dropdown:hover .nav-dropdown,
 .has-dropdown:focus-within .nav-dropdown {
-  clip-path: inset(0 -1px 0% -1px round 0 0 20px 20px);
-  opacity: 1; pointer-events: all;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
 }
 .nav-dropdown a {
   display: block;
-  padding: 9px 20px;
-  text-align: center;
-  font-family: "Times New Roman", serif; font-size: 13px; letter-spacing: .09em; text-transform: uppercase;
-  color: #ffffff; white-space: nowrap;
-  transition: color .18s; text-decoration: none;
+  padding: 9px 16px;
+  margin: 1px 6px;
+  text-align: left;
+  font-family: "Times New Roman", serif; font-size: 13px; letter-spacing: .04em; text-transform: none;
+  color: rgba(232,232,232,.80); white-space: nowrap;
+  border-radius: 6px;
+  transition: background .15s, color .15s; text-decoration: none;
 }
 /* Dropdown top and bridge height are set precisely by nav.js via --dd-offset / --dd-bridge */
-.nav-dropdown a:hover { color: var(--gold) }
+.nav-dropdown a:hover { background: rgba(255,255,255,.07); color: var(--gold) }
 .nav-dropdown a::after { display: none }
 .nav-dropdown-label {
-  padding: 10px 20px 8px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(255,255,255,.45);
-  border-bottom: .5px solid rgba(255,255,255,.14);
+  padding: 8px 16px 6px;
+  margin: 0 6px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.32);
+  border-bottom: 1px solid rgba(255,255,255,.08);
   margin-bottom: 4px;
 }
 [data-theme="light"] .nav-dropdown-label {
-  color: rgba(13,12,8,.50);
-  border-bottom-color: rgba(13,12,8,.20);
+  color: rgba(13,12,8,.42);
+  border-bottom-color: rgba(13,12,8,.10);
 }
 
-/* Light mode — match the olive-sage nav */
+/* Light mode */
 [data-theme="light"] .nav-dropdown {
-  background: rgba(118,158,92,.90);
+  background: rgba(118,158,92,.92);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
   border-color: rgba(20,46,12,.22);
-  box-shadow: 0 14px 36px rgba(0,0,0,.18);
+  box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.08);
 }
 [data-theme="light"] .nav-dropdown a { color: #0d0c08 }
-[data-theme="light"] .nav-dropdown a:hover { color: #0d0c08 }
+[data-theme="light"] .nav-dropdown a:hover { background: rgba(0,0,0,.08); color: #0d0c08 }
 /* Mobile Services accordion */
 .mob-services-wrap {
   position: relative;
