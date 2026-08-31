@@ -670,6 +670,51 @@
     background: var(--gold); flex:none;
   }
 
+  /* ── Quick links — 3-card strip under the hero (methodist.org) ────── */
+  .quicklinks{
+    background: var(--ink);
+    min-height: 0 !important;
+    display: block !important;
+    padding: clamp(28px, 4vw, 56px) 0 clamp(36px, 5vw, 68px) !important;
+  }
+  .quicklinks > .wrap{
+    max-width: 1240px; margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px) !important;
+  }
+  .ql-grid{
+    display: grid; grid-template-columns: 1fr; gap: 16px;
+  }
+  @media (min-width:760px){ .ql-grid{ grid-template-columns: repeat(3, 1fr); } }
+  .ql-card{
+    display: flex; flex-direction: column; gap: 8px;
+    padding: clamp(24px, 2.4vw, 34px) clamp(22px, 2.2vw, 32px);
+    background: var(--ink-2);
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--rule);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-top-color .25s, transform .25s, box-shadow .25s;
+  }
+  .ql-card:hover{
+    border-top-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 34px rgba(0,0,0,.12);
+  }
+  .ql-card .ql-title{
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(22px, 2vw, 28px); line-height: 1.1; color: var(--paper);
+    display: inline-flex; align-items: baseline; gap: 10px;
+  }
+  .ql-card .ql-arr{
+    font-style: normal; font-size: .8em; color: var(--gold);
+    transition: transform .25s;
+  }
+  .ql-card:hover .ql-arr{ transform: translateX(4px); }
+  .ql-card .ql-sub{
+    font-family: var(--mono); font-size: 12px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--paper-faint); line-height: 1.5;
+  }
+
   /* ── SERVICES / TREATMENTS — 8-modality photo grid ───────────────── */
   .services{
     background: var(--ink-2) !important;
@@ -1175,6 +1220,26 @@
     </div>
   </div>
 </header>
+
+<!-- ─── Quick links ───────────────────────────────────────────────── -->
+<section class="quicklinks" aria-label="Quick links">
+  <div class="wrap">
+    <div class="ql-grid">
+      <a class="ql-card reveal d1" href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener">
+        <span class="ql-title">Book Appointment <span class="ql-arr" aria-hidden="true">&rarr;</span></span>
+        <span class="ql-sub">Schedule your first visit online</span>
+      </a>
+      <a class="ql-card reveal d2" href="services.html">
+        <span class="ql-title">Services <span class="ql-arr" aria-hidden="true">&rarr;</span></span>
+        <span class="ql-sub">Acupuncture, herbal medicine &amp; therapies</span>
+      </a>
+      <a class="ql-card reveal d3" href="veterans.html">
+        <span class="ql-title">Veterans <span class="ql-arr" aria-hidden="true">&rarr;</span></span>
+        <span class="ql-sub">VA-covered acupuncture care</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- Featured Care Carousel -->
 <div class="focus-slider" role="region" aria-label="Featured care topics">
