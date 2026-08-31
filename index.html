@@ -574,38 +574,50 @@
   .hero{
     position: relative !important;
     background: var(--ink) !important;
-    padding: clamp(104px, 13vh, 148px) 0 clamp(56px, 8vh, 96px) !important;
+    padding: clamp(96px, 12vh, 136px) 0 clamp(48px, 7vh, 84px) !important;
     height: auto !important;
     min-height: 0 !important;
     overflow: hidden;
   }
-  /* very soft warm wash so a flat white hero isn't dead-flat */
-  .hero::before{
-    content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:
-      radial-gradient(58% 62% at 12% 8%, var(--gold-light), transparent 60%),
-      radial-gradient(50% 60% at 100% 100%, rgba(160,120,32,.06), transparent 62%);
-  }
+  .hero::before{ content:none !important; }
   .hero::after{ content:none !important; }
-  /* Frame border that scrolls with the hero — nav rides along it */
-  .hero-frame{
-    position: absolute; inset: var(--frame-inset); z-index: 2; pointer-events: none;
-    border: 1px solid rgba(255,255,255,.30); border-radius: 6px;
-  }
-  [data-theme="light"] .hero-frame{ border-color: rgba(30,28,18,.18); }
+  /* No decorative frame on the homepage hero — clean edge-to-edge blocks */
+  .hero-frame{ display:none !important; }
 
+  /* Full-bleed so the panel + photo block reach the viewport edges */
   .hero .wrap{
-    max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,80px);
-    width:100%; position:relative; z-index:2;
+    max-width: 1440px; margin: 0 auto; padding: 0;
+    width: 100%; position: relative; z-index: 2;
   }
+  /* Two hard-edged blocks, no gap, equal height (methodist.org) */
   .hero-grid{
-    display:grid; grid-template-columns:1fr; gap:clamp(36px,5vw,64px);
-    align-items:center;
+    display: grid; grid-template-columns: 1fr;
+    gap: 0; align-items: stretch;
   }
-  @media (min-width:920px){
-    .hero-grid{ grid-template-columns:1.06fr .94fr; gap:clamp(48px,6vw,92px); }
+  @media (min-width:900px){
+    .hero-grid{ grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); }
   }
-  .hero-text{ max-width:600px; text-align:left; }
+
+  /* Left panel — tinted block, content vertically centred */
+  .hero-text{
+    background: #f2eee5;
+    padding: clamp(40px, 5.4vw, 82px) clamp(24px, 5vw, 76px);
+    display: flex; flex-direction: column; justify-content: center;
+    text-align: left; min-width: 0;
+  }
+  :root:not([data-theme="light"]) .hero-text{ background: #1b1b1b; }
+
+  /* Right block — warm-white so the whole (uncropped) image blends into it */
+  .hero-media{
+    background: #f7f4ee;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0; overflow: hidden; min-width: 0;
+  }
+  .hero-media img{
+    display: block; width: 100%; height: auto;
+    max-height: 100%; object-fit: contain;
+    border: 0; border-radius: 0; box-shadow: none;
+  }
 
   /* Kicker — small green label with brush glyph */
   .hero-kicker{
@@ -622,9 +634,9 @@
   /* Headline — large Cormorant, accent phrase in italic green */
   .hero-title{
     font-family: var(--serif); font-weight: 400; font-style: normal;
-    font-size: clamp(38px, 5vw, 62px); line-height: 1.12;
-    letter-spacing: -.012em; color: var(--paper);
-    max-width: 15ch; margin: 0 0 20px; text-wrap: balance;
+    font-size: clamp(30px, 3.1vw, 46px); line-height: 1.16;
+    letter-spacing: -.01em; color: var(--paper);
+    max-width: 20ch; margin: 0 0 20px; text-wrap: balance;
   }
   .hero-title .accent{ font-style: italic; color: var(--gold); }
 
@@ -694,21 +706,6 @@
   .hero-meta li::before{
     content:""; width:4px; height:4px; border-radius:50%;
     background: var(--gold); flex:none;
-  }
-
-  /* Image column — shown in full, framed, no crop */
-  .hero-media{
-    width:100%; max-width:600px; justify-self:center;
-  }
-  @media (min-width:920px){ .hero-media{ justify-self:end; } }
-  .hero-media img{
-    display:block; width:100%; height:auto;
-    border-radius: 12px;
-    border: 1px solid var(--rule-strong);
-    box-shadow: 0 24px 64px rgba(0,0,0,.12), 0 4px 14px rgba(0,0,0,.06);
-  }
-  :root:not([data-theme="light"]) .hero-media img{
-    box-shadow: 0 24px 64px rgba(0,0,0,.5);
   }
 
   /* ── SERVICES / TREATMENTS — 8-modality photo grid ───────────────── */
@@ -916,18 +913,20 @@
     /* Hero: reduce padding on small screens — keep enough top so the nav
        (≈64px tall at mobile) doesn't overlap the headline */
     .hero{
-      padding: 100px 0 56px !important;
+      padding: 90px 0 48px !important;
     }
 
-    /* Hero grid: single column, text first then image */
+    /* Hero grid: single column — panel on top, photo block below */
     .hero-grid{
       grid-template-columns: 1fr !important;
-      gap: 32px !important;
+      gap: 0 !important;
     }
-    .hero-text{ max-width: 100% !important; }
+    .hero-text{
+      padding: 40px 22px 44px !important;
+    }
     .hero-title{
       font-size: clamp(32px, 8.5vw, 46px);
-      line-height: 1.1;
+      line-height: 1.12;
       max-width: 18ch;
       margin-bottom: 18px;
     }
@@ -939,7 +938,7 @@
       min-height: 48px;
       flex: 1 1 auto !important;
     }
-    .hero-media{ max-width: 100%; }
+    .hero-media{ padding: 0; }
 
     /* Trust strip: 2 columns on phones */
     .trust-inner{
