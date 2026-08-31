@@ -608,7 +608,7 @@
     color: var(--paper-dim); max-width: 42ch; margin: 0 0 30px;
   }
 
-  /* CTAs — filled primary + outline secondary */
+  /* CTAs — filled primary + same-weight outline secondary */
   .hero .cta-row{
     display:flex; gap:12px; flex-wrap:wrap; align-items:stretch;
     justify-content:flex-start; margin: 0 0 30px;
@@ -616,45 +616,50 @@
   .hero .btn-primary,
   .hero .btn-ghost{
     display: inline-flex !important; align-items: center !important; justify-content: center !important;
-    gap: 9px !important; white-space: nowrap !important;
+    gap: 10px !important; white-space: nowrap !important;
     flex: 0 1 auto !important;
-    padding: 13px 22px !important;
+    min-height: 52px !important;
+    padding: 0 26px !important;
+    line-height: 1 !important;
     font-family: var(--mono) !important;
     font-size: 11.5px !important; letter-spacing:.14em !important;
     font-weight: 600 !important; text-transform: uppercase !important;
-    border-radius: 8px !important;
-    transition: background .22s, color .22s, border-color .22s, transform .2s, box-shadow .22s !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    transition: background .22s, color .22s, border-color .22s, transform .2s !important;
   }
   .hero .btn-primary{
     background: var(--gold) !important;
     color: #ffffff !important;
-    border: 1px solid var(--gold) !important;
-    box-shadow: 0 6px 22px rgba(24,118,46,.20) !important;
+    border: 1.5px solid var(--gold) !important;
   }
   :root:not([data-theme="light"]) .hero .btn-primary{ color: var(--ink) !important; }
   .hero .btn-primary::before{ display:none !important }
   .hero .btn-primary:hover{
     background: var(--gold-dim) !important; border-color: var(--gold-dim) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 10px 30px rgba(24,118,46,.28) !important;
   }
-  .hero .btn-primary .arrow{ font-style: normal !important; transition: transform .2s !important; display:inline-block !important; }
+  .hero .btn-primary .arrow{
+    font-family: var(--mono) !important; font-style: normal !important;
+    font-size: 13px !important; letter-spacing: 0 !important;
+    transition: transform .2s !important; display:inline-block !important;
+  }
   .hero .btn-primary:hover .arrow{ transform: translateX(3px) !important }
 
   .hero .btn-ghost{
     background: transparent !important;
-    color: var(--paper) !important;
-    border: 1px solid var(--rule-strong) !important;
-    box-shadow: none !important;
+    color: var(--gold) !important;
+    border: 1.5px solid var(--gold) !important;
   }
   .hero .btn-ghost:hover{
-    color: var(--gold) !important;
+    color: #ffffff !important;
+    background: var(--gold) !important;
     border-color: var(--gold) !important;
-    background: var(--gold-light) !important;
     transform: translateY(-2px) !important;
   }
-  .hero .btn-phone-icon{ display:inline-flex; align-items:center; opacity:.8 }
-  .hero .btn-ghost:hover .btn-phone-icon{ opacity:1 }
+  :root:not([data-theme="light"]) .hero .btn-ghost:hover{ color: var(--ink) !important; }
+  .hero .btn-phone-icon{ display:inline-flex; align-items:center; }
+  .hero .btn-ghost .btn-phone-icon{ margin-right: -1px; }
 
   /* Credential strip — thin mono row under the CTAs */
   .hero-meta{
@@ -686,11 +691,12 @@
   }
   @media (min-width:760px){ .ql-grid{ grid-template-columns: repeat(3, 1fr); } }
   .ql-card{
-    display: flex; flex-direction: column; gap: 8px;
-    padding: clamp(24px, 2.4vw, 34px) clamp(22px, 2.2vw, 32px);
+    display: flex; flex-direction: column; justify-content: center; gap: 9px;
+    min-height: 118px;
+    padding: 22px clamp(20px, 2vw, 30px);
     background: var(--ink-2);
-    border: 1px solid var(--rule);
-    border-top: 2px solid var(--rule);
+    border: 1px solid var(--rule-strong);
+    border-top: 2px solid var(--rule-strong);
     border-radius: 4px;
     text-decoration: none;
     transition: border-top-color .25s, transform .25s, box-shadow .25s;
@@ -1231,7 +1237,7 @@
       </a>
       <a class="ql-card reveal d2" href="services.html">
         <span class="ql-title">Services <span class="ql-arr" aria-hidden="true">&rarr;</span></span>
-        <span class="ql-sub">Acupuncture, herbal medicine &amp; therapies</span>
+        <span class="ql-sub">Explore our treatments &amp; therapies</span>
       </a>
       <a class="ql-card reveal d3" href="veterans.html">
         <span class="ql-title">Veterans <span class="ql-arr" aria-hidden="true">&rarr;</span></span>
