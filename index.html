@@ -224,34 +224,7 @@
   }
 
 
-  .hero .meridian{
-    position:absolute;inset:0;z-index:-1;opacity:.4;pointer-events:none;
-  }
-  .hero h1{
-    font-family:var(--serif);font-weight:300;font-style:italic;
-    font-size:clamp(48px, 9vw, 124px);line-height:.96;letter-spacing:-.01em;
-    color:var(--paper);max-width:14ch;margin-bottom:28px;
-    text-wrap:balance;
-  }
-  .hero h1 .accent{font-style:normal;color:var(--gold);font-weight:400}
-  .hero h1 .seal{
-    display:inline-block;font-family:var(--brush);font-size:.42em;color:var(--cinnabar);
-    vertical-align:.45em;margin-left:.18em;letter-spacing:0;
-  }
-  .hero .lede{
-    max-width:46ch;color:var(--paper-dim);font-size:clamp(15px,1.6vw,18px);
-    line-height:1.65;font-weight:300;font-style:italic;
-  }
-  .hero .cta-row{
-    display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;margin-top:42px;
-  }
-  .hero .meta{
-    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
-    margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);
-    font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;
-    color:var(--paper-faint);
-  }
-  .hero .meta b{color:var(--paper);font-weight:400}
+  /* (legacy shan-shui hero rules removed — see v3 HERO REBUILD block below) */
 
   /* ── Services ──────────────────────────────────────────────────────── */
   .services{background:var(--ink-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);position:relative}
@@ -355,12 +328,8 @@
   .hero .meridian circle:nth-child(4){animation-delay:1.8s}
 
   /* ── Light mode overrides ───────────────────────────────────────────── */
-  [data-theme="light"] .hero::before{ display: none }
-  [data-theme="light"] .hero::after{
-    background: linear-gradient(to bottom, rgba(248,246,240,.65) 0%, rgba(248,246,240,.65) 100%);
-  }
   [data-theme="light"] .hero{
-    background: url(assets/AdobeStock_99423718.webp) center 75%/cover no-repeat, var(--ink-2) !important;
+    background: var(--ink) !important;
   }
   [data-theme="light"] .hero .bg{
     background:
@@ -569,181 +538,188 @@
   /* Hide fixed page-frame on homepage — hero-frame takes over */
   .page-frame { display: none !important; }
 
-  /* ── HERO — clean, photo-driven, two-column ─────────────────────── */
+  /* ═══════════════════════════════════════════════════════════════════
+     v3 — HERO REBUILD (Aug 2026)
+     Split layout after methodist.org: text column left, image right.
+     No full-bleed background photo, no text-shadows. Flat surface,
+     forest-green primary CTA + outline secondary, thin credential strip.
+     ═══════════════════════════════════════════════════════════════════ */
   .hero{
     position: relative !important;
-    background: url(assets/AdobeStock_99423718.webp) center 70%/cover no-repeat, var(--ink) !important;
-    padding: 80px 22px 160px !important;
-    min-height: 100vh !important;
-    min-height: 100dvh !important;
+    background: var(--ink) !important;
+    padding: clamp(96px, 12vh, 136px) 0 clamp(48px, 7vh, 84px) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden;
   }
-  /* Frame border that scrolls with the hero — nav rides along it */
-  .hero-frame{
-    position: absolute; inset: var(--frame-inset); z-index: 2; pointer-events: none;
-    border: 1px solid rgba(255,255,255,.30); border-radius: 6px;
-  }
-  [data-theme="light"] .hero-frame{ border-color: rgba(30,28,18,.22); }
-  /* Atmospheric warm texture — SVG grain + radial warmth */
-  .hero::before{
-    content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.88  0 0 0 0 0.72  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
-    opacity: 0.28;
-    mix-blend-mode: overlay;
-  }
-  .hero::after{
-    content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-    background: radial-gradient(ellipse 75% 65% at 50% 52%, rgba(8,9,8,.72) 0%, rgba(8,9,8,.06) 100%);
-  }
-  .hero .wrap{ position:relative; z-index:2 }
-  .hero .wrap{ max-width:1240px; margin:0 auto; padding:0 22px; width:100%; position:relative; z-index:2 }
-  .hero-grid{ display:grid; grid-template-columns:1fr; gap:0; align-items:center }
-  .hero-text{ max-width: 680px; margin: 0 auto; text-align: center }
-  .hero .eyebrow{ justify-content: center }
+  .hero::before{ content:none !important; }
+  .hero::after{ content:none !important; }
+  /* No decorative frame on the homepage hero — clean edge-to-edge blocks */
+  .hero-frame{ display:none !important; }
 
-  .hero h1{
-    font-family: var(--serif);
-    font-weight: 500;
-    font-style: normal;
-    font-size: clamp(22px, 2.2vw, 30px);
-    line-height: 1.2;
-    letter-spacing: -.005em;
-    color: var(--paper);
-    max-width: 28ch;
-    margin: 0 auto 24px;
-    text-wrap: pretty;
+  /* Full-bleed so the panel + photo block reach the viewport edges */
+  .hero .wrap{
+    max-width: 1440px; margin: 0 auto; padding: 0;
+    width: 100%; position: relative; z-index: 2;
   }
-  :root:not([data-theme="light"]) .hero h1{ color: #f5f5f5 }
-  .hero h1 .accent{ font-style: italic; font-weight: 400; color: var(--paper); letter-spacing: -.005em }
-  .hero h1 .cn{
-    display:inline-block; font-family:var(--brush); color:var(--gold);
-    font-size:.52em; vertical-align:.35em; margin-left:.18em; font-weight:500;
+  /* Two hard-edged blocks, no gap, equal height (methodist.org) */
+  .hero-grid{
+    display: grid; grid-template-columns: 1fr;
+    gap: 0; align-items: stretch;
   }
-  /* Institute name — small gold mono eyebrow label */
-  .hero .mission{
-    font-family: var(--serif) !important;
-    font-style: normal !important;
-    font-weight: 500 !important;
-    font-size: 46px !important;
-    letter-spacing: 0.22em !important;
-    text-transform: uppercase !important;
-    color: #ffffff !important;
-    white-space: nowrap !important;
-    margin: 0 0 2rem !important;
-    text-shadow: 0 5px 24px rgba(0,0,0,0.72), 0 1px 8px rgba(0,0,0,0.55) !important;
+  @media (min-width:900px){
+    .hero-grid{ grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); }
   }
-  /* Tagline — large italic serif headline */
-  .hero .mission-sub{
-    font-family: var(--serif) !important;
-    font-style: italic !important;
-    font-weight: 300 !important;
-    font-size: clamp(44px, 6.5vw, 60px) !important;
-    line-height: 1.1 !important;
-    color: var(--paper) !important;
-    max-width: 22ch;
-    margin: 8px auto 56px !important;
-    letter-spacing: -0.02em !important;
-    text-shadow: 0 2px 20px rgba(255, 255, 255, 0.45), 0 1px 6px rgba(0,0,0,0.30) !important;
+
+  /* Left panel — tinted block, content vertically centred */
+  .hero-text{
+    background: #f2eee5;
+    padding: clamp(36px, 4vw, 60px) clamp(24px, 3.6vw, 56px);
+    display: flex; flex-direction: column; justify-content: center;
+    text-align: left; min-width: 0;
   }
-  .hero .lede{
+  :root:not([data-theme="light"]) .hero-text{ background: #1b1b1b; }
+
+  /* Right block — warm-white so the whole (uncropped) image blends into it */
+  .hero-media{
+    background: #f7f4ee;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0; overflow: hidden; min-width: 0;
+  }
+  .hero-media img{
+    display: block; width: 100%; height: auto;
+    max-height: 100%; object-fit: contain;
+    border: 0; border-radius: 0; box-shadow: none;
+  }
+
+  /* Headline — Cormorant, accent phrase in italic green */
+  .hero .hero-title{
+    font-family: var(--serif); font-weight: 400; font-style: normal;
+    font-size: clamp(26px, 2.5vw, 38px); line-height: 1.2;
+    letter-spacing: -.006em; color: var(--paper);
+    max-width: 24ch; margin: 0 0 18px; text-wrap: balance;
+  }
+  .hero .hero-title .accent{ font-style: italic; color: var(--gold); }
+
+  /* Supporting line — plain serif, not italic */
+  .hero .hero-lede{
     font-family: var(--serif); font-style: normal; font-weight: 400;
-    font-size: clamp(18px, 1.6vw, 22px); line-height: 1.78;
-    color: var(--paper-dim); max-width: 46ch; margin-bottom: 32px;
+    font-size: clamp(16px, 1.4vw, 18px); line-height: 1.6;
+    color: var(--paper-dim); max-width: 42ch; margin: 0 0 30px;
   }
 
-  /* Quick-facts strip — editorial caption block */
-  .hero .quickfacts{
-    display:flex; flex-wrap:wrap; gap:20px 40px;
-    margin: 0 0 36px; padding: 18px 0 0;
-    border-top: 1px solid var(--gold);
+  /* CTAs — filled primary + same-weight outline secondary */
+  .hero .cta-row{
+    display:flex; gap:12px; flex-wrap:wrap; align-items:stretch;
+    justify-content:flex-start; margin: 0 0 30px;
   }
-  .hero .qf{ min-width: 110px }
-  .hero .qf .k{
-    font-family: var(--mono); font-size:13px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--paper-faint); margin-bottom:5px;
-  }
-  .hero .qf .v{
-    font-family: Georgia, "Times New Roman", serif; font-weight:400; font-size:17px;
-    color: var(--paper-dim); line-height:1.5;
-  }
-  .hero .qf .v a{ color:inherit; border-bottom:.5px solid var(--rule-strong); padding-bottom:1px }
-  .hero .qf .v a:hover{ color:var(--gold); border-color:var(--gold) }
-
-  /* CTAs */
-  .hero .cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:stretch; justify-content:center; margin-top:40px; max-width:660px; margin-left:auto; margin-right:auto; }
-  .hero .btn-primary{
-    display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important;
-    background: var(--gold) !important; color: var(--ink) !important;
-    border: none !important; white-space: nowrap !important;
-    padding: 16px 32px !important; flex: 1 1 0 !important;
+  .hero .btn-primary,
+  .hero .btn-ghost{
+    display: inline-flex !important; align-items: center !important; justify-content: center !important;
+    gap: 10px !important; white-space: nowrap !important;
+    flex: 0 1 auto !important;
+    min-height: 52px !important;
+    padding: 0 26px !important;
+    line-height: 1 !important;
     font-family: var(--mono) !important;
-    font-size: 13px !important; letter-spacing:.22em !important;
+    font-size: 11.5px !important; letter-spacing:.14em !important;
     font-weight: 600 !important; text-transform: uppercase !important;
-    border-radius: 10px !important;
-    box-shadow: 0 4px 24px rgba(76,179,90,.18) !important;
-    transition: background .25s, transform .22s, box-shadow .25s !important;
-    position: relative !important; overflow: visible !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    transition: background .22s, color .22s, border-color .22s, transform .2s !important;
   }
+  .hero .btn-primary{
+    background: var(--gold) !important;
+    color: #ffffff !important;
+    border: 1.5px solid var(--gold) !important;
+  }
+  :root:not([data-theme="light"]) .hero .btn-primary{ color: var(--ink) !important; }
   .hero .btn-primary::before{ display:none !important }
   .hero .btn-primary:hover{
-    background: var(--gold-dim) !important; color: var(--ink) !important;
+    background: var(--gold-dim) !important; border-color: var(--gold-dim) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 36px rgba(76,179,90,.3) !important;
   }
   .hero .btn-primary .arrow{
-    font-style: normal !important;
-    transition: transform .2s !important;
-    display: inline-block !important;
+    font-family: var(--mono) !important; font-style: normal !important;
+    font-size: 13px !important; letter-spacing: 0 !important;
+    transition: transform .2s !important; display:inline-block !important;
   }
   .hero .btn-primary:hover .arrow{ transform: translateX(3px) !important }
 
   .hero .btn-ghost{
-    display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 9px !important;
-    color: var(--ink) !important; white-space: nowrap !important;
-    background: var(--gold) !important;
-    border: none !important;
-    padding: 16px 32px !important; flex: 1 1 0 !important;
-    font-family: var(--mono) !important;
-    font-size: 13px !important; letter-spacing:.22em !important;
-    font-weight: 600 !important; text-transform: uppercase !important;
-    border-radius: 10px !important;
-    box-shadow: 0 4px 24px rgba(76,179,90,.18) !important;
-    transition: background .25s, transform .22s, box-shadow .25s !important;
+    background: transparent !important;
+    color: var(--gold) !important;
+    border: 1.5px solid var(--gold) !important;
   }
   .hero .btn-ghost:hover{
-    background: var(--gold-dim) !important; color: var(--ink) !important;
+    color: #ffffff !important;
+    background: var(--gold) !important;
+    border-color: var(--gold) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 36px rgba(76,179,90,.3) !important;
   }
-  .hero .btn-phone-icon{ display:inline-flex; align-items:center; opacity:.85 }
-  .hero .btn-ghost:hover .btn-phone-icon{ opacity:1 }
+  :root:not([data-theme="light"]) .hero .btn-ghost:hover{ color: var(--ink) !important; }
+  .hero .btn-phone-icon{ display:inline-flex; align-items:center; }
+  .hero .btn-ghost .btn-phone-icon{ margin-right: -1px; }
 
-
-  /* Testimonial pull-quote below CTAs */
-  .hero-testimonial{
-    margin-top: 36px; padding-top: 22px;
-    border-top: .5px solid var(--gold);
-    max-width: 46ch;
+  /* Credential strip — thin mono row under the CTAs */
+  .hero-meta{
+    list-style:none; margin:0; padding:18px 0 0;
+    border-top:1px solid var(--rule);
+    display:flex; flex-wrap:wrap; gap:8px 22px;
+    font-family: var(--mono); font-size:11.5px; letter-spacing:.13em;
+    text-transform:uppercase; color: var(--paper-faint);
   }
-  .hero-testimonial .quote-text{
-    font-family: var(--serif); font-style: italic; font-weight: 300;
-    font-size: clamp(16px, 1.4vw, 19px); line-height: 1.75;
-    color: var(--paper-dim);
-    margin-bottom: 10px;
-  }
-  .hero-testimonial .quote-attr{
-    font-family: var(--mono); font-size: 11px; letter-spacing: .22em;
-    text-transform: uppercase; color: var(--paper-faint);
-    font-variant-numeric: tabular-nums;
+  .hero-meta li{ display:flex; align-items:center; gap:9px; }
+  .hero-meta li::before{
+    content:""; width:4px; height:4px; border-radius:50%;
+    background: var(--gold); flex:none;
   }
 
-  /* Hero photo slot */
-  .hero-image{
-    position:relative; aspect-ratio: 1/1; width:100%; max-width:480px;
-    background: transparent; border: none;
+  /* ── Quick links — 3-card strip under the hero (methodist.org) ────── */
+  .quicklinks{
+    background: var(--ink);
+    min-height: 0 !important;
+    display: block !important;
+    padding: clamp(28px, 4vw, 56px) 0 clamp(36px, 5vw, 68px) !important;
   }
-  .hero-image image-slot{ width:100%; height:100%; display:block }
-  .hero-image image-slot::part(frame){ background:transparent }
-  .hero-image .corner-mark{ display:none }
+  .quicklinks > .wrap{
+    max-width: 1240px; margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px) !important;
+  }
+  .ql-grid{
+    display: grid; grid-template-columns: 1fr; gap: 16px;
+  }
+  @media (min-width:760px){ .ql-grid{ grid-template-columns: repeat(3, 1fr); } }
+  .ql-card{
+    display: flex; flex-direction: column; justify-content: center; gap: 9px;
+    min-height: 118px;
+    padding: 22px clamp(20px, 2vw, 30px);
+    background: var(--ink-2);
+    border: 1px solid var(--rule-strong);
+    border-top: 2px solid var(--rule-strong);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-top-color .25s, transform .25s, box-shadow .25s;
+  }
+  .ql-card:hover{
+    border-top-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 34px rgba(0,0,0,.12);
+  }
+  .ql-card .ql-title{
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(22px, 2vw, 28px); line-height: 1.1; color: var(--paper);
+    display: inline-flex; align-items: baseline; gap: 10px;
+  }
+  .ql-card .ql-arr{
+    font-style: normal; font-size: .8em; color: var(--gold);
+    transition: transform .25s;
+  }
+  .ql-card:hover .ql-arr{ transform: translateX(4px); }
+  .ql-card .ql-sub{
+    font-family: var(--mono); font-size: 12px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--paper-faint); line-height: 1.5;
+  }
 
   /* ── SERVICES / TREATMENTS — 8-modality photo grid ───────────────── */
   .services{
@@ -947,44 +923,35 @@
       padding: 0 !important;
     }
 
-    /* Hero: reduce padding on small screens — keep at least 96px top so nav
+    /* Hero: reduce padding on small screens — keep enough top so the nav
        (≈64px tall at mobile) doesn't overlap the headline */
     .hero{
-      padding: 96px 16px 60px !important;
-      text-align: center;
+      padding: 90px 0 48px !important;
     }
 
-    /* Hero grid: single column */
+    /* Hero grid: single column — panel on top, photo block below */
     .hero-grid{
       grid-template-columns: 1fr !important;
-      gap: 28px !important;
+      gap: 0 !important;
     }
-    .hero .eyebrow{
-      justify-content: center;
-      margin-bottom: 24px;
+    .hero-text{
+      padding: 38px 22px 42px !important;
     }
-    .hero h1{
-      font-size: clamp(34px, 10.5vw, 48px);
-      line-height: 1.08;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 18px;
+    .hero .hero-title{
+      font-size: clamp(26px, 6.6vw, 34px);
+      line-height: 1.2;
+      max-width: 22ch;
+      margin-bottom: 16px;
     }
-    .hero .mission-sub,
-    .hero .lede{
-      margin-left: auto !important;
-      margin-right: auto !important;
-      font-size: clamp(36px, 9vw, 52px) !important;
-    }
+    .hero .hero-lede{ font-size: 16px; margin-bottom: 26px; }
 
-    .hero .cta-row{
-      justify-content: center;
-      gap: 16px;
-    }
+    .hero .cta-row{ gap: 12px; }
     .hero .btn-primary,
     .hero .btn-ghost{
       min-height: 48px;
+      flex: 1 1 auto !important;
     }
+    .hero-media{ padding: 0; }
 
     /* Trust strip: 2 columns on phones */
     .trust-inner{
@@ -1225,17 +1192,17 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-text">
-        <p class="mission reveal in d1">
-          W&amp;E Health Institute
+        <h1 class="hero-title reveal in d1">
+          We provide personalized, holistic care that nurtures your <span class="accent">body, mind, and spirit.</span>
+        </h1>
+        <p class="hero-lede reveal in d2">
+          Acupuncture, herbal medicine, and integrative therapies from two board-certified practitioners in Cordova, Tennessee.
         </p>
-        <p class="mission-sub reveal in d2">
-          We provide personalized, holistic care that nurtures your body, mind, and spirit.
-        </p>
-  
 
         <div class="cta-row reveal in d3">
           <a href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener" class="btn-primary">
-            <span>Book Appointment Here</span>
+            <span>Book Appointment</span>
+            <span class="arrow" aria-hidden="true">→</span>
           </a>
           <a href="tel:+19013406433" class="btn-ghost">
             <span class="btn-phone-icon" aria-hidden="true">
@@ -1244,10 +1211,41 @@
             <span>Call 901&middot;340&middot;6433</span>
           </a>
         </div>
+
+        <ul class="hero-meta reveal in d3">
+          <li>Cordova, Tennessee</li>
+          <li>NCCAOM Diplomates &middot; TN Licensed</li>
+          <li>VA-covered care for Veterans</li>
+        </ul>
+      </div>
+
+      <div class="hero-media reveal in d2">
+        <img src="assets/personalized_care.webp" width="1400" height="933"
+             alt="A patient receiving acupuncture at W&amp;E Health Institute — personalized integrative care for body, mind, and spirit." />
       </div>
     </div>
   </div>
 </header>
+
+<!-- ─── Quick links ───────────────────────────────────────────────── -->
+<section class="quicklinks" aria-label="Quick links">
+  <div class="wrap">
+    <div class="ql-grid">
+      <a class="ql-card reveal d1" href="https://wehealthinstitute.janeapp.com" target="_blank" rel="noopener">
+        <span class="ql-title">Book Appointment <span class="ql-arr" aria-hidden="true">&rarr;</span></span>
+        <span class="ql-sub">Schedule your first visit online</span>
+      </a>
+      <a class="ql-card reveal d2" href="services.html">
+        <span class="ql-title">Services <span class="ql-arr" aria-hidden="true">&rarr;</span></span>
+        <span class="ql-sub">Explore our treatments &amp; therapies</span>
+      </a>
+      <a class="ql-card reveal d3" href="veterans.html">
+        <span class="ql-title">Veterans <span class="ql-arr" aria-hidden="true">&rarr;</span></span>
+        <span class="ql-sub">VA-covered acupuncture care</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- Featured Care Carousel -->
 <div class="focus-slider" role="region" aria-label="Featured care topics">
